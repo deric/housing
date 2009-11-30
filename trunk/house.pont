@@ -1,0 +1,541 @@
+; Mon Nov 30 16:48:14 CET 2009
+; 
+;+ (version "3.4.1")
+;+ (build "Build 537")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
+		(create-accessor read-write))
+	(multislot title
+;+		(comment "title gained from university")
+		(type STRING)
+		(create-accessor read-write))
+	(single-slot rent
+;+		(comment "in € per month")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot house_number
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot cities
+		(type INSTANCE)
+;+		(allowed-classes City)
+		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot month
+;+		(comment "number of month in year")
+		(type INTEGER)
+		(range 1 12)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot districts
+		(type INSTANCE)
+;+		(allowed-classes District)
+		(create-accessor read-write))
+	(multislot transport
+		(type INSTANCE)
+;+		(allowed-classes Transport)
+		(create-accessor read-write))
+	(single-slot street
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot available_from
+		(type INSTANCE)
+;+		(allowed-classes Date)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot firstname
+		(type STRING)
+		(cardinality 1 2)
+		(create-accessor read-write))
+	(single-slot inhabitants
+;+		(comment "number of inhabitants living in this area")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot postal_code
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot year
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot surname
+		(type STRING)
+		(cardinality 1 2)
+		(create-accessor read-write))
+	(single-slot windows_num
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot latitude
+;+		(comment "GPS coordinate")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot rooms
+		(type INSTANCE)
+;+		(allowed-classes Room)
+		(create-accessor read-write))
+	(single-slot day
+;+		(comment "day number in month")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot location
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Location)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot district
+		(type INSTANCE)
+;+		(allowed-classes District)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot longitude
+;+		(comment "GPS coordinate in degrees")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
+		(create-accessor read-write))
+	(single-slot space
+;+		(comment "in square m  of house")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot country
+		(type INSTANCE)
+;+		(allowed-classes Country)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot realty
+;+		(comment "piece of immovable realty estate")
+		(type INSTANCE)
+;+		(allowed-classes PlaceToLive)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Offer
+	(is-a USER)
+	(role concrete)
+	(single-slot rent
+;+		(comment "in € per month")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot transport
+		(type INSTANCE)
+;+		(allowed-classes Transport)
+		(create-accessor read-write))
+	(single-slot location
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Location)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot available_from
+		(type INSTANCE)
+;+		(allowed-classes Date)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot realty
+;+		(comment "piece of immovable realty estate")
+		(type INSTANCE)
+;+		(allowed-classes PlaceToLive)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Address
+	(is-a USER)
+	(role concrete)
+	(single-slot postal_code
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot district
+		(type INSTANCE)
+;+		(allowed-classes District)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot street
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot country
+		(type INSTANCE)
+;+		(allowed-classes Country)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Equipment
+	(is-a USER)
+	(role concrete)
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Location "GPS coordinates of an object"
+	(is-a USER)
+	(role concrete)
+	(single-slot longitude
+;+		(comment "GPS coordinate in degrees")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot latitude
+;+		(comment "GPS coordinate")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Date
+	(is-a USER)
+	(role concrete)
+	(single-slot month
+;+		(comment "number of month in year")
+		(type INTEGER)
+		(range 1 12)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot day
+;+		(comment "day number in month")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot year
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass PlaceToLive
+	(is-a USER)
+	(role concrete))
+
+(defclass House
+	(is-a PlaceToLive)
+	(role abstract)
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
+		(create-accessor read-write))
+	(single-slot house_number
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Detached
+	(is-a House)
+	(role concrete))
+
+(defclass SemiDetached
+	(is-a House)
+	(role concrete))
+
+(defclass BlocksOfFlats
+	(is-a House)
+	(role concrete))
+
+(defclass Terraced
+	(is-a House)
+	(role concrete))
+
+(defclass Flat
+	(is-a PlaceToLive)
+	(role abstract)
+	(single-slot space
+;+		(comment "in square m  of house")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot rooms
+		(type INSTANCE)
+;+		(allowed-classes Room)
+		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Attic
+	(is-a Flat)
+	(role concrete))
+
+(defclass Ground
+	(is-a Flat)
+	(role concrete))
+
+(defclass Duplex "two floors apartament"
+	(is-a Flat)
+	(role concrete)
+	(single-slot floor
+;+		(comment "two floors in which is apartament located")
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Room
+	(is-a PlaceToLive)
+	(role concrete)
+	(single-slot rent
+;+		(comment "in € per month")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot space
+;+		(comment "in square m  of house")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot windows_num
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass SingleRoom
+	(is-a Room)
+	(role concrete))
+
+(defclass DoubleRoom
+	(is-a Room)
+	(role concrete))
+
+(defclass Services
+	(is-a USER)
+	(role abstract))
+
+(defclass Transport
+	(is-a Services)
+	(role concrete))
+
+(defclass Station "public transport stop"
+	(is-a Transport)
+	(role abstract)
+	(single-slot location
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Location)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass BusStop
+	(is-a Station)
+	(role concrete))
+
+(defclass MetroStation
+	(is-a Station)
+	(role concrete))
+
+(defclass TransferStation
+	(is-a MetroStation)
+	(role concrete))
+
+(defclass TrainStation
+	(is-a Station)
+	(role concrete))
+
+(defclass TramStop
+	(is-a Station)
+	(role concrete))
+
+(defclass FoodBeverage
+	(is-a Services)
+	(role concrete))
+
+(defclass Restarurant
+	(is-a FoodBeverage)
+	(role concrete)
+	(single-slot location
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Location)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Bar
+	(is-a FoodBeverage)
+	(role concrete))
+
+(defclass Entertaitment
+	(is-a Services)
+	(role concrete))
+
+(defclass Cinema
+	(is-a Entertaitment)
+	(role concrete))
+
+(defclass Theatre
+	(is-a Entertaitment)
+	(role concrete))
+
+(defclass Education
+	(is-a Services)
+	(role concrete))
+
+(defclass School
+	(is-a Education)
+	(role concrete))
+
+(defclass University
+	(is-a Education)
+	(role concrete))
+
+(defclass Library
+	(is-a Education)
+	(role concrete))
+
+(defclass HealthCare
+	(is-a Services)
+	(role concrete))
+
+(defclass Hospital
+	(is-a HealthCare)
+	(role concrete))
+
+(defclass Shopping
+	(is-a Services)
+	(role concrete))
+
+(defclass Supermarket
+	(is-a Shopping)
+	(role concrete))
+
+(defclass GeographicalPart
+	(is-a USER)
+	(role concrete))
+
+(defclass Country
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot inhabitants
+;+		(comment "number of inhabitants living in this area")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass City
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot postal_code
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot inhabitants
+;+		(comment "number of inhabitants living in this area")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot districts
+		(type INSTANCE)
+;+		(allowed-classes District)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot country
+		(type INSTANCE)
+;+		(allowed-classes Country)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass District
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot postal_code
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Province
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot inhabitants
+;+		(comment "number of inhabitants living in this area")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot cities
+		(type INSTANCE)
+;+		(allowed-classes City)
+		(create-accessor read-write)))
+
+(defclass Person
+	(is-a USER)
+	(role concrete)
+	(multislot firstname
+		(type STRING)
+		(cardinality 1 2)
+		(create-accessor read-write))
+	(multislot title
+;+		(comment "title gained from university")
+		(type STRING)
+		(create-accessor read-write))
+	(multislot surname
+		(type STRING)
+		(cardinality 1 2)
+		(create-accessor read-write)))
