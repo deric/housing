@@ -1,0 +1,18 @@
+digraph house {
+	node [label="\N"];
+	graph [bb="0,0,616,370"];
+	PlaceToLive [label=PlaceToLive, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="42,66", width="1.1667", height="0.5"];
+	Date [label="{Date|{month|Integer}|{day|Integer}|{year|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="154,66", rects="101.5,92,206.5,118 101.5,66,152.5,92 152.5,66,206.5,92 101.5,40,144.5,66 144.5,40,206.5,66 101.5,14,146.5,40 146.5,14,206.5,40", width="1.4444", height="1.4583"];
+	Location [label="{Location|{longitude|Float}|{latitude|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="279,66", rects="223.5,79,334.5,105 223.5,53,290.5,79 290.5,53,334.5,79 223.5,27,285.5,53 285.5,27,334.5,53", width="1.5278", height="1.0972"];
+	Offer [label="{Offer|{rent|Float}|{transport|Instance*|{Transport}}|{location|Instance|{Location}}|{available_from|Instance|{Date}}|{address|Instance\
+|{Address}}|{...}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="279,278", rects="178,343,380,369 178,317,275,343 275,317,380,343 178,291,242,317 242,291,310,317 310,291,379,317 178,265,243,291 243,265,310,291 \
+310,265,380,291 178,239,277,265 277,239,338,265 338,239,380,265 178,213,243,239 243,213,312,239 312,213,380,239 178,187,380,213", width="2.8056", height="2.5417"];
+	Transport [label=Transport, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="386,66", width="0.94444", height="0.5"];
+	Address [label="{Address|{postal_code|String}|{district|Instance|{District}}|{street|String}|{country|Instance|{Country}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="527,66", rects="438,105,616,131 438,79,543,105 543,79,616,105 438,53,494,79 494,53,557,79 557,53,616,79 438,27,525,53 525,27,616,53 438,1,495,27\
+ 495,1,556,27 556,1,616,27", width="2.4722", height="1.8194"];
+	Offer -> Transport [style=filled, label="transport*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,376.9,84.029 325,186.86 342.12,152.93 360.3,116.93 372.31,93.132", lp="369.5,159"];
+	Offer -> Location [style=filled, label=location, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,279,105.15 279,186.86 279,162.27 279,136.59 279,115.25", lp="301,159"];
+	Offer -> Date [style=filled, label=available_from, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,169.92,118.25 203.48,186.74 199.39,180.54 195.52,174.26 192,168 184.99,155.55 178.8,141.55 173.56,128", lp="233.5,159"];
+	Offer -> Address [style=filled, label=address, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,450.79,131.15 380.23,191.47 401.13,173.6 422.93,154.97 443.13,137.7", lp="445.5,159"];
+	Offer -> PlaceToLive [style=filled, label=realty, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,54.108,84.059 177.67,205.78 149.06,183.48 118.74,157.93 93,132 80.983,119.89 69.225,104.95 60.033,92.346", lp="146.5,159"];
+}

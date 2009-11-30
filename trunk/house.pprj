@@ -1,4 +1,4 @@
-; Mon Nov 30 16:48:14 CET 2009
+; Mon Nov 30 23:35:34 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -20,13 +20,14 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[house_ProjectKB_Class118]
-		[house_ProjectKB_Class119]
-		[house_ProjectKB_Class120]
-		[house_ProjectKB_Class121]))
+		[house_ProjectKB_Class73]
+		[house_ProjectKB_Class74]
+		[house_ProjectKB_Class75]
+		[house_ProjectKB_Class76]))
 
 ([CLSES_TAB] of  Widget
 
+	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.ClsesTab"))
 
 ([CREATION_TIMESTAMP_WIDGET] of  Widget
@@ -39,6 +40,7 @@
 
 ([FORMS_TAB] of  Widget
 
+	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.FormsTab"))
 
 ([house_ProjectKB_Class1] of  Widget
@@ -56,28 +58,8 @@
 	(property_list [house_ProjectKB_Class12])
 	(widget_class_name "ezpal.EZPalTab"))
 
-([house_ProjectKB_Class118] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([house_ProjectKB_Class119] of  String
-
-	(name "Country")
-	(string_value "name"))
-
 ([house_ProjectKB_Class12] of  Property_List
 )
-
-([house_ProjectKB_Class120] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([house_ProjectKB_Class121] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([house_ProjectKB_Class13] of  Widget
 
@@ -345,7 +327,7 @@
 
 ([house_ProjectKB_Class67] of  Widget
 
-	(is_hidden TRUE)
+	(is_hidden FALSE)
 	(property_list [house_ProjectKB_Class68])
 	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
 
@@ -375,6 +357,47 @@
 
 ([house_ProjectKB_Class72] of  Property_List
 )
+
+([house_ProjectKB_Class73] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([house_ProjectKB_Class74] of  String
+
+	(name "Country")
+	(string_value "name"))
+
+([house_ProjectKB_Class75] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([house_ProjectKB_Class76] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([house_ProjectKB_Class77] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([house_ProjectKB_Class78] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([house_ProjectKB_Class79] of  Map_Entry
+
+	(key "suppress_instance_counting")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
 ([house_ProjectKB_Class8] of  Property_List
 )
@@ -410,6 +433,7 @@
 
 ([INSTANCES_TAB] of  Widget
 
+	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
 ([KB_045904_Class0] of  String
@@ -418,7 +442,11 @@
 	(string_value "edu.stanford.smi.protege.storage.clips.ClipsKnowledgeBaseFactory"))
 
 ([KB_045904_Class1] of  Map
-)
+
+	(entries
+		[house_ProjectKB_Class77]
+		[house_ProjectKB_Class78]
+		[house_ProjectKB_Class79]))
 
 ([KB_045904_Class75] of  Property_List
 
@@ -512,7 +540,7 @@
 	(name "instances_file_name")
 	(string_value "house.pins"))
 
-([KB_069625_Class0] of  Map
+([KB_701375_Class0] of  Map
 )
 
 ([LAYOUT_PROPERTIES] of  Property_List
@@ -527,6 +555,7 @@
 	(display_hidden_classes TRUE)
 	(display_multi_parent_class_icon TRUE)
 	(is_readonly FALSE)
+	(tabbed_instance_form_layout FALSE)
 	(undo_enabled TRUE)
 	(update_modification_slots FALSE))
 
@@ -598,14 +627,15 @@
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[STANDARD_SLOT_FORM_WIDGET]
 		[STANDARD_FACET_FORM_WIDGET]
+		[STANDARD_SLOT_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
 	(default_slot_metaclass ":STANDARD-SLOT")
+	(journaling_enabled FALSE)
 	(next_frame_number 0)
 	(options [option_instance])
 	(property_map [KB_045904_Class1])
@@ -615,15 +645,53 @@
 		[SLOTS_TAB]
 		[FORMS_TAB]
 		[INSTANCES_TAB]
-		[QUERIES_TAB]))
+		[QUERIES_TAB]
+		[house_ProjectKB_Class39]
+		[house_ProjectKB_Class57]
+		[house_ProjectKB_Class25]
+		[house_ProjectKB_Class65]
+		[house_ProjectKB_Class9]
+		[house_ProjectKB_Class61]
+		[house_ProjectKB_Class17]
+		[house_ProjectKB_Class13]
+		[house_ProjectKB_Class1]
+		[house_ProjectKB_Class43]
+		[house_ProjectKB_Class63]
+		[house_ProjectKB_Class27]
+		[house_ProjectKB_Class67]
+		[house_ProjectKB_Class23]
+		[house_ProjectKB_Class53]
+		[house_ProjectKB_Class19]
+		[house_ProjectKB_Class71]
+		[house_ProjectKB_Class7]
+		[house_ProjectKB_Class55]
+		[house_ProjectKB_Class51]
+		[house_ProjectKB_Class37]
+		[house_ProjectKB_Class33]
+		[house_ProjectKB_Class45]
+		[house_ProjectKB_Class41]
+		[house_ProjectKB_Class69]
+		[house_ProjectKB_Class49]
+		[house_ProjectKB_Class11]
+		[house_ProjectKB_Class31]
+		[house_ProjectKB_Class35]
+		[house_ProjectKB_Class3]
+		[house_ProjectKB_Class5]
+		[house_ProjectKB_Class29]
+		[house_ProjectKB_Class47]
+		[house_ProjectKB_Class59]
+		[house_ProjectKB_Class15]
+		[house_ProjectKB_Class21]))
 
 ([QUERIES_TAB] of  Widget
 
+	(is_hidden FALSE)
 	(property_list [KB_045904_Class96])
 	(widget_class_name "edu.stanford.smi.protegex.queries_tab.QueriesTab"))
 
 ([SLOTS_TAB] of  Widget
 
+	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.SlotsTab"))
 
 ([SOURCES] of  Property_List

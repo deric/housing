@@ -1,4 +1,4 @@
-; Mon Nov 30 16:48:14 CET 2009
+; Mon Nov 30 23:35:34 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -94,15 +94,15 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot district
+		(type INSTANCE)
+;+		(allowed-classes District)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
 ;+		(allowed-classes Location)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot district
-		(type INSTANCE)
-;+		(allowed-classes District)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot name_
@@ -455,14 +455,14 @@
 (defclass Country
 	(is-a GeographicalPart)
 	(role concrete)
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
+		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot provinces
-		(type INSTANCE)
-;+		(allowed-classes Province)
 		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
