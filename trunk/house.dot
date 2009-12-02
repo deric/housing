@@ -1,45 +1,15 @@
 digraph house {
 	node [label="\N"];
-	graph [bb="0,0,843,872"];
-	Room [label="{Room|{rent|Float}|{space|Integer}|{windows_num|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="99,136", rects="22,160,176,184 22,136,95,160 95,136,176,160 22,112,95,136 95,112,176,136 22,88,120,112 120,88,176,112", width="2.14", height="1.33"];
-	PlaceToLive [label="{PlaceToLive|{location|Instance|{Location}}|{is_close_to|Instance*|{Services}}|{address|Instance|{Address}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="456,628", rects="351,652,562,676 351,628,419,652 419,628,489,652 489,628,562,652 351,604,430,628 430,604,499,628 499,604,562,628 351,580,418,604 \
-418,580,490,604 490,580,562,604", width="2.92", height="1.33"];
-	DoubleRoom [label=DoubleRoom, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="46,18", width="1.28", height="0.50"];
-	SingleRoom [label=SingleRoom, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="152,18", width="1.17", height="0.50"];
-	Services [label=Services, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="480,456", width="0.86", height="0.50"];
-	Attic [label=Attic, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="221,136", width="0.75", height="0.50"];
-	Flat [label="{Flat|{space|Integer}|{rooms|Instance*|{Room}}|{floor|String}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="221,284", rects="135,308,307,332 135,284,217,308 217,284,307,308 135,260,187,284 187,260,256,284 256,260,307,284 135,236,217,260 217,236,307,260", width="2.39", height="1.33"];
-	Terraced [label=Terraced, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="357,284", width="0.89", height="0.50"];
-	House [label="{House|{flats|Instance*|{Flat}}|{house_number|String}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="357,456", rects="283,468,431,492 283,444,323,468 323,444,392,468 392,444,431,468 283,420,381,444 381,420,431,444", width="2.06", height="1.00"];
-	Duplex [label="{Duplex|{floor|String}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="312,136", rects="266,136,359,160 266,112,309,136 309,112,359,136", width="1.28", height="0.67"];
-	Ground [label=Ground, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="405,136", width="0.81", height="0.50"];
-	Detached [label=Detached, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="442,284", width="0.97", height="0.50"];
-	BlocksOfFlats [label=BlocksOfFlats, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="543,284", width="1.33", height="0.50"];
-	SemiDetached [label=SemiDetached, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="657,284", width="1.33", height="0.50"];
-	Location [label="{Location|{longitude|Float}|{latitude|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="586,456", rects="529,468,643,492 529,444,597,468 597,444,643,468 529,420,592,444 592,420,643,444", width="1.58", height="1.00"];
-	Address [label="{Address|{postal_code|String}|{district|Instance|{District}}|{street|String}|{country|Instance|{Country}}|{city|Instance|{City}}\
-}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="752,456", rects="661,504,844,528 661,480,769,504 769,480,844,504 661,456,718,480 718,456,783,480 783,456,844,480 661,432,751,456 751,432,844,456 \
-661,408,719,432 719,408,782,432 782,408,844,432 661,384,712,408 712,384,789,408 789,384,844,408", width="2.53", height="2.00"];
-	Offer [label="{Offer|{rent|Float}|{location|Instance|{Location}}|{available_from|Instance|{Date}}|{realty|Instance|{PlaceToLive}}|{name|String\
-}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="559,800", rects="456,848,662,872 456,824,555,848 555,824,662,848 456,800,522,824 522,800,590,824 590,800,662,824 456,776,555,800 555,776,618,800 \
-618,776,662,800 456,752,507,776 507,752,572,776 572,752,662,776 456,728,557,752 557,728,662,752", width="2.86", height="2.00"];
-	PlaceToLive -> Room [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,351,606 341,603 296,589 247,564 213,528 124,429 104,265 100,184", lp="140,358"];
-	Room -> DoubleRoom [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,77,88 73,79 66,63 59,48 54,36", lp="78,62"];
-	Room -> SingleRoom [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,121,88 125,79 132,63 139,48 144,36", lp="144,62"];
-	Flat -> Attic [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,221,236 221,226 221,200 221,172 221,154", lp="229,210"];
-	House -> Terraced [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,357,420 357,410 357,375 357,327 357,302", lp="365,358"];
-	Flat -> Duplex [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,251,236 256,227 270,204 286,179 297,160", lp="278,210"];
-	Flat -> Ground [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,300,236 308,230 329,217 349,201 367,184 377,175 386,164 392,154", lp="355,210"];
-	House -> Detached [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,375,420 380,411 397,375 420,328 433,302", lp="416,358"];
-	PlaceToLive -> House [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,428,580 423,571 408,545 391,515 378,492", lp="427,554"];
-	House -> Flat [label="flats*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,259,332 328,420 310,397 286,366 265,340", lp="302,358"];
-	House -> BlocksOfFlats [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,396,420 404,413 442,377 496,328 524,302", lp="475,358"];
-	House -> SemiDetached [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,392,420 399,413 412,403 426,392 440,384 472,365 567,350 600,332 614,324 628,312 638,302", lp="549,358"];
-	PlaceToLive -> Location [label=location, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,569,492 511,580 517,574 522,568 527,562 542,543 554,521 564,501", lp="558,554"];
-	PlaceToLive -> Services [label="is_close_to*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,474,474 455,580 455,569 456,557 457,546 460,525 466,501 471,484", lp="492,554"];
-	PlaceToLive -> Address [label=address, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,661,522 556,580 587,564 622,546 652,528 652,528 652,528 653,528", lp="635,554"];
-	Offer -> Location [label=location, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,586,492 568,728 574,681 581,618 585,562 586,543 586,521 586,502", lp="604,628"];
-	Offer -> PlaceToLive [label=realty, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,485,676 516,728 507,714 498,699 490,685", lp="519,702"];
-	PlaceToLive -> Flat [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,351,596 342,592 310,577 279,556 258,528 217,470 213,385 216,332", lp="269,456"];
-	Flat -> Room [label="rooms*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,139,184 181,236 170,222 157,207 145,192", lp="189,210"];
+	graph [bb="0,0,391,452"];
+	Date [label="{Date|{day|Integer}|{month|Integer}|{year|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="52,187", rects="-0.5,213,104.5,239 -0.5,187,42.5,213 42.5,187,104.5,213 -0.5,161,50.5,187 50.5,161,104.5,187 -0.5,135,44.5,161 44.5,135,104.5,161", width="1.4444", height="1.4583"];
+	PlaceToLive [label="{PlaceToLive|{is_close_to|Instance*|{Services}}|{address|Instance|{Address}}|{location|Instance|{Location}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="225,187", rects="121.5,213,328.5,239 121.5,187,198.5,213 198.5,187,266.5,213 266.5,187,328.5,213 121.5,161,187.5,187 187.5,161,258.5,187 258.5,161\
+,327.5,187 121.5,135,188.5,161 188.5,135,256.5,161 256.5,135,327.5,161", width="2.8611", height="1.4583"];
+	Location [label="{Location|{latitude|Float}|{longitude|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="314,40", rects="258.5,53,369.5,79 258.5,27,320.5,53 320.5,27,369.5,53 258.5,1,325.5,27 325.5,1,369.5,27", width="1.5278", height="1.0972"];
+	Offer [label="{Offer|{realty|Instance|{PlaceToLive}}|{rent|Float}|{available_from|Instance|{Date}}|{location|Instance|{Location}}|{name|String\
+}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="225,373", rects="124,425,326,451 124,399,174,425 174,399,238,425 238,399,326,425 124,373,221,399 221,373,326,399 124,347,223,373 223,347,284,373 \
+284,347,326,373 124,321,189,347 189,321,256,347 256,321,326,347 124,295,223,321 223,295,326,321", width="2.8056", height="2.1806"];
+	PlaceToLive -> Location [style=filled, label=location, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,290.31,79.131 256.63,134.76 265.9,119.44 275.99,102.78 285.08,87.762", lp="300,107"];
+	Offer -> PlaceToLive [style=filled, label=realty, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,225,239.23 225,294.93 225,279.81 225,264.15 225,249.6", lp="240.5,267"];
+	Offer -> Date [style=filled, label=available_from, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,100.58,239.23 152.38,294.93 137.37,278.78 121.77,262.02 107.48,246.65", lp="175.5,267"];
+	Offer -> Location [style=filled, label=location, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,328.76,79.198 305.83,294.73 318.6,277.98 329.91,259.42 337,240 355.03,190.61 343.92,130.2 331.7,88.778", lp="369,187"];
 }
