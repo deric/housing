@@ -1,36 +1,72 @@
-; Mon Nov 30 23:35:34 CET 2009
+; Tue Dec 01 17:03:45 CET 2009
 ; 
-;+ (version "3.4.1")
-;+ (build "Build 537")
+;+ (version "3.3.1")
+;+ (build "Build 430")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(multislot provinces
+	(single-slot noisy
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot is_close_to
 		(type INSTANCE)
-;+		(allowed-classes Province)
+;+		(allowed-classes Services)
 		(create-accessor read-write))
-	(multislot title
-;+		(comment "title gained from university")
-		(type STRING)
+	(single-slot day
+;+		(comment "day number in month")
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot rent
-;+		(comment "in € per month")
+	(multislot rooms
+		(type INSTANCE)
+;+		(allowed-classes Room)
+		(create-accessor read-write))
+	(single-slot latitude
+;+		(comment "GPS coordinate")
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot house_number
+	(single-slot windows_num
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot surname
 		(type STRING)
+		(cardinality 1 2)
+		(create-accessor read-write))
+	(single-slot year
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot cities
+	(single-slot postal_code
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot inhabitants
+;+		(comment "number of inhabitants living in this area")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot firstname
+		(type STRING)
+		(cardinality 1 2)
+		(create-accessor read-write))
+	(single-slot available_from
 		(type INSTANCE)
-;+		(allowed-classes City)
+;+		(allowed-classes Date)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot floor
+	(single-slot street
 		(type STRING)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot transport
+		(type INSTANCE)
+;+		(allowed-classes Transport)
 		(create-accessor read-write))
 	(single-slot month
 ;+		(comment "number of month in year")
@@ -42,71 +78,50 @@
 		(type INSTANCE)
 ;+		(allowed-classes District)
 		(create-accessor read-write))
-	(multislot transport
-		(type INSTANCE)
-;+		(allowed-classes Transport)
-		(create-accessor read-write))
-	(single-slot street
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot available_from
-		(type INSTANCE)
-;+		(allowed-classes Date)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot firstname
-		(type STRING)
-		(cardinality 1 2)
-		(create-accessor read-write))
-	(single-slot inhabitants
-;+		(comment "number of inhabitants living in this area")
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot postal_code
+	(single-slot floor
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot year
-		(type INTEGER)
+	(single-slot house_number
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot surname
+	(multislot cities
+		(type INSTANCE)
+;+		(allowed-classes City)
+		(create-accessor read-write))
+	(multislot title
+;+		(comment "title gained from university")
 		(type STRING)
-		(cardinality 1 2)
 		(create-accessor read-write))
-	(single-slot windows_num
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot latitude
-;+		(comment "GPS coordinate")
+	(single-slot rent
+;+		(comment "in € per month")
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot rooms
+	(multislot provinces
 		(type INSTANCE)
-;+		(allowed-classes Room)
+;+		(allowed-classes Province)
 		(create-accessor read-write))
-	(single-slot day
-;+		(comment "day number in month")
+	(single-slot realty
+;+		(comment "piece of immovable realty estate")
+		(type INSTANCE)
+;+		(allowed-classes PlaceToLive)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot space
+;+		(comment "in square m  of house")
 		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot country
+		(type INSTANCE)
+;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot district
+	(single-slot city
 		(type INSTANCE)
-;+		(allowed-classes District)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot location
-;+		(comment "GPS coordinates for displaying on a map")
-		(type INSTANCE)
-;+		(allowed-classes Location)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot name_
-		(type STRING)
+;+		(allowed-classes City)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot longitude
@@ -123,34 +138,10 @@
 		(type INSTANCE)
 ;+		(allowed-classes Flat)
 		(create-accessor read-write))
-	(single-slot space
-;+		(comment "in square m  of house")
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot country
+	(single-slot district
 		(type INSTANCE)
-;+		(allowed-classes Country)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot realty
-;+		(comment "piece of immovable realty estate")
-		(type INSTANCE)
-;+		(allowed-classes PlaceToLive)
+;+		(allowed-classes District)
 ;+		(cardinality 0 1)
-		(create-accessor read-write)))
-
-(defclass Offer
-	(is-a USER)
-	(role concrete)
-	(single-slot rent
-;+		(comment "in € per month")
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot transport
-		(type INSTANCE)
-;+		(allowed-classes Transport)
 		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
@@ -158,43 +149,66 @@
 ;+		(allowed-classes Location)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot available_from
-		(type INSTANCE)
-;+		(allowed-classes Date)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot address
-		(type INSTANCE)
-;+		(allowed-classes Address)
+	(single-slot name_
+		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
+		(create-accessor read-write)))
+
+(defclass Offer
+	(is-a USER)
+	(role concrete)
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot rent
+;+		(comment "in € per month")
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot available_from
+		(type INSTANCE)
+;+		(allowed-classes Date)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot location
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Location)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Address
 	(is-a USER)
 	(role concrete)
-	(single-slot postal_code
-		(type STRING)
+	(single-slot country
+		(type INSTANCE)
+;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot district
+	(single-slot city
 		(type INSTANCE)
-;+		(allowed-classes District)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot postal_code
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot country
+	(single-slot district
 		(type INSTANCE)
-;+		(allowed-classes Country)
-;+		(cardinality 1 1)
+;+		(allowed-classes District)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Equipment
@@ -208,13 +222,13 @@
 (defclass Location "GPS coordinates of an object"
 	(is-a USER)
 	(role concrete)
-	(single-slot longitude
-;+		(comment "GPS coordinate in degrees")
+	(single-slot latitude
+;+		(comment "GPS coordinate")
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot latitude
-;+		(comment "GPS coordinate")
+	(single-slot longitude
+;+		(comment "GPS coordinate in degrees")
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
@@ -222,15 +236,15 @@
 (defclass Date
 	(is-a USER)
 	(role concrete)
+	(single-slot day
+;+		(comment "day number in month")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot month
 ;+		(comment "number of month in year")
 		(type INTEGER)
 		(range 1 12)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot day
-;+		(comment "day number in month")
-		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot year
@@ -240,23 +254,33 @@
 
 (defclass PlaceToLive
 	(is-a USER)
-	(role concrete))
-
-(defclass House
-	(is-a PlaceToLive)
-	(role abstract)
-	(multislot flats
+	(role concrete)
+	(multislot is_close_to
 		(type INSTANCE)
-;+		(allowed-classes Flat)
-		(create-accessor read-write))
-	(single-slot house_number
-		(type STRING)
-;+		(cardinality 1 1)
+;+		(allowed-classes Services)
 		(create-accessor read-write))
 	(single-slot address
 		(type INSTANCE)
 ;+		(allowed-classes Address)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot location
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Location)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass House
+	(is-a PlaceToLive)
+	(role abstract)
+	(single-slot house_number
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
 		(create-accessor read-write)))
 
 (defclass Detached
@@ -278,11 +302,6 @@
 (defclass Flat
 	(is-a PlaceToLive)
 	(role abstract)
-	(single-slot space
-;+		(comment "in square m  of house")
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(multislot rooms
 		(type INSTANCE)
 ;+		(allowed-classes Room)
@@ -290,6 +309,11 @@
 	(single-slot floor
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot space
+;+		(comment "in square m  of house")
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Attic
@@ -312,9 +336,8 @@
 (defclass Room
 	(is-a PlaceToLive)
 	(role concrete)
-	(single-slot rent
-;+		(comment "in € per month")
-		(type FLOAT)
+	(single-slot windows_num
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot space
@@ -322,8 +345,9 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot windows_num
-		(type INTEGER)
+	(single-slot rent
+;+		(comment "in € per month")
+		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -337,7 +361,12 @@
 
 (defclass Services
 	(is-a USER)
-	(role abstract))
+	(role abstract)
+	(single-slot noisy
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Transport
 	(is-a Services)
@@ -384,6 +413,11 @@
 (defclass Restarurant
 	(is-a FoodBeverage)
 	(role concrete)
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
@@ -392,11 +426,6 @@
 		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot address
-		(type INSTANCE)
-;+		(allowed-classes Address)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -413,6 +442,10 @@
 	(role concrete))
 
 (defclass Theatre
+	(is-a Entertaitment)
+	(role concrete))
+
+(defclass Club
 	(is-a Entertaitment)
 	(role concrete))
 
@@ -455,14 +488,14 @@
 (defclass Country
 	(is-a GeographicalPart)
 	(role concrete)
-	(multislot provinces
-		(type INSTANCE)
-;+		(allowed-classes Province)
-		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
 		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
@@ -472,26 +505,26 @@
 (defclass City
 	(is-a GeographicalPart)
 	(role concrete)
+	(multislot districts
+		(type INSTANCE)
+;+		(allowed-classes District)
+		(create-accessor read-write))
+	(single-slot country
+		(type INSTANCE)
+;+		(allowed-classes Country)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot postal_code
 		(type STRING)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot districts
-		(type INSTANCE)
-;+		(allowed-classes District)
-		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot country
-		(type INSTANCE)
-;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -500,7 +533,7 @@
 	(role concrete)
 	(single-slot postal_code
 		(type STRING)
-;+		(cardinality 1 1)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
@@ -510,6 +543,10 @@
 (defclass Province
 	(is-a GeographicalPart)
 	(role concrete)
+	(multislot cities
+		(type INSTANCE)
+;+		(allowed-classes City)
+		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
@@ -518,16 +555,12 @@
 	(single-slot name_
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot cities
-		(type INSTANCE)
-;+		(allowed-classes City)
 		(create-accessor read-write)))
 
 (defclass Person
 	(is-a USER)
 	(role concrete)
-	(multislot firstname
+	(multislot surname
 		(type STRING)
 		(cardinality 1 2)
 		(create-accessor read-write))
@@ -535,7 +568,7 @@
 ;+		(comment "title gained from university")
 		(type STRING)
 		(create-accessor read-write))
-	(multislot surname
+	(multislot firstname
 		(type STRING)
 		(cardinality 1 2)
 		(create-accessor read-write)))

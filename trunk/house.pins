@@ -1,4 +1,35 @@
-; Mon Nov 30 23:35:34 CET 2009
+; Tue Dec 01 17:03:45 CET 2009
 ; 
-;+ (version "3.4.1")
-;+ (build "Build 537")
+;+ (version "3.3.1")
+;+ (build "Build 430")
+
+([house_Instance_1] of  Offer
+
+	(name "nice house")
+	(realty [house_Instance_7]))
+
+([house_Instance_2] of  Address
+
+	(city [house_Instance_5])
+	(country [house_Instance_3])
+	(district [house_Instance_6])
+	(postal_code "80001")
+	(street "pl. cataluna"))
+
+([house_Instance_3] of  Country
+
+	(name "Spain"))
+
+([house_Instance_5] of  City
+
+	(country [house_Instance_3])
+	(districts [house_Instance_6])
+	(name "Barcelona"))
+
+([house_Instance_6] of  District
+
+	(name "Gracia")
+	(postal_code "80041"))
+
+([house_Instance_7] of  SemiDetached
+)
