@@ -1,0 +1,109 @@
+%%
+% HISTORY:
+%
+% Daniel Sykora (26.12.2004)
+%
+% Pavel Tvrdik  (17.12.2004)
+%
+% Michal Valenta (3.8. 2005)
+% upraveno pro formatovani diplomovych praci
+
+%preamble declarations
+\tolerance=500
+%\raggedbottom
+\textwidth=158.4mm
+\textheight=241.3mm
+\oddsidemargin=5mm
+\evensidemargin=-5mm
+\topmargin=-0.3in
+\parskip=0pt
+\parindent=0.5em
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+
+\def\ifndef#1{\expandafter\ifx\csname#1\endcsname\relax} % check whether macro is defined
+
+\newcommand\coverpagestarts
+{\pagenumbering{roman}\thispagestyle{empty}\setcounter{page}{3}
+\begin{center}
+%\large\sffamily
+\large\rmfamily
+\University\\
+\Faculty\\
+\vglue 10mm
+\includegraphics[width=50mm]{LogoCVUT}
+\vglue 30mm
+{\large \TypeOfWork}\\
+\bigskip
+{\Large\bf \WorkTitle}\\
+\bigskip
+\bigskip
+{\Large\it \FirstandFamilyName}\\
+\vfill
+ \item[Vedoucí práce:]\ \Supervisor\\
+\vglue 15mm
+{Studijní program: \StudProgram}\\
+\bigskip
+{Obor: \StudBranch}\\
+\bigskip
+\Month\ \Year
+\end{center}
+\newpage
+}
+
+\newcommand\mainbodystarts{
+\pagestyle{headings}\pagenumbering{arabic}\setcounter{page}{1}
+}
+
+%include any longer words that by default hyphenate improperly
+% \hyphenation{di-men-sion-al ma-te-ma-ti-ky hard-ware trans-fer-able}
+%\hyphenation{po-po-ka-te-pe-tl nej-dů-le-ži-těj-ší}
+%\hyphenation{nej-ne-ob-hos-po-da-řo-vá-va-tel-něj-ší-mi}
+%\hyphenation{ma-te-ri-ál}
+%Chapters start at odd pages if you include:
+%\newcommand\chapter{\if@openright\cleardoublepage\else\clearpage\fi
+% into /usr/lib/texmf/tex/latex/latex/book.cls
+
+%your specific macros
+
+%structuring of mathematical texts
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{note}{Note}[section]
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}{Proposition}[section]
+%
+\newcommand{\bcen}{\begin{center}}
+\newcommand{\ecen}{\end{center}}
+\newcommand{\blem}{\begin{lemma}\sl}
+\newcommand{\elem}{\end{lemma}\rm}
+\newcommand{\bnote}{\begin{note}\rm}
+\newcommand{\enote}{\end{note}}
+\newcommand{\bcor}{\begin{corollary}\sl}
+\newcommand{\ecor}{\end{corollary}\rm}
+\newcommand{\bdefi}{\begin{definition}\rm}
+\newcommand{\edefi}{\end{definition}}
+\newcommand{\btheo}{\begin{theorem}\sl}
+\newcommand{\etheo}{\end{theorem}\rm}
+\newcommand{\bprop}{\begin{proposition}\sl}
+\newcommand{\eprop}{\end{proposition}\rm}
+\newcommand{\bexam}{\begin{example}\rm}
+\newcommand{\eexam}{\end{example}}
+%
+\newcommand{\bfig}{\begin{figure}\begin{center}}
+\newcommand{\efig}{\end{center}\end{figure}}
+\newcommand{\btab}{\begin{table}\begin{center}}
+\newcommand{\etab}{\end{center}\end{table}}
+\newcommand{\benum}{\begin{enumerate}}
+\newcommand{\eenum}{\end{enumerate}}
+\newcommand{\bitem}{\begin{itemize}}
+\newcommand{\eitem}{\end{itemize}}
+\newcommand{\bflushr}{\begin{flushright}}
+\newcommand{\eflushr}{\end{flushright}}
+%
+\newcommand{\esceario}{\end{xtabular}\end{center}}
+
+

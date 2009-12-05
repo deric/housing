@@ -1,0 +1,95 @@
+digraph house {
+	node [label="\N"];
+	graph [bb="0,0,1607.4,1118"];
+	PlaceToLive [label="{PlaceToLive|{location|Instance|{Location}}|{address|Instance|{Address}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="345.38,745", rects="252.88,758,437.88,784 252.88,732,312.88,758 312.88,732,373.88,758 373.88,732,437.88,758 252.88,706,311.88,732 311.88,706,374.88,\
+732 374.88,706,437.88,732", width="2.5556", height="1.0972"];
+	Location [label="{Location|{longitude|Float}|{latitude|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="191.38,559", rects="135.88,572,246.88,598 135.88,546,202.88,572 202.88,546,246.88,572 135.88,520,197.88,546 197.88,520,246.88,546", width="1.5278", height="1.0972"];
+	Address [label="{Address|{postal_code|String}|{district|Instance|{District}}|{street|String}|{country|Instance|{Country}}|{city|Instance|{City}}\
+}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="448.38,559", rects="359.38,611,537.38,637 359.38,585,464.38,611 464.38,585,537.38,611 359.38,559,415.38,585 415.38,559,478.38,585 478.38,559,537.38,\
+585 359.38,533,446.38,559 446.38,533,537.38,559 359.38,507,416.38,533 416.38,507,477.38,533 477.38,507,537.38,533 359.38,481,409.38\
+,507 409.38,481,484.38,507 484.38,481,537.38,507", width="2.4722", height="2.1806"];
+	Province [label="{Province|{postal_code|String}|{inhabitants|Integer}|{cities|Instance*|{City}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="576.38,53", rects="500.38,79,652.38,105 500.38,53,592.38,79 592.38,53,652.38,79 500.38,27,586.38,53 586.38,27,652.38,53 500.38,1,545.38,27 545.38,1\
+,613.38,27 613.38,1,652.38,27", width="2.1111", height="1.4583"];
+	GeographicalPart [label=GeographicalPart, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="632.38,559", width="1.5278", height="0.5"];
+	City [label="{City|{postal_code|String}|{inhabitants|Integer}|{districts|Instance*|{District}}|{country|Instance|{Country}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="448.38,360", rects="356.38,399,540.38,425 356.38,373,464.38,399 464.38,373,540.38,399 356.38,347,458.38,373 458.38,347,540.38,373 356.38,321,415.38,\
+347 415.38,321,483.38,347 483.38,321,540.38,347 356.38,295,415.38,321 415.38,295,478.38,321 478.38,295,540.38,321", width="2.5556", height="1.8194"];
+	District [label="{District|{postal_code|String}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="322.38,200", rects="257.38,200,387.38,226 257.38,174,338.38,200 338.38,174,387.38,200", width="1.8056", height="0.73611"];
+	Bar [label=Bar, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="482.38,745", width="0.75", height="0.5"];
+	FoodBeverage [label=FoodBeverage, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="616.38,918", width="1.3056", height="0.5"];
+	Club [label=Club, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="750.38,745", width="0.75", height="0.5"];
+	Entertaitment [label=Entertaitment, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="861.38,918", width="1.25", height="0.5"];
+	TramStop [label=TramStop, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1160.4,559", width="0.97222", height="0.5"];
+	Station [label=Station, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1208.4,745", width="0.75", height="0.5"];
+	Restarurant [label="{Restarurant|{address|Instance|{Address}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="616.38,745", rects="527.38,745,705.38,771 527.38,719,584.38,745 584.38,719,645.38,745 645.38,719,705.38,745", width="2.4722", height="0.73611"];
+	TrainStation [label=TrainStation, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1255.4,559", width="1.1667", height="0.5"];
+	Education [label=Education, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1046.4,918", width="0.97222", height="0.5"];
+	Services [label="{Services|{noisy|Boolean}|{location|Instance|{Location}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1046.4,1078", rects="953.88,1091,1138.9,1117 953.88,1065,1037.9,1091 1037.9,1065,1138.9,1091 953.88,1039,1013.9,1065 1013.9,1039,1074.9,1065 1074.9,1039\
+,1138.9,1065", width="2.5556", height="1.0972"];
+	Library [label=Library, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="973.38,745", width="0.77778", height="0.5"];
+	Transport [label=Transport, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1164.4,918", width="0.94444", height="0.5"];
+	Offer [label="{Offer|{rent|Float}|{location|Instance|{Location}}|{available_from|Instance|{Date}}|{realty|Instance|{PlaceToLive}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="191.38,918", rects="90.378,957,292.38,983 90.378,931,187.38,957 187.38,931,292.38,957 90.378,905,155.38,931 155.38,905,222.38,931 222.38,905,292.38,\
+931 90.378,879,189.38,905 189.38,879,250.38,905 250.38,879,292.38,905 90.378,853,140.38,879 140.38,853,204.38,879 204.38,853,292.38\
+,879", width="2.8056", height="1.8194"];
+	Date [label="{Date|{month|Integer}|{day|Integer}|{year|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="98.378,745", rects="45.878,771,150.88,797 45.878,745,96.878,771 96.878,745,150.88,771 45.878,719,88.878,745 88.878,719,150.88,745 45.878,693,90.878,\
+719 90.878,693,150.88,719", width="1.4444", height="1.4583"];
+	Country [label="{Country|{inhabitants|Integer}|{provinces|Instance*|{Province}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="576.38,200", rects="475.88,213,676.88,239 475.88,187,586.88,213 586.88,187,676.88,213 475.88,161,544.88,187 544.88,161,612.88,187 612.88,161,676.88,\
+187", width="2.7778", height="1.0972"];
+	Shopping [label=Shopping, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1281.4,918", width="0.94444", height="0.5"];
+	MetroStation [label=MetroStation, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1359.4,559", width="1.2222", height="0.5"];
+	Market [label=Market, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1281.4,745", width="0.77778", height="0.5"];
+	School [label=School, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1046.4,745", width="0.75", height="0.5"];
+	Theatre [label=Theatre, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="823.38,745", width="0.77778", height="0.5"];
+	Hospital [label=Hospital, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1576.4,745", width="0.86111", height="0.5"];
+	HealthCare [label=HealthCare, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1474.4,918", width="1.0833", height="0.5"];
+	TransferStation [label=TransferStation, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1359.4,360", width="1.3889", height="0.5"];
+	University [label=University, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1127.4,745", width=1, height="0.5"];
+	Cinema [label=Cinema, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="898.38,745", width="0.80556", height="0.5"];
+	BusStop [label=BusStop, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1076.4,559", width="0.86111", height="0.5"];
+	Shop [label="{Shop|{shop_type|Symbol|{Grocery|Drugstore}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1427.4,745", rects="1326.9,758,1527.9,784 1326.9,706,1398.9,758 1398.9,706,1457.9,758 1457.9,732,1527.9,758 1457.9,706,1527.9,732", width="2.7778", height="1.0972"];
+	PlaceToLive -> Location [style=filled, label=location, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,223.73,598.07 312.72,705.55 288.65,676.48 255.81,636.81 230.36,606.08", lp="303.38,665"];
+	PlaceToLive -> Address [style=filled, label=address, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,405.14,637.08 367.22,705.55 376.88,688.11 388.66,666.84 400.21,645.98", lp="413.88,665"];
+	GeographicalPart -> Province [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,641.24,540.63 645.49,531.2 675.04,464.36 740.16,290.55 685.38,160 676.76,139.46 662.06,120.88 646.2,105.18", lp="713.88,267"];
+	Province -> City [style=filled, label="cities*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,426.54,294.98 500.13,90.515 473.68,107.75 447,130.92 432.38,160 413.12,198.3 416.08,246 424.34,285.21", lp="449.88,200"];
+	GeographicalPart -> District [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,618.02,540.75 611.25,532.97 595.32,515.17 571.91,492.61 546.38,480 458.43,436.55 391.9,503.97 332.38,426 287.34,367 303.35,271.93\
+ 314.82,226.21", lp="339.88,360"];
+	FoodBeverage -> Bar [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,600.58,899.7 593.84,891.78 573.52,867.82 543.12,831.18 518.38,798 510,786.76 501.15,773.75 494.32,763.43", lp="550.88,825"];
+	Entertaitment -> Club [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,849.71,899.81 844.3,891.38 821.5,855.85 781.72,793.84 762.06,763.2", lp="812.88,825"];
+	Station -> TramStop [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1203.7,726.83 1201.1,716.76 1191.1,678.11 1173.5,609.8 1165.1,577.25", lp="1195.9,665"];
+	FoodBeverage -> Restarurant [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,616.38,899.81 616.38,889.51 616.38,856.6 616.38,802.9 616.38,771.06", lp="623.88,825"];
+	Restarurant -> Address [style=filled, label=address, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,519.19,637.4 592.66,718.75 575.14,699.34 550.21,671.74 525.99,644.93", lp="567.88,665"];
+	Station -> TrainStation [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1213,726.83 1215.5,716.76 1225.3,678.11 1242.5,609.8 1250.8,577.25", lp="1237.9,665"];
+	Services -> Education [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1046.4,1038.9 1046.4,1028.5 1046.4,997.13 1046.4,958.35 1046.4,936.07", lp="1053.9,1011"];
+	Education -> Library [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1038.7,899.81 1034.8,890.48 1019.7,854.8 993.88,793.58 981.06,763.2", lp="1016.9,825"];
+	Services -> Location [style=filled, label=location, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,135.54,589.97 953.72,1074.9 724.91,1066.5 146.9,1040 81.378,984 -18.427,898.77 -17.24,811.34 37.378,692 55.946,651.43 93.675,618.52\
+ 127.14,595.58", lp="23.378,825"];
+	Services -> Transport [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1075.2,1038.9 1081.4,1030.6 1104.8,998.82 1134.3,958.84 1151.1,936.07", lp="1108.9,1011"];
+	Offer -> Location [style=filled, label=location, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,191.38,598.04 191.38,852.99 191.38,782.55 191.38,671.75 191.38,608.2", lp="213.38,745"];
+	Offer -> Date [style=filled, label=available_from, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,88.015,797.4 105.55,852.78 101.2,846.85 97.387,840.59 94.378,834 90.642,825.82 88.809,816.77 88.207,807.66", lp="135.88,825"];
+	Offer -> PlaceToLive [style=filled, label=realty, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,310.54,784.14 249.6,852.6 267.56,832.42 286.97,810.61 303.6,791.94", lp="296.88,825"];
+	GeographicalPart -> City [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,615.73,540.99 608.76,533.46 583.64,506.29 542.9,462.23 508.77,425.32", lp="547.88,453"];
+	City -> District [style=filled, label="districts*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,332.39,226.29 374.64,294.67 369.2,288.59 364.03,282.34 359.38,276 350.36,263.72 342.57,248.91 336.5,235.63", lp="384.38,267"];
+	City -> Country [style=filled, label=country, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,537.76,239.28 493.02,294.79 502.1,282.34 511.81,269.59 521.38,258 524.42,254.31 527.64,250.57 530.93,246.85", lp="541.88,267"];
+	Services -> Shopping [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1120.5,1038.9 1129.4,1033.7 1155.1,1019 1183,1001.7 1207.4,984 1227.6,969.33 1248.6,950.1 1263.1,936.19", lp="1184.9,1011"];
+	Services -> Entertaitment [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1001.1,1038.9 993.4,1032.2 956.41,1000.2 909.04,959.22 882.27,936.07", lp="982.88,1011"];
+	Address -> District [style=filled, label=district, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,300.42,226 358.99,519.05 321.98,497.35 283.13,466.54 263.38,426 237.68,373.26 247.15,350.38 263.38,294 269.55,272.56 282.21,251.28\
+ 294.23,234.4", lp="282.38,360"];
+	Address -> Country [style=filled, label=country, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,575.49,239.12 537.58,493.65 546.18,483.95 553.77,473.36 559.38,462 568.53,443.47 573.24,319.74 575.22,249.14", lp="593.88,360"];
+	Address -> City [style=filled, label=city, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,448.38,425 448.38,480.92 448.38,465.88 448.38,450.16 448.38,435.21", lp="458.38,453"];
+	Station -> MetroStation [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1219,726.98 1224.4,718.54 1230.2,709.74 1237.2,700.11 1244.4,692 1268.6,664.66 1282.2,665.41 1306.4,638 1323.3,618.8 1339.2,593.89\
+ 1349,577.22", lp="1293.9,665"];
+	Services -> FoodBeverage [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,953.87,1043.6 944.31,1040 855.47,1007 730.72,960.55 663.59,935.57", lp="889.88,1011"];
+	Shopping -> Market [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1281.4,899.81 1281.4,889.56 1281.4,853.76 1281.4,793.32 1281.4,763.2", lp="1288.9,825"];
+	Education -> School [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1046.4,899.81 1046.4,889.56 1046.4,853.76 1046.4,793.32 1046.4,763.2", lp="1053.9,825"];
+	Entertaitment -> Theatre [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,857.38,899.81 855.23,890.02 847.38,854.28 834.02,793.45 827.38,763.2", lp="849.88,825"];
+	HealthCare -> Hospital [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1485.1,899.81 1490.3,890.93 1511.3,855.33 1547.7,793.71 1565.6,763.2", lp="1541.9,825"];
+	GeographicalPart -> Country [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,634.09,540.97 634.87,530.83 638.41,481.83 642.32,378.12 621.38,294 616.7,275.21 608.07,255.71 599.61,239.37", lp="643.88,360"];
+	Country -> Province [style=filled, label="provinces*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,576.38,105.21 576.38,160.99 576.38,146.97 576.38,130.78 576.38,115.27", lp="605.88,133"];
+	Transport -> Station [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1169,899.81 1171.5,890.02 1180.6,854.28 1196.1,793.45 1203.7,763.2", lp="1196.9,825"];
+	MetroStation -> TransferStation [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1359.4,540.99 1359.4,530.75 1359.4,489.22 1359.4,412.89 1359.4,378.11", lp="1366.9,453"];
+	Services -> HealthCare [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1139.1,1048.9 1148.9,1045.7 1201.7,1028.5 1266.9,1006.3 1324.4,984 1362.8,969.07 1405.9,949.88 1435.9,936.04", lp="1278.9,1011"];
+	Education -> University [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1054.9,899.81 1059.3,890.48 1076,854.8 1104.6,793.58 1118.9,763.2", lp="1100.9,825"];
+	Entertaitment -> Cinema [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,865.27,899.81 867.36,890.02 875.01,854.28 888.02,793.45 894.49,763.2", lp="889.88,825"];
+	Station -> BusStop [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1197.3,726.67 1191.7,718.07 1185.9,709.46 1179.2,700.08 1172.4,692 1150.1,665.56 1136.9,665.81 1116.4,638 1102.2,618.83 1090.5\
+,593.91 1083.5,577.24", lp="1160.9,665"];
+	Shopping -> Shop [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,1296.7,899.81 1303.4,891.9 1327.5,863.35 1366.4,817.27 1394.2,784.33", lp="1374.9,825"];
+}

@@ -1,14 +1,18 @@
 #!/usr/bin/perl
 #
 # script for building CLIPS program from Protoge export
+# saves output to "$OUT_FILE"
 # @author deric 
+$CLIPS_FILE="clips.clp";
+$OUT_FILE="h";
 
-open OUT, ">h" or die $!;
+open OUT, ">$OUT_FILE" or die $!;
+ my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime time;
+ $year=$year+1900;
+print OUT ";; Builded on  $year-$mon-$mday $hour:$min:$sec \n";
+print OUT ";;############### program ##################\n";
 
-print OUT ";############### program ##################\n";
-
-$data_file="clips";
-open(FILE, $data_file) || die("Could not open file $data_file!");
+open(FILE, $CLIPS_FILE) || die("Could not open file $CLIPS_FILE!");
 @i=0;
 while (<FILE>) {
   print OUT $_;
@@ -17,7 +21,6 @@ while (<FILE>) {
 close FILE;
 
 print OUT "\n;############### ontology ##################\n";
-
 $pont="export/housing.pont";
 open(FILE, $pont) || die("Could not open file $pont!");
 while (<FILE>) {
