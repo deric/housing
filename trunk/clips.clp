@@ -39,7 +39,7 @@
 	(slot occupation)
 )
 
-(defmessage-handler Offer tostring ()
+(defmessage-handler Offer print()
 	(printout t "----------------------------------" crlf)
 	(format t "Offer: %s%n" ?self:title)
 	(printout t "----------------------------------" crlf crlf)
@@ -61,13 +61,13 @@
    (switch ?answer
       (case alone
 	  then
-	  (printout t " allooone" crlf)
 	  	(bind ?i 1)
-		(bind ?inst (find-all-instances (?it Offer)))
+		(bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
 	  	(while (<= ?i (length$ ?inst))
 		do
-			(printout t (send ?inst tostring))
-			(bind ?i (+ ?i 1))
+			(bind ?curr (nth$ ?i ?inst)) ; get item from array
+			(printout t (send ?curr print)) ; call message print on ?curr
+			(bind ?i (+ ?i 1)) ; i+=1
 		)
       )
       (case partner 
