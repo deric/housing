@@ -1,4 +1,4 @@
-; Wed Dec 02 21:00:25 CET 2009
+; Tue Dec 08 23:33:26 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -46,10 +46,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes Services)
 		(create-accessor read-write))
-	(single-slot shop_type
+	(multislot shop_type
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot transport
 		(type INSTANCE)
@@ -108,15 +107,15 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot district
-		(type INSTANCE)
-;+		(allowed-classes District)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
 ;+		(allowed-classes Location)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot district
+		(type INSTANCE)
+;+		(allowed-classes District)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot longitude
@@ -143,16 +142,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -351,16 +350,16 @@
 (defclass Services
 	(is-a USER)
 	(role abstract)
-	(single-slot noisy
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
 ;+		(allowed-classes Location)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot noisy
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass FoodBeverage
@@ -455,11 +454,14 @@
 (defclass Shop
 	(is-a Shopping)
 	(role concrete)
-	(single-slot shop_type
+	(multislot shop_type
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
+
+(defclass Supermarket
+	(is-a Shop)
+	(role concrete))
 
 (defclass Market
 	(is-a Shopping)
@@ -472,14 +474,14 @@
 (defclass Country
 	(is-a GeographicalPart)
 	(role concrete)
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
+		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot provinces
-		(type INSTANCE)
-;+		(allowed-classes Province)
 		(create-accessor read-write)))
 
 (defclass City

@@ -2,7 +2,25 @@
 ;;* DEFFUNCTIONS *
 ;;****************
 
+(deffunction question (?question $?allowed-values)
+	(progn$ (?var ?allowed-values) (lowcase ?var))
+	(format t "%s? (%s) " ?question (implode$ ?allowed-values))
+	(bind ?answer (read))
+	(if (lexemep ?answer) 
+	    then (bind ?answer (lowcase ?answer)))
+	(while (not (member ?answer ?allowed-values)) do
+	    (format t "%s? " ?question)
+	    (bind ?answer (read))
+	    (if (lexemep ?answer) 
+		then (bind ?answer (lowcase ?answer))))
+	?answer
+)
 (deffunction ask-question (?question $?allowed-values)
+    (format t "%s? (%s) " ?question (implode$ ?allowed-values))
+)
+
+
+(deffunction question2 (?question $?allowed-values)
    (printout t ?question)
    (bind ?answer (read))
    (if (lexemep ?answer) 
@@ -27,23 +45,33 @@
    (if (or (eq ?response no) (eq ?response n))    
        then FALSE)
    NULL)
+   
+(defclass person
+	(is-a USER)
+	(slot age)
+	(slot occupation)
+)
+
+(deftemplate recommendation "Expert system would recommend you this offers:"
+	(slot name)
+	(slot final?)
+)
 
 ;;;***************
 ;;;* QUERY RULES *
 ;;;***************
 
 
-(defrule determine-rental-type ""
-   (not (working-state engine ?))
-   (not (repair ?))
+(defrule determine-room-type ""
    =>
-   (if (tree-state "Do you mind smoking (yes/no/don't care)? ") 
-       then 
-       (if (yes-or-no "Does the engine run normally (yes/no)? ")
-           then (assert (working-state engine normal))
-           else (assert (working-state engine unsatisfactory)))
-       else 
-       (assert (working-state engine does-not-start))))
+   (bind ?answer (question "Are you going to live in a room:" alone partner other) )
+   (switch ?answer
+      (case alone
+	  then
+	  (printout t " allooone" crlf)
+	  )
+   )
+ )
 
 ;;;****************************
 ;;;* STARTUP AND REPAIR RULES *
