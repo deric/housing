@@ -1,4 +1,77 @@
-; Wed Dec 02 20:57:32 CET 2009
+; Wed Dec 09 20:48:36 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
+
+([house_Class1] of  Person
+
+	(age 44)
+	(firstname "Foo")
+	(surname "Bar"))
+
+([house_Class10] of  Country
+
+	(inhabitants 50000000)
+	(provinces [house_Class11])
+	(title "Spain"))
+
+([house_Class11] of  Province
+
+	(cities [house_Class13])
+	(title "Barcelona"))
+
+([house_Class13] of  City
+
+	(country [house_Class10])
+	(districts
+		[house_Class14]
+		[house_Class15])
+	(postal_code "80000")
+	(title "Barcelona"))
+
+([house_Class14] of  District
+
+	(title "Barceloneta"))
+
+([house_Class15] of  District
+
+	(title "Ciutat Vella"))
+
+([house_Class3] of  Pub
+
+	(location [house_Class4]))
+
+([house_Class4] of  Location
+
+	(latitude -1.0)
+	(longitude 3.0))
+
+([house_Class5] of  Offer
+
+	(available_from [house_Class6])
+	(realty [house_Class8])
+	(rent 500.0)
+	(title "nice flat"))
+
+([house_Class6] of  Date
+
+	(day 12)
+	(month 12)
+	(year 2009))
+
+([house_Class7] of  Location
+
+	(latitude 0.0)
+	(longitude 0.0))
+
+([house_Class8] of  Attic
+
+	(address [house_Class9])
+	(floor "4")
+	(location [house_Class7])
+	(space 100))
+
+([house_Class9] of  Address
+
+	(city [house_Class13])
+	(street "Passaige de Gracia"))

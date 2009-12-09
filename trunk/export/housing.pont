@@ -1,4 +1,4 @@
-; Wed Dec 02 20:57:32 CET 2009
+; Wed Dec 09 20:48:36 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -11,9 +11,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes Province)
 		(create-accessor read-write))
-	(multislot title
-;+		(comment "title gained from university")
+	(single-slot available_to
+		(type INSTANCE)
+;+		(allowed-classes Date)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot title
 		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot rent
 ;+		(comment "in euros per month")
@@ -42,22 +47,17 @@
 		(type INSTANCE)
 ;+		(allowed-classes District)
 		(create-accessor read-write))
-	(multislot is_close_to
-		(type INSTANCE)
-;+		(allowed-classes Services)
-		(create-accessor read-write))
-	(single-slot shop_type
+	(multislot shop_type
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot transport
 		(type INSTANCE)
 ;+		(allowed-classes Transport)
 		(create-accessor read-write))
 	(single-slot noisy
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot street
@@ -103,21 +103,29 @@
 		(type INSTANCE)
 ;+		(allowed-classes Room)
 		(create-accessor read-write))
+	(single-slot age
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot day
 ;+		(comment "day number in month")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot district
-		(type INSTANCE)
-;+		(allowed-classes District)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
 ;+		(allowed-classes Location)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot district
+		(type INSTANCE)
+;+		(allowed-classes District)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot longitude
 ;+		(comment "GPS coordinate in degrees")
@@ -143,30 +151,33 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
 	(is-a USER)
 	(role concrete)
+	(single-slot available_to
+		(type INSTANCE)
+;+		(allowed-classes Date)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot title
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot rent
 ;+		(comment "in euros per month")
 		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot location
-;+		(comment "GPS coordinates for displaying on a map")
-		(type INSTANCE)
-;+		(allowed-classes Location)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot available_from
@@ -184,10 +195,6 @@
 (defclass Address
 	(is-a USER)
 	(role concrete)
-	(single-slot postal_code
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot district
 		(type INSTANCE)
 ;+		(allowed-classes District)
@@ -196,11 +203,6 @@
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot country
-		(type INSTANCE)
-;+		(allowed-classes Country)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot city
 		(type INSTANCE)
@@ -351,16 +353,20 @@
 (defclass Services
 	(is-a USER)
 	(role abstract)
-	(single-slot noisy
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
+	(single-slot title
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
 ;+		(allowed-classes Location)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot noisy
+;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass FoodBeverage
@@ -377,6 +383,10 @@
 		(create-accessor read-write)))
 
 (defclass Bar
+	(is-a FoodBeverage)
+	(role concrete))
+
+(defclass Pub
 	(is-a FoodBeverage)
 	(role concrete))
 
@@ -455,11 +465,14 @@
 (defclass Shop
 	(is-a Shopping)
 	(role concrete)
-	(single-slot shop_type
+	(multislot shop_type
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
+
+(defclass Supermarket
+	(is-a Shop)
+	(role concrete))
 
 (defclass Market
 	(is-a Shopping)
@@ -467,19 +480,23 @@
 
 (defclass GeographicalPart
 	(is-a USER)
-	(role concrete))
+	(role concrete)
+	(single-slot title
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Country
 	(is-a GeographicalPart)
 	(role concrete)
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
+		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot provinces
-		(type INSTANCE)
-;+		(allowed-classes Province)
 		(create-accessor read-write)))
 
 (defclass City
@@ -536,11 +553,11 @@
 		(type STRING)
 		(cardinality 1 2)
 		(create-accessor read-write))
-	(multislot title
-;+		(comment "title gained from university")
-		(type STRING)
-		(create-accessor read-write))
 	(multislot surname
 		(type STRING)
 		(cardinality 1 2)
+		(create-accessor read-write))
+	(single-slot age
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))

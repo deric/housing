@@ -19,19 +19,6 @@
     (format t "%s? (%s) " ?question (implode$ ?allowed-values))
 )
 
-
-(deffunction question2 (?question $?allowed-values)
-   (printout t ?question)
-   (bind ?answer (read))
-   (if (lexemep ?answer) 
-       then (bind ?answer (lowcase ?answer)))
-   (while (not (member ?answer ?allowed-values)) do
-      (printout t ?question)
-      (bind ?answer (read))
-      (if (lexemep ?answer) 
-          then (bind ?answer (lowcase ?answer))))
-   ?answer)
-
 (deffunction yes-or-no (?question)
    (bind ?response (ask-question ?question yes no y n))
    (if (or (eq ?response yes) (eq ?response y))
@@ -52,6 +39,12 @@
 	(slot occupation)
 )
 
+(defmessage-handler Offer tostring ()
+	(printout t "----------------------------------" crlf)
+	(format t "Offer: %s%n" ?self:title)
+	(printout t "----------------------------------" crlf crlf)
+)
+
 (deftemplate recommendation "Expert system would recommend you this offers:"
 	(slot name)
 	(slot final?)
@@ -69,7 +62,18 @@
       (case alone
 	  then
 	  (printout t " allooone" crlf)
-	  )
+	  	(bind ?i 1)
+		(bind ?inst (find-all-instances (?it Offer)))
+	  	(while (<= ?i (length$ ?inst))
+		do
+			(printout t (send ?inst tostring))
+			(bind ?i (+ ?i 1))
+		)
+      )
+      (case partner 
+	    then
+	      (printout t "partner" crlf)
+      )
    )
  )
 

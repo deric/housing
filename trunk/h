@@ -1,101 +1,7 @@
-;; Builded on  2009-11-9 2:28:57 
-;;############### program ##################
-;;****************
-;;* DEFFUNCTIONS *
-;;****************
+;; Builded on  2009-11-9 21:0:29 
 
-(deffunction question (?question $?allowed-values)
-	(progn$ (?var ?allowed-values) (lowcase ?var))
-	(format t "%s? (%s) " ?question (implode$ ?allowed-values))
-	(bind ?answer (read))
-	(if (lexemep ?answer) 
-	    then (bind ?answer (lowcase ?answer)))
-	(while (not (member ?answer ?allowed-values)) do
-	    (format t "%s? " ?question)
-	    (bind ?answer (read))
-	    (if (lexemep ?answer) 
-		then (bind ?answer (lowcase ?answer))))
-	?answer
-)
-(deffunction ask-question (?question $?allowed-values)
-    (format t "%s? (%s) " ?question (implode$ ?allowed-values))
-)
-
-
-(deffunction question2 (?question $?allowed-values)
-   (printout t ?question)
-   (bind ?answer (read))
-   (if (lexemep ?answer) 
-       then (bind ?answer (lowcase ?answer)))
-   (while (not (member ?answer ?allowed-values)) do
-      (printout t ?question)
-      (bind ?answer (read))
-      (if (lexemep ?answer) 
-          then (bind ?answer (lowcase ?answer))))
-   ?answer)
-
-(deffunction yes-or-no (?question)
-   (bind ?response (ask-question ?question yes no y n))
-   (if (or (eq ?response yes) (eq ?response y))
-       then TRUE 
-       else FALSE))
-
-(deffunction tree-state (?question)
-   (bind ?response (ask-question ?question yes no dontcare y n x))
-   (if (or (eq ?response yes) (eq ?response y))
-       then TRUE) 
-   (if (or (eq ?response no) (eq ?response n))    
-       then FALSE)
-   NULL)
-   
-(defclass person
-	(is-a USER)
-	(slot age)
-	(slot occupation)
-)
-
-(deftemplate recommendation "Expert system would recommend you this offers:"
-	(slot name)
-	(slot final?)
-)
-
-;;;***************
-;;;* QUERY RULES *
-;;;***************
-
-
-(defrule determine-room-type ""
-   =>
-   (bind ?answer (question "Are you going to live in a room:" alone partner other) )
-   (switch ?answer
-      (case alone
-	  then
-	  (printout t " allooone" crlf)
-	  )
-   )
- )
-
-;;;****************************
-;;;* STARTUP AND REPAIR RULES *
-;;;****************************
-
-(defrule system-banner ""
-  (declare (salience 10))
-  =>
-  (printout t crlf crlf)
-  (printout t "Housing Expert System")
-  (printout t crlf crlf))
-
-(defrule print-offer ""
-  (declare (salience 10))
-  (repair ?item)
-  =>
-  (printout t crlf crlf)
-  (printout t "Suggested offer:")
-  (printout t crlf crlf)
-  (format t " %s%n%n%n" ?item))
 ;############### ontology ##################
-; Wed Dec 02 20:57:32 CET 2009
+; Wed Dec 09 20:48:36 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -108,9 +14,14 @@
 		(type INSTANCE)
 ;+		(allowed-classes Province)
 		(create-accessor read-write))
-	(multislot title
-;+		(comment "title gained from university")
+	(single-slot available_to
+		(type INSTANCE)
+;+		(allowed-classes Date)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot title
 		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot rent
 ;+		(comment "in euros per month")
@@ -139,22 +50,17 @@
 		(type INSTANCE)
 ;+		(allowed-classes District)
 		(create-accessor read-write))
-	(multislot is_close_to
-		(type INSTANCE)
-;+		(allowed-classes Services)
-		(create-accessor read-write))
-	(single-slot shop_type
+	(multislot shop_type
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot transport
 		(type INSTANCE)
 ;+		(allowed-classes Transport)
 		(create-accessor read-write))
 	(single-slot noisy
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
+;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot street
@@ -200,21 +106,29 @@
 		(type INSTANCE)
 ;+		(allowed-classes Room)
 		(create-accessor read-write))
+	(single-slot age
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot day
 ;+		(comment "day number in month")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot district
-		(type INSTANCE)
-;+		(allowed-classes District)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
 ;+		(allowed-classes Location)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot district
+		(type INSTANCE)
+;+		(allowed-classes District)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot longitude
 ;+		(comment "GPS coordinate in degrees")
@@ -240,30 +154,33 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
 	(is-a USER)
 	(role concrete)
+	(single-slot available_to
+		(type INSTANCE)
+;+		(allowed-classes Date)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot title
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot rent
 ;+		(comment "in euros per month")
 		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot location
-;+		(comment "GPS coordinates for displaying on a map")
-		(type INSTANCE)
-;+		(allowed-classes Location)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot available_from
@@ -281,10 +198,6 @@
 (defclass Address
 	(is-a USER)
 	(role concrete)
-	(single-slot postal_code
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot district
 		(type INSTANCE)
 ;+		(allowed-classes District)
@@ -293,11 +206,6 @@
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot country
-		(type INSTANCE)
-;+		(allowed-classes Country)
-;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot city
 		(type INSTANCE)
@@ -448,16 +356,20 @@
 (defclass Services
 	(is-a USER)
 	(role abstract)
-	(single-slot noisy
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
+	(single-slot title
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot location
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
 ;+		(allowed-classes Location)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot noisy
+;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
+		(type INTEGER)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass FoodBeverage
@@ -474,6 +386,10 @@
 		(create-accessor read-write)))
 
 (defclass Bar
+	(is-a FoodBeverage)
+	(role concrete))
+
+(defclass Pub
 	(is-a FoodBeverage)
 	(role concrete))
 
@@ -552,11 +468,14 @@
 (defclass Shop
 	(is-a Shopping)
 	(role concrete)
-	(single-slot shop_type
+	(multislot shop_type
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
+
+(defclass Supermarket
+	(is-a Shop)
+	(role concrete))
 
 (defclass Market
 	(is-a Shopping)
@@ -564,19 +483,23 @@
 
 (defclass GeographicalPart
 	(is-a USER)
-	(role concrete))
+	(role concrete)
+	(single-slot title
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Country
 	(is-a GeographicalPart)
 	(role concrete)
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
+		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot provinces
-		(type INSTANCE)
-;+		(allowed-classes Province)
 		(create-accessor read-write)))
 
 (defclass City
@@ -633,20 +556,191 @@
 		(type STRING)
 		(cardinality 1 2)
 		(create-accessor read-write))
-	(multislot title
-;+		(comment "title gained from university")
-		(type STRING)
-		(create-accessor read-write))
 	(multislot surname
 		(type STRING)
 		(cardinality 1 2)
+		(create-accessor read-write))
+	(single-slot age
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 
 ;############### instances ##################
 (definstances inst 
-; Wed Dec 02 20:57:32 CET 2009
+; Wed Dec 09 20:48:36 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
+
+([house_Class1] of  Person
+
+	(age 44)
+	(firstname "Foo")
+	(surname "Bar"))
+
+([house_Class10] of  Country
+
+	(inhabitants 50000000)
+	(provinces [house_Class11])
+	(title "Spain"))
+
+([house_Class11] of  Province
+
+	(cities [house_Class13])
+	(title "Barcelona"))
+
+([house_Class13] of  City
+
+	(country [house_Class10])
+	(districts
+		[house_Class14]
+		[house_Class15])
+	(postal_code "80000")
+	(title "Barcelona"))
+
+([house_Class14] of  District
+
+	(title "Barceloneta"))
+
+([house_Class15] of  District
+
+	(title "Ciutat Vella"))
+
+([house_Class3] of  Pub
+
+	(location [house_Class4]))
+
+([house_Class4] of  Location
+
+	(latitude -1.0)
+	(longitude 3.0))
+
+([house_Class5] of  Offer
+
+	(available_from [house_Class6])
+	(realty [house_Class8])
+	(rent 500.0)
+	(title "nice flat"))
+
+([house_Class6] of  Date
+
+	(day 12)
+	(month 12)
+	(year 2009))
+
+([house_Class7] of  Location
+
+	(latitude 0.0)
+	(longitude 0.0))
+
+([house_Class8] of  Attic
+
+	(address [house_Class9])
+	(floor "4")
+	(location [house_Class7])
+	(space 100))
+
+([house_Class9] of  Address
+
+	(city [house_Class13])
+	(street "Passaige de Gracia"))
+);;############### program ##################
+;;****************
+;;* DEFFUNCTIONS *
+;;****************
+
+(deffunction question (?question $?allowed-values)
+	(progn$ (?var ?allowed-values) (lowcase ?var))
+	(format t "%s? (%s) " ?question (implode$ ?allowed-values))
+	(bind ?answer (read))
+	(if (lexemep ?answer) 
+	    then (bind ?answer (lowcase ?answer)))
+	(while (not (member ?answer ?allowed-values)) do
+	    (format t "%s? " ?question)
+	    (bind ?answer (read))
+	    (if (lexemep ?answer) 
+		then (bind ?answer (lowcase ?answer))))
+	?answer
 )
+(deffunction ask-question (?question $?allowed-values)
+    (format t "%s? (%s) " ?question (implode$ ?allowed-values))
+)
+
+(deffunction yes-or-no (?question)
+   (bind ?response (ask-question ?question yes no y n))
+   (if (or (eq ?response yes) (eq ?response y))
+       then TRUE 
+       else FALSE))
+
+(deffunction tree-state (?question)
+   (bind ?response (ask-question ?question yes no dontcare y n x))
+   (if (or (eq ?response yes) (eq ?response y))
+       then TRUE) 
+   (if (or (eq ?response no) (eq ?response n))    
+       then FALSE)
+   NULL)
+   
+(defclass person
+	(is-a USER)
+	(slot age)
+	(slot occupation)
+)
+
+(defmessage-handler Offer tostring ()
+	(printout t "----------------------------------" crlf)
+	(format t "Offer: %s%n" ?self:title)
+	(printout t "----------------------------------" crlf crlf)
+)
+
+(deftemplate recommendation "Expert system would recommend you this offers:"
+	(slot name)
+	(slot final?)
+)
+
+;;;***************
+;;;* QUERY RULES *
+;;;***************
+
+
+(defrule determine-room-type ""
+   =>
+   (bind ?answer (question "Are you going to live in a room:" alone partner other) )
+   (switch ?answer
+      (case alone
+	  then
+	  (printout t " allooone" crlf)
+	  	(bind ?i 1)
+		(bind ?inst (find-all-instances (?it Offer)))
+	  	(while (<= ?i (length$ ?inst))
+		do
+			(printout t (send ?inst tostring))
+			(bind ?i (+ ?i 1))
+		)
+      )
+      (case partner 
+	    then
+	      (printout t "partner" crlf)
+      )
+   )
+ )
+
+;;;****************************
+;;;* STARTUP AND REPAIR RULES *
+;;;****************************
+
+(defrule system-banner ""
+  (declare (salience 10))
+  =>
+  (printout t crlf crlf)
+  (printout t "Housing Expert System")
+  (printout t crlf crlf))
+
+(defrule print-offer ""
+  (declare (salience 10))
+  (repair ?item)
+  =>
+  (printout t crlf crlf)
+  (printout t "Suggested offer:")
+  (printout t crlf crlf)
+  (format t " %s%n%n%n" ?item))

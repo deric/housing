@@ -10,15 +10,8 @@ open OUT, ">$OUT_FILE" or die $!;
  my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime time;
  $year=$year+1900;
 print OUT ";; Builded on  $year-$mon-$mday $hour:$min:$sec \n";
-print OUT ";;############### program ##################\n";
 
-open(FILE, $CLIPS_FILE) || die("Could not open file $CLIPS_FILE!");
-@i=0;
-while (<FILE>) {
-  print OUT $_;
-  $i++;
-}
-close FILE;
+
 
 print OUT "\n;############### ontology ##################\n";
 $pont="export/housing.pont";
@@ -40,6 +33,18 @@ while (<FILE>) {
 }
 close FILE;
 print OUT ")";
+
+
+print OUT ";;############### program ##################\n";
+
+open(FILE, $CLIPS_FILE) || die("Could not open file $CLIPS_FILE!");
+@i=0;
+while (<FILE>) {
+  print OUT $_;
+  $i++;
+}
+close FILE;
+
 
 close OUT;
 
