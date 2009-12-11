@@ -1,7 +1,13 @@
-; Wed Dec 09 20:34:14 CET 2009
+; Wed Dec 09 23:12:20 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
+
+([house_Class1] of  Person
+
+	(age 44)
+	(firstname "Foo")
+	(surname "Bar"))
 
 ([house_Class10] of  Country
 
@@ -44,7 +50,8 @@
 
 	(available_from [house_Class6])
 	(realty [house_Class8])
-	(rent 500.0))
+	(rent 500.0)
+	(title "nice flat"))
 
 ([house_Class6] of  Date
 

@@ -1,4 +1,4 @@
-; Wed Dec 09 20:34:14 CET 2009
+; Wed Dec 09 23:12:18 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -173,7 +173,7 @@
 		(create-accessor read-write))
 	(single-slot title
 		(type STRING)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot rent
 ;+		(comment "in euros per month")

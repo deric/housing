@@ -1,4 +1,4 @@
-; Wed Dec 09 20:34:14 CET 2009
+; Wed Dec 09 23:12:21 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,20 +6,21 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[house_ProjectKB_Class10341]
-		[house_ProjectKB_Class10342]
-		[house_ProjectKB_Class10343]
-		[house_ProjectKB_Class10344]
-		[house_ProjectKB_Class10345]
-		[house_ProjectKB_Class10346]
-		[house_ProjectKB_Class10347]
-		[house_ProjectKB_Class10348]
-		[house_ProjectKB_Class10349]
-		[house_ProjectKB_Class10350]
-		[house_ProjectKB_Class10351]
-		[house_ProjectKB_Class10352]
-		[house_ProjectKB_Class10353]
-		[house_ProjectKB_Class10354]))
+		[house_ProjectKB_Class10358]
+		[house_ProjectKB_Class10359]
+		[house_ProjectKB_Class10360]
+		[house_ProjectKB_Class10361]
+		[house_ProjectKB_Class10362]
+		[house_ProjectKB_Class10363]
+		[house_ProjectKB_Class10364]
+		[house_ProjectKB_Class10365]
+		[house_ProjectKB_Class10366]
+		[house_ProjectKB_Class10367]
+		[house_ProjectKB_Class10368]
+		[house_ProjectKB_Class10369]
+		[house_ProjectKB_Class10370]
+		[house_ProjectKB_Class10371]
+		[house_ProjectKB_Class10372]))
 
 ([CLSES_TAB] of  Widget
 
@@ -725,91 +726,96 @@
 	(name "vertical_stretcher")
 	(string_value "<<none>>"))
 
-([house_ProjectKB_Class10341] of  String
+([house_ProjectKB_Class10358] of  String
 
 	(name "Date")
 	(string_value "day{.}month{.}year"))
 
-([house_ProjectKB_Class10342] of  String
+([house_ProjectKB_Class10359] of  String
 
 	(name "PlaceToLive")
 	(string_value "address"))
 
-([house_ProjectKB_Class10343] of  String
+([house_ProjectKB_Class10360] of  String
 
 	(name "Location")
 	(string_value "latitude{%3B}longitude"))
 
-([house_ProjectKB_Class10344] of  String
+([house_ProjectKB_Class10361] of  String
 
 	(name "District")
 	(string_value "title"))
 
-([house_ProjectKB_Class10345] of  String
+([house_ProjectKB_Class10362] of  String
 
 	(name "Province")
 	(string_value "title"))
 
-([house_ProjectKB_Class10346] of  String
+([house_ProjectKB_Class10363] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([house_ProjectKB_Class10347] of  String
+([house_ProjectKB_Class10364] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([house_ProjectKB_Class10348] of  String
+([house_ProjectKB_Class10365] of  String
 
 	(name "Services")
 	(string_value "title"))
 
-([house_ProjectKB_Class10349] of  String
+([house_ProjectKB_Class10366] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([house_ProjectKB_Class10350] of  String
+([house_ProjectKB_Class10367] of  String
+
+	(name "Offer")
+	(string_value "title"))
+
+([house_ProjectKB_Class10368] of  String
 
 	(name "City")
 	(string_value "title"))
 
-([house_ProjectKB_Class10351] of  String
+([house_ProjectKB_Class10369] of  String
 
 	(name "Country")
 	(string_value "title"))
 
-([house_ProjectKB_Class10352] of  String
+([house_ProjectKB_Class10370] of  String
 
 	(name "GeographicalPart")
 	(string_value "title"))
 
-([house_ProjectKB_Class10353] of  String
+([house_ProjectKB_Class10371] of  String
 
 	(name "Person")
 	(string_value "firstname{}surname"))
 
-([house_ProjectKB_Class10354] of  String
+([house_ProjectKB_Class10372] of  String
 
 	(name "Address")
 	(string_value "street"))
 
-([house_ProjectKB_Class10355] of  Map_Entry
+([house_ProjectKB_Class10373] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([house_ProjectKB_Class10356] of  Map_Entry
+([house_ProjectKB_Class10374] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([house_ProjectKB_Class10357] of  Map_Entry
+([house_ProjectKB_Class10375] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
@@ -1353,9 +1359,9 @@
 ([KB_045904_Class1] of  Map
 
 	(entries
-		[house_ProjectKB_Class10355]
-		[house_ProjectKB_Class10356]
-		[house_ProjectKB_Class10357]))
+		[house_ProjectKB_Class10373]
+		[house_ProjectKB_Class10374]
+		[house_ProjectKB_Class10375]))
 
 ([KB_045904_Class96] of  Property_List
 
