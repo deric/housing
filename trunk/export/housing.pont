@@ -1,4 +1,4 @@
-; Wed Dec 09 20:48:36 CET 2009
+; Sat Dec 12 19:11:58 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -51,6 +51,11 @@
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
 		(create-accessor read-write))
+	(single-slot flat_type
+		(type SYMBOL)
+		(allowed-values attic normal ground)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot transport
 		(type INSTANCE)
 ;+		(allowed-classes Transport)
@@ -78,6 +83,16 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot coordinates
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Coordinates)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot description
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot postal_code
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -99,9 +114,19 @@
 		(type FLOAT)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot house_type
+		(type SYMBOL)
+		(allowed-values Terraced Semidetached BlockOfFlats)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot rooms
 		(type INSTANCE)
 ;+		(allowed-classes Room)
+		(create-accessor read-write))
+	(single-slot room_type
+		(type SYMBOL)
+		(allowed-values single double kitchen)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot age
 		(type INTEGER)
@@ -111,12 +136,6 @@
 ;+		(comment "day number in month")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot location
-;+		(comment "GPS coordinates for displaying on a map")
-		(type INSTANCE)
-;+		(allowed-classes Location)
-;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot district
 		(type INSTANCE)
@@ -151,16 +170,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -200,6 +219,12 @@
 ;+		(allowed-classes District)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot coordinates
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Coordinates)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -214,7 +239,7 @@
 	(is-a USER)
 	(role concrete))
 
-(defclass Location "GPS coordinates of an object"
+(defclass Coordinates "GPS coordinates of an object"
 	(is-a USER)
 	(role concrete)
 	(single-slot longitude
@@ -250,10 +275,8 @@
 (defclass PlaceToLive
 	(is-a USER)
 	(role abstract)
-	(single-slot location
-;+		(comment "GPS coordinates for displaying on a map")
-		(type INSTANCE)
-;+		(allowed-classes Location)
+	(single-slot description
+		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot address
@@ -264,35 +287,20 @@
 
 (defclass House
 	(is-a PlaceToLive)
-	(role abstract)
+	(role concrete)
+	(single-slot house_type
+		(type SYMBOL)
+		(allowed-values Terraced Semidetached BlockOfFlats)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot flats
 		(type INSTANCE)
 ;+		(allowed-classes Flat)
-		(create-accessor read-write))
-	(single-slot house_number
-		(type STRING)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
-
-(defclass Detached
-	(is-a House)
-	(role concrete))
-
-(defclass SemiDetached
-	(is-a House)
-	(role concrete))
-
-(defclass BlocksOfFlats
-	(is-a House)
-	(role concrete))
-
-(defclass Terraced
-	(is-a House)
-	(role concrete))
 
 (defclass Flat
 	(is-a PlaceToLive)
-	(role abstract)
+	(role concrete)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
@@ -305,23 +313,11 @@
 	(single-slot floor
 		(type STRING)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass Attic
-	(is-a Flat)
-	(role concrete))
-
-(defclass Ground
-	(is-a Flat)
-	(role concrete))
-
-(defclass Duplex "two floors apartament"
-	(is-a Flat)
-	(role concrete)
-	(single-slot floor
-;+		(comment "two floors in which is apartament located")
-		(type STRING)
-;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot flat_type
+		(type SYMBOL)
+		(allowed-values attic normal ground)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Room
@@ -340,15 +336,12 @@
 	(single-slot windows_num
 		(type INTEGER)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot room_type
+		(type SYMBOL)
+		(allowed-values single double kitchen)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
-
-(defclass SingleRoom
-	(is-a Room)
-	(role concrete))
-
-(defclass DoubleRoom
-	(is-a Room)
-	(role concrete))
 
 (defclass Services
 	(is-a USER)
@@ -357,15 +350,15 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot location
-;+		(comment "GPS coordinates for displaying on a map")
-		(type INSTANCE)
-;+		(allowed-classes Location)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot noisy
 ;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
 		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot coordinates
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Coordinates)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
@@ -489,14 +482,14 @@
 (defclass Country
 	(is-a GeographicalPart)
 	(role concrete)
-	(multislot provinces
-		(type INSTANCE)
-;+		(allowed-classes Province)
-		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
 		(create-accessor read-write)))
 
 (defclass City

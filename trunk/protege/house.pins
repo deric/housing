@@ -1,4 +1,4 @@
-; Wed Dec 09 23:12:20 CET 2009
+; Sat Dec 12 19:11:59 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -14,6 +14,43 @@
 	(inhabitants 50000000)
 	(provinces [house_Class11])
 	(title "Spain"))
+
+([house_Class10005] of  Flat
+
+	(address [house_Class9])
+	(description "loosy flat")
+	(flat_type normal)
+	(floor "2")
+	(rooms [house_Class10008])
+	(space 70))
+
+([house_Class10006] of  Address
+
+	(city [house_Class13])
+	(coordinates [house_Class10007])
+	(district [house_Class15])
+	(street "aaa"))
+
+([house_Class10007] of  Coordinates
+
+	(latitude 3.0)
+	(longitude 2.0))
+
+([house_Class10008] of  Room
+
+	(address [house_Class10009])
+	(description "small room")
+	(rent 300.0)
+	(room_type single)
+	(space 13)
+	(windows_num 0))
+
+([house_Class10009] of  Address
+
+	(city [house_Class13])
+	(coordinates [house_Class10007])
+	(district [house_Class15])
+	(street "carrer de nick"))
 
 ([house_Class11] of  Province
 
@@ -39,9 +76,9 @@
 
 ([house_Class3] of  Pub
 
-	(location [house_Class4]))
+	(coordinates [house_Class4]))
 
-([house_Class4] of  Location
+([house_Class4] of  Coordinates
 
 	(latitude -1.0)
 	(longitude 3.0))
@@ -49,7 +86,7 @@
 ([house_Class5] of  Offer
 
 	(available_from [house_Class6])
-	(realty [house_Class8])
+	(realty [house_Class10005])
 	(rent 500.0)
 	(title "nice flat"))
 
@@ -59,17 +96,10 @@
 	(month 12)
 	(year 2009))
 
-([house_Class7] of  Location
+([house_Class7] of  Coordinates
 
 	(latitude 0.0)
 	(longitude 0.0))
-
-([house_Class8] of  Attic
-
-	(address [house_Class9])
-	(floor "4")
-	(location [house_Class7])
-	(space 100))
 
 ([house_Class9] of  Address
 
