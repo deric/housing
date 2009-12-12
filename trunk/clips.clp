@@ -1,3 +1,37 @@
+;;; ---------------------------------------------------------------------------------------------------------------------
+;;; ---------------------------------------------- ENGINE ---------------------------------------------------------------
+;;; ---------------------------------------------------------------------------------------------------------------------
+
+;;**************
+;;* DEFCLASSES *
+;;**************
+
+(defclass person
+	(is-a USER)
+	(slot age)
+	(slot occupation)
+)
+
+;;****************
+;;* DEFTEMPLATE *
+;;****************
+
+(deftemplate recommendation "Expert system would recommend you this offers:"
+	(slot name)
+  ;(multislot Offers)
+	(slot final?)
+)
+;;************
+;;* MESSAGES *
+;;************
+
+(defmessage-handler Offer print()
+	(printout t "----------------------------------" crlf)
+	(format t "Offer: %s%n" ?self:title)
+	(printout t "----------------------------------" crlf crlf)
+)
+
+
 ;;****************
 ;;* DEFFUNCTIONS *
 ;;****************
@@ -33,34 +67,13 @@
        then FALSE)
    NULL)
    
-(defclass person
-	(is-a USER)
-	(slot age)
-	(slot occupation)
-)
  
  ;(defmodule MAIN (export ?ALL))
 
-(defmessage-handler Offer print()
-	(printout t "----------------------------------" crlf)
-	(format t "Offer: %s%n" ?self:title)
-	(printout t "----------------------------------" crlf crlf)
-)
 
-(deftemplate recommendation "Expert system would recommend you this offers:"
-	(slot name)
-	(slot final?)
-)
-
-;;;***************
-;;;* QUERY RULES *
-;;;***************
- 
- ;(defmodule question-realty "Modul for getting information about realty type"
-  ;	(import MAIN ?ALL)
-  ;	(export ?ALL)
- ;)
-
+;;;*********
+;;;* RULES *
+;;;*********
 
 (defrule determine-room-type ""
    =>
@@ -68,6 +81,7 @@
    (switch ?answer
       (case alone
 	  then
+<<<<<<< HEAD:trunk/clips.clp
 	  	(bind ?i 1)
 		(bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
 	  	(while (<= ?i (length$ ?inst))
@@ -76,10 +90,30 @@
 			(printout t (send ?curr print)) ; call message print on ?curr
 			(bind ?i (+ ?i 1)) ; i+=1
 		)
+=======
+    (bind ?i 1)
+    (bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
+      (while (<= ?i (length$ ?inst))
+        do
+        (bind ?curr (nth$ ?i ?inst)) ; get item from array
+        (printout t (send ?curr print)) ; call message print on ?curr
+        (bind ?i (+ ?i 1)) ; i+=1
+        )
+        )
+   )
+ )
+
+ (defrule determine-environment-type ""
+   =>
+   (bind ?answer (question "In what kind of environment do you want to live:" quiet centric young residential outskirts) )
+   (switch ?answer
+      (case quiet
+        then
+>>>>>>> b84ab13fba4a6f71557edf8d6b3597dd312e6f9b:trunk/clips.clp
       )
-      (case partner 
+      (case centric
 	    then
-	      (printout t "partner" crlf)
+	      (printout t "centric" crlf)
       )
    )
  )
