@@ -53,6 +53,16 @@
     (format t "%s? (%s) " ?question (implode$ ?allowed-values))
 )
 
+(deffunction ask-nummer (?question ?range-start ?range-end)
+	(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
+	(bind ?response (read))
+	(while (not(and(> ?response ?range-start)(< ?response ?range-end))) do
+		(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
+		(bind ?response (read))
+	)
+	?response
+)
+
 (deffunction yes-or-no (?question)
    (bind ?response (ask-question ?question yes no y n))
    (if (or (eq ?response yes) (eq ?response y))
@@ -81,16 +91,6 @@
    (switch ?answer
       (case alone
 	  then
-<<<<<<< HEAD:trunk/clips.clp
-	  	(bind ?i 1)
-		(bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
-	  	(while (<= ?i (length$ ?inst))
-		do
-			(bind ?curr (nth$ ?i ?inst)) ; get item from array
-			(printout t (send ?curr print)) ; call message print on ?curr
-			(bind ?i (+ ?i 1)) ; i+=1
-		)
-=======
     (bind ?i 1)
     (bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
       (while (<= ?i (length$ ?inst))
@@ -109,7 +109,6 @@
    (switch ?answer
       (case quiet
         then
->>>>>>> b84ab13fba4a6f71557edf8d6b3597dd312e6f9b:trunk/clips.clp
       )
       (case centric
 	    then
