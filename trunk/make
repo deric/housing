@@ -4,7 +4,7 @@
 # saves output to "$OUT_FILE"
 # @author deric 
 $CLIPS_FILE="clips.clp";
-$OUT_FILE="h";
+$OUT_FILE="housing.clp";
 
 open OUT, ">$OUT_FILE" or die $!;
  my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime time;

@@ -69,7 +69,7 @@
       (case alone
 	  then
 	  	(bind ?i 1)
-		(bind ?inst (find-all-instanceOs ((?it Offer)) (= ?it:rent 500)) )
+		(bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
 	  	(while (<= ?i (length$ ?inst))
 		do
 			(bind ?curr (nth$ ?i ?inst)) ; get item from array

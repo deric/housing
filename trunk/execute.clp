@@ -1,4 +1,4 @@
 (clear)
-(load h)
+(load "housing.clp")
 (reset)
 (run)
