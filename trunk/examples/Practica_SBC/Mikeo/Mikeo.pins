@@ -1,0 +1,4726 @@
+; Mon Jun 11 03:44:34 CEST 2007
+; 
+;+ (version "3.2.1")
+;+ (build "Build 365")
+
+([Mikeo_Instance_0] of  Espejo
+
+	(anchura 40.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo de pie, de diseño.")
+	(diametro 0)
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material vidrio)
+	(nombre "Krash")
+	(precio 20.0)
+	(profundidad 0.0)
+	(tipo_espejo completo))
+
+([Mikeo_Instance_1] of  Espejo
+
+	(anchura 40.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo de pie con estilo y elegante.")
+	(diametro 0)
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material vidrio)
+	(nombre "Blum")
+	(precio 24.95)
+	(profundidad 0.0)
+	(tipo_espejo completo))
+
+([Mikeo_Instance_10000] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla elegante tapizada en piel.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material madera piel)
+	(nombre "York")
+	(precio 126.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_10001] of  SillaFija
+
+	(anchura 55.0)
+	(descripcion "Silla de diseno actual tapizada en piel.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material madera piel)
+	(nombre "Mara")
+	(precio 100.0)
+	(profundidad 55.0))
+
+([Mikeo_Instance_10002] of  SillaFija
+
+	(anchura 48.0)
+	(descripcion "Silla comoda de estilo intemporal")
+	(estilo clasico)
+	(habitacion comedor)
+	(material madera tela)
+	(nombre "Cast")
+	(precio 100.0)
+	(profundidad 52.0))
+
+([Mikeo_Instance_10003] of  SillaFija
+
+	(anchura 52.0)
+	(descripcion "Silla relajante de madera.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material madera tela)
+	(nombre "Fly")
+	(precio 70.0)
+	(profundidad 52.0))
+
+([Mikeo_Instance_10004] of  SillaFija
+
+	(anchura 45.0)
+	(descripcion "Silla comoda y versatil.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "FlyLess")
+	(precio 25.0)
+	(profundidad 52.0))
+
+([Mikeo_Instance_10005] of  SillaPlegable
+
+	(anchura 47.0)
+	(descripcion "Silla plegable de madera. Versatil y elegante.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material madera)
+	(nombre "Bombai")
+	(precio 39.95)
+	(profundidad 47.0))
+
+([Mikeo_Instance_10006] of  Esquina
+
+	(anchura 243.0)
+	(descripcion "Sofa esquina de 4 plazas. Elegante, comodo y con diseno exclusivo. Tapizado de piel.")
+	(estilo moderno pijo)
+	(funda_preferida [Mikeo_Instance_20020])
+	(habitacion comedor)
+	(material piel)
+	(nombre "TopFeel")
+	(num_plazas 4)
+	(precio 1389.5)
+	(profundidad 150.0))
+
+([Mikeo_Instance_10007] of  Esquina
+
+	(anchura 243.0)
+	(descripcion "Sofa esquina de 4 plazas. Elegante, comodo y con diseno exclusivo. Tapizado de tela.")
+	(estilo moderno pijo)
+	(funda_preferida [Mikeo_Instance_20020])
+	(habitacion comedor)
+	(material tela)
+	(nombre "Top")
+	(num_plazas 4)
+	(precio 1050.0)
+	(profundidad 150.0))
+
+([Mikeo_Instance_10008] of  Esquina
+
+	(anchura 243.0)
+	(descripcion "Sofa esquina de 4 plazas. Comodo y diseno intemporal. Tapizado de tela.")
+	(estilo clasico)
+	(funda_preferida [Mikeo_Instance_20020])
+	(habitacion comedor)
+	(material tela)
+	(nombre "ForEver")
+	(num_plazas 4)
+	(precio 850.0)
+	(profundidad 150.0))
+
+([Mikeo_Instance_10010] of  Esquina
+
+	(anchura 243.0)
+	(descripcion "Sofa esquina de 4 plazas. Disenado para disfrutar de la paz y la tranquilidad. Tapizado de tela.")
+	(estilo hippie)
+	(funda_preferida [Mikeo_Instance_20020])
+	(habitacion comedor)
+	(material tela)
+	(nombre "ChangeMind")
+	(num_plazas 4)
+	(precio 600.0)
+	(profundidad 150.0))
+
+([Mikeo_Instance_10011] of  FundaSofa
+
+	(anchura 0.0)
+	(descripcion "Funda de sofa invidual con diseno artistico.")
+	(estilo moderno clasico hippie)
+	(habitacion comedor)
+	(material tela)
+	(nombre "TreeInd")
+	(precio 25.0)
+	(profundidad 0.0)
+	(tipo_sofa individual))
+
+([Mikeo_Instance_10012] of  2o3Plazas
+
+	(anchura 200.0)
+	(descripcion "Sofa de dos plazas. Elegante, comodo y con diseno exclusivo. Tapizado de piel.")
+	(estilo moderno pijo)
+	(funda_preferida [Mikeo_Instance_20019])
+	(habitacion comedor)
+	(material piel)
+	(nombre "TopFeelTwo")
+	(num_plazas 2)
+	(precio 749.0)
+	(profundidad 97.0))
+
+([Mikeo_Instance_10013] of  2o3Plazas
+
+	(anchura 235.0)
+	(descripcion "Sofa de tres plazas. Elegante, comodo y con diseno exclusivo. Tapizado de piel.")
+	(estilo moderno pijo)
+	(funda_preferida [Mikeo_Instance_20019])
+	(habitacion comedor)
+	(material piel)
+	(nombre "TopFeelThree")
+	(num_plazas 3)
+	(precio 849.0)
+	(profundidad 97.0))
+
+([Mikeo_Instance_10016] of  SofaIndividual
+
+	(anchura 100.0)
+	(descripcion "Sofa individual. Elegante, comodo y con diseno exclusivo. Tapizado de piel.")
+	(estilo moderno pijo)
+	(funda_preferida [Mikeo_Instance_10011])
+	(habitacion comedor)
+	(material piel)
+	(nombre "TopFeelOne")
+	(num_plazas 1)
+	(precio 350.0)
+	(profundidad 88.0))
+
+([Mikeo_Instance_10017] of  SofaIndividual
+
+	(anchura 100.0)
+	(descripcion "Sofa individual. Elegante, comodo y con diseno exclusivo. Tapizado de tela.")
+	(estilo moderno pijo)
+	(funda_preferida [Mikeo_Instance_10011])
+	(habitacion comedor)
+	(material tela)
+	(nombre "TopOne")
+	(num_plazas 1)
+	(precio 275.0)
+	(profundidad 88.0))
+
+([Mikeo_Instance_10018] of  SofaIndividual
+
+	(anchura 100.0)
+	(descripcion "Sofa individual. Comodo y diseno intemporal. Tapizado de tela.")
+	(estilo clasico)
+	(funda_preferida [Mikeo_Instance_10011])
+	(habitacion comedor)
+	(material tela)
+	(nombre "ForEverOne")
+	(num_plazas 1)
+	(precio 299.0)
+	(profundidad 88.0))
+
+([Mikeo_Instance_10019] of  SofaIndividual
+
+	(anchura 100.0)
+	(descripcion "Sofa individual. Disenado para disfrutar de la paz y la tranquilidad. Tapizado de tela.")
+	(estilo hippie)
+	(funda_preferida [Mikeo_Instance_10011])
+	(habitacion comedor)
+	(material tela)
+	(nombre "ChangeMindOne")
+	(num_plazas 1)
+	(precio 230.0)
+	(profundidad 88.0))
+
+([Mikeo_Instance_10020] of  2o3Plazas
+
+	(anchura 200.0)
+	(descripcion "Sofa de dos plazas. Elegante, comodo y con diseno exclusivo. Tapizado de tela.")
+	(estilo moderno pijo)
+	(funda_preferida [Mikeo_Instance_20019])
+	(habitacion comedor)
+	(material tela)
+	(nombre "TopTwo")
+	(num_plazas 2)
+	(precio 649.0)
+	(profundidad 97.0))
+
+([Mikeo_Instance_10021] of  2o3Plazas
+
+	(anchura 235.0)
+	(descripcion "Sofa de tres plazas. Elegante, comodo y con diseno exclusivo. Tapizado de tela.")
+	(estilo moderno pijo)
+	(funda_preferida [Mikeo_Instance_20019])
+	(habitacion comedor)
+	(material tela)
+	(nombre "TopThree")
+	(num_plazas 3)
+	(precio 749.0)
+	(profundidad 97.0))
+
+([Mikeo_Instance_10022] of  2o3Plazas
+
+	(anchura 200.0)
+	(descripcion "Sofa de dos plazas. Comodo y diseno intemporal. Tapizado de tela.")
+	(estilo clasico)
+	(funda_preferida [Mikeo_Instance_20019])
+	(habitacion comedor)
+	(material tela)
+	(nombre "ForEverTwo")
+	(num_plazas 2)
+	(precio 560.0)
+	(profundidad 88.0))
+
+([Mikeo_Instance_10023] of  2o3Plazas
+
+	(anchura 235.0)
+	(descripcion "Sofa de tres plazas. Comodo y diseno intemporal. Tapizado de tela.")
+	(estilo clasico)
+	(funda_preferida [Mikeo_Instance_20019])
+	(habitacion comedor)
+	(material tela)
+	(nombre "ForEverThree")
+	(num_plazas 3)
+	(precio 660.0)
+	(profundidad 88.0))
+
+([Mikeo_Instance_10024] of  2o3Plazas
+
+	(anchura 200.0)
+	(descripcion "Sofa de dos plazas. Disenado para disfrutar de la paz y la tranquilidad. Tapizado de tela.")
+	(estilo hippie)
+	(funda_preferida [Mikeo_Instance_20019])
+	(habitacion comedor)
+	(material tela)
+	(nombre "ChangeMindTwo")
+	(num_plazas 2)
+	(precio 540.0)
+	(profundidad 88.0))
+
+([Mikeo_Instance_10025] of  2o3Plazas
+
+	(anchura 200.0)
+	(descripcion "Sofa de tres plazas. Disenado para disfrutar de la paz y la tranquilidad. Tapizado de tela.")
+	(estilo hippie)
+	(funda_preferida [Mikeo_Instance_20019])
+	(habitacion comedor)
+	(material tela)
+	(nombre "ChangeMindThree")
+	(num_plazas 3)
+	(precio 600.0)
+	(profundidad 88.0))
+
+([Mikeo_Instance_10027] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de comedor sofisticada con madera natural de alta calidad. Para dos personas, extensible a cuatro. Material madera.")
+	(estilo pijo)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 119.0)
+	(material madera)
+	(nombre "FashTwo")
+	(num_plazas 2)
+	(precio 250.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10044]))
+
+([Mikeo_Instance_10028] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de comedor sofisticada con madera natural de alta calidad. Para cuatro personas, extensible a seis. Material madera.")
+	(estilo pijo)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 189.0)
+	(material madera)
+	(nombre "FashFour")
+	(num_plazas 4)
+	(precio 400.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10044]))
+
+([Mikeo_Instance_10029] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de comedor sofisticada con madera natural de alta calidad. Para seis personas, extensible a ocho. Material madera.")
+	(estilo pijo)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 235.0)
+	(material madera)
+	(nombre "FashSix")
+	(num_plazas 6)
+	(precio 550.0)
+	(profundidad 90.0)
+	(silla_preferida [Mikeo_Instance_10044]))
+
+([Mikeo_Instance_10030] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de comedor de diseño exclusivo. Para dos personas, extensible a cuatro. Material madera.")
+	(estilo moderno)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 119.0)
+	(material madera)
+	(nombre "DisnewTwo")
+	(num_plazas 2)
+	(precio 230.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10045]))
+
+([Mikeo_Instance_10031] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de comedor de diseño exclusivo. Para cuatro personas, extensible a seis. Material madera.")
+	(estilo moderno)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 189.0)
+	(material madera)
+	(nombre "DisnewFour")
+	(num_plazas 4)
+	(precio 350.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10045]))
+
+([Mikeo_Instance_10032] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de comedor de diseño exclusivo. Para seis personas, extensible a ocho. Material madera.")
+	(estilo moderno)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 235.0)
+	(material madera)
+	(nombre "DisnewSix")
+	(num_plazas 6)
+	(precio 500.0)
+	(profundidad 90.0)
+	(silla_preferida [Mikeo_Instance_10045]))
+
+([Mikeo_Instance_10033] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de comedor con un diseño cuidado y de estilo tradicional. Para dos personas, extensible a cuatro. Material madera.")
+	(estilo clasico)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 119.0)
+	(material madera)
+	(nombre "PreserveTwo")
+	(num_plazas 2)
+	(precio 240.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10046]))
+
+([Mikeo_Instance_10034] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de comedor con un diseño cuidado y de estilo tradicional. Para cuatro personas, extensible a seis. Material madera.")
+	(estilo clasico)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 189.0)
+	(material madera)
+	(nombre "PreserveFour")
+	(num_plazas 4)
+	(precio 380.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10046]))
+
+([Mikeo_Instance_10035] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de comedor con un diseño cuidado y de estilo tradicional. Para seis personas, extensible a ocho. Material madera.")
+	(estilo clasico)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 235.0)
+	(material madera)
+	(nombre "PreserveSix")
+	(num_plazas 6)
+	(precio 500.0)
+	(profundidad 90.0)
+	(silla_preferida [Mikeo_Instance_10046]))
+
+([Mikeo_Instance_10036] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de comedor inspirada en los 60. Para dos personas, extensible a cuatro. Material madera.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 119.0)
+	(material madera)
+	(nombre "FlowTwo")
+	(num_plazas 2)
+	(precio 210.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10047]))
+
+([Mikeo_Instance_10037] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de comedor inspirada en los 60. Para cuatro personas, extensible a seis. Material madera.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 189.0)
+	(material madera)
+	(nombre "FlowFour")
+	(num_plazas 4)
+	(precio 300.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10047]))
+
+([Mikeo_Instance_10038] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de comedor inspirada en los 60. Para seis personas, extensible a ocho. Material madera.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 235.0)
+	(material madera)
+	(nombre "FlowSix")
+	(num_plazas 6)
+	(precio 480.0)
+	(profundidad 90.0)
+	(silla_preferida [Mikeo_Instance_10047]))
+
+([Mikeo_Instance_10039] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de comedor inspirada en los 60. Para dos personas, extensible a cuatro. Material mimbre.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 119.0)
+	(material mimbre)
+	(nombre "FlowplasTwo")
+	(num_plazas 2)
+	(precio 100.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10048]))
+
+([Mikeo_Instance_10040] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de comedor inspirada en los 60. Para cuatro personas, extensible a seis. Material mimbre.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 189.0)
+	(material mimbre)
+	(nombre "FlowplasFour")
+	(num_plazas 4)
+	(precio 150.0)
+	(profundidad 78.0)
+	(silla_preferida [Mikeo_Instance_10048]))
+
+([Mikeo_Instance_10041] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de comedor inspirada en los 60. Para seis personas, extensible a ocho. Material mimbre.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion comedor)
+	(longitud_max 235.0)
+	(material mimbre)
+	(nombre "FlowplasSix")
+	(num_plazas 6)
+	(precio 199.0)
+	(profundidad 90.0)
+	(silla_preferida [Mikeo_Instance_10048]))
+
+([Mikeo_Instance_10044] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla exlusiva a conjunto con la mesa modelo FashTwo, FashFour o FashSix")
+	(estilo pijo)
+	(habitacion comedor)
+	(material madera)
+	(nombre "FashChair")
+	(precio 170.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_10045] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla exlusiva a conjunto con la mesa modelo DisnewTwo, DisnewFour o DisnewSix")
+	(estilo moderno)
+	(habitacion comedor)
+	(material madera)
+	(nombre "DisnewChair")
+	(precio 135.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_10046] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla exlusiva a conjunto con la mesa modelo PreserveTwo, PreserveFour o PreserveSix")
+	(estilo clasico)
+	(habitacion comedor)
+	(material madera)
+	(nombre "PreserveChair")
+	(precio 126.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_10047] of  SillaFija
+
+	(anchura 45.0)
+	(descripcion "Silla exlusiva a conjunto con la mesa modelo FlowTwo, FlowFour o FlowSix")
+	(estilo hippie)
+	(habitacion comedor)
+	(material madera)
+	(nombre "FlowChair")
+	(precio 75.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_10048] of  SillaFija
+
+	(anchura 45.0)
+	(descripcion "Silla exlusiva a conjunto con la mesa modelo FlowplasTwo, FlowplasFour o FourplasSix.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "FlowplasChair")
+	(precio 30.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_18] of  Espejo
+
+	(anchura 75.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo facial de tocador estilo clasico.")
+	(diametro 0)
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material vidrio)
+	(nombre "Anes")
+	(precio 69.9)
+	(profundidad 57.0)
+	(tipo_espejo facial))
+
+([Mikeo_Instance_20] of  Espejo
+
+	(anchura 80.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo facial de tocador con elegante y de diseño.")
+	(diametro 0)
+	(estilo moderno pijo)
+	(habitacion dormitorio)
+	(material vidrio)
+	(nombre "Musa")
+	(precio 75.5)
+	(profundidad 0.0)
+	(tipo_espejo facial))
+
+([Mikeo_Instance_20000] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto sofisticado con espejo en las puertas centrales.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "SofisticMirror")
+	(precio 315.0)
+	(profundidad 58.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_20001] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto sofisticado.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "Sofistic")
+	(precio 250.0)
+	(profundidad 58.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_20002] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto de diseno con espejo en las puertas centrales.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "TomyMirror")
+	(precio 300.0)
+	(profundidad 58.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_20003] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto de diseno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "Tomy")
+	(precio 249.0)
+	(profundidad 58.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_20004] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto funcional con espejo en las puertas centrales.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "OriMirror")
+	(precio 250.0)
+	(profundidad 58.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_20005] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto funcional.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "Ori")
+	(precio 202.0)
+	(profundidad 58.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_20006] of  SillaPlegable
+
+	(anchura 47.0)
+	(descripcion "Silla plegable de madera. Innovadora y versatil.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material madera)
+	(nombre "Island")
+	(precio 35.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_20007] of  SillaPlegable
+
+	(anchura 47.0)
+	(descripcion "Silla plegable de madera. Comoda y versatil.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material madera)
+	(nombre "Forever")
+	(precio 32.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_20008] of  SillaPlegable
+
+	(anchura 47.0)
+	(descripcion "Silla plegable de madera. Comoda, relajante y versatil.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "Java")
+	(precio 30.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_20010] of  FundaMesa
+
+	(anchura 80.0)
+	(descripcion "Mantel de plastico para mesa de hasta 4 comensales.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "AndreaFour")
+	(num_plazas 4)
+	(precio 20.0)
+	(profundidad 120.0))
+
+([Mikeo_Instance_20011] of  FundaMesa
+
+	(anchura 80.0)
+	(descripcion "Mantel de plastico para mesa de hasta 4 comensales.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "IndaFour")
+	(num_plazas 4)
+	(precio 19.9)
+	(profundidad 120.0))
+
+([Mikeo_Instance_20012] of  FundaMesa
+
+	(anchura 80.0)
+	(descripcion "Mantel de plastico para mesa de hasta 4 comensales.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "YesFour")
+	(num_plazas 4)
+	(precio 15.95)
+	(profundidad 120.0))
+
+([Mikeo_Instance_20013] of  FundaMesa
+
+	(anchura 85.0)
+	(descripcion "Mantel de plastico para mesa de hasta 6 comensales.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "AndreaSix")
+	(num_plazas 6)
+	(precio 20.0)
+	(profundidad 200.0))
+
+([Mikeo_Instance_20014] of  FundaMesa
+
+	(anchura 85.0)
+	(descripcion "Mantel de plastico para mesa de hasta 6 comensales.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "IndaSix")
+	(num_plazas 6)
+	(precio 19.9)
+	(profundidad 200.0))
+
+([Mikeo_Instance_20015] of  FundaMesa
+
+	(anchura 85.0)
+	(descripcion "Mantel de plastico para mesa de hasta 6 comensales.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "YesSix")
+	(num_plazas 6)
+	(precio 15.95)
+	(profundidad 200.0))
+
+([Mikeo_Instance_20016] of  FundaMesa
+
+	(anchura 90.0)
+	(descripcion "Mantel de plastico para mesa de hasta 8 comensales.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "AndreaEight")
+	(num_plazas 8)
+	(precio 20.0)
+	(profundidad 250.0))
+
+([Mikeo_Instance_20017] of  FundaMesa
+
+	(anchura 90.0)
+	(descripcion "Mantel de plastico para mesa de hasta 8 comensales.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "IndaEight")
+	(num_plazas 8)
+	(precio 19.9)
+	(profundidad 250.0))
+
+([Mikeo_Instance_20018] of  FundaMesa
+
+	(anchura 90.0)
+	(descripcion "Mantel de plastico para mesa de hasta 8 comensales.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "YesEight")
+	(num_plazas 8)
+	(precio 15.95)
+	(profundidad 250.0))
+
+([Mikeo_Instance_20019] of  FundaSofa
+
+	(anchura 0.0)
+	(descripcion "Funda de sofa 2 o 3 plazas con diseno artistico.")
+	(estilo moderno clasico hippie)
+	(habitacion comedor)
+	(material tela)
+	(nombre "TreeDouble")
+	(precio 29.95)
+	(profundidad 0.0)
+	(tipo_sofa 2plazas))
+
+([Mikeo_Instance_20020] of  FundaSofa
+
+	(anchura 0.0)
+	(descripcion "Funda de sofa esquina con diseno artistico.")
+	(estilo moderno clasico hippie)
+	(habitacion comedor)
+	(material tela)
+	(nombre "TreeComplete")
+	(precio 35.0)
+	(profundidad 0.0)
+	(tipo_sofa esquina))
+
+([Mikeo_Instance_20029] of  Completo
+
+	(anchura 280.0)
+	(clasificacion_edades adulto)
+	(descripcion "Elegante mueble de comedor de madera.")
+	(estilo pijo moderno)
+	(habitacion comedor)
+	(material madera)
+	(nombre "EleganceBig")
+	(precio 1000.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20039] of  Completo
+
+	(anchura 280.0)
+	(clasificacion_edades adulto)
+	(descripcion "Elegante mueble de comedor de pladur.")
+	(estilo pijo moderno)
+	(habitacion comedor)
+	(material pladur)
+	(nombre "EleganceBigPla")
+	(precio 1150.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20040] of  Completo
+
+	(anchura 225.0)
+	(clasificacion_edades adulto)
+	(descripcion "Elegante mueble de comedor de madera.")
+	(estilo pijo moderno)
+	(habitacion comedor)
+	(material madera)
+	(nombre "EleganceMid")
+	(precio 800.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20041] of  Completo
+
+	(anchura 225.0)
+	(clasificacion_edades adulto)
+	(descripcion "Elegante mueble de comedor de pladur.")
+	(estilo pijo moderno)
+	(habitacion comedor)
+	(material pladur)
+	(nombre "EleganceMidPla")
+	(precio 895.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20042] of  Completo
+
+	(anchura 190.0)
+	(clasificacion_edades adulto)
+	(descripcion "Elegante mueble de comedor de madera.")
+	(estilo pijo moderno)
+	(habitacion comedor)
+	(material madera)
+	(nombre "EleganceSmall")
+	(precio 650.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20043] of  Completo
+
+	(anchura 190.0)
+	(clasificacion_edades adulto)
+	(descripcion "Elegante mueble de comedor de pladur.")
+	(estilo pijo moderno)
+	(habitacion comedor)
+	(material pladur)
+	(nombre "EleganceSmallPla")
+	(precio 650.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20044] of  Completo
+
+	(anchura 280.0)
+	(clasificacion_edades adulto)
+	(descripcion "Intemporal mueble de comedor de madera.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material madera)
+	(nombre "ResistBig")
+	(precio 800.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20045] of  Completo
+
+	(anchura 225.0)
+	(clasificacion_edades adulto)
+	(descripcion "Intemporal mueble de comedor de madera.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material madera)
+	(nombre "ResistMid")
+	(precio 700.0)
+	(profundidad 56.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_20046] of  Completo
+
+	(anchura 190.0)
+	(clasificacion_edades adulto)
+	(descripcion "Intemporal mueble de comedor de madera.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material madera)
+	(nombre "ResistSmall")
+	(precio 600.0)
+	(profundidad 56.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_20047] of  Completo
+
+	(anchura 280.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble de comedor de madera que recuerdan los anos 60.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material madera)
+	(nombre "RetroBig")
+	(precio 800.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20048] of  Completo
+
+	(anchura 225.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble de comedor de madera que recuerdan los anos 60.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material madera)
+	(nombre "RetroMid")
+	(precio 680.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20049] of  Completo
+
+	(anchura 190.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble de comedor de madera que recuerdan los anos 60.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material madera)
+	(nombre "RetroSmall")
+	(precio 500.0)
+	(profundidad 56.0))
+
+([Mikeo_Instance_20050] of  Alfombra
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Alfombra elegante de tejidos indus.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material textil)
+	(nombre "Betani")
+	(precio 300.0)
+	(profundidad 80.0))
+
+([Mikeo_Instance_20052] of  Alfombra
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Alfombra original de tejidos escoceses.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material textil)
+	(nombre "Refine")
+	(precio 300.0)
+	(profundidad 80.0))
+
+([Mikeo_Instance_20053] of  Alfombra
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Alfombra lisa.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material textil)
+	(nombre "Ori")
+	(precio 275.0)
+	(profundidad 80.0))
+
+([Mikeo_Instance_20054] of  Alfombra
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Alfombra colorida.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material textil)
+	(nombre "Beat")
+	(precio 275.0)
+	(profundidad 80.0))
+
+([Mikeo_Instance_20055] of  Mesitas
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesa de centro elevable.")
+	(estilo pijo)
+	(habitacion comedor)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "Wengue")
+	(num_plazas 0)
+	(precio 415.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_20056] of  Mesitas
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesa de centro original i disenada para ser diferente.")
+	(estilo moderno)
+	(habitacion comedor)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "Cirer")
+	(num_plazas 0)
+	(precio 395.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_20059] of  Mesitas
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesa de centro con cristal.")
+	(estilo clasico)
+	(habitacion comedor)
+	(longitud_max 110.0)
+	(material madera cristal)
+	(nombre "Flus")
+	(num_plazas 0)
+	(precio 450.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_20060] of  Mesitas
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesa de centro de madera.")
+	(estilo hippie)
+	(habitacion comedor)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "HapiMad")
+	(num_plazas 0)
+	(precio 270.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_20061] of  Revistero
+
+	(anchura 39.0)
+	(descripcion "Revistero original.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material metal)
+	(nombre "RevisNew")
+	(precio 20.0)
+	(profundidad 34.0))
+
+([Mikeo_Instance_20062] of  Revistero
+
+	(anchura 39.0)
+	(descripcion "Revistero elegante.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material madera)
+	(nombre "RevisEleg")
+	(precio 30.0)
+	(profundidad 34.0))
+
+([Mikeo_Instance_20063] of  Revistero
+
+	(anchura 39.0)
+	(descripcion "Revistero metalico.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material metal)
+	(nombre "RevisHip")
+	(precio 14.95)
+	(profundidad 34.0))
+
+([Mikeo_Instance_20064] of  LamparaTecho
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo con focos alogenos.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material metal)
+	(nombre "Soogo")
+	(precio 85.0)
+	(profundidad 50.0))
+
+([Mikeo_Instance_20065] of  LamparaTecho
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo de diseno exclusivo.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material metal)
+	(nombre "Shei")
+	(precio 65.0)
+	(profundidad 50.0))
+
+([Mikeo_Instance_20066] of  LamparaTecho
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo tradicional.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material metal)
+	(nombre "Huie")
+	(precio 60.0)
+	(profundidad 50.0))
+
+([Mikeo_Instance_20067] of  LamparaTecho
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo de mimbre.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material mimbre)
+	(nombre "Aloha")
+	(precio 50.0)
+	(profundidad 50.0))
+
+([Mikeo_Instance_20068] of  LamparaParet
+
+	(anchura 25.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared elgante.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material metal)
+	(nombre "SoogoWall")
+	(precio 85.0)
+	(profundidad 16.0))
+
+([Mikeo_Instance_20069] of  LamparaParet
+
+	(anchura 25.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared de diseno exclusivo.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material metal)
+	(nombre "SheiWall")
+	(precio 80.0)
+	(profundidad 16.0))
+
+([Mikeo_Instance_20070] of  LamparaParet
+
+	(anchura 25.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared tradicional.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material metal)
+	(nombre "HuieWall")
+	(precio 70.0)
+	(profundidad 16.0))
+
+([Mikeo_Instance_20071] of  LamparaParet
+
+	(anchura 25.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared de mimbre")
+	(estilo hippie)
+	(habitacion comedor)
+	(material mimbre)
+	(nombre "AlohaWall")
+	(precio 50.0)
+	(profundidad 16.0))
+
+([Mikeo_Instance_20072] of  LamparaPie
+
+	(anchura 30.0)
+	(descripcion "Pie de salon alogeno con lector.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material metal)
+	(nombre "Wendy")
+	(precio 100.0)
+	(profundidad 30.0))
+
+([Mikeo_Instance_20073] of  LamparaPie
+
+	(anchura 30.0)
+	(descripcion "Pie de salon original con lector.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material metal)
+	(nombre "Sei")
+	(precio 90.0)
+	(profundidad 30.0))
+
+([Mikeo_Instance_20074] of  LamparaPie
+
+	(anchura 30.0)
+	(descripcion "Pie de salon de metal.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material metal)
+	(nombre "Koi")
+	(precio 85.0)
+	(profundidad 30.0))
+
+([Mikeo_Instance_20075] of  LamparaPie
+
+	(anchura 30.0)
+	(descripcion "Pie de salon de metal y mimbre.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material metal mimbre)
+	(nombre "Just")
+	(precio 60.0)
+	(profundidad 30.0))
+
+([Mikeo_Instance_20076] of  CamaIndividual
+
+	(anchura 190.0)
+	(descripcion "Cama individual elegante, pequena.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChicInd")
+	(precio 220.0)
+	(profundidad 90.0))
+
+([Mikeo_Instance_20078] of  CamaIndividual
+
+	(anchura 190.0)
+	(descripcion "Cama individual de diseno, pequena.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "TrendInd")
+	(precio 215.0)
+	(profundidad 90.0))
+
+([Mikeo_Instance_20079] of  CamaIndividual
+
+	(anchura 190.0)
+	(descripcion "Cama individual clasica, pequena.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ServInd")
+	(precio 190.0)
+	(profundidad 90.0))
+
+([Mikeo_Instance_20080] of  CamaIndividual
+
+	(anchura 190.0)
+	(descripcion "Cama individual, pequena.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "RastInd")
+	(precio 170.0)
+	(profundidad 90.0))
+
+([Mikeo_Instance_20081] of  CamaMatrimonio
+
+	(anchura 211.0)
+	(descripcion "Cama de matrimonio elegante, pequena.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChicMat")
+	(precio 350.0)
+	(profundidad 164.0))
+
+([Mikeo_Instance_20082] of  CamaMatrimonio
+
+	(anchura 211.0)
+	(descripcion "Cama de matrimonio de diseno, pequena.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "TrendMat")
+	(precio 350.0)
+	(profundidad 164.0))
+
+([Mikeo_Instance_20083] of  CamaMatrimonio
+
+	(anchura 211.0)
+	(descripcion "Cama de matrimonio clasica, pequena.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ServMat")
+	(precio 320.0)
+	(profundidad 164.0))
+
+([Mikeo_Instance_20084] of  CamaMatrimonio
+
+	(anchura 211.0)
+	(descripcion "Cama de matrimonio clasica, pequena.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "RastMat")
+	(precio 300.0)
+	(profundidad 164.0))
+
+([Mikeo_Instance_20085] of  CamaLitera
+
+	(anchura 206.0)
+	(descripcion "Litera elegante.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "LitEleg")
+	(precio 271.0)
+	(profundidad 100.0))
+
+([Mikeo_Instance_20086] of  CamaLitera
+
+	(anchura 206.0)
+	(descripcion "Litera de diseno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "LitDis")
+	(precio 259.0)
+	(profundidad 100.0))
+
+([Mikeo_Instance_20087] of  CamaLitera
+
+	(anchura 206.0)
+	(descripcion "Litera clasica.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "LitClas")
+	(precio 230.0)
+	(profundidad 100.0))
+
+([Mikeo_Instance_20088] of  CamaLitera
+
+	(anchura 206.0)
+	(descripcion "Litera inspirada en los anos 60.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "Lit60")
+	(precio 180.0)
+	(profundidad 100.0))
+
+([Mikeo_Instance_21] of  Espejo
+
+	(anchura 40.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo de pie de diseño neutro.")
+	(diametro 0)
+	(estilo clasico hippie)
+	(habitacion dormitorio)
+	(material vidrio)
+	(nombre "Stave")
+	(precio 30.5)
+	(profundidad 0.0)
+	(tipo_espejo completo))
+
+([Mikeo_Instance_22] of  Espejo
+
+	(anchura 74.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo de tocador con un diseño floral.")
+	(diametro 0)
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material vidrio)
+	(nombre "Noresund")
+	(precio 17.95)
+	(profundidad 0.0)
+	(tipo_espejo facial))
+
+([Mikeo_Instance_23] of  Revistero
+
+	(anchura 39.0)
+	(descripcion "Revistero clasico.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material madera)
+	(nombre "RevisClas")
+	(precio 23.0)
+	(profundidad 34.0))
+
+([Mikeo_Instance_3] of  Reloj
+
+	(anchura 0.0)
+	(clasificacion_edades adulto)
+	(descripcion "Reloj tradicional de colores claros.")
+	(diametro 25)
+	(estilo clasico)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "Rush")
+	(precio 15.0)
+	(profundidad 0.0))
+
+([Mikeo_Instance_30000] of  Bajo
+
+	(anchura 201.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble bajo y  exclusivo de madera. Pensado para aquellos que necesitan mas espacio.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material madera)
+	(nombre "MobExc")
+	(precio 800.0)
+	(profundidad 45.5)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_30001] of  Bajo
+
+	(anchura 201.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble bajo y  exclusivo de pladur. Pensado para aquellos que necesitan mas espacio.")
+	(estilo pijo)
+	(habitacion comedor)
+	(material pladur)
+	(nombre "MobExcPla")
+	(precio 800.0)
+	(profundidad 45.5)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_30002] of  Bajo
+
+	(anchura 201.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble bajo y  moderno de madera. Pensado para aquellos que necesitan mas espacio.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material madera)
+	(nombre "MobMod")
+	(precio 750.0)
+	(profundidad 45.5)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_30003] of  Bajo
+
+	(anchura 201.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble bajo y  moderno de pladur. Pensado para aquellos que necesitan mas espacio.")
+	(estilo moderno)
+	(habitacion comedor)
+	(material pladur)
+	(nombre "MobModPla")
+	(precio 799.0)
+	(profundidad 45.5)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_30004] of  Bajo
+
+	(anchura 201.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble bajo y  clasico de madera. Pensado para aquellos que necesitan mas espacio.")
+	(estilo clasico)
+	(habitacion comedor)
+	(material madera)
+	(nombre "MobClas")
+	(precio 650.0)
+	(profundidad 45.5)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_30005] of  Bajo
+
+	(anchura 201.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble bajo de madera. Pensado para aquellos que necesitan mas espacio.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material madera)
+	(nombre "MobHip")
+	(precio 600.0)
+	(profundidad 45.5)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_30006] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio combinacion madera y mimbre. Espejo en las puertas centrales.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera mimbre)
+	(nombre "NewyorkMirror")
+	(precio 110.0)
+	(profundidad 58.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_30007] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio combinacion madera y mimbre")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera mimbre)
+	(nombre "Newyork")
+	(precio 99.0)
+	(profundidad 58.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_30008] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a con toque sofisticado.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChildChic")
+	(precio 289.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_30009] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a de diseno original.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChildFash")
+	(precio 270.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_30010] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a tradicional.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChildEver")
+	(precio 230.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_30011] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a de madera y mimbre.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera mimbre)
+	(nombre "ChildEver")
+	(precio 90.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_30012] of  Mesitas
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesa de centro de mimbre.")
+	(estilo hippie)
+	(habitacion comedor)
+	(longitud_max 110.0)
+	(material mimbre)
+	(nombre "HapiMim")
+	(num_plazas 0)
+	(precio 200.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_30013] of  CamaMatrimonio
+
+	(anchura 211.0)
+	(descripcion "Cama de matrimonio elegante, grande.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChicMatGran")
+	(precio 400.0)
+	(profundidad 209.0))
+
+([Mikeo_Instance_30014] of  CamaMatrimonio
+
+	(anchura 211.0)
+	(descripcion "Cama de matrimonio de diseno, grande.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "TrendMatGran")
+	(precio 400.0)
+	(profundidad 209.0))
+
+([Mikeo_Instance_30015] of  CamaMatrimonio
+
+	(anchura 211.0)
+	(descripcion "Cama de matrimonio clasica, grande.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ServMatGran")
+	(precio 360.0)
+	(profundidad 209.0))
+
+([Mikeo_Instance_30016] of  CamaMatrimonio
+
+	(anchura 211.0)
+	(descripcion "Cama de matrimonio clasica, grande.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "RastMatGran")
+	(precio 350.0)
+	(profundidad 209.0))
+
+([Mikeo_Instance_30017] of  CamaIndividual
+
+	(anchura 190.0)
+	(descripcion "Cama individual elegante, grande.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChicIndGran")
+	(precio 220.0)
+	(profundidad 105.0))
+
+([Mikeo_Instance_30018] of  CamaIndividual
+
+	(anchura 190.0)
+	(descripcion "Cama individual de diseno, grande.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "TrendIndGran")
+	(precio 215.0)
+	(profundidad 105.0))
+
+([Mikeo_Instance_30019] of  CamaIndividual
+
+	(anchura 190.0)
+	(descripcion "Cama individual clasica, grande.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ServIndGran")
+	(precio 190.0)
+	(profundidad 105.0))
+
+([Mikeo_Instance_30020] of  CamaIndividual
+
+	(anchura 190.0)
+	(descripcion "Cama individual, grande.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "RastIndGran")
+	(precio 170.0)
+	(profundidad 105.0))
+
+([Mikeo_Instance_30021] of  Escritorios
+
+	(anchura 130.0)
+	(descripcion "Escritorio de madera elegante, sofisticado y grande.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(longitud_max 130.0)
+	(material madera)
+	(nombre "WriteGuayBig")
+	(num_plazas 1)
+	(precio 556.0)
+	(profundidad 70.0))
+
+([Mikeo_Instance_30022] of  Escritorios
+
+	(anchura 130.0)
+	(descripcion "Escritorio de madera moderno y grande.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(longitud_max 130.0)
+	(material madera)
+	(nombre "WriteNewBig")
+	(num_plazas 1)
+	(precio 500.0)
+	(profundidad 70.0))
+
+([Mikeo_Instance_30023] of  Escritorios
+
+	(anchura 130.0)
+	(descripcion "Escritorio de madera clasico y grande.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(longitud_max 130.0)
+	(material madera)
+	(nombre "WriteClasBig")
+	(num_plazas 1)
+	(precio 485.0)
+	(profundidad 70.0))
+
+([Mikeo_Instance_30024] of  Escritorios
+
+	(anchura 130.0)
+	(descripcion "Escritorio de madera grande.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 130.0)
+	(material madera)
+	(nombre "WriteFlowBig")
+	(num_plazas 1)
+	(precio 400.0)
+	(profundidad 70.0))
+
+([Mikeo_Instance_30025] of  Escritorios
+
+	(anchura 130.0)
+	(descripcion "Escritorio de mimbre grande.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 130.0)
+	(material mimbre)
+	(nombre "WriteFlowMimBig")
+	(num_plazas 1)
+	(precio 220.0)
+	(profundidad 70.0))
+
+([Mikeo_Instance_30026] of  Escritorios
+
+	(anchura 110.0)
+	(descripcion "Escritorio de madera elegante, sofisticado. Tamano pequeno.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "WriteGuay")
+	(num_plazas 1)
+	(precio 500.0)
+	(profundidad 65.0))
+
+([Mikeo_Instance_30027] of  Escritorios
+
+	(anchura 110.0)
+	(descripcion "Escritorio de madera moderno. Tamano pequeno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "WriteNew")
+	(num_plazas 1)
+	(precio 465.0)
+	(profundidad 65.0))
+
+([Mikeo_Instance_30028] of  Escritorios
+
+	(anchura 110.0)
+	(descripcion "Escritorio de madera clasico. Tamano pequeno.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "WriteClas")
+	(num_plazas 1)
+	(precio 435.0)
+	(profundidad 65.0))
+
+([Mikeo_Instance_30029] of  Escritorios
+
+	(anchura 110.0)
+	(descripcion "Escritorio de madera. Tamano pequeno.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "WriteFlow")
+	(num_plazas 1)
+	(precio 345.0)
+	(profundidad 65.0))
+
+([Mikeo_Instance_30030] of  Escritorios
+
+	(anchura 110.0)
+	(descripcion "Escritorio de mimbre. Tamano pequeno.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material mimbre)
+	(nombre "WriteFlowMim")
+	(num_plazas 1)
+	(precio 180.0)
+	(profundidad 65.0))
+
+([Mikeo_Instance_30031] of  SillaGiratoria
+
+	(anchura 57.0)
+	(descripcion "Silla giratoria de escritorio o despacho.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material metal piel)
+	(nombre "RollChairChic")
+	(precio 400.0)
+	(profundidad 55.0))
+
+([Mikeo_Instance_30032] of  SillaGiratoria
+
+	(anchura 47.0)
+	(descripcion "Silla giratoria de escritorio o despacho.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material metal tela)
+	(nombre "RollChairMod")
+	(precio 250.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_30033] of  SillaGiratoria
+
+	(anchura 47.0)
+	(descripcion "Silla giratoria de escritorio o despacho.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "RollChairClas")
+	(precio 150.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_30034] of  SillaGiratoria
+
+	(anchura 47.0)
+	(descripcion "Silla giratoria de escritorio o despacho.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material plastico)
+	(nombre "RollChairHip")
+	(precio 70.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_4] of  Reloj
+
+	(anchura 0.0)
+	(clasificacion_edades adulto)
+	(descripcion "Reloj elegante de madera.")
+	(diametro 57)
+	(estilo pijo)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Bravur")
+	(precio 49.95)
+	(profundidad 0.0))
+
+([Mikeo_Instance_40001] of  SillaGiratoria
+
+	(anchura 57.0)
+	(descripcion "Silla giratoria de escritorio o despacho.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material metal piel)
+	(nombre "RollChairChicCheap")
+	(precio 200.0)
+	(profundidad 55.0))
+
+([Mikeo_Instance_40002] of  SillaGiratoria
+
+	(anchura 47.0)
+	(descripcion "Silla giratoria de escritorio o despacho.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material metal tela)
+	(nombre "RollChairModCheap")
+	(precio 150.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_40003] of  SillaGiratoria
+
+	(anchura 47.0)
+	(descripcion "Silla giratoria de escritorio o despacho.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "RollChairClasCheap")
+	(precio 75.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_40004] of  SillaGiratoria
+
+	(anchura 47.0)
+	(descripcion "Silla giratoria de escritorio o despacho.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material plastico)
+	(nombre "RollChairHip")
+	(precio 45.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_40005] of  Tocador
+
+	(anchura 110.0)
+	(descripcion "Tocador de madera clasico. Tamaño grande.")
+	(espejo_preferido [Mikeo_Instance_18])
+	(estilo clasico)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "TocClasGran")
+	(num_plazas 0)
+	(precio 348.0)
+	(profundidad 57.0))
+
+([Mikeo_Instance_40006] of  Bajo
+
+	(anchura 201.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mueble bajo y  de mimbre. Pensado para aquellos que necesitan mas espacio.")
+	(estilo hippie)
+	(habitacion comedor)
+	(material mimbre)
+	(nombre "MobHipMim")
+	(precio 450.0)
+	(profundidad 45.5)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_40007] of  Reloj
+
+	(anchura 0.0)
+	(clasificacion_edades adulto)
+	(descripcion "Reloj de cucut de colores claros de comedor.")
+	(diametro 25)
+	(estilo clasico)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "RushBell")
+	(precio 60.0)
+	(profundidad 0.0))
+
+([Mikeo_Instance_40008] of  Reloj
+
+	(anchura 0.0)
+	(clasificacion_edades adulto)
+	(descripcion "Reloj elegante de madera para comedor.")
+	(diametro 57)
+	(estilo pijo)
+	(habitacion comedor)
+	(material madera)
+	(nombre "BravurBell")
+	(precio 60.0)
+	(profundidad 0.0))
+
+([Mikeo_Instance_40009] of  Reloj
+
+	(anchura 28.0)
+	(clasificacion_edades adulto)
+	(descripcion "Reloj de diseno para comedor.")
+	(diametro 0)
+	(estilo moderno)
+	(habitacion comedor)
+	(material vidrio)
+	(nombre "SokoBell")
+	(precio 37.5)
+	(profundidad 4.0))
+
+([Mikeo_Instance_40010] of  Reloj
+
+	(anchura 28.0)
+	(clasificacion_edades adulto)
+	(descripcion "Reloj de colores vivos para comedor.")
+	(diametro 0)
+	(estilo hippie)
+	(habitacion comedor)
+	(material plastico)
+	(nombre "BravurBell")
+	(precio 14.0)
+	(profundidad 4.0))
+
+([Mikeo_Instance_5] of  Reloj
+
+	(anchura 28.0)
+	(clasificacion_edades adulto)
+	(descripcion "Reloj de diseno")
+	(diametro 0)
+	(estilo moderno)
+	(habitacion cocina)
+	(material vidrio)
+	(nombre "Soko")
+	(precio 30.5)
+	(profundidad 4.0))
+
+([Mikeo_Instance_50006] of  Tocador
+
+	(anchura 110.0)
+	(descripcion "Tocador de madera de diseño. Tamaño grande.")
+	(espejo_preferido [Mikeo_Instance_20])
+	(estilo moderno)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "TocModGran")
+	(num_plazas 0)
+	(precio 350.0)
+	(profundidad 57.0))
+
+([Mikeo_Instance_50007] of  Tocador
+
+	(anchura 90.0)
+	(descripcion "Tocador de madera clasico. Tamaño pequeño.")
+	(espejo_preferido [Mikeo_Instance_18])
+	(estilo clasico)
+	(habitacion dormitorio)
+	(longitud_max 90.0)
+	(material madera)
+	(nombre "TocClasPeq")
+	(num_plazas 0)
+	(precio 299.0)
+	(profundidad 57.0))
+
+([Mikeo_Instance_50009] of  Tocador
+
+	(anchura 90.0)
+	(descripcion "Tocador de madera de diseño. Tamaño pequeño.")
+	(espejo_preferido [Mikeo_Instance_20])
+	(estilo moderno)
+	(habitacion dormitorio)
+	(longitud_max 90.0)
+	(material madera)
+	(nombre "TocModPeq")
+	(num_plazas 0)
+	(precio 300.0)
+	(profundidad 57.0))
+
+([Mikeo_Instance_50010] of  Tocador
+
+	(anchura 90.0)
+	(descripcion "Tocador de madera elegante y con estilo. Tamaño pequeño.")
+	(espejo_preferido [Mikeo_Instance_20])
+	(estilo pijo)
+	(habitacion dormitorio)
+	(longitud_max 90.0)
+	(material madera)
+	(nombre "TocChicPeq")
+	(num_plazas 0)
+	(precio 348.0)
+	(profundidad 57.0))
+
+([Mikeo_Instance_50012] of  Tocador
+
+	(anchura 110.0)
+	(descripcion "Tocador de madera elegante y con estilo. Tamaño grande.")
+	(espejo_preferido [Mikeo_Instance_20])
+	(estilo pijo)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "TocChicGran")
+	(num_plazas 0)
+	(precio 398.0)
+	(profundidad 57.0))
+
+([Mikeo_Instance_50014] of  Tocador
+
+	(anchura 90.0)
+	(descripcion "Tocador de madera floral. Tamaño pequeño.")
+	(espejo_preferido [Mikeo_Instance_22])
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 90.0)
+	(material madera)
+	(nombre "TocHipPeq")
+	(num_plazas 0)
+	(precio 218.0)
+	(profundidad 57.0))
+
+([Mikeo_Instance_50015] of  Tocador
+
+	(anchura 110.0)
+	(descripcion "Tocador de madera floral. Tamaño grande.")
+	(espejo_preferido [Mikeo_Instance_22])
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 110.0)
+	(material madera)
+	(nombre "TocHipGran")
+	(num_plazas 0)
+	(precio 258.0)
+	(profundidad 57.0))
+
+([Mikeo_Instance_50017] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesita de noche con estilo, de adulto y madera.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material madera)
+	(nombre "YorkAdultMad")
+	(num_plazas 0)
+	(precio 70.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50018] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesita de noche con estilo, de adulto y de pladur.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material pladur)
+	(nombre "YorkAdultPla")
+	(num_plazas 0)
+	(precio 60.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50019] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades nino)
+	(descripcion "Mesita de noche con estilo, de nino y madera.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material madera)
+	(nombre "YorkChildMad")
+	(num_plazas 0)
+	(precio 65.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50020] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades nino)
+	(descripcion "Mesita de noche con estilo, de nino y de pladur.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material pladur)
+	(nombre "YorkChildPla")
+	(num_plazas 0)
+	(precio 55.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50021] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesita de noche de diseno, de adulto y madera.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material madera)
+	(nombre "TamesisAdultMad")
+	(num_plazas 0)
+	(precio 68.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50022] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesita de noche de diseno, de adulto y de pladur.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material pladur)
+	(nombre "TamesisAdultPla")
+	(num_plazas 0)
+	(precio 61.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50023] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades nino)
+	(descripcion "Mesita de noche de diseno, de nino y madera.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material madera)
+	(nombre "TamesisChildMad")
+	(num_plazas 0)
+	(precio 56.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50024] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades nino)
+	(descripcion "Mesita de noche de diseno, de nino y de pladur.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material pladur)
+	(nombre "TamesisChildPla")
+	(num_plazas 0)
+	(precio 48.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50025] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesita de noche clasica, de adulto y madera.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material madera)
+	(nombre "LondonAdultMad")
+	(num_plazas 0)
+	(precio 65.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50026] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades nino)
+	(descripcion "Mesita de noche clasica, de nino y madera.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material madera)
+	(nombre "LondonChildMad")
+	(num_plazas 0)
+	(precio 55.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50027] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesita de noche floral, de adulto y madera.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material madera)
+	(nombre "FreeAdultMad")
+	(num_plazas 0)
+	(precio 50.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50028] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades adulto)
+	(descripcion "Mesita de noche floral, de adulto y de mimbre.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material mimbre)
+	(nombre "FreeAdultMim")
+	(num_plazas 0)
+	(precio 35.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50029] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades nino)
+	(descripcion "Mesita de noche floral, de nino y madera.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material madera)
+	(nombre "FreeChildMad")
+	(num_plazas 0)
+	(precio 40.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50030] of  Mesitas
+
+	(anchura 48.0)
+	(clasificacion_edades nino)
+	(descripcion "Mesita de noche floral, de nino y de mimbre.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(longitud_max 48.0)
+	(material mimbre)
+	(nombre "FreeChildMim")
+	(num_plazas 0)
+	(precio 22.0)
+	(profundidad 37.0))
+
+([Mikeo_Instance_50031] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a con toque sofisticado. De pladur.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material pladur)
+	(nombre "ChildChicPla")
+	(precio 289.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50032] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a con toque sofisticado. Tamano pequeno.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChildChicPeq")
+	(precio 259.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50033] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a con toque sofisticado. De pladur y pequeno.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material pladur)
+	(nombre "ChildChicPlaPeq")
+	(precio 209.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50034] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a de diseno original. De pladur.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material pladur)
+	(nombre "ChildFashPla")
+	(precio 250.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50035] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a de diseno original. Tamano pequeno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChildFashPeq")
+	(precio 220.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50036] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a de diseno original. De pladur y pequeno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material pladur)
+	(nombre "ChildFashPlaPeq")
+	(precio 200.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50037] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a tradicional. Tamano pequeno.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "ChildEverPeq")
+	(precio 150.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50038] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades nino)
+	(descripcion "Aramario de dormitorio para nino/a de madera y mimbre. Tamano pequeno.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera mimbre)
+	(nombre "ChildEverPeq")
+	(precio 60.0)
+	(profundidad 58.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50039] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto sofisticado con espejo en las puertas centrales. Material pladur.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material pladur)
+	(nombre "SofisticMirrorPla")
+	(precio 315.0)
+	(profundidad 58.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50040] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto sofisticado. Material pladur.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material pladur)
+	(nombre "SofisticPla")
+	(precio 250.0)
+	(profundidad 58.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50041] of  Completo
+
+	(anchura 140.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto de diseno con espejo en las puertas centrales. Material pladur.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material pladur)
+	(nombre "TomyMirrorPla")
+	(precio 300.0)
+	(profundidad 58.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50042] of  Completo
+
+	(anchura 110.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de dormitorio adulto de diseno. Material pladur.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material pladur)
+	(nombre "TomyPla")
+	(precio 249.0)
+	(profundidad 58.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50043] of  LamparaMesita
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de mesita de noche de adulto y con estilo.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material porcelana)
+	(nombre "RaiAdult")
+	(precio 69.0))
+
+([Mikeo_Instance_50044] of  LamparaMesita
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de mesita de noche de adulto de diseno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material porcelana)
+	(nombre "FelyAdult")
+	(precio 61.0))
+
+([Mikeo_Instance_50045] of  LamparaMesita
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de mesita de noche de adulto clasica.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material ceramica)
+	(nombre "HoupAdult")
+	(precio 55.0))
+
+([Mikeo_Instance_50046] of  LamparaMesita
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de mesita de noche de adulto floral.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "HipAdult")
+	(precio 35.0))
+
+([Mikeo_Instance_50047] of  LamparaMesita
+
+	(clasificacion_edades nino)
+	(descripcion "Lampara de mesita de noche de nino y con estilo.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material porcelana)
+	(nombre "RaiChild")
+	(precio 59.0))
+
+([Mikeo_Instance_50048] of  LamparaMesita
+
+	(clasificacion_edades nino)
+	(descripcion "Lampara de mesita de noche de nino de diseno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material porcelana)
+	(nombre "FelyChild")
+	(precio 51.0))
+
+([Mikeo_Instance_50049] of  LamparaMesita
+
+	(clasificacion_edades nino)
+	(descripcion "Lampara de mesita de noche de nino clasica.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material ceramica)
+	(nombre "HoupChild")
+	(precio 45.0))
+
+([Mikeo_Instance_50050] of  LamparaMesita
+
+	(clasificacion_edades nino)
+	(descripcion "Lampara de mesita de noche de nino floral.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "HipChild")
+	(precio 25.0))
+
+([Mikeo_Instance_50052] of  LamparaParet
+
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared para dormitorio elegante y de adulto.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "JavaWall")
+	(precio 52.0))
+
+([Mikeo_Instance_50053] of  LamparaParet
+
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared para dormitorio de diseno y de adulto.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "PolishWall")
+	(precio 49.0))
+
+([Mikeo_Instance_50054] of  LamparaParet
+
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared para dormitorio clasica y de adulto.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "FrenchWall")
+	(precio 42.0))
+
+([Mikeo_Instance_50055] of  LamparaParet
+
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared para dormitorio floral y de adulto.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "ItalianWall")
+	(precio 37.0))
+
+([Mikeo_Instance_50056] of  LamparaParet
+
+	(clasificacion_edades nino)
+	(descripcion "Lamapara de pared para dormitorio elegante y de nino.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "JavaWallChild")
+	(precio 42.0))
+
+([Mikeo_Instance_50057] of  LamparaParet
+
+	(clasificacion_edades nino)
+	(descripcion "Lamapara de pared para dormitorio de diseno y de nino.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "PolishWallChild")
+	(precio 39.0))
+
+([Mikeo_Instance_50058] of  LamparaParet
+
+	(clasificacion_edades nino)
+	(descripcion "Lamapara de pared para dormitorio clasica y de nino.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "FrenchWallChild")
+	(precio 32.0))
+
+([Mikeo_Instance_50059] of  LamparaParet
+
+	(clasificacion_edades nino)
+	(descripcion "Lamapara de pared para dormitorio floral y de nino.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "ItalianWallChild")
+	(precio 27.0))
+
+([Mikeo_Instance_50060] of  LamparaTecho
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de dormitorio de techo elegante y para adulto.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "Java")
+	(precio 53.0))
+
+([Mikeo_Instance_50061] of  LamparaTecho
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de dormitorio de techo de diseno y para adulto.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "Polish")
+	(precio 50.0))
+
+([Mikeo_Instance_50062] of  LamparaTecho
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de dormitorio de techo clasica y para adulto.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "French")
+	(precio 47.0))
+
+([Mikeo_Instance_50063] of  LamparaTecho
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de dormitorio de techo floral y para adulto.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "Italian")
+	(precio 39.0))
+
+([Mikeo_Instance_50064] of  LamparaTecho
+
+	(clasificacion_edades nino)
+	(descripcion "Lampara de dormitorio de techo elegante y para nino.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "JavaChild")
+	(precio 43.0))
+
+([Mikeo_Instance_50065] of  LamparaTecho
+
+	(clasificacion_edades nino)
+	(descripcion "Lampara de dormitorio de techo de diseno y para nino.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "PolishChild")
+	(precio 40.0))
+
+([Mikeo_Instance_50066] of  LamparaTecho
+
+	(clasificacion_edades nino)
+	(descripcion "Lampara de dormitorio de techo clasica y para nino.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "FrenchChild")
+	(precio 37.0))
+
+([Mikeo_Instance_50067] of  LamparaTecho
+
+	(clasificacion_edades nino)
+	(descripcion "Lampara de dormitorio de techo floral y para nino.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "ItalianChild")
+	(precio 29.0))
+
+([Mikeo_Instance_50068] of  Alfombra
+
+	(clasificacion_edades adulto)
+	(descripcion "Alfombra de dormitorio elegante.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Cat")
+	(precio 55.0))
+
+([Mikeo_Instance_50069] of  Alfombra
+
+	(clasificacion_edades adulto)
+	(descripcion "Alfombra de dormitorio de diseno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Barcel")
+	(precio 51.0))
+
+([Mikeo_Instance_50070] of  Alfombra
+
+	(clasificacion_edades adulto)
+	(descripcion "Alfombra de dormitorio clasica.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Tarraco")
+	(precio 45.0))
+
+([Mikeo_Instance_50071] of  Alfombra
+
+	(clasificacion_edades adulto)
+	(descripcion "Alfombra de dormitorio floral.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Gironi")
+	(precio 39.0))
+
+([Mikeo_Instance_50072] of  Alfombra
+
+	(clasificacion_edades nino)
+	(descripcion "Alfombra de dormitorio para nino de Disney.")
+	(estilo pijo clasico moderno hippie)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Diseny")
+	(precio 50.0))
+
+([Mikeo_Instance_50073] of  Edredon
+
+	(clasificacion_edades adulto)
+	(descripcion "Edredon de adulto cama doble. Estilo elegante.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Lleida")
+	(precio 59.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50074] of  Edredon
+
+	(clasificacion_edades adulto)
+	(descripcion "Edredon de adulto cama individual. Estilo elegante.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "LleidaInd")
+	(precio 49.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50075] of  Edredon
+
+	(clasificacion_edades adulto)
+	(descripcion "Edredon de adulto cama doble. De diseno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Zaragoza")
+	(precio 59.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50076] of  Edredon
+
+	(clasificacion_edades adulto)
+	(descripcion "Edredon de adulto cama individual. De diseno.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "ZaragozaInd")
+	(precio 49.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50077] of  Edredon
+
+	(clasificacion_edades adulto)
+	(descripcion "Edredon de adulto cama doble clasico.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Huesca")
+	(precio 59.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50078] of  Edredon
+
+	(clasificacion_edades adulto)
+	(descripcion "Edredon de adulto cama individual clasico.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "HuescaInd")
+	(precio 49.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50079] of  Edredon
+
+	(clasificacion_edades adulto)
+	(descripcion "Edredon de adulto cama doble floral.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Cuenca")
+	(precio 59.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50080] of  Edredon
+
+	(clasificacion_edades adulto)
+	(descripcion "Edredon de adulto cama individual floral.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "CuencaInd")
+	(precio 49.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50081] of  Sabana
+
+	(clasificacion_edades adulto)
+	(descripcion "Sabana de cama doble elegante de hilos tintos.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "Monaco")
+	(precio 42.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50082] of  Edredon
+
+	(clasificacion_edades nino)
+	(descripcion "Edredon de cama indivual de Disney.")
+	(estilo clasico moderno hippie pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "EdrDisney")
+	(precio 45.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50083] of  Sabana
+
+	(clasificacion_edades adulto)
+	(descripcion "Sabana de cama doble bordado de estilo clasico.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "Marisa")
+	(precio 79.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50084] of  Sabana
+
+	(clasificacion_edades adulto)
+	(descripcion "Sabana de cama doble con original estampado.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "Tissu")
+	(precio 43.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50085] of  Sabana
+
+	(clasificacion_edades adulto)
+	(descripcion "Sabana de cama doble con motivos florales.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "Dalia")
+	(precio 49.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50086] of  Sabana
+
+	(clasificacion_edades nino)
+	(descripcion "Sabanas para cama individual y de nino")
+	(estilo clasico moderno hippie pijo)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "SabanasDisney")
+	(precio 50.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50087] of  Sabana
+
+	(clasificacion_edades adulto)
+	(descripcion "Sabana de cama individual elegante de hilos tintos.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "MonacoInd")
+	(precio 42.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50088] of  Sabana
+
+	(clasificacion_edades adulto)
+	(descripcion "Sabana de cama individual bordado de estilo clasico.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "MarisaInd")
+	(precio 79.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50089] of  Sabana
+
+	(clasificacion_edades adulto)
+	(descripcion "Sabana de cama individual con original estampado.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "TissuInd")
+	(precio 43.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50090] of  Sabana
+
+	(clasificacion_edades adulto)
+	(descripcion "Sabana de cama individual con motivos florales.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material tela)
+	(nombre "DaliaInd")
+	(precio 49.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50091] of  Manta
+
+	(clasificacion_edades adulto)
+	(descripcion "Manta de cama doble con ribete de raso")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Patch")
+	(precio 90.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50092] of  Manta
+
+	(clasificacion_edades adulto)
+	(descripcion "Manta de cama doble con original estampado.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "PatchPiel")
+	(precio 90.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50093] of  Manta
+
+	(clasificacion_edades adulto)
+	(descripcion "Manta de cama doble en algodon. Clasica.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Malta")
+	(precio 70.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50094] of  Manta
+
+	(clasificacion_edades adulto)
+	(descripcion "Manta de cama doble estampada floral.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Luxor")
+	(precio 60.0)
+	(tipo_cama doble))
+
+([Mikeo_Instance_50095] of  Manta
+
+	(clasificacion_edades adulto)
+	(descripcion "Manta de cama individual con ribete de raso")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "PatchInd")
+	(precio 90.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50096] of  Manta
+
+	(clasificacion_edades adulto)
+	(descripcion "Manta de cama individual con original estampado.")
+	(estilo moderno)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "PatchPielInd")
+	(precio 90.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50097] of  Manta
+
+	(clasificacion_edades adulto)
+	(descripcion "Manta de cama individual en algodon. Clasica.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "MaltaInd")
+	(precio 70.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50098] of  Manta
+
+	(clasificacion_edades adulto)
+	(descripcion "Manta de cama individual estampada floral.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "LuxorInd")
+	(precio 60.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50099] of  Manta
+
+	(clasificacion_edades nino)
+	(descripcion "Manta de cama individual de Disney")
+	(estilo clasico moderno hippie pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "MantaDisney")
+	(precio 60.0)
+	(tipo_cama individual))
+
+([Mikeo_Instance_50100] of  Cojin
+
+	(clasificacion_edades adulto)
+	(descripcion "Cojin de cama doble de espuma.")
+	(estilo clasico moderno hippie pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Bohemian")
+	(precio 50.0)
+	(tipo_cama doble)
+	(tipo_relleno espuma))
+
+([Mikeo_Instance_50101] of  Cojin
+
+	(clasificacion_edades adulto)
+	(descripcion "Cojin de cama individual de espuma.")
+	(estilo clasico moderno hippie pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "BohemianInd")
+	(precio 40.0)
+	(tipo_cama individual)
+	(tipo_relleno espuma))
+
+([Mikeo_Instance_50102] of  Cojin
+
+	(clasificacion_edades adulto)
+	(descripcion "Cojin de cama doble de plumas.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "Mashi")
+	(precio 90.0)
+	(tipo_cama doble)
+	(tipo_relleno pluma))
+
+([Mikeo_Instance_50103] of  Cojin
+
+	(clasificacion_edades adulto)
+	(descripcion "Cojin de cama individual de plumas.")
+	(estilo pijo)
+	(habitacion dormitorio)
+	(material textil)
+	(nombre "MashiInd")
+	(precio 82.0)
+	(tipo_cama individual)
+	(tipo_relleno pluma))
+
+([Mikeo_Instance_50104] of  Completo
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina de estilo elegante. De madera.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Integrity")
+	(precio 700.0)
+	(profundidad 60.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50105] of  Completo
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina de estilo elegante. De pladur.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material pladur)
+	(nombre "IntegrityPla")
+	(precio 669.0)
+	(profundidad 60.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50106] of  Completo
+
+	(anchura 170.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina de estilo elegante. De madera, pequena.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material madera)
+	(nombre "IntegritySmall")
+	(precio 600.0)
+	(profundidad 55.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50107] of  Completo
+
+	(anchura 170.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina de estilo elegante. De pladur pequena")
+	(estilo pijo)
+	(habitacion cocina)
+	(material pladur)
+	(nombre "IntegrityPlaSmall")
+	(precio 669.0)
+	(profundidad 55.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50108] of  Completo
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina de diseno. De madera.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Flexifor")
+	(precio 690.0)
+	(profundidad 60.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50109] of  Completo
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina de diseno. De pladur.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material pladur)
+	(nombre "FlexiforPla")
+	(precio 650.0)
+	(profundidad 60.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50110] of  Completo
+
+	(anchura 170.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina de diseno. De madera pequena.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material madera)
+	(nombre "FlexiforSmall")
+	(precio 600.0)
+	(profundidad 55.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50111] of  Completo
+
+	(anchura 170.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina de diseno. De pladur pequena.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material pladur)
+	(nombre "FlexiforPlaSmall")
+	(precio 590.0)
+	(profundidad 55.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50112] of  Completo
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina clasica. De madera.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Dora")
+	(precio 590.0)
+	(profundidad 60.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50113] of  Completo
+
+	(anchura 170.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina clasica. De madera pequena.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material madera)
+	(nombre "DoraSmall")
+	(precio 550.0)
+	(profundidad 55.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50114] of  Completo
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina. De madera.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Aladin")
+	(precio 590.0)
+	(profundidad 60.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50115] of  Completo
+
+	(anchura 170.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina. De madera pequena.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material madera)
+	(nombre "AladinSmall")
+	(precio 590.0)
+	(profundidad 55.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50116] of  Completo
+
+	(anchura 200.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina. De mimbre.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material mimbre)
+	(nombre "AladinMim")
+	(precio 500.0)
+	(profundidad 60.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50117] of  Completo
+
+	(anchura 170.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de cocina. De mimbre pequena.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material mimbre)
+	(nombre "AladinMimSmall")
+	(precio 450.0)
+	(profundidad 55.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50118] of  MesaPlegable
+
+	(anchura 80.0)
+	(descripcion "Mesa plegable de cocina para 2 personas, elegante.")
+	(estilo pijo)
+	(habitacion cocina)
+	(longitud_max 80.0)
+	(material madera)
+	(nombre "LaurinTwo")
+	(num_plazas 2)
+	(precio 100.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_50119] of  MesaPlegable
+
+	(anchura 150.0)
+	(descripcion "Mesa plegable de cocina para 4 personas, elegante.")
+	(estilo pijo)
+	(habitacion cocina)
+	(longitud_max 150.0)
+	(material madera)
+	(nombre "LaurinFour")
+	(num_plazas 4)
+	(precio 120.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_50121] of  MesaPlegable
+
+	(anchura 80.0)
+	(descripcion "Mesa plegable de cocina para 2 personas. De diseno.")
+	(estilo moderno)
+	(habitacion cocina)
+	(longitud_max 80.0)
+	(material madera)
+	(nombre "SoniumTwo")
+	(num_plazas 2)
+	(precio 90.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_50122] of  MesaPlegable
+
+	(anchura 150.0)
+	(descripcion "Mesa plegable de cocina para 4 personas. De diseno.")
+	(estilo moderno)
+	(habitacion cocina)
+	(longitud_max 150.0)
+	(material madera)
+	(nombre "SoniumFour")
+	(num_plazas 4)
+	(precio 100.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_50123] of  MesaPlegable
+
+	(anchura 80.0)
+	(descripcion "Mesa plegable de cocina para 2 personas. Clasica.")
+	(estilo clasico)
+	(habitacion cocina)
+	(longitud_max 80.0)
+	(material madera)
+	(nombre "AnitaTwo")
+	(num_plazas 2)
+	(precio 80.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_50124] of  MesaPlegable
+
+	(anchura 150.0)
+	(descripcion "Mesa plegable de cocina para 4 personas. Clasica.")
+	(estilo clasico)
+	(habitacion cocina)
+	(longitud_max 150.0)
+	(material madera)
+	(nombre "AnitaFour")
+	(num_plazas 4)
+	(precio 90.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_50125] of  MesaPlegable
+
+	(anchura 80.0)
+	(descripcion "Mesa plegable de cocina para 2 personas.")
+	(estilo hippie)
+	(habitacion cocina)
+	(longitud_max 80.0)
+	(material madera)
+	(nombre "HipialTwo")
+	(num_plazas 2)
+	(precio 60.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_50126] of  MesaPlegable
+
+	(anchura 150.0)
+	(descripcion "Mesa plegable de cocina para 4 personas.")
+	(estilo hippie)
+	(habitacion cocina)
+	(longitud_max 150.0)
+	(material madera)
+	(nombre "HipialFour")
+	(num_plazas 4)
+	(precio 70.0)
+	(profundidad 60.0))
+
+([Mikeo_Instance_50134] of  SillaPlegable
+
+	(anchura 47.0)
+	(descripcion "Silla plegable de cocina, elegante.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Javiu")
+	(precio 35.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_50135] of  SillaPlegable
+
+	(anchura 47.0)
+	(descripcion "Silla plegable de cocina, de diseno.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Tami")
+	(precio 31.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_50136] of  SillaPlegable
+
+	(anchura 47.0)
+	(descripcion "Silla plegable de cocina, clasica.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Mercedes")
+	(precio 25.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_50137] of  SillaPlegable
+
+	(anchura 47.0)
+	(descripcion "Silla plegable de cocina.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Benz")
+	(precio 20.0)
+	(profundidad 47.0))
+
+([Mikeo_Instance_50138] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de cocina elgante para 2, extensible a 4.")
+	(estilo pijo)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 119.0)
+	(material madera)
+	(nombre "LuciaTwo")
+	(num_plazas 2)
+	(precio 220.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50143]))
+
+([Mikeo_Instance_50139] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de cocina elgante para 4 extensible a 6")
+	(estilo pijo)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 189.0)
+	(material madera)
+	(nombre "LuciaFour")
+	(num_plazas 4)
+	(precio 265.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50143]))
+
+([Mikeo_Instance_50140] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de cocina elgante para 6 extensible a 8.")
+	(estilo pijo)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 235.0)
+	(material madera)
+	(nombre "LuciaSix")
+	(num_plazas 6)
+	(precio 299.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50143]))
+
+([Mikeo_Instance_50141] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de cocina de diseno para 2, extensible a 4.")
+	(estilo moderno)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 119.0)
+	(material madera)
+	(nombre "WolkTwo")
+	(num_plazas 2)
+	(precio 200.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50144]))
+
+([Mikeo_Instance_50142] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de cocina de diseno para 4 extensible a 6")
+	(estilo moderno)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 189.0)
+	(material madera)
+	(nombre "WolkFour")
+	(num_plazas 4)
+	(precio 235.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50144]))
+
+([Mikeo_Instance_50143] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla de cocina elegante a conjunto con las mesas modelo Lucia")
+	(estilo pijo)
+	(habitacion cocina)
+	(material madera)
+	(nombre "LuciaChair")
+	(precio 70.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50144] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla de cocina de diseno a conjunto con las mesas modelo Wolk")
+	(estilo moderno)
+	(habitacion cocina)
+	(material madera)
+	(nombre "WolkChair")
+	(precio 68.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50145] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de cocina de diseno para 6 extensible a 8.")
+	(estilo moderno)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 235.0)
+	(material madera)
+	(nombre "WolkSix")
+	(num_plazas 6)
+	(precio 299.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50144]))
+
+([Mikeo_Instance_50146] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de cocina clasica para 2, extensible a 4.")
+	(estilo clasico)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 119.0)
+	(material madera)
+	(nombre "IkaoTwo")
+	(num_plazas 2)
+	(precio 200.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50147]))
+
+([Mikeo_Instance_50147] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla de cocina clasica a conjunto con las mesas modelo Ikao")
+	(estilo clasico)
+	(habitacion cocina)
+	(material madera)
+	(nombre "IkaoChair")
+	(precio 60.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50148] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de cocina clasica para 4 extensible a 6")
+	(estilo clasico)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 189.0)
+	(material madera)
+	(nombre "IkaoFour")
+	(num_plazas 4)
+	(precio 235.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50147]))
+
+([Mikeo_Instance_50149] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de cocina clasica para 6 extensible a 8.")
+	(estilo clasico)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 235.0)
+	(material madera)
+	(nombre "IkaoSix")
+	(num_plazas 6)
+	(precio 299.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50147]))
+
+([Mikeo_Instance_50150] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de cocina para 2, extensible a 4.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 119.0)
+	(material madera)
+	(nombre "TurkiTwo")
+	(num_plazas 2)
+	(precio 150.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50151]))
+
+([Mikeo_Instance_50151] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla de cocina a conjunto con las mesas modelo Turki")
+	(estilo hippie)
+	(habitacion cocina)
+	(material madera)
+	(nombre "TurkiChair")
+	(precio 45.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50152] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de cocina para 4 extensible a 6")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 189.0)
+	(material madera)
+	(nombre "TurkiFour")
+	(num_plazas 4)
+	(precio 185.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50151]))
+
+([Mikeo_Instance_50153] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de cocina para 6 extensible a 8.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 235.0)
+	(material madera)
+	(nombre "TurkiSix")
+	(num_plazas 6)
+	(precio 220.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50151]))
+
+([Mikeo_Instance_50154] of  MesaFija
+
+	(anchura 59.0)
+	(descripcion "Mesa de cocina para 2, extensible a 4. De mimbre.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 119.0)
+	(material mimbre)
+	(nombre "UkiTwo")
+	(num_plazas 2)
+	(precio 100.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50155]))
+
+([Mikeo_Instance_50155] of  SillaFija
+
+	(anchura 51.0)
+	(descripcion "Silla de cocina a conjunto con las mesas modelo Uki")
+	(estilo hippie)
+	(habitacion cocina)
+	(material mimbre)
+	(nombre "UkiChair")
+	(precio 30.0)
+	(profundidad 58.0))
+
+([Mikeo_Instance_50156] of  MesaFija
+
+	(anchura 137.0)
+	(descripcion "Mesa de cocina para 4 extensible a 6. De mimbre.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 189.0)
+	(material mimbre)
+	(nombre "UkiFour")
+	(num_plazas 4)
+	(precio 140.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50155]))
+
+([Mikeo_Instance_50157] of  MesaFija
+
+	(anchura 180.0)
+	(descripcion "Mesa de cocina para 6 extensible a 8. De mimbre.")
+	(estilo hippie)
+	(extensible TRUE)
+	(habitacion cocina)
+	(longitud_max 235.0)
+	(material mimbre)
+	(nombre "UkiSix")
+	(num_plazas 6)
+	(precio 180.0)
+	(profundidad 59.0)
+	(silla_preferida [Mikeo_Instance_50155]))
+
+([Mikeo_Instance_50158] of  SillaFija
+
+	(anchura 55.0)
+	(descripcion "Silla de cocina elegante.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Lumia")
+	(precio 64.0)
+	(profundidad 55.0))
+
+([Mikeo_Instance_50159] of  SillaFija
+
+	(anchura 55.0)
+	(descripcion "Silla de cocina de diseno.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Wolky")
+	(precio 60.0)
+	(profundidad 55.0))
+
+([Mikeo_Instance_50160] of  SillaFija
+
+	(anchura 55.0)
+	(descripcion "Silla de cocina clasica.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Mikado")
+	(precio 52.0)
+	(profundidad 55.0))
+
+([Mikeo_Instance_50161] of  SillaFija
+
+	(anchura 55.0)
+	(descripcion "Silla de cocina.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material madera)
+	(nombre "Muki")
+	(precio 38.0)
+	(profundidad 55.0))
+
+([Mikeo_Instance_50162] of  SillaFija
+
+	(anchura 55.0)
+	(descripcion "Silla de cocina de mimbre.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material mimbre)
+	(nombre "Usilu")
+	(precio 23.0)
+	(profundidad 55.0))
+
+([Mikeo_Instance_50163] of  LamparaParet
+
+	(anchura 25.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared elgante de cocina.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material metal)
+	(nombre "MisaeWall")
+	(precio 80.0)
+	(profundidad 16.0))
+
+([Mikeo_Instance_50164] of  LamparaParet
+
+	(anchura 25.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared de diseno exclusivo de cocina.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material metal)
+	(nombre "SheniaWall")
+	(precio 70.0)
+	(profundidad 16.0))
+
+([Mikeo_Instance_50165] of  LamparaParet
+
+	(anchura 25.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared tradicional de cocina.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material metal)
+	(nombre "OpiWall")
+	(precio 60.0)
+	(profundidad 16.0))
+
+([Mikeo_Instance_50166] of  LamparaParet
+
+	(anchura 25.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lamapara de pared floral, para cocina.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material metal)
+	(nombre "TulipaWall")
+	(precio 45.0)
+	(profundidad 16.0))
+
+([Mikeo_Instance_50167] of  LamparaTecho
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo con focos alogenos para cocina.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Misae")
+	(precio 80.0)
+	(profundidad 50.0))
+
+([Mikeo_Instance_50168] of  LamparaTecho
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo de diseno exclusivo, para cocina.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Shenia")
+	(precio 60.0)
+	(profundidad 50.0))
+
+([Mikeo_Instance_50169] of  LamparaTecho
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo tradicional, para cocina")
+	(estilo clasico)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Opi")
+	(precio 52.0)
+	(profundidad 50.0))
+
+([Mikeo_Instance_50170] of  LamparaTecho
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo para cocina.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Tulipa")
+	(precio 45.0)
+	(profundidad 50.0))
+
+([Mikeo_Instance_50171] of  FundaMesa
+
+	(anchura 80.0)
+	(descripcion "Mantel de plastico para mesa de hasta 4 comensales.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "AndreaFour")
+	(num_plazas 4)
+	(precio 20.0)
+	(profundidad 120.0))
+
+([Mikeo_Instance_50172] of  FundaMesa
+
+	(anchura 80.0)
+	(descripcion "Mantel de plastico para mesa de hasta 4 comensales.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "IndaFour")
+	(num_plazas 4)
+	(precio 19.9)
+	(profundidad 120.0))
+
+([Mikeo_Instance_50173] of  FundaMesa
+
+	(anchura 80.0)
+	(descripcion "Mantel de plastico para mesa de hasta 4 comensales.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "YesFour")
+	(num_plazas 4)
+	(precio 15.95)
+	(profundidad 120.0))
+
+([Mikeo_Instance_50174] of  FundaMesa
+
+	(anchura 85.0)
+	(descripcion "Mantel de plastico para mesa de hasta 6 comensales.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "AndreaSix")
+	(num_plazas 6)
+	(precio 20.0)
+	(profundidad 200.0))
+
+([Mikeo_Instance_50175] of  FundaMesa
+
+	(anchura 85.0)
+	(descripcion "Mantel de plastico para mesa de hasta 6 comensales.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "IndaSix")
+	(num_plazas 6)
+	(precio 19.9)
+	(profundidad 200.0))
+
+([Mikeo_Instance_50176] of  FundaMesa
+
+	(anchura 85.0)
+	(descripcion "Mantel de plastico para mesa de hasta 6 comensales.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "YesSix")
+	(num_plazas 6)
+	(precio 15.95)
+	(profundidad 200.0))
+
+([Mikeo_Instance_50177] of  FundaMesa
+
+	(anchura 90.0)
+	(descripcion "Mantel de plastico para mesa de hasta 8 comensales.")
+	(estilo moderno)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "AndreaEight")
+	(num_plazas 8)
+	(precio 20.0)
+	(profundidad 250.0))
+
+([Mikeo_Instance_50178] of  FundaMesa
+
+	(anchura 90.0)
+	(descripcion "Mantel de plastico para mesa de hasta 8 comensales.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "IndaEight")
+	(num_plazas 8)
+	(precio 19.9)
+	(profundidad 250.0))
+
+([Mikeo_Instance_50179] of  FundaMesa
+
+	(anchura 90.0)
+	(descripcion "Mantel de plastico para mesa de hasta 8 comensales.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "YesEight")
+	(num_plazas 8)
+	(precio 15.95)
+	(profundidad 250.0))
+
+([Mikeo_Instance_50180] of  Bateria
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Bateria de cocina de acero de 5 piezas.")
+	(estilo pijo moderno clasico hippie)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Cool")
+	(precio 300.0))
+
+([Mikeo_Instance_50182] of  Bateria
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Bateria de cocina de 5 piezas.")
+	(estilo pijo moderno clasico hippie)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Varianova")
+	(precio 200.0))
+
+([Mikeo_Instance_50184] of  Vajilla
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Vajilla de 20 piezas alegre de vistosa decoracion")
+	(estilo pijo moderno clasico hippie)
+	(habitacion cocina)
+	(material ceramica)
+	(nombre "SantaClara")
+	(precio 140.0))
+
+([Mikeo_Instance_50185] of  Vajilla
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Vajilla de porcelana de Bone china de 40 piezas")
+	(estilo pijo)
+	(habitacion cocina)
+	(material porcelana)
+	(nombre "Puntos")
+	(precio 265.0))
+
+([Mikeo_Instance_50186] of  Vajilla
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Vajilla de porcelana destacada por su diseno y estetica")
+	(estilo moderno)
+	(habitacion cocina)
+	(material porcelana)
+	(nombre "Rayas")
+	(precio 250.0))
+
+([Mikeo_Instance_50187] of  Vajilla
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Vajilla de porcelana intemporal.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material porcelana)
+	(nombre "Anubis")
+	(precio 230.0))
+
+([Mikeo_Instance_50188] of  Vajilla
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Vajilla cuadrada realizada en vidrio tensionado.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material vidrio)
+	(nombre "Carine")
+	(precio 100.0))
+
+([Mikeo_Instance_50189] of  Cuberteria
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Cuberteria de 112 piezas. Diseno sencillo y de buen gusto. Acero inoxidable.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Justinus")
+	(precio 390.0))
+
+([Mikeo_Instance_50190] of  Cuberteria
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Cuberteria de 113 piezas de acero inxodable de diseno")
+	(estilo moderno)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Jay")
+	(precio 350.0))
+
+([Mikeo_Instance_50191] of  Cuberteria
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Cuberteria de acero inoxidable de 100 piezas.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Titanio")
+	(precio 250.0))
+
+([Mikeo_Instance_50192] of  Cuberteria
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Cuberteria de acero inoxidable.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material metal)
+	(nombre "Troti")
+	(precio 180.0))
+
+([Mikeo_Instance_50195] of  ConjuntoCopas
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Cristaleria de 24 piezas elegante")
+	(estilo pijo)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Sagiovenese")
+	(precio 350.0))
+
+([Mikeo_Instance_50196] of  ConjuntoCopas
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Cristaleria de 24 piezas de diseno")
+	(estilo moderno)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Davinci")
+	(precio 290.0))
+
+([Mikeo_Instance_50197] of  ConjuntoCopas
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Cristaleria de 24 piezas clasica")
+	(estilo clasico)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Spiegelau")
+	(precio 220.0))
+
+([Mikeo_Instance_50198] of  ConjuntoCopas
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Cristaleria de 24 piezas.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Spiel")
+	(precio 189.0))
+
+([Mikeo_Instance_50199] of  ConjuntoVasos
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de 6 vasos elegante.")
+	(estilo pijo)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Club")
+	(precio 52.0))
+
+([Mikeo_Instance_50200] of  ConjuntoVasos
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de 6 vasos de diseno")
+	(estilo moderno)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Scott")
+	(precio 41.0))
+
+([Mikeo_Instance_50201] of  ConjuntoVasos
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de 6 vasos clasicos")
+	(estilo clasico)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Casual")
+	(precio 25.0))
+
+([Mikeo_Instance_50202] of  ConjuntoVasos
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de 6 vasos.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Wear")
+	(precio 19.0))
+
+([Mikeo_Instance_50203] of  ConjuntoCoctel
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de 6 copas de coctel mas coctelera")
+	(estilo pijo)
+	(habitacion cocina)
+	(material cristal)
+	(nombre "Coctel")
+	(precio 55.0))
+
+([Mikeo_Instance_50204] of  ConjuntoCafe
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de cafe de 12 piezas elegante")
+	(estilo pijo)
+	(habitacion cocina)
+	(material porcelana)
+	(nombre "Cartuja")
+	(precio 115.0))
+
+([Mikeo_Instance_50205] of  ConjuntoCafe
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de cafe de 12 piezas de diseno")
+	(estilo moderno)
+	(habitacion cocina)
+	(material porcelana)
+	(nombre "Sevilla")
+	(precio 95.0))
+
+([Mikeo_Instance_50206] of  ConjuntoCafe
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de cafe de 12 piezas modelo clasico.")
+	(estilo clasico)
+	(habitacion cocina)
+	(material ceramica)
+	(nombre "Cordoba")
+	(precio 55.0))
+
+([Mikeo_Instance_50207] of  ConjuntoCafe
+
+	(apto_lavavajillas TRUE)
+	(apto_vitroceramica TRUE)
+	(descripcion "Juego de cafe de 12 piezas de ceramica.")
+	(estilo hippie)
+	(habitacion cocina)
+	(material ceramica)
+	(nombre "Malaga")
+	(precio 25.0))
+
+([Mikeo_Instance_50208] of  Bajo
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano elegante con espejo y luz. Tamano grande.")
+	(estilo pijo moderno)
+	(habitacion bano)
+	(material madera)
+	(nombre "TinoEspGran")
+	(precio 500.0)
+	(profundidad 49.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50209] of  Bajo
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano elegante. Tamano grande.")
+	(estilo pijo moderno)
+	(habitacion bano)
+	(material madera)
+	(nombre "TinoGran")
+	(precio 400.0)
+	(profundidad 49.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50210] of  Bajo
+
+	(anchura 70.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano elegante con espejo y luz. Tamano pequeno.")
+	(estilo pijo moderno)
+	(habitacion bano)
+	(material madera)
+	(nombre "TinoEspPeq")
+	(precio 400.0)
+	(profundidad 49.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50211] of  Bajo
+
+	(anchura 70.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano elegante. Tamano peq.")
+	(estilo pijo moderno)
+	(habitacion bano)
+	(material madera)
+	(nombre "TinoPeq")
+	(precio 300.0)
+	(profundidad 49.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50212] of  Bajo
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano elegante con espejo y luz. Tamano grande de pladur.")
+	(estilo pijo moderno)
+	(habitacion bano)
+	(material pladur)
+	(nombre "TinoEspGranPla")
+	(precio 500.0)
+	(profundidad 49.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50214] of  Bajo
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano elegante. Tamano grande de pladur.")
+	(estilo pijo moderno)
+	(habitacion bano)
+	(material pladur)
+	(nombre "TinoGran")
+	(precio 400.0)
+	(profundidad 49.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50215] of  Bajo
+
+	(anchura 70.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano elegante con espejo y luz. Tamano pequeno de pladur.")
+	(estilo pijo moderno)
+	(habitacion bano)
+	(material pladur)
+	(nombre "TinoEspPeqPla")
+	(precio 400.0)
+	(profundidad 49.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50216] of  Bajo
+
+	(anchura 70.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano elegante. Tamano pequeno y de pladur")
+	(estilo pijo moderno)
+	(habitacion bano)
+	(material pladur)
+	(nombre "TinoPeqPla")
+	(precio 300.0)
+	(profundidad 49.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50217] of  Bajo
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano con espejo y luz. Tamano grande.")
+	(estilo clasico hippie)
+	(habitacion bano)
+	(material madera)
+	(nombre "RiseEspGran")
+	(precio 400.0)
+	(profundidad 49.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50218] of  Bajo
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano. Tamano grande.")
+	(estilo clasico hippie)
+	(habitacion bano)
+	(material madera)
+	(nombre "RiseGran")
+	(precio 300.0)
+	(profundidad 49.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50219] of  Bajo
+
+	(anchura 70.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano con espejo y luz. Tamano pequeno.")
+	(estilo clasico hippie)
+	(habitacion bano)
+	(material madera)
+	(nombre "TinoEspPeq")
+	(precio 300.0)
+	(profundidad 49.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50220] of  Bajo
+
+	(anchura 70.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano. Tamano peq.")
+	(estilo clasico hippie)
+	(habitacion bano)
+	(material madera)
+	(nombre "TinoPeq")
+	(precio 200.0)
+	(profundidad 49.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50221] of  Bajo
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano con espejo y luz. Tamano grande de mimbre.")
+	(estilo hippie)
+	(habitacion bano)
+	(material mimbre)
+	(nombre "RiseEspGranMim")
+	(precio 300.0)
+	(profundidad 49.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50222] of  Bajo
+
+	(anchura 100.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano. Tamano grande de mimbre.")
+	(estilo hippie)
+	(habitacion bano)
+	(material mimbre)
+	(nombre "RiseGranMim")
+	(precio 200.0)
+	(profundidad 49.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50223] of  Bajo
+
+	(anchura 70.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano con espejo y luz. Tamano pequeno de mimbre.")
+	(estilo hippie)
+	(habitacion bano)
+	(material mimbre)
+	(nombre "TinoEspPeqMim")
+	(precio 200.0)
+	(profundidad 49.0)
+	(tiene_espejo TRUE))
+
+([Mikeo_Instance_50224] of  Bajo
+
+	(anchura 70.0)
+	(clasificacion_edades adulto)
+	(descripcion "Armario de bano. Tamano pequeno de mimbre.")
+	(estilo hippie)
+	(habitacion bano)
+	(material mimbre)
+	(nombre "TinoPeqMim")
+	(precio 200.0)
+	(profundidad 49.0)
+	(tiene_espejo FALSE))
+
+([Mikeo_Instance_50225] of  Espejo
+
+	(anchura 60.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo facial de bano elegante.")
+	(estilo pijo)
+	(habitacion bano)
+	(material cristal)
+	(nombre "Polar")
+	(precio 70.0)
+	(profundidad 60.0)
+	(tipo_espejo facial))
+
+([Mikeo_Instance_50226] of  Espejo
+
+	(anchura 60.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo facial de bano de diseno.")
+	(estilo moderno)
+	(habitacion bano)
+	(material cristal)
+	(nombre "Deco")
+	(precio 61.0)
+	(profundidad 60.0)
+	(tipo_espejo facial))
+
+([Mikeo_Instance_50227] of  Espejo
+
+	(anchura 60.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo facial de bano clasico.")
+	(estilo clasico)
+	(habitacion bano)
+	(material cristal)
+	(nombre "Noval")
+	(precio 51.0)
+	(profundidad 60.0)
+	(tipo_espejo facial))
+
+([Mikeo_Instance_50228] of  Espejo
+
+	(anchura 60.0)
+	(clasificacion_edades adulto)
+	(descripcion "Espejo facial de bano floral.")
+	(estilo hippie)
+	(habitacion bano)
+	(material cristal)
+	(nombre "Expo")
+	(precio 39.0)
+	(profundidad 60.0)
+	(tipo_espejo facial))
+
+([Mikeo_Instance_50229] of  LamparaParet
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de pared de bano elegante.")
+	(estilo pijo)
+	(habitacion bano)
+	(material metal)
+	(nombre "AteneaWall")
+	(precio 40.0))
+
+([Mikeo_Instance_50230] of  LamparaParet
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de pared de bano de diseno.")
+	(estilo moderno)
+	(habitacion bano)
+	(material metal)
+	(nombre "NeoWall")
+	(precio 34.0))
+
+([Mikeo_Instance_50231] of  LamparaParet
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de pared de bano clasica.")
+	(estilo clasico)
+	(habitacion bano)
+	(material metal)
+	(nombre "LioWall")
+	(precio 29.0))
+
+([Mikeo_Instance_50232] of  LamparaParet
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de pared de bano.")
+	(estilo hippie)
+	(habitacion bano)
+	(material metal)
+	(nombre "BeaWall")
+	(precio 19.0))
+
+([Mikeo_Instance_50233] of  LamparaTecho
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo para bano elegante.")
+	(estilo pijo)
+	(habitacion bano)
+	(material metal)
+	(nombre "Atenea")
+	(precio 45.0))
+
+([Mikeo_Instance_50234] of  LamparaTecho
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo para bano de diseno.")
+	(estilo moderno)
+	(habitacion bano)
+	(material metal)
+	(nombre "Neo")
+	(precio 34.0))
+
+([Mikeo_Instance_50235] of  LamparaTecho
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo para bano clasica.")
+	(estilo clasico)
+	(habitacion bano)
+	(material metal)
+	(nombre "Lio")
+	(precio 29.0))
+
+([Mikeo_Instance_50236] of  LamparaTecho
+
+	(clasificacion_edades adulto)
+	(descripcion "Lampara de techo para bano.")
+	(estilo hippie)
+	(habitacion bano)
+	(material metal)
+	(nombre "Bea")
+	(precio 19.0))
+
+([Mikeo_Instance_50237] of  JuegoBano
+
+	(descripcion "Juego de bano elegante de porcelana.")
+	(estilo pijo)
+	(habitacion bano)
+	(material porcelana)
+	(nombre "Sanyluz")
+	(precio 120.0))
+
+([Mikeo_Instance_50238] of  JuegoBano
+
+	(descripcion "Juego de bano de diseno de porcelana.")
+	(estilo moderno)
+	(habitacion bano)
+	(material porcelana)
+	(nombre "Sany")
+	(precio 99.0))
+
+([Mikeo_Instance_50239] of  JuegoBano
+
+	(descripcion "Juego de bano clasico.")
+	(estilo clasico)
+	(habitacion bano)
+	(material ceramica)
+	(nombre "Sany")
+	(precio 50.0))
+
+([Mikeo_Instance_50240] of  JuegoBano
+
+	(descripcion "Juego de bano floral.")
+	(estilo hippie)
+	(habitacion bano)
+	(material ceramica)
+	(nombre "Seito")
+	(precio 30.0))
+
+([Mikeo_Instance_50241] of  Toalla
+
+	(clasificacion_edades adulto)
+	(descripcion "Conjunto de 3 toallas elegantes.")
+	(estilo pijo)
+	(habitacion bano)
+	(material textil)
+	(nombre "Resi")
+	(precio 30.0))
+
+([Mikeo_Instance_50242] of  Toalla
+
+	(clasificacion_edades adulto)
+	(descripcion "Conjunto de 3 toallas de diseno")
+	(estilo moderno)
+	(habitacion bano)
+	(material textil)
+	(nombre "Desi")
+	(precio 25.0))
+
+([Mikeo_Instance_50243] of  Toalla
+
+	(clasificacion_edades adulto)
+	(descripcion "Conjunto de 3 toallas clasico.")
+	(estilo clasico)
+	(habitacion bano)
+	(material textil)
+	(nombre "Trie")
+	(precio 20.0))
+
+([Mikeo_Instance_50244] of  Toalla
+
+	(clasificacion_edades adulto)
+	(descripcion "Conjunto de 3 toallas floral.")
+	(estilo hippie)
+	(habitacion bano)
+	(material textil)
+	(nombre "Seta")
+	(precio 15.0))
+
+([Mikeo_Instance_6] of  Reloj
+
+	(anchura 28.0)
+	(clasificacion_edades adulto)
+	(descripcion "Reloj de colores vivos.")
+	(diametro 0)
+	(estilo hippie)
+	(habitacion cocina)
+	(material plastico)
+	(nombre "Bravur")
+	(precio 8.0)
+	(profundidad 4.0))
+
+([Mikeo_Instance_7] of  GalanDeNoche
+
+	(anchura 60.0)
+	(descripcion "Galan de noche clasico.")
+	(estilo clasico)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "Portis")
+	(precio 24.95)
+	(profundidad 0.0))
+
+([Mikeo_Instance_8] of  GalanDeNoche
+
+	(anchura 65.0)
+	(descripcion "Galan de noche elegante y de diseno")
+	(estilo pijo moderno)
+	(habitacion dormitorio)
+	(material metal)
+	(nombre "Portisvual")
+	(precio 40.0)
+	(profundidad 0.0))
+
+([Mikeo_Instance_9] of  GalanDeNoche
+
+	(anchura 60.0)
+	(descripcion "Galan de noche con dibujo floral.")
+	(estilo hippie)
+	(habitacion dormitorio)
+	(material madera)
+	(nombre "PortisFeil")
+	(precio 25.0)
+	(profundidad 0.0))

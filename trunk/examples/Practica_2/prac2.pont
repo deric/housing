@@ -1,0 +1,1273 @@
+; Tue Dec 25 19:32:47 CET 2007
+; 
+;+ (version "3.3.1")
+;+ (build "Build 430")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot location
+		(type SYMBOL)
+;+		(allowed-parents Region)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot food
+		(type SYMBOL)
+;+		(allowed-parents Meal)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot produces
+;+		(comment "This slot contains the wines produced by a particular winery. The maker of a Wine is its inverse slot.")
+		(type INSTANCE)
+;+		(allowed-classes Wine)
+;+		(inverse-slot maker)
+		(create-accessor read-write))
+	(single-slot maker
+;+		(comment "The maker of a wine (a Winery). This slot has an iinverse - the slot produces at the Winery class")
+		(type INSTANCE)
+;+		(allowed-classes Winery)
+;+		(cardinality 0 1)
+;+		(inverse-slot produces)
+		(create-accessor read-write))
+	(multislot region
+		(type SYMBOL)
+;+		(allowed-parents Region)
+		(create-accessor read-write))
+	(single-slot price
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot drink
+		(type SYMBOL)
+;+		(allowed-parents Wine)
+		(create-accessor read-write))
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ingredient+name
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot season
+		(type SYMBOL)
+		(allowed-values ALL WINTER SUMMER)
+		(default ALL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot dish+style
+		(type SYMBOL)
+		(allowed-values CLASSIC MODERN REGIONAL GOURMET)
+		(default CLASSIC)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot ingredient_name
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tannin+level
+		(type SYMBOL)
+		(allowed-values LOW MODERATE HIGH)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot best+wineries
+		(type INSTANCE)
+;+		(allowed-classes Winery)
+		(create-accessor read-write))
+	(single-slot associated+wine
+		(type INSTANCE)
+;+		(allowed-classes Wine)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(cardinality 0 4)
+		(create-accessor read-write))
+	(multislot ingredients
+		(type INSTANCE)
+;+		(allowed-classes Ingredient)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot Course
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot area
+;+		(comment "A specific area (such as Napa) where a wine comes from")
+		(type SYMBOL)
+;+		(allowed-parents Region)
+		(create-accessor read-write))
+	(single-slot hot
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+		(default TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot type
+		(type SYMBOL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot prac2v1_Slot_1
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Wine+template
+	(is-a %3ASTANDARD-CLASS)
+	(role concrete)
+	(multislot best+wineries
+		(type INSTANCE)
+;+		(allowed-classes Winery)
+		(create-accessor read-write)))
+
+(defclass Winery
+	(is-a USER)
+	(role concrete)
+	(single-slot location
+		(type SYMBOL)
+;+		(allowed-parents Region)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot produces
+;+		(comment "This slot contains the wines produced by a particular winery. The maker of a Wine is its inverse slot.")
+		(type INSTANCE)
+;+		(allowed-classes Wine)
+		(create-accessor read-write)))
+
+(defclass Region
+	(is-a USER)
+	(role abstract))
+
+(defclass United+States+region
+	(is-a Region)
+	(role abstract))
+
+(defclass Arroyo+Grande+region
+	(is-a United+States+region)
+	(role concrete))
+
+(defclass Central+coast+region
+	(is-a United+States+region)
+	(role concrete))
+
+(defclass Edna+Valley+region
+	(is-a United+States+region)
+	(role concrete))
+
+(defclass Mendocino+region
+	(is-a United+States+region)
+	(role concrete))
+
+(defclass Napa+Valley+region
+	(is-a United+States+region)
+	(role concrete))
+
+(defclass Santa+Barbara+region
+	(is-a United+States+region)
+	(role concrete))
+
+(defclass Santa+Cruz+Mountains+region
+	(is-a United+States+region)
+	(role concrete))
+
+(defclass Sonoma+region
+	(is-a United+States+region)
+	(role concrete))
+
+(defclass Italian+region
+	(is-a Region)
+	(role abstract))
+
+(defclass Chianti+region
+	(is-a Italian+region)
+	(role concrete))
+
+(defclass French+region
+	(is-a Region)
+	(role abstract))
+
+(defclass Alsace+region
+	(is-a French+region)
+	(role abstract))
+
+(defclass Beaujolais+region
+	(is-a French+region)
+	(role abstract))
+
+(defclass Bordeaux+region
+	(is-a French+region)
+	(role abstract))
+
+(defclass Margaux+region
+	(is-a Bordeaux+region)
+	(role abstract))
+
+(defclass Paulliac+region
+	(is-a Bordeaux+region)
+	(role abstract))
+
+(defclass Sauterne+region
+	(is-a Bordeaux+region)
+	(role abstract))
+
+(defclass St+Emillion+region
+	(is-a Bordeaux+region)
+	(role abstract))
+
+(defclass Bourgogne+region
+	(is-a French+region)
+	(role abstract))
+
+(defclass Cotes+d%27Or+region
+	(is-a Bourgogne+region)
+	(role abstract))
+
+(defclass Meursault+region
+	(is-a Bourgogne+region)
+	(role abstract))
+
+(defclass Cotes+Chalonnaise+region
+	(is-a Bourgogne+region)
+	(role abstract))
+
+(defclass Loire+region
+	(is-a French+region)
+	(role abstract))
+
+(defclass Pays+Nantes+region
+	(is-a Loire+region)
+	(role abstract))
+
+(defclass Tours+region
+	(is-a Loire+region)
+	(role abstract))
+
+(defclass Sancerre+region
+	(is-a Loire+region)
+	(role abstract))
+
+(defclass Australian+region
+	(is-a Region)
+	(role abstract))
+
+(defclass South+Australian+region
+	(is-a Australian+region)
+	(role abstract))
+
+(defclass German+region
+	(is-a Region)
+	(role abstract))
+
+(defclass New+Zealand+region
+	(is-a Region)
+	(role abstract))
+
+(defclass Portuguese+region
+	(is-a Region)
+	(role abstract))
+
+(defclass Consumable+thing
+	(is-a USER)
+	(role concrete)
+	(single-slot price
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Drink
+	(is-a Consumable+thing)
+	(role concrete))
+
+(defclass Wine "A wine class represents all possible wines"
+	(is-a Drink)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot maker
+;+		(comment "The maker of a wine (a Winery). This slot has an iinverse - the slot produces at the Winery class")
+		(type INSTANCE)
+;+		(allowed-classes Winery)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass White+wine
+	(is-a Wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Chardonnay
+	(is-a White+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Chardonnay+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Chenin+Blanc
+	(is-a White+wine)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default MODERATE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Chenin+Blanc+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Pinot+Blanc
+	(is-a White+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Pinot+Blanc+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Sauvignon+Blanc
+	(is-a White+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Sauvignon+Blanc+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Semillon
+	(is-a White+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Semillon+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Riesling
+	(is-a White+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Riesling+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Dry+Riesling
+	(is-a Riesling)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default DELICATE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Riesling+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass White+Burgundy
+	(is-a Dry+Riesling)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Chablis
+	(is-a White+Burgundy)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Pouilly-Fuisse
+	(is-a White+Burgundy)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Sauterne
+	(is-a White+wine)
+	(role concrete)
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+		(default MEDIUM)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default WHITE)
+;+		(value RED WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default SWEET)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass White+Bordeaux
+	(is-a White+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Sancerre
+	(is-a White+wine)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default DELICATE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+		(default MEDIUM)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default OFF-DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [SAUVIGNON-BLANC+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Muscadet
+	(is-a White+wine)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default DELICATE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+		(default LIGHT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Pinot+Blanc+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Red+wine
+	(is-a Wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tannin+level
+		(type SYMBOL)
+		(allowed-values LOW MODERATE HIGH)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Beaujolais
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default DELICATE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+		(default LIGHT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default RED)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Gamay+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Red+Burgundy
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Cotes+d%27Or
+	(is-a Red+Burgundy)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Cotes+Chalonnaise
+	(is-a Red+Burgundy)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Red+Zinfandel
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Red+Bordeaux "The class of all Bordeaux wines"
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Medoc
+	(is-a Red+Bordeaux)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Pauillac
+	(is-a Medoc)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default STRONG)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+		(default FULL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Cabernet+Sauvignon+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Margaux
+	(is-a Medoc)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default DELICATE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Merlot+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass St.+Emillion
+	(is-a Red+Bordeaux)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default STRONG)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Cabernet+Sauvignon+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Graves
+	(is-a Red+Bordeaux)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Pinot+Noir
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default RED)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Pinot+Noir+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Chianti
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default MODERATE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default RED)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Petite+Syrah
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default RED)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Petite+Syrah+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Red+Merlot
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default RED)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Merlot+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Cabernet+Sauvignon
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default RED)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Cabernet+Sauvignon+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Cabernet+Franc
+	(is-a Red+wine)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default MODERATE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+		(default MEDIUM)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default RED)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default DRY)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Cabernet+Franc+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Rose+wine
+	(is-a Wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value ROS%EF%BF%BD)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass White+Zinfandel
+	(is-a Rose+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value ROS%EF%BF%BD)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass White+Merlot
+	(is-a Rose+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value ROS%EF%BF%BD)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Dessert+wine
+	(is-a Wine)
+	(role concrete)
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+;+		(value SWEET)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Sweet+Reisling
+	(is-a Riesling Dessert+wine)
+	(role concrete)
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+;+		(value FULL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+;+		(value SWEET)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot grape
+		(type INSTANCE)
+;+		(allowed-classes Wine+grape)
+		(default [Riesling+grape])
+;+		(value [Riesling+grape])
+		(cardinality 0 4)
+		(create-accessor read-write)))
+
+(defclass Ice+Wine
+	(is-a Dessert+wine White+wine)
+	(role concrete)
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+;+		(value WHITE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default SWEET)
+;+		(value SWEET)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Port
+	(is-a Red+wine Dessert+wine)
+	(role concrete)
+	(single-slot flavor
+		(type SYMBOL)
+		(allowed-values DELICATE MODERATE STRONG)
+		(default STRONG)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot body
+		(type SYMBOL)
+		(allowed-values FULL MEDIUM LIGHT)
+		(default FULL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot color
+		(type SYMBOL)
+		(allowed-values RED ROS%EF%BF%BD WHITE)
+		(default RED)
+;+		(value RED)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot sugar
+		(type SYMBOL)
+		(allowed-values DRY SWEET OFF-DRY)
+		(default SWEET)
+;+		(value SWEET)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Soft+drink
+	(is-a Drink)
+	(role concrete))
+
+(defclass Meal
+	(is-a Consumable+thing)
+	(role concrete)
+	(single-slot season
+		(type SYMBOL)
+		(allowed-values ALL WINTER SUMMER)
+		(default ALL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot ingredients
+		(type INSTANCE)
+;+		(allowed-classes Ingredient)
+		(cardinality 1 ?VARIABLE)
+		(create-accessor read-write))
+	(single-slot hot
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+		(default TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot type
+		(type SYMBOL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot associated+wine
+		(type INSTANCE)
+;+		(allowed-classes Wine)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass First+course
+	(is-a Meal)
+	(role concrete)
+	(single-slot type
+		(type SYMBOL)
+		(allowed-values VEGETAL PASTA SOUP FISH SEAFOOD CREAM)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Traditional+First+Course
+	(is-a First+course)
+	(role concrete)
+	(single-slot type
+		(type SYMBOL)
+		(allowed-values VEGETAL PASTA SOUP FISH SEAFOOD CREAM)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Modern+First+Course
+	(is-a First+course)
+	(role concrete))
+
+(defclass Gourmet+First+Course
+	(is-a First+course)
+	(role concrete))
+
+(defclass Regional+First+Course
+	(is-a First+course)
+	(role concrete)
+	(multislot region
+		(type SYMBOL)
+;+		(allowed-parents Region)
+		(create-accessor read-write)))
+
+(defclass Second+course
+	(is-a Meal)
+	(role concrete)
+	(single-slot type
+		(type SYMBOL)
+		(allowed-values FISH MEAT FOWL VEGETAL)
+		(default MEAT)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Traditional+Second+Course
+	(is-a Second+course)
+	(role concrete))
+
+(defclass Modern+Second+Course
+	(is-a Second+course)
+	(role concrete))
+
+(defclass Gourmet+Second+Course
+	(is-a Second+course)
+	(role concrete))
+
+(defclass Regional+Second+Course
+	(is-a Second+course)
+	(role concrete)
+	(multislot region
+		(type SYMBOL)
+;+		(allowed-parents Region)
+		(create-accessor read-write)))
+
+(defclass Dessert
+	(is-a Meal)
+	(role concrete)
+	(single-slot type
+		(type SYMBOL)
+		(allowed-values FRUIT CAKE ICECREAM CREAM)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot associated+wine
+		(type INSTANCE)
+;+		(allowed-classes Wine)
+		(default [Whitehall+Lane+Primavera])
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Traditional+Dessert
+	(is-a Dessert)
+	(role concrete)
+	(single-slot associated+wine
+		(type INSTANCE)
+;+		(allowed-classes Wine)
+		(default [Whitehall+Lane+Primavera])
+;+		(value [Whitehall+Lane+Primavera])
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Modern+Dessert
+	(is-a Dessert)
+	(role concrete)
+	(single-slot associated+wine
+		(type INSTANCE)
+;+		(allowed-classes Wine)
+		(default [Whitehall+Lane+Primavera])
+;+		(value [Selaks+Ice+Wine])
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Gourmet+Dessert
+	(is-a Dessert)
+	(role concrete)
+	(single-slot associated+wine
+		(type INSTANCE)
+;+		(allowed-classes Wine)
+		(default [Whitehall+Lane+Primavera])
+;+		(value [Taylor+Port])
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Regional+Dessert
+	(is-a Dessert)
+	(role concrete)
+	(multislot region
+		(type SYMBOL)
+;+		(allowed-parents Region)
+		(create-accessor read-write)))
+
+(defclass Wine+grape
+	(is-a USER)
+	(role concrete)
+	(single-slot name_
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Ingredient
+	(is-a USER)
+	(role concrete)
+	(single-slot ingredient+name
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))

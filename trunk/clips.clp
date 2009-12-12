@@ -9,7 +9,7 @@
 	(if (lexemep ?answer) 
 	    then (bind ?answer (lowcase ?answer)))
 	(while (not (member ?answer ?allowed-values)) do
-	    (format t "%s? " ?question)
+	    (format t "%s? " ?question)O
 	    (bind ?answer (read))
 	    (if (lexemep ?answer) 
 		then (bind ?answer (lowcase ?answer))))
@@ -38,6 +38,8 @@
 	(slot age)
 	(slot occupation)
 )
+ 
+ ;(defmodule MAIN (export ?ALL))
 
 (defmessage-handler Offer print()
 	(printout t "----------------------------------" crlf)
@@ -53,6 +55,11 @@
 ;;;***************
 ;;;* QUERY RULES *
 ;;;***************
+ 
+ ;(defmodule question-realty "Modul for getting information about realty type"
+  ;	(import MAIN ?ALL)
+  ;	(export ?ALL)
+ ;)
 
 
 (defrule determine-room-type ""
@@ -62,7 +69,7 @@
       (case alone
 	  then
 	  	(bind ?i 1)
-		(bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
+		(bind ?inst (find-all-instanceOs ((?it Offer)) (= ?it:rent 500)) )
 	  	(while (<= ?i (length$ ?inst))
 		do
 			(bind ?curr (nth$ ?i ?inst)) ; get item from array

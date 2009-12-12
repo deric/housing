@@ -1,0 +1,16 @@
+digraph Mikeo {
+	node [label="\N"];
+	graph [bb="0,0,706,320"];
+	GalanDeNoche [label=GalanDeNoche, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="51,72", width="1.42", height="0.50"];
+	Decoracion [label=Decoracion, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="326,214", width="1.11", height="0.50"];
+	Espejo [label="{Espejo|{diametro|Integer}|{tipo_espejo|Symbol|{completo|facial}}|{clasificacion_edades|Symbol|{nino|adulto}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="240,72", rects="120,120,361,144 120,96,245,120 245,96,361,120 120,48,212,96 212,48,282,96 282,72,361,96 282,48,361,72 120,0,251,48 251,0,310,48 \
+310,24,361,48 310,0,361,24", width="3.33", height="2.00"];
+	Revistero [label=Revistero, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="413,72", width="0.97", height="0.50"];
+	Reloj [label="{Reloj|{diametro|Integer}|{clasificacion_edades|Symbol|{nino|adulto}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="586,72", rects="466,96,707,120 466,72,591,96 591,72,707,96 466,24,597,72 597,24,656,72 656,48,707,72 656,24,707,48", width="3.33", height="1.33"];
+	Articulo [label=Articulo, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="326,302", width="0.86", height="0.50"];
+	Decoracion -> GalanDeNoche [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,286,208 276,206 231,196 162,178 111,144 91,130 73,106 62,90", lp="192,170"];
+	Decoracion -> Espejo [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,315,196 310,187 303,175 294,159 284,144", lp="312,170"];
+	Decoracion -> Revistero [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,337,196 342,187 350,174 360,158 369,144 380,126 393,105 402,90", lp="364,170"];
+	Decoracion -> Reloj [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,360,196 369,191 394,178 428,160 457,144 471,136 485,128 500,120", lp="428,170"];
+	Articulo -> Decoracion [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,326,284 326,274 326,260 326,244 326,232", lp="334,258"];
+}

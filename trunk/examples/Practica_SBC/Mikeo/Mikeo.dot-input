@@ -1,0 +1,14 @@
+digraph "Mikeo" {
+
+"GalanDeNoche" [shape=box, label="GalanDeNoche", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Decoracion"->"GalanDeNoche" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Espejo" [shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", label="{Espejo|{diametro|Integer}|{tipo_espejo|Symbol|{completo|facial}}|{clasificacion_edades|Symbol|{nino|adulto}}}"]
+"Decoracion"->"Espejo" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Revistero" [shape=box, label="Revistero", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Decoracion"->"Revistero" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Reloj" [shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", label="{Reloj|{diametro|Integer}|{clasificacion_edades|Symbol|{nino|adulto}}}"]
+"Decoracion"->"Reloj" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Decoracion" [shape=box, label="Decoracion", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Articulo"->"Decoracion" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Articulo" [shape=box, label="Articulo", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+}

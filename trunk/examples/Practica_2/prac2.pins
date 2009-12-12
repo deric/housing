@@ -1,0 +1,2539 @@
+; Tue Dec 25 19:32:47 CET 2007
+; 
+;+ (version "3.3.1")
+;+ (build "Build 430")
+
+([Agua] of  Soft+drink
+
+	(name "Agua")
+	(price 3))
+
+([Ananas_con_Sorpresa] of  Modern+Dessert
+
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50037]
+		[prac2_Instance_40019]
+		[prac2_Instance_20005]
+		[prac2_Instance_50035]
+		[prac2_Instance_50038])
+	(name "Ananas con sorpresa")
+	(price 12)
+	(season ALL)
+	(type FRUIT))
+
+([Asado_de_Cerdo_con_Manzanas] of  Modern+Second+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_10008]
+		[prac2_Instance_10011]
+		[prac2_Instance_40022]
+		[prac2_Instance_30009]
+		[prac2_Instance_40010]
+		[prac2_Instance_4])
+	(name "Asado de Cerdo con Manzanas")
+	(price 25)
+	(season ALL)
+	(type MEAT))
+
+([Bancroft] of  Winery
+
+	(name "Bancroft"))
+
+([Beaujolais] of  Wine+template
+)
+
+([Besugo_con_Champi%C3%B1ones] of  Traditional+Second+Course
+
+	(associated+wine [Congress+Springs+Semillon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30051]
+		[prac2_Instance_30044]
+		[prac2_Instance_6]
+		[prac2_Instance_30052]
+		[prac2_Instance_5])
+	(name "Besugo con Champiñones")
+	(price 15)
+	(season ALL)
+	(type FISH))
+
+([Blini_con_Caviar] of  Gourmet+First+Course
+
+	(associated+wine [Mountadam+Chardonnay])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_40057]
+		[prac2_Instance_20007]
+		[prac2_Instance_40058]
+		[prac2_Instance_30027]
+		[prac2_Instance_10013]
+		[prac2_Instance_40059]
+		[prac2_Instance_30052])
+	(name "Blini con Caviar")
+	(price 49)
+	(season ALL)
+	(type FISH))
+
+([Bombones_de_Fres%C3%B3n] of  Modern+Dessert
+
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50039]
+		[prac2_Instance_50040]
+		[prac2_Instance_50034])
+	(name "Bombones de Fresón")
+	(price 11)
+	(season ALL)
+	(type CAKE))
+
+([Bonito_con_Tomate] of  Traditional+Second+Course
+
+	(associated+wine [Congress+Springs+Semillon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30054]
+		[prac2_Instance_20016]
+		[prac2_Instance_6]
+		[prac2_Instance_5]
+		[prac2_Instance_10002]
+		[prac2_Instance_20023])
+	(name "Bonito con Tomate")
+	(price 13)
+	(season ALL)
+	(type FISH))
+
+([Cabernet+Franc] of  Wine+template
+)
+
+([Cabernet+Franc+grape] of  Wine+grape
+
+	(name "Cabernet Franc grape"))
+
+([Cabernet+Sauvignon] of  Wine+template
+)
+
+([Cabernet+Sauvignon+grape] of  Wine+grape
+
+	(name "Cabernet Sauvignon grape"))
+
+([Cap%C3%B3n_Relleno_con_Manzanas_y_Casta%C3%B1as] of  Modern+Second+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_40011]
+		[prac2_Instance_40012]
+		[prac2_Instance_5]
+		[prac2_Instance_10013]
+		[prac2_Instance_10008]
+		[prac2_Instance_30040]
+		[prac2_Instance_4]
+		[prac2_Instance_40022])
+	(name "Capón Relleno con Manzanas y Castañas")
+	(price 31)
+	(season ALL)
+	(type FOWL))
+
+([Caracoles_a_la_Borgo%C3%B1a] of  Regional+Second+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_50054]
+		[prac2_Instance_30024]
+		[prac2_Instance_6]
+		[prac2_Instance_30004]
+		[prac2_Instance_10002]
+		[prac2_Instance_10003]
+		[prac2_Instance_20011]
+		[prac2_Instance_10011]
+		[prac2_Instance_40016]
+		[prac2_Instance_40022]
+		[prac2_Instance_30006])
+	(name "Caracoles a la Borgoña")
+	(price 18)
+	(region French+region)
+	(season ALL)
+	(type MEAT))
+
+([Carne_Mechada] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_10015]
+		[prac2_Instance_10014]
+		[prac2_Instance_3]
+		[prac2_Instance_5]
+		[prac2_Instance_10020]
+		[prac2_Instance_40022])
+	(name "Carne Mechada")
+	(price 8)
+	(season ALL)
+	(type MEAT))
+
+([Carpaccio_de_Boletos_con_Almendra_Marcona_y_Vinagreta_de_Mostaza_Antigua] of  Gourmet+First+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_40051]
+		[prac2_Instance_5]
+		[prac2_Instance_10004]
+		[prac2_Instance_40027])
+	(name "Carpaccio de Boletos con Almendra Marcona y Vinagreta de Mostaza Antigua")
+	(price 48)
+	(season WINTER)
+	(type VEGETAL))
+
+([Carpaccio_de_Gambas_con_Vinagreta_de_M%C3%B2dena_y_Pi%C3%B1ones] of  Gourmet+First+Course
+
+	(associated+wine [Mountadam+Chardonnay])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_30023]
+		[prac2_Instance_40055]
+		[prac2_Instance_40027])
+	(name "Carpaccio de Gambas con Vinagreta de Mòdena y Piñones")
+	(price 37)
+	(season ALL)
+	(type SEAFOOD))
+
+([Chablis] of  Wine+template
+)
+
+([Chardonnay] of  Wine+template
+)
+
+([Chardonnay+grape] of  Wine+grape
+
+	(name "Chardonnay grape"))
+
+([Chateau+Cheval+Blanc+St+Emilion] of  St.+Emillion
+
+	(name "Chateau Cheval Blanc St Emilion")
+	(price 400))
+
+([Chateau+D+Ychem] of  Winery
+
+	(location Bordeaux+region)
+	(name "Chateau D Ychem"))
+
+([Chateau+De+Meursault+Meursault] of  White+Burgundy
+
+	(flavor MODERATE)
+	(name "Chateau De Meursault Meursault"))
+
+([Chateau+Lafite+Rothschild] of  Winery
+
+	(name "Chateau Lafite Rothschild")
+	(produces [Chateau+Lafite+Rothschild+Pauillac]))
+
+([Chateau+Lafite+Rothschild+Pauillac] of  Pauillac
+
+	(body FULL)
+	(flavor STRONG)
+	(grape [Cabernet+Sauvignon+grape])
+	(maker [Chateau+Lafite+Rothschild])
+	(name "Chateau Lafite Rothschild Pauillac")
+	(sugar DRY)
+	(tannin+level MODERATE))
+
+([Chateau+Margaux] of  Margaux
+
+	(maker [Chateau+Margaux+Winery])
+	(name "Chateau Margaux"))
+
+([Chateau+Margaux+Winery] of  Winery
+
+	(name "Chateau Margaux")
+	(produces [Chateau+Margaux]))
+
+([Chateau+Morgon] of  Winery
+
+	(name "Chateau Morgon")
+	(produces [Chateau+Morgon+Beaujolais]))
+
+([Chateau+Morgon+Beaujolais] of  Beaujolais
+
+	(body LIGHT)
+	(flavor DELICATE)
+	(grape [Gamay+grape])
+	(maker [Chateau+Morgon])
+	(name "Chateau Morgon Beaujolais")
+	(price 20)
+	(sugar DRY)
+	(tannin+level LOW))
+
+([Chenin+Blanc] of  Wine+template
+)
+
+([Chenin+Blanc+grape] of  Wine+grape
+
+	(name "Chenin Blanc grape"))
+
+([Chianti] of  Wine+template
+)
+
+([Chianti+Classico] of  Chianti
+
+	(body MEDIUM)
+	(name "Chianti Classico")
+	(price 19))
+
+([Chuletas_de_Cordero_al_Estrag%C3%B3n] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_10012]
+		[prac2_Instance_10013]
+		[prac2_Instance_30052]
+		[prac2_Instance_40022]
+		[prac2_Instance_10011])
+	(name "Chuletas de Cordero al Estragón")
+	(price 12)
+	(season ALL)
+	(type MEAT))
+
+([Ch%C3%A2teau_Smith_Haut_Lafitte_Rouge] of  White+Merlot
+
+	(name "Château Smith Haut Lafitte Rouge")
+	(price 60))
+
+([Civet_de_Liebre] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_5]
+		[prac2_Instance_10020]
+		[prac2_Instance_10013]
+		[prac2_Instance_0]
+		[prac2_Instance_10014]
+		[prac2_Instance_3]
+		[prac2_Instance_30027]
+		[prac2_Instance_10011]
+		[prac2_Instance_10004])
+	(name "Civet de Liebre")
+	(price 15)
+	(season ALL)
+	(type FOWL))
+
+([Clos+De+La+Poussie] of  Winery
+
+	(name "Clos De La Poussie"))
+
+([Clos+De+Vougeot] of  Winery
+
+	(name "Clos De Vougeot"))
+
+([Coke] of  Soft+drink
+
+	(name "Coke")
+	(price 3))
+
+([Conejo_con_Pimientos] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_10005]
+		[prac2_Instance_10002]
+		[prac2_Instance_20023]
+		[prac2_Instance_40022]
+		[prac2_Instance_10006]
+		[prac2_Instance_10010]
+		[prac2_Instance_3])
+	(name "Conejo con Pimientos")
+	(price 9)
+	(season ALL)
+	(type MEAT))
+
+([Congress+Springs] of  Winery
+
+	(name "Congress Springs")
+	(produces [Congress+Springs+Semillon]))
+
+([Congress+Springs+Semillon] of  Semillon
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Congress+Springs])
+	(name "Congress Springs Semillon")
+	(price 9)
+	(sugar DRY))
+
+([Consom%C3%A9] of  Traditional+First+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_3]
+		[prac2_Instance_30030]
+		[prac2_Instance_30024]
+		[prac2_Instance_30031]
+		[prac2_Instance_5])
+	(name "Consomé")
+	(price 9)
+	(season WINTER)
+	(type SOUP))
+
+([Consom%C3%A9_al_Oloroso_de_Jerez_con_Trufa_y_Juliana_de_Verduras] of  Modern+First+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_1]
+		[prac2_Instance_5]
+		[prac2_Instance_40032]
+		[prac2_Instance_3]
+		[prac2_Instance_30036]
+		[prac2_Instance_30031])
+	(name "Consomé al oloroso de Jerez con Trufa y Juliana de Verduras")
+	(price 19)
+	(season WINTER)
+	(type SOUP))
+
+([Corbans] of  Winery
+
+	(name "Corbans")
+	(produces
+		[Corbans+Private+Bin+Sauvignon+Blanc]
+		[Corbans+Sauvignon+Blanc]))
+
+([Corbans+Private+Bin+Sauvignon+Blanc] of  Sauvignon+Blanc
+
+	(body FULL)
+	(flavor STRONG)
+	(maker [Corbans])
+	(name "Corbans Private Bin Sauvignon Blanc")
+	(price 16)
+	(sugar DRY))
+
+([Corbans+Sauvignon+Blanc] of  Sauvignon+Blanc
+
+	(body MEDIUM)
+	(flavor STRONG)
+	(maker [Corbans])
+	(name "Corbans Sauvignon Blanc")
+	(price 10)
+	(sugar DRY))
+
+([Corton+Montrachet] of  Winery
+
+	(name "Corton Montrachet")
+	(produces [Corton+Montrachet+White+Burgundy]))
+
+([Corton+Montrachet+White+Burgundy] of  White+Burgundy
+
+	(body FULL)
+	(flavor STRONG)
+	(maker [Corton+Montrachet])
+	(name "Corton Montrachet White Burgundy")
+	(sugar DRY))
+
+([Cotes+Chalonnaise] of  Wine+template
+)
+
+([Cotes+d%27Or] of  Wine+template
+)
+
+([Cotturi] of  Winery
+
+	(name "Cotturi"))
+
+([Crema_de_Gambas] of  Traditional+First+Course
+
+	(associated+wine [Congress+Springs+Semillon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30023]
+		[prac2_Instance_5]
+		[prac2_Instance_3]
+		[prac2_Instance_20016]
+		[prac2_Instance_20013]
+		[prac2_Instance_30024])
+	(name "Crema de Gambas")
+	(price 12)
+	(season ALL)
+	(type CREAM))
+
+([Crema_de_Guisantes] of  Traditional+First+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_7]
+		[prac2_Instance_5]
+		[prac2_Instance_4]
+		[prac2_Instance_30040]
+		[prac2_Instance_30031]
+		[prac2_Instance_20013])
+	(name "Crema de Guisantes")
+	(price 14)
+	(season ALL)
+	(type CREAM))
+
+([Crema_de_N%C3%A9coras_y_Vieras] of  Modern+First+Course
+
+	(associated+wine [Ventana+Chenin+Blanc])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_5]
+		[prac2_Instance_4]
+		[prac2_Instance_20004]
+		[prac2_Instance_20007]
+		[prac2_Instance_10006]
+		[prac2_Instance_20006]
+		[prac2_Instance_20005]
+		[prac2_Instance_30012])
+	(name "Crema de Nécoras y Vieras")
+	(price 22)
+	(season ALL)
+	(type CREAM))
+
+([Crepes_con_Dulce_de_Leche] of  Modern+Dessert
+
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50034]
+		[prac2_Instance_50035]
+		[prac2_Instance_40059]
+		[prac2_Instance_50036])
+	(name "Crepes con Dulce de Leche")
+	(price 8)
+	(season ALL)
+	(type CREAM))
+
+([C%C3%B3ctel_de_Gambas] of  Modern+First+Course
+
+	(associated+wine [Ventana+Chenin+Blanc])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_30023]
+		[prac2_Instance_30026]
+		[prac2_Instance_10]
+		[prac2_Instance_10008]
+		[prac2_Instance_20002]
+		[prac2_Instance_20016])
+	(name "Cóctel de Gambas")
+	(price 24)
+	(season ALL)
+	(type SEAFOOD))
+
+([D+Anjou] of  Winery
+
+	(name "D Anjou"))
+
+([Dry+Riesling] of  Wine+template
+)
+
+([Elyse] of  Winery
+
+	(name "Elyse")
+	(produces [Elyse+Zinfandel]))
+
+([Elyse+Zinfandel] of  Red+Zinfandel
+
+	(body FULL)
+	(flavor MODERATE)
+	(maker [Elyse])
+	(name "Elyse Zinfandel")
+	(price 30)
+	(sugar DRY))
+
+([Ensalada_de_Gambas] of  Traditional+First+Course
+
+	(associated+wine [Congress+Springs+Semillon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30023]
+		[prac2_Instance_10000]
+		[prac2_Instance_10001]
+		[prac2_Instance_30026]
+		[prac2_Instance_10003]
+		[prac2_Instance_20002])
+	(name "Ensalada de Gambas")
+	(price 14)
+	(season ALL)
+	(type SEAFOOD))
+
+([Ensalada_de_la_Casa] of  Traditional+First+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_30026]
+		[prac2_Instance_3]
+		[prac2_Instance_20016]
+		[prac2_Instance_30027]
+		[prac2_Instance_30028]
+		[prac2_Instance_5]
+		[prac2_Instance_20023])
+	(name "Ensalasa de la Casa")
+	(price 8)
+	(season ALL)
+	(type VEGETAL))
+
+([Ensalada_de_R%C3%BAcula_con_Queso_Manchego_y_Aguacate] of  Modern+First+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_30027]
+		[prac2_Instance_40025]
+		[prac2_Instance_40026]
+		[prac2_Instance_40024]
+		[prac2_Instance_40027])
+	(name "Ensalada de Rúcula con Queso Manchego y Aguacate")
+	(price 19)
+	(season ALL)
+	(type VEGETAL))
+
+([Ensaladilla_Rusa] of  Traditional+First+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_30033]
+		[prac2_Instance_3]
+		[prac2_Instance_30036]
+		[prac2_Instance_7]
+		[prac2_Instance_30038]
+		[prac2_Instance_30037])
+	(name "Ensaladilla Rusa")
+	(price 7)
+	(season ALL)
+	(type VEGETAL))
+
+([Entrecot_a_la_Cebolla] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_5]
+		[prac2_Instance_10018]
+		[prac2_Instance_4]
+		[prac2_Instance_40022])
+	(name "Entrecot a la Cebolla")
+	(price 18)
+	(season ALL)
+	(type MEAT))
+
+([Fais%C3%A1n_con_Nata] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_10009]
+		[prac2_Instance_10007]
+		[prac2_Instance_10008]
+		[prac2_Instance_20013]
+		[prac2_Instance_1]
+		[prac2_Instance_5]
+		[prac2_Instance_20011])
+	(name "Faisán con Nata")
+	(price 18)
+	(season ALL)
+	(type FOWL))
+
+([Forman] of  Winery
+
+	(name "Forman")
+	(produces [Forman+Cabernet+Sauvignon]))
+
+([Forman+Cabernet+Sauvignon] of  Cabernet+Sauvignon
+
+	(body MEDIUM)
+	(flavor STRONG)
+	(maker [Forman])
+	(name "Forman Cabernet Sauvignon")
+	(price 65)
+	(sugar DRY))
+
+([Foxen] of  Winery
+
+	(name "Foxen")
+	(produces [Foxen+Chenin+Blanc]))
+
+([Foxen+Chenin+Blanc] of  Chenin+Blanc
+
+	(body FULL)
+	(flavor MODERATE)
+	(maker [Foxen])
+	(name "Foxen Chenin Blanc")
+	(price 20)
+	(sugar DRY))
+
+([Gamay+grape] of  Wine+grape
+
+	(name "Gamay grape"))
+
+([Gary+Farrell] of  Winery
+
+	(name "Gary Farrell")
+	(produces [Gary+Farrell+Merlot]))
+
+([Gary+Farrell+Merlot] of  Red+Merlot
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Gary+Farrell])
+	(name "Gary Farrell Merlot")
+	(price 30)
+	(sugar DRY))
+
+([Gratinado_de_Calabacines_y_Tomates] of  Modern+Second+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_5]
+		[prac2_Instance_40026]
+		[prac2_Instance_30008]
+		[prac2v1_Instance_2])
+	(name "Gratinado de Calabacines y Tomates")
+	(price 14)
+	(season ALL)
+	(type VEGETAL))
+
+([Graves] of  Wine+template
+)
+
+([Handley] of  Winery
+
+	(name "Handley"))
+
+([Helado_de_Chocolate] of  Traditional+Dessert
+
+	(hot FALSE)
+	(ingredients [prac2_Instance_50039])
+	(name "Helado de Chocolate")
+	(price 7)
+	(season ALL)
+	(type ICECREAM))
+
+([Helado_de_Vainilla] of  Traditional+Dessert
+
+	(hot FALSE)
+	(ingredients [prac2_Instance_50038])
+	(name "Helado de Vainilla")
+	(price 6)
+	(season ALL)
+	(type ICECREAM))
+
+([Humus_con_Ventrisca_de_Bonito] of  Gourmet+First+Course
+
+	(associated+wine [Mountadam+Chardonnay])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_30054]
+		[prac2_Instance_10003]
+		[prac2_Instance_40047])
+	(name "Humus con Ventrisca de Bonito")
+	(price 34)
+	(season ALL)
+	(type FISH))
+
+([Ice+Wine] of  Wine+template
+)
+
+([Jarrete_de_Cordero_Relleno_de_Datiles_con_Salsa_de_Cardamomo_Verde_y_Crema_de_Patatas] of  Gourmet+Second+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_40021]
+		[prac2_Instance_50022]
+		[prac2_Instance_30033]
+		[prac2_Instance_50023]
+		[prac2_Instance_40037])
+	(name "Jarrete de Cordero Relleno de Datiles con Salsa de Cardamono Verde y Crema de Patatas")
+	(price 54)
+	(season ALL)
+	(type MEAT))
+
+([Jud%C3%ADas_Finas_Verdes_y_Salsa_al_Rioja] of  Modern+First+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_30036]
+		[prac2_Instance_40034]
+		[prac2_Instance_5]
+		[prac2_Instance_10006]
+		[prac2_Instance_20016])
+	(name "Judías Finas Verdes y Salsa al Rioja")
+	(price 22)
+	(season ALL)
+	(type VEGETAL))
+
+([Kalin+Cellars] of  Winery
+
+	(name "Kalin Cellars")
+	(produces [Kalin+Cellars+Semillon]))
+
+([Kalin+Cellars+Semillon] of  Semillon
+
+	(body FULL)
+	(flavor STRONG)
+	(maker [Kalin+Cellars])
+	(name "Kalin Cellars Semillon")
+	(price 30)
+	(sugar DRY))
+
+([Kathryn+Kennedy] of  Winery
+
+	(name "Kathryn Kennedy"))
+
+([Lane+Tanner] of  Winery
+
+	(name "Lane Tanner")
+	(produces [Lane+Tanner+Pinot+Noir]))
+
+([Lane+Tanner+Pinot+Noir] of  Pinot+Noir
+
+	(body LIGHT)
+	(flavor DELICATE)
+	(maker [Lane+Tanner])
+	(name "Lane Tanner Pinot Noir")
+	(price 20)
+	(sugar DRY))
+
+([Lenguado_a_la_Naranja] of  Modern+Second+Course
+
+	(associated+wine [Ventana+Chenin+Blanc])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_40013]
+		[prac2_Instance_40051]
+		[prac2_Instance_4]
+		[prac2_Instance_10011]
+		[prac2_Instance_40022]
+		[prac2_Instance_40014])
+	(name "Lenguado a la Naranja")
+	(price 30)
+	(season ALL)
+	(type FISH))
+
+([Limonada] of  Soft+drink
+
+	(name "Limonada")
+	(price 3))
+
+([Lomo_a_la_Manzana] of  Modern+Second+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_2]
+		[prac2_Instance_4]
+		[prac2_Instance_10008]
+		[prac2_Instance_20013]
+		[prac2_Instance_10011])
+	(name "Lomo a la Manzana")
+	(price 25)
+	(season ALL)
+	(type MEAT))
+
+([Lomo_de_Bacalao_Confitado_con_Salsa_Agridulce] of  Gourmet+Second+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30019]
+		[prac2_Instance_50024])
+	(name "Lomo de Bacalao Confiado con Salsa Agridulce")
+	(price 41)
+	(season ALL)
+	(type FISH))
+
+([Lomo_de_Cerdo_Asado] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_5]
+		[prac2_Instance_2]
+		[prac2_Instance_4]
+		[prac2_Instance_40022]
+		[prac2_Instance_3]
+		[prac2_Instance_10])
+	(name "Lomo de Cerdo Asado")
+	(price 15)
+	(season ALL)
+	(type MEAT))
+
+([Longridge] of  Winery
+
+	(name "Longridge")
+	(produces [Longridge+Merlot]))
+
+([Longridge+Merlot] of  Red+Merlot
+
+	(body LIGHT)
+	(flavor MODERATE)
+	(maker [Longridge])
+	(name "Longridge Merlot")
+	(price 10)
+	(sugar DRY))
+
+([Lubina_a_la_Sal] of  Modern+Second+Course
+
+	(associated+wine [Ventana+Chenin+Blanc])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_40015]
+		[prac2_Instance_40016])
+	(name "Lubina a la Sal")
+	(price 26)
+	(season ALL)
+	(type FISH))
+
+([Macarrones_con_Champi%C3%B1ones] of  Traditional+First+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30043]
+		[prac2_Instance_30044]
+		[prac2_Instance_30045]
+		[prac2_Instance_20013]
+		[prac2_Instance_10003])
+	(name "Macarrones con Champiñones")
+	(price 13)
+	(season ALL)
+	(type PASTA))
+
+([Magret_de_Pato_con_Salsa_de_Mistela_y_Asencia_de_An%C3%ADs_Estrellado] of  Gourmet+Second+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_50025]
+		[prac2_Instance_50026]
+		[prac2_Instance_50027]
+		[prac2_Instance_10020]
+		[prac2_Instance_10002]
+		[prac2_Instance_20011])
+	(name "Magret de Pato con Salsa de Mistela y Asencia de Anís Estrellado")
+	(price 50)
+	(season ALL)
+	(type FOWL))
+
+([Malbec+grape] of  Wine+grape
+
+	(name "Malbec grape"))
+
+([Margaux] of  Wine+template
+)
+
+([Marietta] of  Winery
+
+	(name "Marietta")
+	(produces
+		[Marietta+Cabernet+Sauvignon]
+		[Marietta+Petite+Syrah]
+		[Marietta+Zinfandel]))
+
+([Marietta+Cabernet+Sauvignon] of  Cabernet+Sauvignon
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Marietta])
+	(name "Marietta Cabernet Sauvignon")
+	(price 10)
+	(sugar DRY))
+
+([Marietta+Petite+Syrah] of  Petite+Syrah
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Marietta])
+	(name "Marietta Petite Syrah")
+	(price 16)
+	(sugar DRY))
+
+([Marietta+Zinfandel] of  Red+Zinfandel
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Marietta])
+	(name "Marietta Zinfandel")
+	(price 20)
+	(sugar DRY))
+
+([Maurice_Car_Rie_White_Zinfandel] of  White+Zinfandel
+
+	(name "Maurice Car'Rie White Zinfandel")
+	(price 10))
+
+([Medallones_de_Rape_con_Pur%C3%A9_de_Ciruelas_y_Espinacas] of  Gourmet+Second+Course
+
+	(associated+wine [Mountadam+Chardonnay])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_20006]
+		[prac2_Instance_20009]
+		[prac2_Instance_50028]
+		[prac2_Instance_30048])
+	(name "Medallones de Rape con Puré de Ciruelas y Espinacas")
+	(price 40)
+	(season ALL)
+	(type FISH))
+
+([Medoc] of  Wine+template
+)
+
+([Mejillones_al_Vapor] of  Traditional+First+Course
+
+	(associated+wine [Congress+Springs+Semillon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30052]
+		[prac2_Instance_30056])
+	(name "Mejillones al Vapor")
+	(price 8)
+	(season ALL)
+	(type SEAFOOD))
+
+([Melocot%C3%B3n_con_Uvas] of  Traditional+Dessert
+
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50052]
+		[prac2_Instance_50053])
+	(name "Melocotón con Uvas")
+	(price 6)
+	(season SUMMER)
+	(type FRUIT))
+
+([Merlot+grape] of  Wine+grape
+
+	(name "Merlot grape"))
+
+([Merluza_de_Pincho_con_Marinera_de_Algas] of  Gourmet+Second+Course
+
+	(associated+wine [Mountadam+Chardonnay])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30015]
+		[prac2_Instance_50029]
+		[prac2_Instance_30008])
+	(name "Merluza de Pincho con Marinera de Algas")
+	(price 42)
+	(season ALL)
+	(type FISH))
+
+([Milhojas_de_Bacalao] of  Gourmet+Second+Course
+
+	(associated+wine [Mountadam+Chardonnay])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_30019]
+		[prac2_Instance_30033]
+		[prac2_Instance_30020]
+		[prac2_Instance_6]
+		[prac2_Instance_1]
+		[prac2_Instance_5]
+		[prac2_Instance_10003])
+	(name "Milhojas de bacalao")
+	(price 35)
+	(season ALL)
+	(type FISH))
+
+([Mini_Cremoso_de_Jazmin_con_Tofee] of  Gourmet+Dessert
+
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50047]
+		[prac2_Instance_50048]
+		[prac2_Instance_50035]
+		[prac2_Instance_50034])
+	(name "Mini Cremoso de Jazmin con Tofee")
+	(price 23)
+	(season ALL)
+	(type FRUIT))
+
+([Montevina__White_Zinfandel] of  White+Zinfandel
+
+	(name "Montevina, White Zinfandel")
+	(price 6))
+
+([Mount+Eden+Vineyard] of  Winery
+
+	(name "Mount Eden Vineyard")
+	(produces [Mount+Eden+Vineyard+Edna+Valley+Chardonnay]))
+
+([Mount+Eden+Vineyard+Edna+Valley+Chardonnay] of  Chardonnay
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Mount+Eden+Vineyard])
+	(name "Mount Eden Vineyard Edna Valley Chardonnay")
+	(price 18)
+	(sugar DRY))
+
+([Mountadam] of  Winery
+
+	(name "Mountadam")
+	(produces
+		[Mountadam+Chardonnay]
+		[Mountadam+Pinot+Noir]
+		[Mountadam+Riesling]))
+
+([Mountadam+Chardonnay] of  Chardonnay
+
+	(body FULL)
+	(flavor STRONG)
+	(maker [Mountadam])
+	(name "Mountadam Chardonnay")
+	(price 32)
+	(sugar DRY))
+
+([Mountadam+Pinot+Noir] of  Pinot+Noir
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Mountadam])
+	(name "Mountadam Pinot Noir")
+	(price 20)
+	(sugar DRY))
+
+([Mountadam+Riesling] of  Dry+Riesling
+
+	(body MEDIUM)
+	(flavor DELICATE)
+	(maker [Mountadam])
+	(name "Mountadam Riesling")
+	(price 28)
+	(sugar DRY))
+
+([Muscadet] of  Wine+template
+)
+
+([Naranjada] of  Soft+drink
+
+	(name "Naranjada")
+	(price 3))
+
+([Page+Mill+Winery] of  Winery
+
+	(name "Page Mill Winery"))
+
+([Paletilla_de_Cabrito_al_Horno_con_Patatas_Panaderas] of  Gourmet+Second+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_50030]
+		[prac2_Instance_30033]
+		[prac2_Instance_10002]
+		[prac2_Instance_10020]
+		[prac2_Instance_40022])
+	(name "Paletilla de Cabrito al Horno con Patatas Panaderas")
+	(price 54)
+	(season ALL)
+	(type MEAT))
+
+([Pastel_de_la_Casa] of  Traditional+Dessert
+
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50039]
+		[prac2_Instance_50035]
+		[prac2_Instance_50051]
+		[prac2_Instance_20013]
+		[prac2_Instance_50038]
+		[prac2_Instance_50034])
+	(name "Pastel de la Casa")
+	(price 8)
+	(season ALL)
+	(type CAKE))
+
+([Pastelitos_de_Carne] of  Modern+Second+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_40017]
+		[prac2_Instance_40018]
+		[prac2_Instance_40019]
+		[prac2_Instance_40020]
+		[prac2_Instance_20023]
+		[prac2_Instance_30008]
+		[prac2_Instance_10002]
+		[prac2_Instance_20010]
+		[prac2_Instance_10011]
+		[prac2_Instance_40032])
+	(name "Pastelitos de Carne")
+	(price 31)
+	(season ALL)
+	(type MEAT))
+
+([Pato_con_Jud%C3%ADas] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_5]
+		[prac2_Instance_10002]
+		[prac2_Instance_20017]
+		[prac2_Instance_10003])
+	(name "Pato con Judías")
+	(price 13)
+	(season ALL)
+	(type FOWL))
+
+([Pato_con_Naranja_e_Hierbas] of  Modern+Second+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_30004]
+		[prac2_Instance_10020]
+		[prac2_Instance_40014]
+		[prac2_Instance_20017]
+		[prac2_Instance_10011]
+		[prac2_Instance_40045])
+	(name "Pato con Naranja e Hierbas")
+	(price 33)
+	(season ALL)
+	(type FOWL))
+
+([Pauillac] of  Wine+template
+)
+
+([Peter+Mccoy] of  Winery
+
+	(name "Peter Mccoy")
+	(produces [Peter+Mccoy+Chardonnay]))
+
+([Peter+Mccoy+Chardonnay] of  Chardonnay
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Peter+Mccoy])
+	(name "Peter Mccoy Chardonnay")
+	(price 25)
+	(sugar DRY))
+
+([Petite+Syrah] of  Wine+template
+)
+
+([Petite+Syrah+grape] of  Wine+grape
+
+	(name "Petite Syrah grape"))
+
+([Petite+Verdot+grape] of  Wine+grape
+
+	(name "Petite Verdot grape"))
+
+([Pinot+Blanc] of  Wine+template
+)
+
+([Pinot+Blanc+grape] of  Wine+grape
+
+	(name "Pinot Blanc grape"))
+
+([Pinot+Noir] of  Wine+template
+)
+
+([Pinot+Noir+grape] of  Wine+grape
+
+	(name "Pinot Noir grape"))
+
+([Pollo_a_la_Cerveza] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_6]
+		[prac2_Instance_5]
+		[prac2_Instance_20015]
+		[prac2_Instance_20014]
+		[prac2_Instance_3]
+		[prac2_Instance_10020]
+		[prac2_Instance_10006]
+		[prac2_Instance_10011])
+	(name "Pollo a la Cerveza")
+	(price 8)
+	(season ALL)
+	(type FOWL))
+
+([Port] of  Wine+template
+)
+
+([Pouilly-Fuisse] of  Wine+template
+)
+
+([prac2_Instance_0] of  Ingredient
+
+	(ingredient+name "liebre"))
+
+([prac2_Instance_1] of  Ingredient
+
+	(ingredient+name "caldo de carne"))
+
+([prac2_Instance_10] of  Ingredient
+
+	(ingredient+name "maiz"))
+
+([prac2_Instance_10000] of  Ingredient
+
+	(ingredient+name "naranjas"))
+
+([prac2_Instance_10001] of  Ingredient
+
+	(ingredient+name "espárragos"))
+
+([prac2_Instance_10002] of  Ingredient
+
+	(ingredient+name "laurel"))
+
+([prac2_Instance_10003] of  Ingredient
+
+	(ingredient+name "perejil"))
+
+([prac2_Instance_10004] of  Ingredient
+
+	(ingredient+name "setas"))
+
+([prac2_Instance_10005] of  Ingredient
+
+	(ingredient+name "conejo"))
+
+([prac2_Instance_10006] of  Ingredient
+
+	(ingredient+name "maizena"))
+
+([prac2_Instance_10007] of  Ingredient
+
+	(ingredient+name "faisán"))
+
+([prac2_Instance_10008] of  Ingredient
+
+	(ingredient+name "manzana"))
+
+([prac2_Instance_10009] of  Ingredient
+
+	(ingredient+name "apio"))
+
+([prac2_Instance_10010] of  Ingredient
+
+	(ingredient+name "tomillo"))
+
+([prac2_Instance_10011] of  Ingredient
+
+	(ingredient+name "pimienta negra"))
+
+([prac2_Instance_10012] of  Ingredient
+
+	(ingredient+name "chuleta de cordero"))
+
+([prac2_Instance_10013] of  Ingredient
+
+	(ingredient+name "harina"))
+
+([prac2_Instance_10014] of  Ingredient
+
+	(ingredient+name "tocino"))
+
+([prac2_Instance_10015] of  Ingredient
+
+	(ingredient+name "carne de redondo"))
+
+([prac2_Instance_10018] of  Ingredient
+
+	(ingredient+name "entrecot"))
+
+([prac2_Instance_10020] of  Ingredient
+
+	(ingredient+name "estragón"))
+
+([prac2_Instance_2] of  Ingredient
+
+	(ingredient+name "lomo"))
+
+([prac2_Instance_20002] of  Ingredient
+
+	(ingredient+name "mayonesa"))
+
+([prac2_Instance_20004] of  Ingredient
+
+	(ingredient+name "nécoras"))
+
+([prac2_Instance_20005] of  Ingredient
+
+	(ingredient+name "ron"))
+
+([prac2_Instance_20006] of  Ingredient
+
+	(ingredient+name "puré"))
+
+([prac2_Instance_20007] of  Ingredient
+
+	(ingredient+name "hierbas aromáticas"))
+
+([prac2_Instance_20009] of  Ingredient
+
+	(ingredient+name "rape"))
+
+([prac2_Instance_20010] of  Ingredient
+
+	(ingredient+name "nuez moscada"))
+
+([prac2_Instance_20011] of  Ingredient
+
+	(ingredient+name "pimienta blanca"))
+
+([prac2_Instance_20013] of  Ingredient
+
+	(ingredient+name "nata líquida"))
+
+([prac2_Instance_20014] of  Ingredient
+
+	(ingredient+name "pollo"))
+
+([prac2_Instance_20015] of  Ingredient
+
+	(ingredient+name "cerveza"))
+
+([prac2_Instance_20016] of  Ingredient
+
+	(ingredient+name "tomate"))
+
+([prac2_Instance_20017] of  Ingredient
+
+	(ingredient+name "pato"))
+
+([prac2_Instance_20019] of  Ingredient
+
+	(ingredient+name "judías"))
+
+([prac2_Instance_20023] of  Ingredient
+
+	(ingredient+name "pimientos"))
+
+([prac2_Instance_3] of  Ingredient
+
+	(ingredient+name "zanahoria"))
+
+([prac2_Instance_30002] of  Ingredient
+
+	(ingredient+name "bogavante"))
+
+([prac2_Instance_30003] of  Ingredient
+
+	(ingredient+name "rape"))
+
+([prac2_Instance_30004] of  Ingredient
+
+	(ingredient+name "cebolla"))
+
+([prac2_Instance_30005] of  Ingredient
+
+	(ingredient+name "puerro"))
+
+([prac2_Instance_30006] of  Ingredient
+
+	(ingredient+name "zanahoria"))
+
+([prac2_Instance_30007] of  Ingredient
+
+	(ingredient+name "arroz"))
+
+([prac2_Instance_30008] of  Ingredient
+
+	(ingredient+name "tomate"))
+
+([prac2_Instance_30009] of  Ingredient
+
+	(ingredient+name "cerdo"))
+
+([prac2_Instance_30010] of  Ingredient
+
+	(ingredient+name "bogavante"))
+
+([prac2_Instance_30011] of  Ingredient
+
+	(ingredient+name "arroz"))
+
+([prac2_Instance_30012] of  Ingredient
+
+	(ingredient+name "vieras"))
+
+([prac2_Instance_30014] of  Ingredient
+
+	(ingredient+name "langostinos"))
+
+([prac2_Instance_30015] of  Ingredient
+
+	(ingredient+name "merluza"))
+
+([prac2_Instance_30019] of  Ingredient
+
+	(ingredient+name "bacalao"))
+
+([prac2_Instance_30020] of  Ingredient
+
+	(ingredient+name "pimientos del piquillo"))
+
+([prac2_Instance_30023] of  Ingredient
+
+	(ingredient+name "gambas"))
+
+([prac2_Instance_30024] of  Ingredient
+
+	(ingredient+name "agua"))
+
+([prac2_Instance_30026] of  Ingredient
+
+	(ingredient+name "lechuga"))
+
+([prac2_Instance_30027] of  Ingredient
+
+	(ingredient+name "aceitunas"))
+
+([prac2_Instance_30028] of  Ingredient
+
+	(ingredient+name "atún"))
+
+([prac2_Instance_30030] of  Ingredient
+
+	(ingredient+name "carne de vaca"))
+
+([prac2_Instance_30031] of  Ingredient
+
+	(ingredient+name "puerro"))
+
+([prac2_Instance_30033] of  Ingredient
+
+	(ingredient+name "patata"))
+
+([prac2_Instance_30034] of  Ingredient
+
+	(ingredient+name "salchichas"))
+
+([prac2_Instance_30036] of  Ingredient
+
+	(ingredient+name "judías verdes"))
+
+([prac2_Instance_30037] of  Ingredient
+
+	(ingredient+name "huevo duro"))
+
+([prac2_Instance_30038] of  Ingredient
+
+	(ingredient+name "huevo crudo"))
+
+([prac2_Instance_30040] of  Ingredient
+
+	(ingredient+name "caldo"))
+
+([prac2_Instance_30043] of  Ingredient
+
+	(ingredient+name "macarrones"))
+
+([prac2_Instance_30044] of  Ingredient
+
+	(ingredient+name "champiñones"))
+
+([prac2_Instance_30045] of  Ingredient
+
+	(ingredient+name "jamón"))
+
+([prac2_Instance_30047] of  Ingredient
+
+	(ingredient+name "raviolis"))
+
+([prac2_Instance_30048] of  Ingredient
+
+	(ingredient+name "espinacas"))
+
+([prac2_Instance_30049] of  Ingredient
+
+	(ingredient+name "vaca cocida"))
+
+([prac2_Instance_30051] of  Ingredient
+
+	(ingredient+name "besugo"))
+
+([prac2_Instance_30052] of  Ingredient
+
+	(ingredient+name "limón"))
+
+([prac2_Instance_30054] of  Ingredient
+
+	(ingredient+name "bonito"))
+
+([prac2_Instance_30056] of  Ingredient
+
+	(ingredient+name "mejillones"))
+
+([prac2_Instance_4] of  Ingredient
+
+	(ingredient+name "mantequilla"))
+
+([prac2_Instance_40010] of  Ingredient
+
+	(ingredient+name "canela"))
+
+([prac2_Instance_40011] of  Ingredient
+
+	(ingredient+name "capón"))
+
+([prac2_Instance_40012] of  Ingredient
+
+	(ingredient+name "castañas"))
+
+([prac2_Instance_40013] of  Ingredient
+
+	(ingredient+name "lenguado"))
+
+([prac2_Instance_40014] of  Ingredient
+
+	(ingredient+name "naranja"))
+
+([prac2_Instance_40015] of  Ingredient
+
+	(ingredient+name "lubina"))
+
+([prac2_Instance_40016] of  Ingredient
+
+	(ingredient+name "sal gorda"))
+
+([prac2_Instance_40017] of  Ingredient
+
+	(ingredient+name "hojaldre"))
+
+([prac2_Instance_40018] of  Ingredient
+
+	(ingredient+name "carne picada"))
+
+([prac2_Instance_40019] of  Ingredient
+
+	(ingredient+name "pasas"))
+
+([prac2_Instance_40020] of  Ingredient
+
+	(ingredient+name "huevo relleno"))
+
+([prac2_Instance_40021] of  Ingredient
+
+	(ingredient+name "cordero"))
+
+([prac2_Instance_40022] of  Ingredient
+
+	(ingredient+name "vino blanco"))
+
+([prac2_Instance_40023] of  Ingredient
+
+	(ingredient+name "queso parmesano"))
+
+([prac2_Instance_40024] of  Ingredient
+
+	(ingredient+name "rúcula"))
+
+([prac2_Instance_40025] of  Ingredient
+
+	(ingredient+name "aguacate"))
+
+([prac2_Instance_40026] of  Ingredient
+
+	(ingredient+name "queso manchego"))
+
+([prac2_Instance_40027] of  Ingredient
+
+	(ingredient+name "vinagre"))
+
+([prac2_Instance_40029] of  Ingredient
+
+	(ingredient+name "tostadas"))
+
+([prac2_Instance_40030] of  Ingredient
+
+	(ingredient+name "salmón"))
+
+([prac2_Instance_40032] of  Ingredient
+
+	(ingredient+name "vino de jerez"))
+
+([prac2_Instance_40034] of  Ingredient
+
+	(ingredient+name "vino de rioja"))
+
+([prac2_Instance_40037] of  Ingredient
+
+	(ingredient+name "queso roquefort"))
+
+([prac2_Instance_40038] of  Ingredient
+
+	(ingredient+name "foie"))
+
+([prac2_Instance_40040] of  Ingredient
+
+	(ingredient+name "calabaza"))
+
+([prac2_Instance_40041] of  Ingredient
+
+	(ingredient+name "menta"))
+
+([prac2_Instance_40042] of  Ingredient
+
+	(ingredient+name "copos de yema"))
+
+([prac2_Instance_40043] of  Ingredient
+
+	(ingredient+name "habitas"))
+
+([prac2_Instance_40045] of  Ingredient
+
+	(ingredient+name "romero"))
+
+([prac2_Instance_40047] of  Ingredient
+
+	(ingredient+name "sésamo"))
+
+([prac2_Instance_40049] of  Ingredient
+
+	(ingredient+name "berenjena"))
+
+([prac2_Instance_40050] of  Ingredient
+
+	(ingredient+name "caramelo"))
+
+([prac2_Instance_40051] of  Ingredient
+
+	(ingredient+name "almendras"))
+
+([prac2_Instance_40052] of  Ingredient
+
+	(ingredient+name "agua de rosas"))
+
+([prac2_Instance_40055] of  Ingredient
+
+	(ingredient+name "piñones"))
+
+([prac2_Instance_40057] of  Ingredient
+
+	(ingredient+name "caviar"))
+
+([prac2_Instance_40058] of  Ingredient
+
+	(ingredient+name "levadura"))
+
+([prac2_Instance_40059] of  Ingredient
+
+	(ingredient+name "leche"))
+
+([prac2_Instance_5] of  Ingredient
+
+	(ingredient+name "cebolla"))
+
+([prac2_Instance_50022] of  Ingredient
+
+	(ingredient+name "datiles"))
+
+([prac2_Instance_50023] of  Ingredient
+
+	(ingredient+name "salsa de cardamono"))
+
+([prac2_Instance_50024] of  Ingredient
+
+	(ingredient+name "salsa agridulce"))
+
+([prac2_Instance_50025] of  Ingredient
+
+	(ingredient+name "magret de pato"))
+
+([prac2_Instance_50026] of  Ingredient
+
+	(ingredient+name "mistela"))
+
+([prac2_Instance_50027] of  Ingredient
+
+	(ingredient+name "anís"))
+
+([prac2_Instance_50028] of  Ingredient
+
+	(ingredient+name "ciruelas"))
+
+([prac2_Instance_50029] of  Ingredient
+
+	(ingredient+name "algas"))
+
+([prac2_Instance_50030] of  Ingredient
+
+	(ingredient+name "cabrito"))
+
+([prac2_Instance_50031] of  Ingredient
+
+	(ingredient+name "ternera"))
+
+([prac2_Instance_50032] of  Ingredient
+
+	(ingredient+name "tartar de ternera"))
+
+([prac2_Instance_50034] of  Ingredient
+
+	(ingredient+name "yemas"))
+
+([prac2_Instance_50035] of  Ingredient
+
+	(ingredient+name "claras de huevo"))
+
+([prac2_Instance_50036] of  Ingredient
+
+	(ingredient+name "leche condensada"))
+
+([prac2_Instance_50037] of  Ingredient
+
+	(ingredient+name "piñas"))
+
+([prac2_Instance_50038] of  Ingredient
+
+	(ingredient+name "vainilla"))
+
+([prac2_Instance_50039] of  Ingredient
+
+	(ingredient+name "chocolate"))
+
+([prac2_Instance_50040] of  Ingredient
+
+	(ingredient+name "fresones"))
+
+([prac2_Instance_50041] of  Ingredient
+
+	(ingredient+name "kiwi"))
+
+([prac2_Instance_50042] of  Ingredient
+
+	(ingredient+name "frambuesa"))
+
+([prac2_Instance_50043] of  Ingredient
+
+	(ingredient+name "fresas"))
+
+([prac2_Instance_50045] of  Ingredient
+
+	(ingredient+name "pera williams"))
+
+([prac2_Instance_50046] of  Ingredient
+
+	(ingredient+name "maracuya"))
+
+([prac2_Instance_50047] of  Ingredient
+
+	(ingredient+name "flor de jazmin"))
+
+([prac2_Instance_50048] of  Ingredient
+
+	(ingredient+name "tofee"))
+
+([prac2_Instance_50050] of  Ingredient
+
+	(ingredient+name "profiteroles"))
+
+([prac2_Instance_50051] of  Ingredient
+
+	(ingredient+name "nata"))
+
+([prac2_Instance_50052] of  Ingredient
+
+	(ingredient+name "melocotón"))
+
+([prac2_Instance_50053] of  Ingredient
+
+	(ingredient+name "uvas"))
+
+([prac2_Instance_50054] of  Ingredient
+
+	(ingredient+name "caracoles"))
+
+([prac2_Instance_50056] of  Ingredient
+
+	(ingredient+name "jamón"))
+
+([prac2_Instance_50057] of  Ingredient
+
+	(ingredient+name "queso mascarpone"))
+
+([prac2_Instance_50058] of  Ingredient
+
+	(ingredient+name "bizcochos"))
+
+([prac2_Instance_50059] of  Ingredient
+
+	(ingredient+name "café"))
+
+([prac2_Instance_50060] of  Ingredient
+
+	(ingredient+name "manteca"))
+
+([prac2_Instance_50061] of  Ingredient
+
+	(ingredient+name "azúcar"))
+
+([prac2_Instance_6] of  Ingredient
+
+	(ingredient+name "ajo"))
+
+([prac2_Instance_7] of  Ingredient
+
+	(ingredient+name "guisantes"))
+
+([prac2_Instance_8] of  Ingredient
+
+	(ingredient+name "ternera"))
+
+([prac2v1_Instance_2] of  Ingredient
+
+	(ingredient+name "calabacines"))
+
+([Profiteroles_de_Chocolate] of  Traditional+Dessert
+
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_50039]
+		[prac2_Instance_50050]
+		[prac2_Instance_50051])
+	(name "Profiteroles de Chocolate")
+	(price 8)
+	(season ALL)
+	(type CAKE))
+
+([Pudding_de_Esp%C3%A1rragos] of  Gourmet+Second+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_10001]
+		[prac2_Instance_10011]
+		[prac2_Instance_30024])
+	(name "Pudding de Espárragos")
+	(price 18)
+	(season ALL)
+	(type VEGETAL))
+
+([Puligny+Montrachet] of  Winery
+
+	(name "Puligny Montrachet")
+	(produces [Puligny+Montrachet+White+Burgundy]))
+
+([Puligny+Montrachet+White+Burgundy] of  White+Burgundy
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Puligny+Montrachet])
+	(name "Puligny Montrachet White Burgundy")
+	(sugar DRY))
+
+([Pur%C3%A9_de_Maracuya] of  Gourmet+Dessert
+
+	(hot FALSE)
+	(ingredients [prac2_Instance_50046])
+	(name "Puré de Maracuya")
+	(price 16)
+	(season ALL)
+	(type FRUIT))
+
+([Pur%C3%A9_de_Pera_Williams] of  Gourmet+Dessert
+
+	(hot FALSE)
+	(ingredients [prac2_Instance_50045])
+	(name "Puré de Pera Williams")
+	(price 18)
+	(season ALL)
+	(type FRUIT))
+
+([Raviolis_con_Carne_y_Espinacas] of  Traditional+First+Course
+
+	(associated+wine [Montevina__White_Zinfandel])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30047]
+		[prac2_Instance_10013]
+		[prac2_Instance_4]
+		[prac2_Instance_30048]
+		[prac2_Instance_20013]
+		[prac2_Instance_1]
+		[prac2_Instance_5]
+		[prac2_Instance_10006])
+	(name "Ravioli con Carne y Espinacas")
+	(price 15)
+	(season ALL)
+	(type PASTA))
+
+([Raviolis_de_Foie_con_Salsa_Roquefort] of  Modern+First+Course
+
+	(associated+wine [Maurice_Car_Rie_White_Zinfandel])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_5]
+		[prac2_Instance_40038]
+		[prac2_Instance_40037]
+		[prac2_Instance_30047]
+		[prac2_Instance_30040])
+	(name "Raviolis de Foie con Salsa Roquefort")
+	(price 24)
+	(season ALL)
+	(type PASTA))
+
+([Red+Bordeaux] of  Wine+template
+
+	(best+wineries
+		[Chateau+Lafite+Rothschild]
+		[Chateau+Margaux+Winery]
+		[wines_00087]
+		[wines_00088]
+		[wines_00089]))
+
+([Red+Burgundy] of  Wine+template
+)
+
+([Red+Merlot] of  Wine+template
+)
+
+([Red+Zinfandel] of  Wine+template
+)
+
+([Reposteria_Variada_de_Frutas_del_Bosque] of  Gourmet+Dessert
+
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50041]
+		[prac2_Instance_50042]
+		[prac2_Instance_50040]
+		[prac2_Instance_50043]
+		[prac2_Instance_50034])
+	(name "Reposteria Variada de Frutas del Bosque")
+	(price 22)
+	(season SUMMER)
+	(type FRUIT))
+
+([Riesling] of  Wine+template
+)
+
+([Riesling+grape] of  Wine+grape
+
+	(name "Riesling grape"))
+
+([Risotto_de_Setas] of  Modern+First+Course
+
+	(associated+wine [Maurice_Car_Rie_White_Zinfandel])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30011]
+		[prac2_Instance_10004]
+		[prac2_Instance_40022]
+		[prac2_Instance_6]
+		[prac2_Instance_30040]
+		[prac2_Instance_5]
+		[prac2_Instance_40023])
+	(name "Risotto de Setas")
+	(price 22)
+	(season ALL)
+	(type PASTA))
+
+([Rollito_de_Berenjena_al_Caramelo_Rellenos_de_Almendra_y_Agua_de_Rosas] of  Gourmet+First+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_40052]
+		[prac2_Instance_40051]
+		[prac2_Instance_40049]
+		[prac2_Instance_40050]
+		[prac2_Instance_6]
+		[prac2_Instance_5]
+		[prac2_Instance_40027])
+	(name "Rollito de Berenjena al Caramelo Rellenos de Almendra y Agua de Rosas")
+	(price 40)
+	(season ALL)
+	(type VEGETAL))
+
+([Salm%C3%B3n_Ahumado_con_Tostaditas] of  Modern+First+Course
+
+	(associated+wine [Ventana+Chenin+Blanc])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_5]
+		[prac2_Instance_40030]
+		[prac2_Instance_40029])
+	(name "Salmón Ahumado con Tostaditas")
+	(price 24)
+	(season ALL)
+	(type FISH))
+
+([Salpic%C3%B3n_de_Marisco] of  Gourmet+First+Course
+
+	(associated+wine [Mountadam+Chardonnay])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_30014]
+		[prac2_Instance_20023]
+		[prac2_Instance_20016]
+		[prac2_Instance_40027])
+	(name "Salpicón de Marisco")
+	(price 38)
+	(season ALL)
+	(type SEAFOOD))
+
+([Salsa_de_Bogavante_y_Rape] of  Modern+First+Course
+
+	(associated+wine [Ventana+Chenin+Blanc])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30010]
+		[prac2_Instance_20009]
+		[prac2_Instance_5]
+		[prac2_Instance_30031]
+		[prac2_Instance_3]
+		[prac2_Instance_30011]
+		[prac2_Instance_20016])
+	(name "Salsa de Bogavante y Rape")
+	(price 25)
+	(season ALL)
+	(type CREAM))
+
+([Saltimbocca_de_Ternera] of  Regional+Second+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30011]
+		[prac2_Instance_10013]
+		[prac2_Instance_4]
+		[prac2_Instance_10003]
+		[prac2_Instance_40023]
+		[prac2_Instance_40037]
+		[prac2_Instance_8]
+		[prac2_Instance_50056])
+	(name "Saltimbocca de Ternera")
+	(price 23)
+	(region Italian+region)
+	(season ALL)
+	(type MEAT))
+
+([Sancerre] of  Wine+template
+)
+
+([Santa+Cruz+Mountain+Vineyard] of  Winery
+
+	(location Santa+Cruz+Mountains+region)
+	(name "Santa Cruz Mountain Vineyard")
+	(produces [Santa+Cruz+Mountain+Vineyard+Cabernet+Sauvignon]))
+
+([Santa+Cruz+Mountain+Vineyard+Cabernet+Sauvignon] of  Cabernet+Sauvignon
+
+	(body FULL)
+	(flavor STRONG)
+	(maker [Santa+Cruz+Mountain+Vineyard])
+	(name "Santa Cruz Mountain Vineyard Cabernet Sauvignon")
+	(price 30)
+	(sugar DRY))
+
+([Saucelito+Canyon] of  Winery
+
+	(name "Saucelito Canyon")
+	(produces [Saucelito+Canyon+Zinfandel]))
+
+([Saucelito+Canyon+Zinfandel] of  Red+Zinfandel
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Saucelito+Canyon])
+	(name "Saucelito Canyon Zinfandel")
+	(price 17)
+	(sugar DRY))
+
+([Sauterne] of  Wine+template
+)
+
+([Sauvignon+Blanc] of  Wine+template
+)
+
+([Sauvignon+Blanc+grape] of  Wine+grape
+
+	(name "Sauvignon Blanc grape"))
+
+([Schloss+Rothermel] of  Winery
+
+	(location German+region)
+	(name "Schloss Rothermel"))
+
+([Schloss+Volrad] of  Winery
+
+	(location German+region)
+	(name "Schloss Volrad"))
+
+([Sean+Thackrey] of  Winery
+
+	(name "Sean Thackrey"))
+
+([Selaks] of  Winery
+
+	(name "Selaks")
+	(produces
+		[Selaks+Ice+Wine]
+		[Selaks+Sauvignon+Blanc]))
+
+([Selaks+Ice+Wine] of  Ice+Wine
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Selaks])
+	(name "Selaks Ice Wine")
+	(price 18))
+
+([Selaks+Sauvignon+Blanc] of  Sauvignon+Blanc
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Selaks])
+	(name "Selaks Sauvignon Blanc")
+	(price 14)
+	(sugar DRY))
+
+([Semillon] of  Wine+template
+)
+
+([Semillon+grape] of  Wine+grape
+
+	(name "Semillon grape"))
+
+([Sevre+Et+Maine] of  Winery
+
+	(name "Sevre Et Maine"))
+
+([Sopa_con_Salsichas] of  Traditional+First+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_10014]
+		[prac2_Instance_30031]
+		[prac2_Instance_5]
+		[prac2_Instance_30024]
+		[prac2_Instance_30033]
+		[prac2_Instance_10003]
+		[prac2_Instance_30034])
+	(name "Sopa con Salchichas")
+	(price 11)
+	(season WINTER)
+	(type SOUP))
+
+([Sopa_Minestrone] of  Regional+First+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30011]
+		[prac2_Instance_40040]
+		[prac2_Instance_30004]
+		[prac2_Instance_30036]
+		[prac2_Instance_30033]
+		[prac2_Instance_10003]
+		[prac2_Instance_30005]
+		[prac2_Instance_10014]
+		[prac2_Instance_3])
+	(name "Sopa Minestrona")
+	(price 14)
+	(region Italian+region)
+	(season ALL)
+	(type SOUP))
+
+([Soufl%C3%A9_de_Chocolate] of  Gourmet+Dessert
+
+	(hot FALSE)
+	(ingredients [prac2_Instance_50039])
+	(name "Souflé de Chocolate")
+	(price 17)
+	(season ALL)
+	(type CREAM))
+
+([St.+Emillion] of  Wine+template
+)
+
+([St._Honor%C3%A9] of  Regional+Dessert
+
+	(associated+wine [Whitehall+Lane+Primavera])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50060]
+		[prac2_Instance_10013]
+		[prac2_Instance_20013]
+		[prac2_Instance_10000]
+		[prac2_Instance_50061])
+	(name "St. Honoré")
+	(price 13)
+	(region French+region)
+	(season ALL)
+	(type CAKE))
+
+([Sterling+Vineyards] of  Winery
+
+	(location Napa+Valley+region)
+	(name "Sterling Vineyards")
+	(produces
+		[wines-current_00049]
+		[wines-current_00050]
+		[wines-current_00051]))
+
+([Stonleigh] of  Winery
+
+	(name "Stonleigh"))
+
+([Suprema_de_Salm%C3%B3n_al_Papillote_de_Romero_y_Tomates_Confitados] of  Gourmet+Second+Course
+
+	(associated+wine [Mountadam+Chardonnay])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_40030]
+		[prac2_Instance_20016]
+		[prac2_Instance_6]
+		[prac2_Instance_40040]
+		[prac2_Instance_5]
+		[prac2_Instance_10009])
+	(name "Suprema de Salmón al Papillote de Romero y Tomates Confitados")
+	(price 41)
+	(season ALL)
+	(type FISH))
+
+([Sweet+Reisling] of  Wine+template
+)
+
+([Tarta_de_Puerros] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30004]
+		[prac2_Instance_20010]
+		[prac2_Instance_10011]
+		[prac2_Instance_30005]
+		[prac2_Instance_40026]
+		[prac2_Instance_40022])
+	(name "Tarta de Puerros")
+	(price 8)
+	(season ALL)
+	(type VEGETAL))
+
+([Tarta_Santa_Menorquina] of  Modern+Dessert
+
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50035]
+		[prac2_Instance_50034]
+		[prac2_Instance_50039]
+		[prac2_Instance_50038]
+		[prac2_Instance_20013])
+	(name "Tarta Santa Menorquina")
+	(price 15)
+	(season ALL)
+	(type CAKE))
+
+([Tartaleta_de_Crema_de_Calabaza_con_Habitas_a_la_Menta_y_Copos_de_Yema] of  Gourmet+First+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_40040]
+		[prac2_Instance_40042]
+		[prac2_Instance_40043]
+		[prac2_Instance_40041]
+		[prac2_Instance_6]
+		[prac2_Instance_10009]
+		[prac2_Instance_5])
+	(name "Tartaleta de Crema de Calabaza con Habitas a la Menta y Copos de Yema")
+	(price 38)
+	(season ALL)
+	(type CREAM))
+
+([Tartar_de_Ternera_al_Perfume_de_Calvados] of  Gourmet+Second+Course
+
+	(associated+wine [Forman+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients [prac2_Instance_50032])
+	(name "Tartar de Ternera al Perfume de Calvados")
+	(price 60)
+	(season ALL)
+	(type MEAT))
+
+([Taylor] of  Winery
+
+	(name "Taylor")
+	(produces [Taylor+Port]))
+
+([Taylor+Port] of  Port
+
+	(maker [Taylor])
+	(name "Taylor Port")
+	(price 49))
+
+([Ternera_Asada] of  Traditional+Second+Course
+
+	(associated+wine [Marietta+Cabernet+Sauvignon])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_5]
+		[prac2_Instance_4]
+		[prac2_Instance_8]
+		[prac2_Instance_3]
+		[prac2_Instance_30040]
+		[prac2_Instance_10006])
+	(name "Ternera Asada")
+	(price 12)
+	(season ALL)
+	(type MEAT))
+
+([Tiramis%C3%BA] of  Regional+Dessert
+
+	(associated+wine [Whitehall+Lane+Primavera])
+	(hot FALSE)
+	(ingredients
+		[prac2_Instance_50057]
+		[prac2_Instance_50058]
+		[prac2_Instance_50059])
+	(name "Tiramisú")
+	(price 9)
+	(region Italian+region)
+	(season ALL)
+	(type CAKE))
+
+([Ventana] of  Winery
+
+	(name "Ventana")
+	(produces [Ventana+Chenin+Blanc]))
+
+([Ventana+Chenin+Blanc] of  Chenin+Blanc
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Ventana])
+	(name "Ventana Chenin Blanc")
+	(price 18)
+	(sugar OFF-DRY))
+
+([Vichysoisse] of  Regional+First+Course
+
+	(associated+wine [Mountadam+Pinot+Noir])
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30040]
+		[prac2_Instance_10006]
+		[prac2_Instance_4]
+		[prac2_Instance_20013]
+		[prac2_Instance_30005])
+	(name "Vichysoisse")
+	(price 15)
+	(region French+region)
+	(season ALL)
+	(type CREAM))
+
+([White+Burgundy] of  Wine+template
+)
+
+([White+Zinfandel] of  Wine+template
+)
+
+([Whitehall+Lane] of  Winery
+
+	(name "Whitehall Lane")
+	(produces
+		[Whitehall+Lane+Primavera]
+		[Whitehall+Lane+Cabernet+Franc]))
+
+([Whitehall+Lane+Cabernet+Franc] of  Cabernet+Franc
+
+	(body MEDIUM)
+	(flavor MODERATE)
+	(maker [Whitehall+Lane])
+	(name "Whitehall Lane Cabernet Franc")
+	(price 15)
+	(sugar DRY))
+
+([Whitehall+Lane+Primavera] of  Dessert+wine
+
+	(body LIGHT)
+	(flavor DELICATE)
+	(maker [Whitehall+Lane])
+	(name "Whitehall Lane Primavera")
+	(price 10))
+
+([wines-current_00036] of  %3APAL-CONSTRAINT
+
+	(%3APAL-DESCRIPTION "area of wine and maker are the same")
+	(%3APAL-NAME "area of wine and maker are the same")
+	(%3APAL-STATEMENT "(forall ?wine\n  (=> (and \n               (own-slot-not-null maker ?wine)\n               (own-slot-not-null area ?wine))\n         (= (area (maker ?wine))\n              (area ?wine))\n    )\n)              "))
+
+([wines-current_00049] of  Red+Merlot
+
+	(body FULL)
+	(flavor STRONG)
+	(grape [Merlot+grape])
+	(maker [Sterling+Vineyards])
+	(name "Sterling Merlot")
+	(price 25)
+	(sugar DRY))
+
+([wines-current_00050] of  Chardonnay
+
+	(grape [Chardonnay+grape])
+	(maker [Sterling+Vineyards])
+	(name "Sterling Chardonnay")
+	(price 15))
+
+([wines-current_00051] of  Cabernet+Sauvignon
+
+	(grape [Cabernet+Sauvignon+grape])
+	(maker [Sterling+Vineyards])
+	(name "Sterling Cabernet Sauvignon")
+	(price 26)
+	(sugar DRY))
+
+([wines_00087] of  Winery
+
+	(name "Chateau Latour"))
+
+([wines_00088] of  Winery
+
+	(name "Chateau Haut-Brion"))
+
+([wines_00089] of  Winery
+
+	(name "Chateau Mouton-Rothschild"))
+
+([Zarzuela_del_Mediterr%C3%A1neo_y_Bogavante] of  Modern+Second+Course
+
+	(hot TRUE)
+	(ingredients
+		[prac2_Instance_30010]
+		[prac2_Instance_30056]
+		[prac2_Instance_30015]
+		[prac2_Instance_20009]
+		[prac2_Instance_30027]
+		[prac2_Instance_5]
+		[prac2_Instance_30014]
+		[prac2_Instance_20016])
+	(name "Zarzuela del Mediterráneo y Bogavante")
+	(price 30)
+	(season ALL)
+	(type FISH))
+
+([Zinfandel+grape] of  Wine+grape
+
+	(name "Zinfandel grape"))

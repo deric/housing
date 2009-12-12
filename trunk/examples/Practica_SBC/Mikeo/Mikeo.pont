@@ -1,0 +1,758 @@
+; Mon Jun 11 03:44:33 CEST 2007
+; 
+;+ (version "3.2.1")
+;+ (build "Build 365")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(single-slot precioTotal
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot numero_personas_casa
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot descripcion
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot longitud_max
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot precio
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot num_plazas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot cjtoDecoracion
+		(type INSTANCE)
+;+		(allowed-classes Decoracion)
+		(create-accessor read-write))
+	(single-slot nombre_per
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_vitroceramica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot cjtoMenajeHogar
+		(type INSTANCE)
+;+		(allowed-classes MenajeHogar)
+		(create-accessor read-write))
+	(single-slot funda_preferida
+		(type INSTANCE)
+;+		(allowed-classes FundaSofa)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot extensible
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot cjtoIluminacion
+		(type INSTANCE)
+;+		(allowed-classes Iluminacion)
+		(create-accessor read-write))
+	(multislot cjtoMuebles
+		(type INSTANCE)
+;+		(allowed-classes Mueble)
+		(create-accessor read-write))
+	(single-slot tipo_perchero
+		(type SYMBOL)
+		(allowed-values traje chaqueta)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_espejo
+		(type SYMBOL)
+		(allowed-values completo facial)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_relleno
+		(type SYMBOL)
+		(allowed-values espuma pluma)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot edad_per
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot silla_preferida
+		(type INSTANCE)
+;+		(allowed-classes SillaFija)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot hijos
+		(type SYMBOL)
+		(allowed-values nino adolescente adulto)
+		(create-accessor read-write))
+	(single-slot tipo_sofa
+		(type SYMBOL)
+		(allowed-values individual 2plazas esquina)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot estilo
+		(type SYMBOL)
+		(allowed-values clasico moderno hippie pijo)
+		(create-accessor read-write))
+	(multislot material
+		(type SYMBOL)
+		(allowed-values madera metal cristal plastico piel vidrio porcelana ceramica pladur tela textil mimbre)
+		(create-accessor read-write))
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot estilo_per
+		(type SYMBOL)
+		(allowed-values pijo clasico hippie moderno)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot habitacion
+		(type SYMBOL)
+		(allowed-values dormitorio cocina bano comedor despacho)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot espejo_preferido
+		(type INSTANCE)
+;+		(allowed-classes Espejo)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tiene_espejo
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot cjtoLenceriaHogar
+		(type INSTANCE)
+;+		(allowed-classes LenceriaHogar)
+		(create-accessor read-write))
+	(single-slot tiene_animales
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot diametro
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot anchura
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot numero+de+piezas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_cama
+		(type SYMBOL)
+		(allowed-values doble individual)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot profundidad
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot presupuestoMax
+		(type FLOAT)
+		(default 6000.0)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_lavavajillas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Articulo
+	(is-a USER)
+	(role concrete)
+	(single-slot precio
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot material
+		(type SYMBOL)
+		(allowed-values madera metal cristal plastico piel vidrio porcelana ceramica pladur tela textil mimbre)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot profundidad
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot habitacion
+		(type SYMBOL)
+		(allowed-values dormitorio cocina bano comedor despacho)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot anchura
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot estilo
+		(type SYMBOL)
+		(allowed-values clasico moderno hippie pijo)
+		(create-accessor read-write))
+	(single-slot descripcion
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Decoracion
+	(is-a Articulo)
+	(role concrete))
+
+(defclass Espejo
+	(is-a Decoracion)
+	(role concrete)
+	(single-slot diametro
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_espejo
+		(type SYMBOL)
+		(allowed-values completo facial)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Reloj
+	(is-a Decoracion)
+	(role concrete)
+	(single-slot diametro
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass GalanDeNoche
+	(is-a Decoracion)
+	(role concrete))
+
+(defclass Revistero
+	(is-a Decoracion)
+	(role concrete))
+
+(defclass LenceriaHogar
+	(is-a Articulo)
+	(role concrete))
+
+(defclass Alfombra
+	(is-a LenceriaHogar)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Edredon
+	(is-a LenceriaHogar)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_cama
+		(type SYMBOL)
+		(allowed-values doble individual)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Sabana
+	(is-a LenceriaHogar)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_cama
+		(type SYMBOL)
+		(allowed-values doble individual)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Toalla
+	(is-a LenceriaHogar)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Manta
+	(is-a LenceriaHogar)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_cama
+		(type SYMBOL)
+		(allowed-values doble individual)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Cojin
+	(is-a LenceriaHogar)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_relleno
+		(type SYMBOL)
+		(allowed-values espuma pluma)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tipo_cama
+		(type SYMBOL)
+		(allowed-values doble individual)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass FundaSofa
+	(is-a LenceriaHogar)
+	(role concrete)
+	(single-slot tipo_sofa
+		(type SYMBOL)
+		(allowed-values individual 2plazas esquina)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass FundaMesa
+	(is-a LenceriaHogar)
+	(role concrete)
+	(single-slot num_plazas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass MenajeHogar
+	(is-a Articulo)
+	(role concrete))
+
+(defclass Bateria
+	(is-a MenajeHogar)
+	(role concrete)
+	(single-slot apto_lavavajillas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_vitroceramica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Vajilla
+	(is-a MenajeHogar)
+	(role concrete)
+	(single-slot apto_lavavajillas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_vitroceramica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Cuberteria
+	(is-a MenajeHogar)
+	(role concrete)
+	(single-slot apto_lavavajillas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_vitroceramica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass ConjuntoCafe
+	(is-a MenajeHogar)
+	(role concrete)
+	(single-slot apto_lavavajillas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_vitroceramica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass ConjuntoVasos
+	(is-a MenajeHogar)
+	(role concrete)
+	(single-slot apto_lavavajillas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_vitroceramica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass ConjuntoCopas
+	(is-a MenajeHogar)
+	(role concrete)
+	(single-slot apto_lavavajillas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_vitroceramica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass ConjuntoCoctel
+	(is-a MenajeHogar)
+	(role concrete)
+	(single-slot apto_lavavajillas
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot apto_vitroceramica
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass JuegoBano
+	(is-a MenajeHogar)
+	(role concrete))
+
+(defclass Iluminacion
+	(is-a Articulo)
+	(role concrete))
+
+(defclass LamparaPie
+	(is-a Iluminacion)
+	(role concrete))
+
+(defclass LamparaMesita
+	(is-a Iluminacion)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass LamparaParet
+	(is-a Iluminacion)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass LamparaTecho
+	(is-a Iluminacion)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Mueble
+	(is-a Articulo)
+	(role concrete))
+
+(defclass Silla
+	(is-a Mueble)
+	(role concrete))
+
+(defclass SillaFija
+	(is-a Silla)
+	(role concrete))
+
+(defclass SillaPlegable
+	(is-a Silla)
+	(role concrete))
+
+(defclass SillaGiratoria
+	(is-a Silla)
+	(role concrete))
+
+(defclass Mesa
+	(is-a Mueble)
+	(role concrete)
+	(single-slot num_plazas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot silla_preferida
+		(type INSTANCE)
+;+		(allowed-classes SillaFija)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot longitud_max
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass MesaFija
+	(is-a Mesa)
+	(role concrete)
+	(single-slot extensible
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Mesitas
+	(is-a Mesa)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Escritorios
+	(is-a Mesa)
+	(role concrete))
+
+(defclass MesaPlegable
+	(is-a Mesa)
+	(role concrete))
+
+(defclass Tocador
+	(is-a Mesa)
+	(role concrete)
+	(single-slot espejo_preferido
+		(type INSTANCE)
+;+		(allowed-classes Espejo)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Cama
+	(is-a Mueble)
+	(role concrete))
+
+(defclass CamaIndividual
+	(is-a Cama)
+	(role concrete))
+
+(defclass CamaMatrimonio
+	(is-a Cama)
+	(role concrete))
+
+(defclass CamaLitera
+	(is-a Cama)
+	(role concrete))
+
+(defclass Sofa
+	(is-a Mueble)
+	(role concrete)
+	(single-slot funda_preferida
+		(type INSTANCE)
+;+		(allowed-classes FundaSofa)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot num_plazas
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass 2o3Plazas
+	(is-a Sofa)
+	(role concrete))
+
+(defclass SofaIndividual
+	(is-a Sofa)
+	(role concrete))
+
+(defclass Esquina
+	(is-a Sofa)
+	(role concrete))
+
+(defclass Armario
+	(is-a Mueble)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot tiene_espejo
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Bajo
+	(is-a Armario)
+	(role concrete))
+
+(defclass Completo
+	(is-a Armario)
+	(role concrete))
+
+(defclass Habitacion
+	(is-a USER)
+	(role concrete)
+	(multislot cjtoMenajeHogar
+		(type INSTANCE)
+;+		(allowed-classes MenajeHogar)
+		(create-accessor read-write))
+	(multislot cjtoLenceriaHogar
+		(type INSTANCE)
+;+		(allowed-classes LenceriaHogar)
+		(create-accessor read-write))
+	(single-slot precioTotal
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot anchura
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot estilo
+		(type SYMBOL)
+		(allowed-values clasico moderno hippie pijo)
+		(create-accessor read-write))
+	(multislot cjtoIluminacion
+		(type INSTANCE)
+;+		(allowed-classes Iluminacion)
+		(create-accessor read-write))
+	(multislot cjtoMuebles
+		(type INSTANCE)
+;+		(allowed-classes Mueble)
+		(create-accessor read-write))
+	(multislot material
+		(type SYMBOL)
+		(allowed-values madera metal cristal plastico piel vidrio porcelana ceramica pladur tela textil mimbre)
+		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot cjtoDecoracion
+		(type INSTANCE)
+;+		(allowed-classes Decoracion)
+		(create-accessor read-write))
+	(single-slot profundidad
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot presupuestoMax
+		(type FLOAT)
+		(default 6000.0)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Cocina
+	(is-a Habitacion)
+	(role concrete))
+
+(defclass Comedor
+	(is-a Habitacion)
+	(role concrete))
+
+(defclass Dormitorio
+	(is-a Habitacion)
+	(role concrete)
+	(single-slot clasificacion_edades
+		(type SYMBOL)
+		(allowed-values nino adulto)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Bano
+	(is-a Habitacion)
+	(role concrete))
+
+(defclass Despacho
+	(is-a Habitacion)
+	(role concrete))
+
+(defclass Persona
+	(is-a USER)
+	(role concrete)
+	(single-slot tiene_animales
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot edad_per
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot estilo_per
+		(type SYMBOL)
+		(allowed-values pijo clasico hippie moderno)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot numero_personas_casa
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nombre_per
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Matrimonio
+	(is-a Persona)
+	(role concrete))
+
+(defclass Familia
+	(is-a Persona)
+	(role concrete)
+	(multislot hijos
+		(type SYMBOL)
+		(allowed-values nino adolescente adulto)
+		(create-accessor read-write)))
+
+(defclass Soltero
+	(is-a Persona)
+	(role concrete))
+
+(defclass SolteroCompartePiso
+	(is-a Persona)
+	(role concrete))
