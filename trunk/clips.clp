@@ -81,16 +81,15 @@
    (switch ?answer
       (case alone
 	  then
-    (assert (info-cliente (datos ?ins)))
-    ;(bind ?i 1)
-    ;(bind ?inst (find-all-instanceOs ((?it Offer)) (= ?it:rent 500)) )
-      ;(while (<= ?i (length$ ?inst))
-        ;do
-        ;(bind ?curr (nth$ ?i ?inst)) ; get item from array
-        ;(printout t (send ?curr print)) ; call message print on ?curr
-        ;(bind ?i (+ ?i 1)) ; i+=1
-        ;)
-        ;)
+    (bind ?i 1)
+    (bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
+      (while (<= ?i (length$ ?inst))
+        do
+        (bind ?curr (nth$ ?i ?inst)) ; get item from array
+        (printout t (send ?curr print)) ; call message print on ?curr
+        (bind ?i (+ ?i 1)) ; i+=1
+        )
+        )
    )
  )
 
@@ -99,19 +98,11 @@
    (bind ?answer (question "In what kind of environment do you want to live:" quiet centric young residential outskirts) )
    (switch ?answer
       (case quiet
-	  then
-	  	(bind ?i 1)
-		(bind ?inst (find-all-instanceOs ((?it Offer)) (= ?it:rent 500)) )
-	  	(while (<= ?i (length$ ?inst))
-		do
-			(bind ?curr (nth$ ?i ?inst)) ; get item from array
-			(printout t (send ?curr print)) ; call message print on ?curr
-			(bind ?i (+ ?i 1)) ; i+=1
-		)
+        then
       )
-      (case partner 
+      (case centric
 	    then
-	      (printout t "partner" crlf)
+	      (printout t "centric" crlf)
       )
    )
  )
