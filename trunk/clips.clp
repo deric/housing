@@ -1,3 +1,37 @@
+;;; ---------------------------------------------------------------------------------------------------------------------
+;;; ---------------------------------------------- ENGINE ---------------------------------------------------------------
+;;; ---------------------------------------------------------------------------------------------------------------------
+
+;;**************
+;;* DEFCLASSES *
+;;**************
+
+(defclass person
+	(is-a USER)
+	(slot age)
+	(slot occupation)
+)
+
+;;****************
+;;* DEFTEMPLATE *
+;;****************
+
+(deftemplate recommendation "Expert system would recommend you this offers:"
+	(slot name)
+  ;(multislot Offers)
+	(slot final?)
+)
+;;************
+;;* MESSAGES *
+;;************
+
+(defmessage-handler Offer print()
+	(printout t "----------------------------------" crlf)
+	(format t "Offer: %s%n" ?self:title)
+	(printout t "----------------------------------" crlf crlf)
+)
+
+
 ;;****************
 ;;* DEFFUNCTIONS *
 ;;****************
@@ -33,40 +67,38 @@
        then FALSE)
    NULL)
    
-(defclass person
-	(is-a USER)
-	(slot age)
-	(slot occupation)
-)
  
  ;(defmodule MAIN (export ?ALL))
 
-(defmessage-handler Offer print()
-	(printout t "----------------------------------" crlf)
-	(format t "Offer: %s%n" ?self:title)
-	(printout t "----------------------------------" crlf crlf)
-)
 
-(deftemplate recommendation "Expert system would recommend you this offers:"
-	(slot name)
-	(slot final?)
-)
-
-;;;***************
-;;;* QUERY RULES *
-;;;***************
- 
- ;(defmodule question-realty "Modul for getting information about realty type"
-  ;	(import MAIN ?ALL)
-  ;	(export ?ALL)
- ;)
-
+;;;*********
+;;;* RULES *
+;;;*********
 
 (defrule determine-room-type ""
    =>
    (bind ?answer (question "Are you going to live in a room:" alone partner other) )
    (switch ?answer
       (case alone
+	  then
+    (assert (info-cliente (datos ?ins)))
+    ;(bind ?i 1)
+    ;(bind ?inst (find-all-instanceOs ((?it Offer)) (= ?it:rent 500)) )
+      ;(while (<= ?i (length$ ?inst))
+        ;do
+        ;(bind ?curr (nth$ ?i ?inst)) ; get item from array
+        ;(printout t (send ?curr print)) ; call message print on ?curr
+        ;(bind ?i (+ ?i 1)) ; i+=1
+        ;)
+        ;)
+   )
+ )
+
+ (defrule determine-environment-type ""
+   =>
+   (bind ?answer (question "In what kind of environment do you want to live:" quiet centric young residential outskirts) )
+   (switch ?answer
+      (case quiet
 	  then
 	  	(bind ?i 1)
 		(bind ?inst (find-all-instanceOs ((?it Offer)) (= ?it:rent 500)) )
