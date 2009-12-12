@@ -43,14 +43,17 @@
 	(if (lexemep ?answer) 
 	    then (bind ?answer (lowcase ?answer)))
 	(while (not (member ?answer ?allowed-values)) do
-	    (format t "%s? " ?question)O
+	    (format t "%s? " ?question)
 	    (bind ?answer (read))
 	    (if (lexemep ?answer) 
 		then (bind ?answer (lowcase ?answer))))
 	?answer
 )
+ 
 (deffunction ask-question (?question $?allowed-values)
     (format t "%s? (%s) " ?question (implode$ ?allowed-values))
+    (bind ?response (read))
+    ?response
 )
 
 (deffunction ask-nummer (?question ?range-start ?range-end)
@@ -91,15 +94,26 @@
    (switch ?answer
       (case alone
 	  then
-    (bind ?i 1)
-    (bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
-      (while (<= ?i (length$ ?inst))
-        do
-        (bind ?curr (nth$ ?i ?inst)) ; get item from array
-        (printout t (send ?curr print)) ; call message print on ?curr
-        (bind ?i (+ ?i 1)) ; i+=1
+	    (assert (room_num 1))
+	;    (bind ?i 1)
+	;(bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
+	;(while (<= ?i (length$ ?inst))
+	;do
+	;(bind ?curr (nth$ ?i ?inst)) ; get item from array
+	;(printout t (send ?curr print)) ; call message print on ?curr
+	;(bind ?i (+ ?i 1)) ; i+=1
+	;)
         )
-        )
+   )
+ )
+ 
+ (defrule determine-possesion-car ""
+   =>
+   (if (yes-or-no "Do you have a car") 
+       then
+	   (assert (car TRUE))
+       else
+	   (assert (car FALSE))
    )
  )
 
