@@ -103,16 +103,24 @@
    )
  )
 
- (defrule determine-environment-type ""
+ (defrule determine-house-purpose ""
    =>
-   (bind ?answer (question "In what kind of environment do you want to live:" quiet centric young residential outskirts) )
+   (bind ?answer (question "What is the purpose of the realty:" all house office) )
    (switch ?answer
-      (case quiet
+      (case all
         then
+        (assert (Person purpose-realty all))
+        (printout t "You chose all" crlf)
       )
-      (case centric
+      (case house
 	    then
-	      (printout t "centric" crlf)
+      (assert (Person purpose-realty centric))
+	      (printout t "You chose centric" crlf)
+      )
+      (case office
+	    then
+        (assert (Person purpose-realty office))
+	      (printout t "You chose office" crlf)
       )
    )
  )
