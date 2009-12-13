@@ -1,4 +1,4 @@
-; Sat Dec 12 19:11:59 CET 2009
+; Sun Dec 13 01:00:14 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -170,16 +170,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -214,11 +214,6 @@
 (defclass Address
 	(is-a USER)
 	(role concrete)
-	(single-slot district
-		(type INSTANCE)
-;+		(allowed-classes District)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot coordinates
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
@@ -275,27 +270,27 @@
 (defclass PlaceToLive
 	(is-a USER)
 	(role abstract)
-	(single-slot description
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot address
 		(type INSTANCE)
 ;+		(allowed-classes Address)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot description
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass House
 	(is-a PlaceToLive)
 	(role concrete)
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
+		(create-accessor read-write))
 	(single-slot house_type
 		(type SYMBOL)
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
 		(create-accessor read-write)))
 
 (defclass Flat
@@ -482,18 +477,31 @@
 (defclass Country
 	(is-a GeographicalPart)
 	(role concrete)
+	(multislot provinces
+		(type INSTANCE)
+;+		(allowed-classes Province)
+		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Province
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot postal_code
+		(type STRING)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot provinces
-		(type INSTANCE)
-;+		(allowed-classes Province)
+	(single-slot inhabitants
+;+		(comment "number of inhabitants living in this area")
+		(type INTEGER)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass City
-	(is-a GeographicalPart)
+	(is-a Province)
 	(role concrete)
 	(single-slot postal_code
 		(type STRING)
@@ -515,28 +523,11 @@
 		(create-accessor read-write)))
 
 (defclass District
-	(is-a GeographicalPart)
+	(is-a City)
 	(role concrete)
 	(single-slot postal_code
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write)))
-
-(defclass Province
-	(is-a GeographicalPart)
-	(role concrete)
-	(single-slot postal_code
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot inhabitants
-;+		(comment "number of inhabitants living in this area")
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot cities
-		(type INSTANCE)
-;+		(allowed-classes City)
 		(create-accessor read-write)))
 
 (defclass Person

@@ -1,4 +1,4 @@
-; Sat Dec 12 19:11:58 CET 2009
+; Sun Dec 13 01:18:04 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -12,8 +12,27 @@
 ([house_Class10] of  Country
 
 	(inhabitants 50000000)
-	(provinces [house_Class11])
 	(title "Spain"))
+
+([house_Class10002] of  Offer
+
+	(realty [house_Class10003])
+	(title "flat in barceloneta"))
+
+([house_Class10003] of  Flat
+
+	(address [house_Class10004])
+	(description "Good location close to the sea")
+	(flat_type normal)
+	(floor "3")
+	(rooms [house_Class10008])
+	(space 90))
+
+([house_Class10004] of  Address
+
+	(city [house_Class14])
+	(coordinates [house_Class10007])
+	(street "Carrer de sant pere mitja"))
 
 ([house_Class10005] of  Flat
 
@@ -28,7 +47,6 @@
 
 	(city [house_Class13])
 	(coordinates [house_Class10007])
-	(district [house_Class15])
 	(street "aaa"))
 
 ([house_Class10007] of  Coordinates
@@ -49,20 +67,14 @@
 
 	(city [house_Class13])
 	(coordinates [house_Class10007])
-	(district [house_Class15])
 	(street "carrer de nick"))
 
 ([house_Class11] of  Province
 
-	(cities [house_Class13])
 	(title "Barcelona"))
 
 ([house_Class13] of  City
 
-	(country [house_Class10])
-	(districts
-		[house_Class14]
-		[house_Class15])
 	(postal_code "80000")
 	(title "Barcelona"))
 
@@ -73,6 +85,9 @@
 ([house_Class15] of  District
 
 	(title "Ciutat Vella"))
+
+([house_Class20005] of  District
+)
 
 ([house_Class3] of  Pub
 
