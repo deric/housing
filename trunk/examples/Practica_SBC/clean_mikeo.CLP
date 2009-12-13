@@ -1930,6 +1930,7 @@
 				(and (= (str-compare ?mueble:habitacion "comedor") 0) (member$ (send ?user get-estilo_per) ?mueble:estilo) (or (subsetp (send ?hab get-material) ?mueble:material) (subsetp ?mueble:material (send ?hab get-material))))))
 			(bind ?elem (make-instance of elemento (prioridad 1) (lista-articulos $?muebles) (cantidad 1)))
 			(bind ?lelem (insert$ ?lelem 1 ?elem))
+      
 		else
 			; Muebles completos
 			

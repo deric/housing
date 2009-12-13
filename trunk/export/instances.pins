@@ -1,13 +1,7 @@
-; Sun Dec 13 01:18:04 CET 2009
+; Sun Dec 13 02:28:25 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
-
-([house_Class1] of  Person
-
-	(age 44)
-	(firstname "Foo")
-	(surname "Bar"))
 
 ([house_Class10] of  Country
 

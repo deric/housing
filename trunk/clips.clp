@@ -40,6 +40,7 @@
 (defmessage-handler Offer print()
 	(printout t "----------------------------------" crlf)
 	(format t "Offer: %s%n" ?self:title)
+  (format t "Price: %f%n" ?self:rent)
 	(printout t "----------------------------------" crlf crlf)
 )
 
@@ -75,7 +76,7 @@
 	?question
 )
 
-(deffunction ask-nummer (?question ?range-start ?range-end)
+(deffunction ask-number (?question ?range-start ?range-end)
 	(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
 	(bind ?response (read))
 	(while (not(and(> ?response ?range-start)(< ?response ?range-end))) do
@@ -127,9 +128,9 @@
 
 (defrule your-recommendation-is
   (declare (salience 10))
-  ?rec <- (recommendation (person ?person) (is_final ok) (offer $?list-of-offers))
+  ?recommendation <- (recommendation (is_final ok) (offer $?list-of-offers))
   =>
-	(modify ?rec (is_final print))
+	(modify ?recommendation (is_final print))
   ;;;go to module output
 	(focus output)
 )
@@ -141,10 +142,11 @@
 (defmodule personal-questions "Module to know the needs of our user"
 	(import MAIN ?ALL)
 	(export ?ALL)
+  
 )
 
 (defrule your-name "Find out our name"
-	;(not (object (is-a Person)))
+	(not (object (is-a Person)))
 	=>
 	(bind ?firstname (ask-open-question "What is your firstname"))
   (bind ?surname (ask-open-question "What is your surname"))
@@ -153,7 +155,7 @@
   ;;;add this to our instance of Person
 	(send ?user put-firstname ?firstname)
   (send ?user put-surname ?surname)
-  ;;;insert this Person into recommendation
+  ;;;insert this Person into recommendation (why?)
 	(assert (recommendation (person ?user)))
   ;;;add facts that our first and surname are ok
 	(assert (Person firstname ok))
@@ -165,10 +167,10 @@
 ;;;- run our queries on the gathered information and the available houses-
 ;;;-----------------------------------------------------------------------
 
-(defrule start-engine
+(defrule start-house-queries
 	(Person complete ok)
 	=>
-	(focus runengine)
+	(focus house-queries)
 )
 
 ;;;-------------------------------------------------------------
@@ -176,98 +178,94 @@
 ;;;-------------------------------------------------------------
 
 
-(defmodule runengine "Module that analyzes data with information"
+(defmodule house-queries "Module that gathers information about the searched house"
 	(import MAIN ?ALL)
 	(import personal-questions ?ALL)
 	(export ?ALL)
 )
 
+;;; Get our maximum budget
+(defrule house-max-budget
+	(not (Person budget ?))
+  ?user <- (object (is-a Person))
+	=>
+	(bind ?max_budget (ask-number "What is your maximum budget for a house" 0 10000000))
+	(send ?user put-max_budget ?max_budget)
+	(assert (Person budget ok))
+)
 
-(defrule find-interesting-places "find new places"
-  ?rec <- (recommendation (offer $?list-of-offers & : (= (length ?list-of-offers) 0)))
-  =>
-  (printout t "entered the interesting places stuff" crlf)
-  (bind ?group-of-answer (create$ 0))
-	(bind ?answer "")
+
+(defrule decision-budget
+	(Person budget ok)
+	?user <- (object (is-a Person))
+  ?recommendation <- (recommendation (is_final ?) (offer $?list-of-offers))
+	=>
+  (if (yes-or-no "Are you willing to pay more for the house of your dreams?")
+    then
+      ; We add 10% to the price range
+      (bind ?offers (find-all-instances ((?offer Offer))
+      (<= ?offer:rent (* (send ?user get-max_budget) 1.1 ))))
+      (modify ?recommendation (offer $offers))
+  	else
+        ; We have a strict price range
+        (bind ?offers (find-all-instances ((?offer Offer))
+        (<= (send ?offer get-rent) (send ?user get-max_budget))))
+        (modify ?recommendation (offer $offers))
+  )
+  
   (bind ?i 1)
-	(bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
-	(while (<= ?i (length$ ?inst))
+
+  (printout t (length$ ?offers) crlf)
+  (printout t (send ?user get-max_budget) crlf)
+  ;;;TODO : This print function does not work when we use the passing of our variables
+  ;;;Check why this does not work with the normal chaining
+  ;;;More or less working...
+  
+  (bind ?i 1)
+	(while (<= ?i (length$ ?offers))
     do
-      (bind ?curr (nth$ ?i ?inst)) ; get item from array
+      
+      (bind ?curr (nth$ ?i ?offers)) ; get item from array
+      (printout t "counting" crlf)
+      (printout t (send ?curr print)) ; call message print on ?curr
+      (bind ?i (+ ?i 1)) ; i+=1
+  )
+  
+  (assert (Proposal budgetcheck ok))
+)
+
+;;; check if we passed all our subsets of questions
+(defrule end-of-questions
+	?budget <- (Proposal budgetcheck ok)
+  ?recommendation <- (recommendation (is_final ?) (offer $?offers))
+	=>
+	(retract ?budget)
+	(modify ?recommendation (is_final ok))
+	(pop-focus)
+)
+
+
+;;;----------------------------------------------- -
+;;;- define a module for the output of our program -
+;;;-------------------------------------------------
+(defmodule output "Module for outputting the results"
+	(import MAIN ?ALL)
+)
+
+(defrule print-proposals "output of our proposals"
+  ?recommendation <- (recommendation (offer $?offers))
+  =>
+  (printout t (multifieldp $offers) crlf)
+  (bind ?i 1)
+	(while (<= ?i (length$ ?offers))
+    do
+      
+      (bind ?curr (nth$ ?i ?offers)) ; get item from array
+      (printout t "counting" crlf)
       (printout t (send ?curr print)) ; call message print on ?curr
       (bind ?i (+ ?i 1)) ; i+=1
   )
 )
-
-;(defrule determine-room-type ""
-;   =>
-;   (bind ?answer (question "Are you going to live in a room:" alone partner other) )
-;   (switch ?answer
-;      (case alone
-;	  then
-;	    (assert (room_num 1))
-	;    (bind ?i 1)
-	;(bind ?inst (find-all-instances ((?it Offer)) (= ?it:rent 500)) )
-	;(while (<= ?i (length$ ?inst))
-	;do
-	;(bind ?curr (nth$ ?i ?inst)) ; get item from array
-	;(printout t (send ?curr print)) ; call message print on ?curr
-	;(bind ?i (+ ?i 1)) ; i+=1
-	;)
-;        )
-;   )
-; )
- 
-; (defrule determine-possesion-car
-;   =>
-;   (if (yes-or-no "Do you have a car") 
-;       then
-;	   (assert (car TRUE))
-;       else
-;	   (assert (car FALSE))
-;   )
-; )
-
-
-; (defrule determine-house-purpose
-; ?user <- (object (is-a Person))
-; (not (Person age ?))
-;   =>
-;   (bind ?answer (question "What is the purpose of the realty:" all house office) )
-;   (switch ?answer
-;      (case all
-;        then
-;        (send ?user put-age 18)
-;        (assert (personal-data (area-type all)))
-;        ;;;create new offer
-;        (bind ?instance (make-instance h-offer of Offer))
-;        (send ?instance put-title "offer title")
-;        (bind ?list-of-offers (insert$ ?list-of-offers 1 ?instance))
-;        (assert (recommendation (is_final print)))
-;     )
-;   )
-;   
-; )
-
-;(defrule print
-;	?rec <- (recommendation (name ?) (is_final print) (offer $?list-of-offers))
-;	=>
-;	(printout t "---------------------------------------------------------------------" crlf)
-;	(printout t "Your recommendations" crlf crlf)
-
-  ;;;foreach of the offers in our list
-;	(bind ?i 1)
-;	(while (<= ?i (length$ ?list-of-offers))
-;		do
-;			(bind ?curr-offer (nth$ ?i ?list-of-offers))
-;			(printout t (send ?curr-offer print))
-;			(bind ?i (+ ?i 1))
-;	)
-
-  ;;;program has finished
-;	(modify ?rec (is_final finished))
-;	(pop-focus)
-;)
  
 ;;;****************************
 ;;;* STARTUP AND REPAIR RULES *

@@ -1,4 +1,4 @@
-; Sun Dec 13 01:00:14 CET 2009
+; Sun Dec 13 02:17:52 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -74,9 +74,9 @@
 ;+		(allowed-classes Date)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot firstname
+	(single-slot firstname
 		(type STRING)
-		(cardinality 1 2)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
@@ -101,9 +101,9 @@
 		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot surname
+	(single-slot surname
 		(type STRING)
-		(cardinality 1 2)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot windows_num
 		(type INTEGER)
@@ -477,10 +477,6 @@
 (defclass Country
 	(is-a GeographicalPart)
 	(role concrete)
-	(multislot provinces
-		(type INSTANCE)
-;+		(allowed-classes Province)
-		(create-accessor read-write))
 	(single-slot inhabitants
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
@@ -488,7 +484,7 @@
 		(create-accessor read-write)))
 
 (defclass Province
-	(is-a GeographicalPart)
+	(is-a Country)
 	(role concrete)
 	(single-slot postal_code
 		(type STRING)
@@ -511,15 +507,6 @@
 ;+		(comment "number of inhabitants living in this area")
 		(type INTEGER)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot districts
-		(type INSTANCE)
-;+		(allowed-classes District)
-		(create-accessor read-write))
-	(single-slot country
-		(type INSTANCE)
-;+		(allowed-classes Country)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass District
@@ -533,13 +520,13 @@
 (defclass Person
 	(is-a USER)
 	(role concrete)
-	(multislot firstname
+	(single-slot firstname
 		(type STRING)
-		(cardinality 1 2)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot surname
+	(single-slot surname
 		(type STRING)
-		(cardinality 1 2)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot age
 		(type INTEGER)
