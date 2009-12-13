@@ -80,7 +80,7 @@
 (deffunction print-proposals ($?offers)
  ; (printout t (multifieldp $offers) crlf)
   (bind ?i 1)
-	(while (< ?i (length$ ?offers))
+	(while (<= ?i (length$ ?offers))
 	  do
 	    (bind ?curr (nth$ ?i ?offers)) ; get item from array
 	    (printout t "counting" crlf)
