@@ -30,8 +30,8 @@
   (slot person)
   (multislot offer)
 	(slot is_final)
-  
 )
+
 
 ;;************
 ;;* MESSAGES *
@@ -41,7 +41,6 @@
 	(printout t "----------------------------------" crlf)
 	(format t "Offer: %s%n" ?self:title)
 	(format t "Price: %f%n" ?self:rent)
-	(printout t "----------------------------------" crlf crlf)
 )
 
 
@@ -83,7 +82,6 @@
 	(while (<= ?i (length$ ?offers))
 	  do
 	    (bind ?curr (nth$ ?i ?offers)) ; get item from array
-	    (printout t "counting" crlf)
 	    (printout t (send ?curr print)) ; call message print on ?curr
 	    (bind ?i (+ ?i 1)) ; i+=1
 	)
@@ -142,7 +140,7 @@
 
 (defrule your-recommendation-is
   (declare (salience 10))
-  ?recommendation <- (recommendation (is_final ok) (offer $?list-of-offers))
+  ?recommendation <- (recommendation (is_final ok) (offer $?offers))
   =>
 	(modify ?recommendation (is_final print))
   ;;;go to module output
@@ -169,7 +167,7 @@
   ;;;add this to our instance of Person
 	(send ?user put-firstname ?firstname)
   (send ?user put-surname ?surname)
-  ;;;insert this Person into recommendation (why?)
+  ;;;insert this Person into recommendation
 	(assert (recommendation (person ?user)))
   ;;;add facts that our first and surname are ok
 	(assert (Person firstname ok))
@@ -214,41 +212,38 @@
 (defrule decision-budget
 	(Person budget ok)
 	?user <- (object (is-a Person))
-  ?recommendation <- (recommendation (is_final ?) (offer $?list-of-offers))
+  ?recommendation <- (recommendation (is_final ?) (offer $?offers))
 	=>
   (if (yes-or-no "Are you willing to pay more for the house of your dreams?")
     then
       ; We add 10% to the price range
       (bind ?offers (find-all-instances ((?offer Offer))
       (<= ?offer:rent (* (send ?user get-max_budget) 1.1 ))))
-      (modify ?recommendation (offer $offers))
+      (modify ?recommendation (offer ?offers))
   	else
         ; We have a strict price range
         (bind ?offers (find-all-instances ((?offer Offer))
         (<= (send ?offer get-rent) (send ?user get-max_budget))))
-        (modify ?recommendation (offer $offers))
+        (modify ?recommendation (offer ?offers))
   )
   
-  (bind ?i 1)
-
   (printout t "num offers: " (length$ ?offers) crlf)
-  (printout t (send ?user get-max_budget) crlf)
-  ;;;TODO : This print function does not work when we use the passing of our variables
-  ;;;Check why this does not work with the normal chaining
-  ;;;More or less working...
-  (print-proposals ?offers)
-
+  ; use the function print-proposals for printing our offers
+  ;(print-proposals ?offers)
+  (printout t "end of questions" crlf crlf)
 	(assert (Proposal budgetcheck ok))
 )
 
 ;;; check if we passed all our subsets of questions
+
 (defrule end-of-questions
 	?budget <- (Proposal budgetcheck ok)
 	?recommendation <- (recommendation (is_final ?) (offer $?offers))
 	=>
+  (printout t "end of questions" crlf crlf)
 	(retract ?budget)
-	;(assert ?recommendation (is_final ok))
-	(pop-focus)
+	(modify ?recommendation (is_final ok))
+  (pop-focus)
 )
 
 
@@ -259,7 +254,19 @@
 	(import MAIN ?ALL)
 )
 
-
+(defrule print
+	?recommendation <- (recommendation (person ?person) (is_final print) (offer $?offers))
+	=>
+	(printout t "---------------------------------------------------------------------" crlf)
+  ;;;%s stands for string
+  ;;;%n stands for newline
+	(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
+	(printout t "This is the list of proposals" crlf crlf)
+	
+	(print-proposals ?offers)
+	(modify ?recommendation (is_final finished))
+	(pop-focus)
+)
  
 ;;;****************************
 ;;;* STARTUP AND REPAIR RULES *
