@@ -40,7 +40,7 @@
 (defmessage-handler Offer print()
 	(printout t "----------------------------------" crlf)
 	(format t "Offer: %s%n" ?self:title)
-  (format t "Price: %f%n" ?self:rent)
+	(format t "Price: %f%n" ?self:rent)
 	(printout t "----------------------------------" crlf crlf)
 )
 
@@ -75,6 +75,20 @@
 	(bind ?question (read))
 	?question
 )
+
+; Function for printing final results
+(deffunction print-proposals ($?offers)
+ ; (printout t (multifieldp $offers) crlf)
+  (bind ?i 1)
+	(while (< ?i (length$ ?offers))
+	  do
+	    (bind ?curr (nth$ ?i ?offers)) ; get item from array
+	    (printout t "counting" crlf)
+	    (printout t (send ?curr print)) ; call message print on ?curr
+	    (bind ?i (+ ?i 1)) ; i+=1
+	)
+)
+
 
 (deffunction ask-number (?question ?range-start ?range-end)
 	(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
@@ -184,6 +198,8 @@
 	(export ?ALL)
 )
 
+
+
 ;;; Get our maximum budget
 (defrule house-max-budget
 	(not (Person budget ?))
@@ -215,32 +231,23 @@
   
   (bind ?i 1)
 
-  (printout t (length$ ?offers) crlf)
+  (printout t "num offers: " (length$ ?offers) crlf)
   (printout t (send ?user get-max_budget) crlf)
   ;;;TODO : This print function does not work when we use the passing of our variables
   ;;;Check why this does not work with the normal chaining
   ;;;More or less working...
-  
-  (bind ?i 1)
-	(while (<= ?i (length$ ?offers))
-    do
-      
-      (bind ?curr (nth$ ?i ?offers)) ; get item from array
-      (printout t "counting" crlf)
-      (printout t (send ?curr print)) ; call message print on ?curr
-      (bind ?i (+ ?i 1)) ; i+=1
-  )
-  
-  (assert (Proposal budgetcheck ok))
+  (print-proposals ?offers)
+
+	(assert (Proposal budgetcheck ok))
 )
 
 ;;; check if we passed all our subsets of questions
 (defrule end-of-questions
 	?budget <- (Proposal budgetcheck ok)
-  ?recommendation <- (recommendation (is_final ?) (offer $?offers))
+	?recommendation <- (recommendation (is_final ?) (offer $?offers))
 	=>
 	(retract ?budget)
-	(modify ?recommendation (is_final ok))
+	;(assert ?recommendation (is_final ok))
 	(pop-focus)
 )
 
@@ -252,20 +259,7 @@
 	(import MAIN ?ALL)
 )
 
-(defrule print-proposals "output of our proposals"
-  ?recommendation <- (recommendation (offer $?offers))
-  =>
-  (printout t (multifieldp $offers) crlf)
-  (bind ?i 1)
-	(while (<= ?i (length$ ?offers))
-    do
-      
-      (bind ?curr (nth$ ?i ?offers)) ; get item from array
-      (printout t "counting" crlf)
-      (printout t (send ?curr print)) ; call message print on ?curr
-      (bind ?i (+ ?i 1)) ; i+=1
-  )
-)
+
  
 ;;;****************************
 ;;;* STARTUP AND REPAIR RULES *
