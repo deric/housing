@@ -1,4 +1,4 @@
-; Sun Dec 13 02:28:25 CET 2009
+; Mon Dec 14 02:55:19 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -58,6 +58,10 @@
 	(single-slot flat_type
 		(type SYMBOL)
 		(allowed-values attic normal ground)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot score
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot transport
@@ -196,6 +200,10 @@
 	(single-slot available_to
 		(type INSTANCE)
 ;+		(allowed-classes Date)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot score
+		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot title

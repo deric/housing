@@ -1,7 +1,8 @@
-; Sun Dec 13 02:28:25 CET 2009
+; Mon Dec 14 02:55:19 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
+
 
 ([house_Class10] of  Country
 
@@ -10,7 +11,10 @@
 
 ([house_Class10002] of  Offer
 
+	(available_from [house_Class6])
+	(available_to [house_Class20003])
 	(realty [house_Class10003])
+	(rent 750.0)
 	(title "flat in barceloneta"))
 
 ([house_Class10003] of  Flat
@@ -79,6 +83,12 @@
 ([house_Class15] of  District
 
 	(title "Ciutat Vella"))
+
+([house_Class20003] of  Date
+
+	(day 12)
+	(month 7)
+	(year 2010))
 
 ([house_Class20005] of  District
 )

@@ -38,9 +38,12 @@
 ;;************
 
 (defmessage-handler Offer print()
-	(printout t "----------------------------------" crlf)
-	(format t "Offer: %s%n" ?self:title)
+  (printout t "----------------------------------" crlf)
+  (format t "Offer: %s%n" ?self:title) 
 	(format t "Price: %f%n" ?self:rent)
+  (printout t crlf)
+  (format t "Score: %f%n" ?self:score)
+  (printout t crlf)
 )
 
 
@@ -77,6 +80,7 @@
 
 ; Function for printing final results
 (deffunction print-proposals ($?offers)
+ ; multifieldp is to check if the field is a multifield
  ; (printout t (multifieldp $offers) crlf)
   (bind ?i 1)
 	(while (<= ?i (length$ ?offers))
@@ -190,6 +194,7 @@
 ;;;-------------------------------------------------------------
 
 
+
 (defmodule house-queries "Module that gathers information about the searched house"
 	(import MAIN ?ALL)
 	(import personal-questions ?ALL)
@@ -211,38 +216,80 @@
 
 (defrule decision-budget
 	(Person budget ok)
+  (not (Proposal budgetcheck ?))
 	?user <- (object (is-a Person))
   ?recommendation <- (recommendation (is_final ?) (offer $?offers))
 	=>
   (if (yes-or-no "Are you willing to pay more for the house of your dreams?")
     then
       ; We add 10% to the price range
-      (bind ?offers (find-all-instances ((?offer Offer))
-      (<= ?offer:rent (* (send ?user get-max_budget) 1.1 ))))
-      (modify ?recommendation (offer ?offers))
-  	else
-        ; We have a strict price range
-        (bind ?offers (find-all-instances ((?offer Offer))
-        (<= (send ?offer get-rent) (send ?user get-max_budget))))
-        (modify ?recommendation (offer ?offers))
+      ; HARD CONSTRAINT SO REMOVE FROM INSTANCES
+      ;add 1 points to soft constraints
+      (do-for-all-instances ((?offer Offer))
+        ;do-for condition
+        (>= ?offer:rent (* (send ?user get-max_budget) 1.1 ))
+        ;do-for execution
+        (send ?offer delete)
+      )
+    else
+      ; We have a strict price range
+      ; We add 2 points
+      (do-for-all-instances ((?offer Offer))
+        ;do-for condition
+        (>= ?offer:rent (send ?user get-max_budget))
+        ;do-for execution
+        (send ?offer delete)
+        ;(send ?offer put-score (+ 2 (send ?offer get-score)))
+      )
   )
   
   (printout t "num offers: " (length$ ?offers) crlf)
   ; use the function print-proposals for printing our offers
   ;(print-proposals ?offers)
-  (printout t "end of questions" crlf crlf)
 	(assert (Proposal budgetcheck ok))
+)
+
+
+(defrule decision-test
+	(Person budget ok)
+  (not (Proposal test ?))
+	?user <- (object (is-a Person))
+  ?recommendation <- (recommendation (is_final ?) (offer $?offers))
+	=>
+  (if (yes-or-no "Just a test?")
+    then
+      ; We add 2 points
+      (do-for-all-instances ((?offer Offer))
+        (>= ?offer:rent 400)
+        (send ?offer put-score (+ 2 (send ?offer get-score)))
+      )
+      ;(modify ?recommendation (offer ?offers))
+  	else
+      ; We add 4 points
+      (do-for-all-instances ((?offer Offer)) TRUE
+        (send ?offer put-score (+ 1 (send ?offer get-score)))
+      )
+  )
+  
+  (printout t "num offers: " (length$ ?offers) crlf)
+  ; use the function print-proposals for printing our offers
+  ;(print-proposals ?offers)
+	(assert (Proposal test ok))
 )
 
 ;;; check if we passed all our subsets of questions
 
 (defrule end-of-questions
 	?budget <- (Proposal budgetcheck ok)
+  ?test <- (Proposal test ok)
 	?recommendation <- (recommendation (is_final ?) (offer $?offers))
 	=>
-  (printout t "end of questions" crlf crlf)
 	(retract ?budget)
 	(modify ?recommendation (is_final ok))
+  
+  (bind ?offers (find-all-instances ((?offer Offer)) TRUE))
+  (modify ?recommendation (offer ?offers))
+  (print-proposals ?offers)
   (pop-focus)
 )
 
@@ -262,8 +309,10 @@
   ;;;%n stands for newline
 	(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
 	(printout t "This is the list of proposals" crlf crlf)
-	
 	(print-proposals ?offers)
+  (printout t "---------------------------------------------------------------------" crlf)
+  (printout t "Thank you for using our housing service" crlf)
+  (printout t "---------------------------------------------------------------------" crlf)
 	(modify ?recommendation (is_final finished))
 	(pop-focus)
 )
