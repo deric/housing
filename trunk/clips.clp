@@ -312,12 +312,21 @@
 	(print-proposals ?offers)
 	(modify ?recommendation (is_final finished))
 	(pop-focus)
+	(focus EOP)
 )
  
-(defrule end-of-program
+ 
+(defmodule EOP "end of program"
+  (import MAIN ?ALL)
+)
+
+(defrule endprogram "final rule" (declare (salience -100))
+	=>
   (printout t "---------------------------------------------------------------------" crlf)
   (printout t "Thank you for using our housing service" crlf)
   (printout t "---------------------------------------------------------------------" crlf)   
+  (printout t crlf)  
+  (pop-focus)
 )
  
 ;;;****************************
