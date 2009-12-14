@@ -310,11 +310,14 @@
 	(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
 	(printout t "This is the list of proposals" crlf crlf)
 	(print-proposals ?offers)
-  (printout t "---------------------------------------------------------------------" crlf)
-  (printout t "Thank you for using our housing service" crlf)
-  (printout t "---------------------------------------------------------------------" crlf)
 	(modify ?recommendation (is_final finished))
 	(pop-focus)
+)
+ 
+(defrule end-of-program
+  (printout t "---------------------------------------------------------------------" crlf)
+  (printout t "Thank you for using our housing service" crlf)
+  (printout t "---------------------------------------------------------------------" crlf)   
 )
  
 ;;;****************************
