@@ -158,12 +158,14 @@
 
 ;;;-------------------------------------------------------------------------
 ;;;- after the personal questions we are going to output the recommendations
+;;;- this should be in this order!
 ;;;-------------------------------------------------------------------------
 
 (defrule your-recommendation-is
   (declare (salience 10))
   ?recommendation <- (recommendation (is_final ok))
   =>
+  (printout t "modify the recommendations" crlf crlf)
 	(modify ?recommendation (is_final print))
   ;;;go to module output
 	(focus output)
@@ -241,7 +243,7 @@
 
 (defrule decision-budget
 	(Person budget ok)
-  (not (somefact budgetcheck ?))
+  (not (checklist budgetcheck ?))
 	?user <- (object (is-a Person))
   ?recommendation <- (recommendation (is_final ?))
 	=>
@@ -277,13 +279,13 @@
       )
   )
   ; use the function print-proposals for printing our offers
-	(assert (somefact budgetcheck ok))
+	(assert (checklist budgetcheck ok))
 )
 
 
 (defrule decision-test
 	(Person budget ok)
-  (not (somefact test ko))
+  (not (checklist test ?))
 	?user <- (object (is-a Person))
   ?recommendation <- (recommendation (is_final ?))
 	=>
@@ -291,34 +293,35 @@
     then
       ; We add 2 points
       (do-for-all-instances 
-	((?proposal Proposal))
+      ((?proposal Proposal))
         ;(>= (send ?proposal get-offer):rent 400)
         TRUE
-        (send ?proposal put-is_proposed TRUE)
+        ;(send ?proposal put-is_proposed TRUE)
         (send ?proposal put-score (+ 2 (send ?proposal get-score)))
       )
   	else
       ; We add 4 points
       (do-for-all-instances ((?proposal Proposal)) TRUE
-        (send ?proposal put-is_proposed TRUE)
+        ;(send ?proposal put-is_proposed TRUE)
         (send ?proposal put-score (+ 4 (send ?proposal get-score)))
       )
   )
-	(assert (somefact test ok))
+	(assert (checklist test ok))
 )
 
 ;;; check if we passed all our subsets of questions
 
 (defrule end-of-questions
-	?budget <- (Proposal budgetcheck ok)
-  ?test <- (Proposal test ok)
+	?budget <- (checklist budgetcheck ok)
+  ?test <- (checklist test ok)
 	?recommendation <- (recommendation (is_final ?))
 	=>
+  (printout t "end of questions" crlf crlf)
 	(retract ?budget)
+  (retract ?test)
 	(modify ?recommendation (is_final ok))
   (pop-focus)
 )
-
 
 ;;;----------------------------------------------- -
 ;;;- define a module for the output of our program -
@@ -326,6 +329,7 @@
 (defmodule output "Module for outputting the results"
 	(import MAIN ?ALL)
 )
+
 
 (defrule print
 	?recommendation <- (recommendation (person ?person) (is_final print))
@@ -335,12 +339,12 @@
   ;;;%n stands for newline
 	(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
 	(printout t "This is the list of proposals" crlf crlf)
-	(do-for-all-instances ((?proposal Proposal))
-        TRUE
-        ;(send ?proposal put-is_proposed TRUE)
-        ;(send ?proposal put-score (+ 2 (send ?proposal get-score)))
-        (printout t (send ?proposal:offer print))
-  )
+	(do-for-all-instances 
+	    ((?proposal Proposal))
+	    (eq (send ?proposal get-is_proposed) TRUE)
+	    ;action
+	    (printout t (send (send ?proposal get-offer) print))
+	)
 	(modify ?recommendation (is_final finished))
 	(pop-focus)
 )
@@ -351,26 +355,28 @@
   (import MAIN ?ALL)
 )
 
-(defrule print ""
+;(defrule print ""
   ;     ?recommendation <- (recommendation (person ?person) (is_final print))
-  	=>
-	(printout t "---------------------------------------------------------------------" crlf)
+;  	=>
+;	(printout t "---------------------------------------------------------------------" crlf)
   ;;;%s stands for string
   ;;;%n stands for newline
   ;(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
-	(printout t "This is the list of proposals" crlf crlf)
-	(do-for-all-instances 
-	    ((?proposal Proposal))
-	    (eq (send ?proposal get-is_proposed) TRUE)
+;	(printout t "This is the list of proposals" crlf crlf)
+;	(do-for-all-instances 
+;	    ((?proposal Proposal))
+;	    (eq (send ?proposal get-is_proposed) TRUE)
 	    ;action
-	    (printout t (send (send ?proposal get-offer) print))
-	)
+;	    (printout t (send (send ?proposal get-offer) print))
+;	)
   ;(modify ?recommendation (is_final finished))
-)
+;)
   
  
  
-(defrule endprogram "final rule" (declare (salience -100))
+(defrule endprogram "final rule"
+  (declare (salience -100))
+  ?recommendation <- (recommendation (person ?person) (is_final finished))
 	=>
   (printout t "---------------------------------------------------------------------" crlf)
   (printout t "Thank you for using our housing service" crlf)
