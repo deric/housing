@@ -27,7 +27,7 @@
 ;;****************
 
 (deftemplate recommendation
-  (slot person)
+  	(slot person)
 	(slot is_final)
 )
 
@@ -229,17 +229,85 @@
 )
 
 
+;;; Get our maximum budget
+(defrule house-type
+	(not (Person type-of-house ?))
+	?user <- (object (is-a Person))
+	=>
+	(bind ?type-of-house (question "What type of real estate are you looking for" office house flat))
+	;(send ?user put-max_budget ?max_budget)
+	(assert (Person type-of-house ?type-of-house))
+)
+
+;;;DEFINE NUMBER OF ROOMS
+;;; get the number of rooms in case of office
+(defrule house-office-rooms
+	(not (Person room-num ?))
+	(Person type-of-house office)
+	?user <- (object (is-a Person))
+	=>
+	(bind ?rooms (ask-number "How many rooms do you need" 0 20))
+	;(send ?user put-max_budget ?max_budget)
+	(assert (Person room-num ?rooms))
+	
+)
+
+;;; set the number of rooms if it is not office
+;;;also define the number of people living there or children
+(defrule house-other-rooms
+	(not (Person room-num ?))
+	(not (Person type-of-house office))
+	?user <- (object (is-a Person))
+	=>
+
+	(bind ?type-of-family (question "U are looking for a place to live for?" alone partner children))
+	(if (= (str-compare ?type-of-family "alone") 0)
+		then
+		(assert (Person room-num 1))
+	)
+	(if (= (str-compare ?type-of-family "partner") 0)
+		then
+		(if (yes-or-no "are you planning to have children soon")
+		then
+			(assert (Person room-num 3))
+		else
+			(assert (Person room-num 2))
+		)
+		;;in any case we need a double room
+		(assert (Person room-type double))
+
+	)
+	(if (= (str-compare ?type-of-family "children") 0)
+		then
+		(bind ?children (ask-number "How many children are living with you" 0 20))
+		(assert (Person room-num (round (/ ?children 2))))
+		(assert (Person house-shared FALSE))
+		(assert (Person children ?children))
+	)
+)
+
+;;;set office centric location
+;;; get the number of rooms in case of office
+(defrule house-office-location
+	(numberp Person num-rooms)
+	(Person type-of-house office)
+	?user <- (object (is-a Person))
+	=>
+	(if (yes-or-no "is a centric office important for you")
+		then
+		(assert (Person location centric))
+	)
+)
 
 ;;; Get our maximum budget
 (defrule house-max-budget
 	(not (Person budget ?))
 	?user <- (object (is-a Person))
 	=>
-	(bind ?max_budget (ask-number "What is your maximum budget for a house" 0 10000000))
+	(bind ?max_budget (ask-number "What is your maximum budget" 0 10000000))
 	(send ?user put-max_budget ?max_budget)
 	(assert (Person budget ok))
 )
-
 
 (defrule decision-budget
 	(Person budget ok)
@@ -257,13 +325,9 @@
 	((?proposal Proposal))
 	;instance-set query
 	(<= (send (send ?proposal get-offer) get-rent) (* (send ?user get-max_budget) 1.1 ))
-	;(bind ?offer (send (send ?proposal get-offer) get-rent))
-	;(printout t ?proposal print)
-	;(printout t (send (send ?proposal get-offer) get-rent))
         ;distributed action
 	(send ?proposal put-is_proposed TRUE)
 	;(send ?proposal put-score (+ 1 (send ?proposal get-score)))
-	;(printout t (send (send ?proposal get-offer) print))
       )
     else
       ; We have a strict price range
@@ -273,7 +337,6 @@
         ;do-for condition
         (<= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
         ;do-for execution
-	;(printout t (send (send ?proposal get-offer) print))
 	(send ?proposal put-is_proposed TRUE)
 	;(send ?proposal put-score (+ 1 (send ?proposal get-score)))
       )
@@ -283,42 +346,40 @@
 )
 
 
-(defrule decision-test
-	(Person budget ok)
-  (not (checklist test ?))
-	?user <- (object (is-a Person))
-  ?recommendation <- (recommendation (is_final ?))
-	=>
-  (if (yes-or-no "Just a test?")
-    then
+;(defrule decision-test
+;	(Person budget ok)
+;  (not (checklist test ?))
+	;?user <- (object (is-a Person))
+  ;?recommendation <- (recommendation (is_final ?))
+;	=>
+;  (if (yes-or-no "Just a test?")
+;    then
       ; We add 2 points
-      (do-for-all-instances 
-      ((?proposal Proposal))
+;      (do-for-all-instances ((?proposal Proposal)) TRUE
         ;(>= (send ?proposal get-offer):rent 400)
-        TRUE
         ;(send ?proposal put-is_proposed TRUE)
-        (send ?proposal put-score (+ 2 (send ?proposal get-score)))
-      )
-  	else
+;        (send ?proposal put-score (+ 2 (send ?proposal get-score)))
+;      )
+;  	else
       ; We add 4 points
-      (do-for-all-instances ((?proposal Proposal)) TRUE
-        ;(send ?proposal put-is_proposed TRUE)
-        (send ?proposal put-score (+ 4 (send ?proposal get-score)))
-      )
-  )
-	(assert (checklist test ok))
-)
+;      (do-for-all-instances ((?proposal Proposal)) TRUE
+;        ;(send ?proposal put-is_proposed TRUE)
+;        (send ?proposal put-score (+ 4 (send ?proposal get-score)))
+;      )
+;  )
+;	(assert (checklist test ok))
+;)
 
 ;;; check if we passed all our subsets of questions
 
 (defrule end-of-questions
 	?budget <- (checklist budgetcheck ok)
-  ?test <- (checklist test ok)
+  ;?test <- (checklist test ok)
 	?recommendation <- (recommendation (is_final ?))
 	=>
   (printout t "end of questions" crlf crlf)
 	(retract ?budget)
-  (retract ?test)
+  ;(retract ?test)
 	(modify ?recommendation (is_final ok))
   (pop-focus)
 )
