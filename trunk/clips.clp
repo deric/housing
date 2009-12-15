@@ -28,10 +28,16 @@
 
 (deftemplate recommendation
   (slot person)
-  (multislot offer)
 	(slot is_final)
 )
 
+(defclass Proposal
+	(is-a USER)
+	(role concrete)
+	(slot score)
+	(slot offer)
+	(slot is_proposed)
+)
 
 ;;************
 ;;* MESSAGES *
@@ -45,7 +51,17 @@
   (format t "Score: %f%n" ?self:score)
   (printout t crlf)
 )
-
+ 
+(defmessage-handler Proposal print()
+  (printout t (send ?self:offer print)) 
+  (format t "Is proposed: %s%n" ?self:is_proposed)
+  (printout t crlf)
+)
+ 
+ ;(defmessage-handler Proposal get-offer()
+ ; ?self:offer
+ ;) 
+ 
 
 ;;****************
 ;;* DEFFUNCTIONS *
@@ -64,6 +80,7 @@
 		then (bind ?answer (lowcase ?answer))))
 	?answer
 )
+
  
 (deffunction ask-question (?question $?allowed-values)
     (format t "%s? (%s) " ?question (implode$ ?allowed-values))
@@ -79,17 +96,18 @@
 )
 
 ; Function for printing final results
-(deffunction print-proposals ($?offers)
+;(deffunction print-proposals ($?proposals)
  ; multifieldp is to check if the field is a multifield
  ; (printout t (multifieldp $offers) crlf)
-  (bind ?i 1)
-	(while (<= ?i (length$ ?offers))
-	  do
-	    (bind ?curr (nth$ ?i ?offers)) ; get item from array
-	    (printout t (send ?curr print)) ; call message print on ?curr
-	    (bind ?i (+ ?i 1)) ; i+=1
-	)
-)
+;  (bind ?i 1)
+;	(while (<= ?i (length$ ?proposals))
+;	  do
+;	    (bind ?curr (nth$ ?i ?proposals)) ; get item from array
+;      ;(send [b] get-foo)
+;	    (printout t (send ?curr:offer print)) ; call message print on ?curr
+;	    (bind ?i (+ ?i 1)) ; i+=1
+;	)
+;)
 
 
 (deffunction ask-number (?question ?range-start ?range-end)
@@ -131,11 +149,11 @@
 	(declare (salience 10))
 	=>
 	(printout t "------------------------------------------" crlf)
-  (printout t "------ Expert system to find a house -----" crlf)
-  (printout t "------------------------------------------" crlf)
-  (printout t crlf)
-  ;;;go to module personal-questions
-  (focus personal-questions)
+	(printout t "------ Expert system to find a house -----" crlf)
+	(printout t "------------------------------------------" crlf)
+	(printout t crlf)
+	;;;go to module personal-questions
+	(focus personal-questions house-queries EOP)
 )
 
 ;;;-------------------------------------------------------------------------
@@ -144,7 +162,7 @@
 
 (defrule your-recommendation-is
   (declare (salience 10))
-  ?recommendation <- (recommendation (is_final ok) (offer $?offers))
+  ?recommendation <- (recommendation (is_final ok))
   =>
 	(modify ?recommendation (is_final print))
   ;;;go to module output
@@ -158,7 +176,6 @@
 (defmodule personal-questions "Module to know the needs of our user"
 	(import MAIN ?ALL)
 	(export ?ALL)
-  
 )
 
 (defrule your-name "Find out our name"
@@ -186,7 +203,15 @@
 (defrule start-house-queries
 	(Person complete ok)
 	=>
-	(focus house-queries)
+    ;;;initialize our system and so get all instances of offer and copy them into
+    ;;;a new instance proposal
+    (do-for-all-instances ((?offer Offer))
+     ;do-for condition
+     TRUE
+     ;do-for execution
+     (make-instance of Proposal (score 0) (offer ?offer) (is_proposed FALSE))
+    )
+  ;(focus house-queries)
 )
 
 ;;;-------------------------------------------------------------
@@ -206,7 +231,7 @@
 ;;; Get our maximum budget
 (defrule house-max-budget
 	(not (Person budget ?))
-  ?user <- (object (is-a Person))
+	?user <- (object (is-a Person))
 	=>
 	(bind ?max_budget (ask-number "What is your maximum budget for a house" 0 10000000))
 	(send ?user put-max_budget ?max_budget)
@@ -216,65 +241,70 @@
 
 (defrule decision-budget
 	(Person budget ok)
-  (not (Proposal budgetcheck ?))
+  (not (somefact budgetcheck ?))
 	?user <- (object (is-a Person))
-  ?recommendation <- (recommendation (is_final ?) (offer $?offers))
+  ?recommendation <- (recommendation (is_final ?))
 	=>
   (if (yes-or-no "Are you willing to pay more for the house of your dreams?")
     then
       ; We add 10% to the price range
       ; HARD CONSTRAINT SO REMOVE FROM INSTANCES
       ;add 1 points to soft constraints
-      (do-for-all-instances ((?offer Offer))
-        ;do-for condition
-        (>= ?offer:rent (* (send ?user get-max_budget) 1.1 ))
-        ;do-for execution
-        (send ?offer delete)
+      (do-for-all-instances 
+	;instance template
+	((?proposal Proposal))
+	;instance-set query
+	(<= (send (send ?proposal get-offer) get-rent) (* (send ?user get-max_budget) 1.1 ))
+	;(bind ?offer (send (send ?proposal get-offer) get-rent))
+	;(printout t ?proposal print)
+	;(printout t (send (send ?proposal get-offer) get-rent))
+        ;distributed action
+	(send ?proposal put-is_proposed TRUE)
+	;(send ?proposal put-score (+ 1 (send ?proposal get-score)))
+	;(printout t (send (send ?proposal get-offer) print))
       )
     else
       ; We have a strict price range
       ; We add 2 points
-      (do-for-all-instances ((?offer Offer))
+      (do-for-all-instances 
+	((?proposal Proposal))
         ;do-for condition
-        (>= ?offer:rent (send ?user get-max_budget))
+        (<= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
         ;do-for execution
-        (send ?offer delete)
-        ;(send ?offer put-score (+ 2 (send ?offer get-score)))
+	;(printout t (send (send ?proposal get-offer) print))
+	(send ?proposal put-is_proposed TRUE)
+	;(send ?proposal put-score (+ 1 (send ?proposal get-score)))
       )
   )
-  
-  (printout t "num offers: " (length$ ?offers) crlf)
   ; use the function print-proposals for printing our offers
-  ;(print-proposals ?offers)
-	(assert (Proposal budgetcheck ok))
+	(assert (somefact budgetcheck ok))
 )
 
 
 (defrule decision-test
 	(Person budget ok)
-  (not (Proposal test ?))
+  (not (somefact test ko))
 	?user <- (object (is-a Person))
-  ?recommendation <- (recommendation (is_final ?) (offer $?offers))
+  ?recommendation <- (recommendation (is_final ?))
 	=>
   (if (yes-or-no "Just a test?")
     then
       ; We add 2 points
-      (do-for-all-instances ((?offer Offer))
-        (>= ?offer:rent 400)
-        (send ?offer put-score (+ 2 (send ?offer get-score)))
+      (do-for-all-instances 
+	((?proposal Proposal))
+        ;(>= (send ?proposal get-offer):rent 400)
+        TRUE
+        (send ?proposal put-is_proposed TRUE)
+        (send ?proposal put-score (+ 2 (send ?proposal get-score)))
       )
-      ;(modify ?recommendation (offer ?offers))
   	else
       ; We add 4 points
-      (do-for-all-instances ((?offer Offer)) TRUE
-        (send ?offer put-score (+ 1 (send ?offer get-score)))
+      (do-for-all-instances ((?proposal Proposal)) TRUE
+        (send ?proposal put-is_proposed TRUE)
+        (send ?proposal put-score (+ 4 (send ?proposal get-score)))
       )
   )
-  
-  (printout t "num offers: " (length$ ?offers) crlf)
-  ; use the function print-proposals for printing our offers
-  ;(print-proposals ?offers)
-	(assert (Proposal test ok))
+	(assert (somefact test ok))
 )
 
 ;;; check if we passed all our subsets of questions
@@ -282,14 +312,10 @@
 (defrule end-of-questions
 	?budget <- (Proposal budgetcheck ok)
   ?test <- (Proposal test ok)
-	?recommendation <- (recommendation (is_final ?) (offer $?offers))
+	?recommendation <- (recommendation (is_final ?))
 	=>
 	(retract ?budget)
 	(modify ?recommendation (is_final ok))
-  
-  (bind ?offers (find-all-instances ((?offer Offer)) TRUE))
-  (modify ?recommendation (offer ?offers))
-  (print-proposals ?offers)
   (pop-focus)
 )
 
@@ -302,24 +328,48 @@
 )
 
 (defrule print
-	?recommendation <- (recommendation (person ?person) (is_final print) (offer $?offers))
+	?recommendation <- (recommendation (person ?person) (is_final print))
 	=>
 	(printout t "---------------------------------------------------------------------" crlf)
   ;;;%s stands for string
   ;;;%n stands for newline
 	(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
 	(printout t "This is the list of proposals" crlf crlf)
-	(print-proposals ?offers)
+	(do-for-all-instances ((?proposal Proposal))
+        TRUE
+        ;(send ?proposal put-is_proposed TRUE)
+        ;(send ?proposal put-score (+ 2 (send ?proposal get-score)))
+        (printout t (send ?proposal:offer print))
+  )
 	(modify ?recommendation (is_final finished))
 	(pop-focus)
-	(focus EOP)
 )
+ 
  
  
 (defmodule EOP "end of program"
   (import MAIN ?ALL)
 )
 
+(defrule print ""
+  ;     ?recommendation <- (recommendation (person ?person) (is_final print))
+  	=>
+	(printout t "---------------------------------------------------------------------" crlf)
+  ;;;%s stands for string
+  ;;;%n stands for newline
+  ;(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
+	(printout t "This is the list of proposals" crlf crlf)
+	(do-for-all-instances 
+	    ((?proposal Proposal))
+	    (eq (send ?proposal get-is_proposed) TRUE)
+	    ;action
+	    (printout t (send (send ?proposal get-offer) print))
+	)
+  ;(modify ?recommendation (is_final finished))
+)
+  
+ 
+ 
 (defrule endprogram "final rule" (declare (salience -100))
 	=>
   (printout t "---------------------------------------------------------------------" crlf)
