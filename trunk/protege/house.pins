@@ -1,4 +1,4 @@
-; Mon Dec 14 03:12:41 CET 2009
+; Thu Dec 17 00:27:46 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -98,8 +98,7 @@
 )
 
 ([house_Class3] of  Pub
-
-	(coordinates [house_Class4]))
+)
 
 ([house_Class4] of  Coordinates
 
