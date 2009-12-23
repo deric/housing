@@ -134,7 +134,14 @@
        then FALSE)
    NULL)
    
- 
+ ;distance between two Coordinates objects
+(deffunction distance (?c1 ?c2)
+	(bind ?result 0.0)
+	(bind ?x (- (send ?c1 get-longitude) (send ?c2 get-longitude)))
+	(bind ?y (- (send ?c1 get-latitude) (send ?c2 get-latitude)))
+	(bind ?result (sqrt (+ (** ?x 2) (** ?y 2))))
+	?result
+)
 
 
 ;;;*********
