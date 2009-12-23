@@ -353,30 +353,6 @@
 )
 
 
-;(defrule decision-test
-;	(Person budget ok)
-;  (not (checklist test ?))
-	;?user <- (object (is-a Person))
-  ;?recommendation <- (recommendation (is_final ?))
-;	=>
-;  (if (yes-or-no "Just a test?")
-;    then
-      ; We add 2 points
-;      (do-for-all-instances ((?proposal Proposal)) TRUE
-        ;(>= (send ?proposal get-offer):rent 400)
-        ;(send ?proposal put-is_proposed TRUE)
-;        (send ?proposal put-score (+ 2 (send ?proposal get-score)))
-;      )
-;  	else
-      ; We add 4 points
-;      (do-for-all-instances ((?proposal Proposal)) TRUE
-;        ;(send ?proposal put-is_proposed TRUE)
-;        (send ?proposal put-score (+ 4 (send ?proposal get-score)))
-;      )
-;  )
-;	(assert (checklist test ok))
-;)
-
 ;;; check if we passed all our subsets of questions
 
 (defrule end-of-questions
@@ -423,25 +399,6 @@
   (import MAIN ?ALL)
 )
 
-;(defrule print ""
-  ;     ?recommendation <- (recommendation (person ?person) (is_final print))
-;  	=>
-;	(printout t "---------------------------------------------------------------------" crlf)
-  ;;;%s stands for string
-  ;;;%n stands for newline
-  ;(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
-;	(printout t "This is the list of proposals" crlf crlf)
-;	(do-for-all-instances 
-;	    ((?proposal Proposal))
-;	    (eq (send ?proposal get-is_proposed) TRUE)
-	    ;action
-;	    (printout t (send (send ?proposal get-offer) print))
-;	)
-  ;(modify ?recommendation (is_final finished))
-;)
-  
- 
- 
 (defrule endprogram "final rule"
   (declare (salience -100))
   ?recommendation <- (recommendation (person ?person) (is_final finished))
