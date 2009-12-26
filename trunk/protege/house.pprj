@@ -1,4 +1,4 @@
-; Thu Dec 17 00:27:46 CET 2009
+; Wed Dec 23 16:54:44 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,21 +6,21 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[house_ProjectKB_Class20007]
-		[house_ProjectKB_Class20008]
-		[house_ProjectKB_Class20009]
-		[house_ProjectKB_Class20010]
-		[house_ProjectKB_Class20011]
-		[house_ProjectKB_Class20012]
-		[house_ProjectKB_Class20013]
-		[house_ProjectKB_Class20014]
-		[house_ProjectKB_Class20015]
-		[house_ProjectKB_Class20016]
-		[house_ProjectKB_Class20017]
-		[house_ProjectKB_Class20018]
-		[house_ProjectKB_Class20019]
-		[house_ProjectKB_Class20020]
-		[house_ProjectKB_Class20021]))
+		[house_ProjectKB_Class30033]
+		[house_ProjectKB_Class30034]
+		[house_ProjectKB_Class30035]
+		[house_ProjectKB_Class30036]
+		[house_ProjectKB_Class30037]
+		[house_ProjectKB_Class30038]
+		[house_ProjectKB_Class30039]
+		[house_ProjectKB_Class30040]
+		[house_ProjectKB_Class30041]
+		[house_ProjectKB_Class30042]
+		[house_ProjectKB_Class30043]
+		[house_ProjectKB_Class30044]
+		[house_ProjectKB_Class30045]
+		[house_ProjectKB_Class30046]
+		[house_ProjectKB_Class30047]))
 
 ([CLSES_TAB] of  Widget
 
@@ -590,99 +590,6 @@
 ([house_ProjectKB_Class20] of  Property_List
 )
 
-([house_ProjectKB_Class20007] of  String
-
-	(name "Date")
-	(string_value "day{.}month{.}year"))
-
-([house_ProjectKB_Class20008] of  String
-
-	(name "PlaceToLive")
-	(string_value "description"))
-
-([house_ProjectKB_Class20009] of  String
-
-	(name "District")
-	(string_value "title"))
-
-([house_ProjectKB_Class20010] of  String
-
-	(name "Province")
-	(string_value "title"))
-
-([house_ProjectKB_Class20011] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([house_ProjectKB_Class20012] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([house_ProjectKB_Class20013] of  String
-
-	(name "Coordinates")
-	(string_value "latitude{%3B}longitude"))
-
-([house_ProjectKB_Class20014] of  String
-
-	(name "Services")
-	(string_value "title"))
-
-([house_ProjectKB_Class20015] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([house_ProjectKB_Class20016] of  String
-
-	(name "Offer")
-	(string_value "title"))
-
-([house_ProjectKB_Class20017] of  String
-
-	(name "City")
-	(string_value "title"))
-
-([house_ProjectKB_Class20018] of  String
-
-	(name "Country")
-	(string_value "title"))
-
-([house_ProjectKB_Class20019] of  String
-
-	(name "GeographicalPart")
-	(string_value "title"))
-
-([house_ProjectKB_Class20020] of  String
-
-	(name "Person")
-	(string_value "firstname{}surname"))
-
-([house_ProjectKB_Class20021] of  String
-
-	(name "Address")
-	(string_value "street"))
-
-([house_ProjectKB_Class20022] of  Map_Entry
-
-	(key "add_name_on_instance_form")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([house_ProjectKB_Class20023] of  Map_Entry
-
-	(key "change_tracking_active")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([house_ProjectKB_Class20024] of  Map
-
-	(entries [house_ProjectKB_Class30025]))
-
 ([house_ProjectKB_Class20025] of  Widget
 
 	(height 60)
@@ -877,21 +784,114 @@
 ([house_ProjectKB_Class30] of  Property_List
 )
 
-([house_ProjectKB_Class30025] of  Map_Entry
+([house_ProjectKB_Class30033] of  String
+
+	(name "Date")
+	(string_value "day{.}month{.}year"))
+
+([house_ProjectKB_Class30034] of  String
+
+	(name "PlaceToLive")
+	(string_value "description"))
+
+([house_ProjectKB_Class30035] of  String
+
+	(name "District")
+	(string_value "title"))
+
+([house_ProjectKB_Class30036] of  String
+
+	(name "Province")
+	(string_value "title"))
+
+([house_ProjectKB_Class30037] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([house_ProjectKB_Class30038] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([house_ProjectKB_Class30039] of  String
+
+	(name "Coordinates")
+	(string_value "latitude{%3B}longitude"))
+
+([house_ProjectKB_Class30040] of  String
+
+	(name "Services")
+	(string_value "title"))
+
+([house_ProjectKB_Class30041] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([house_ProjectKB_Class30042] of  String
+
+	(name "Offer")
+	(string_value "title"))
+
+([house_ProjectKB_Class30043] of  String
+
+	(name "City")
+	(string_value "title"))
+
+([house_ProjectKB_Class30044] of  String
+
+	(name "Country")
+	(string_value "title"))
+
+([house_ProjectKB_Class30045] of  String
+
+	(name "GeographicalPart")
+	(string_value "title"))
+
+([house_ProjectKB_Class30046] of  String
+
+	(name "Person")
+	(string_value "firstname{}surname"))
+
+([house_ProjectKB_Class30047] of  String
+
+	(name "Address")
+	(string_value "street"))
+
+([house_ProjectKB_Class30048] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([house_ProjectKB_Class30049] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([house_ProjectKB_Class30050] of  Map
+
+	(entries [house_ProjectKB_Class30051]))
+
+([house_ProjectKB_Class30051] of  Map_Entry
 
 	(key "house_Class10001")
 	(key_class "edu.stanford.smi.protege.model.Frame")
 	(value "30 36 202 123")
 	(value_class "java.awt.Rectangle"))
 
-([house_ProjectKB_Class30026] of  Map_Entry
+([house_ProjectKB_Class30052] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "house_ProjectKB_Class20024")
+	(value "house_ProjectKB_Class30050")
 	(value_class "java.util.Map"))
 
-([house_ProjectKB_Class30027] of  Map_Entry
+([house_ProjectKB_Class30053] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
@@ -1393,11 +1393,11 @@
 ([KB_045904_Class1] of  Map
 
 	(entries
-		[house_ProjectKB_Class20022]
-		[house_ProjectKB_Class20023]
-		[house_ProjectKB_Class30026]
-		[house_ProjectKB_Class30027])
-	(referenced_maps [house_ProjectKB_Class20024]))
+		[house_ProjectKB_Class30048]
+		[house_ProjectKB_Class30049]
+		[house_ProjectKB_Class30052]
+		[house_ProjectKB_Class30053])
+	(referenced_maps [house_ProjectKB_Class30050]))
 
 ([KB_045904_Class96] of  Property_List
 
@@ -1793,7 +1793,7 @@
 	(x 0)
 	(y 120))
 
-([KB_524249_Class6] of  Map
+([KB_984864_Class6] of  Map
 )
 
 ([option_instance] of  Options
