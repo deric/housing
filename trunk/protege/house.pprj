@@ -1,4 +1,4 @@
-; Sat Dec 26 19:45:04 CET 2009
+; Sat Dec 26 20:43:23 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,22 +6,22 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[house_ProjectKB_Class40235]
-		[house_ProjectKB_Class40236]
-		[house_ProjectKB_Class40237]
-		[house_ProjectKB_Class40238]
-		[house_ProjectKB_Class40239]
-		[house_ProjectKB_Class40240]
-		[house_ProjectKB_Class40241]
-		[house_ProjectKB_Class40242]
-		[house_ProjectKB_Class40243]
-		[house_ProjectKB_Class40244]
-		[house_ProjectKB_Class40245]
-		[house_ProjectKB_Class40246]
-		[house_ProjectKB_Class40247]
-		[house_ProjectKB_Class40248]
-		[house_ProjectKB_Class40249]
-		[house_ProjectKB_Class40250]))
+		[house_ProjectKB_Class50164]
+		[house_ProjectKB_Class50165]
+		[house_ProjectKB_Class50166]
+		[house_ProjectKB_Class50167]
+		[house_ProjectKB_Class50168]
+		[house_ProjectKB_Class50169]
+		[house_ProjectKB_Class50170]
+		[house_ProjectKB_Class50171]
+		[house_ProjectKB_Class50172]
+		[house_ProjectKB_Class50173]
+		[house_ProjectKB_Class50174]
+		[house_ProjectKB_Class50175]
+		[house_ProjectKB_Class50176]
+		[house_ProjectKB_Class50177]
+		[house_ProjectKB_Class50178]
+		[house_ProjectKB_Class50179]))
 
 ([CLSES_TAB] of  Widget
 
@@ -47,20 +47,6 @@
 	(name "layout properties"))
 
 ([house_ProjectKB_Class10005] of  Property_List
-)
-
-([house_ProjectKB_Class10007] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "score")
-	(property_list [house_ProjectKB_Class10008])
-	(widget_class_name "edu.stanford.smi.protege.widget.IntegerFieldWidget")
-	(width 100)
-	(x 0)
-	(y 180))
-
-([house_ProjectKB_Class10008] of  Property_List
 )
 
 ([house_ProjectKB_Class10010] of  Widget
@@ -204,60 +190,6 @@
 ([house_ProjectKB_Class10052] of  Property_List
 )
 
-([house_ProjectKB_Class10053] of  Widget
-
-	(height 300)
-	(is_hidden FALSE)
-	(name "districts")
-	(property_list [house_ProjectKB_Class10054])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
-	(width 200)
-	(x 200)
-	(y 0))
-
-([house_ProjectKB_Class10054] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class10055]
-		[house_ProjectKB_Class10056]))
-
-([house_ProjectKB_Class10055] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class10056] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([house_ProjectKB_Class10059] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "country")
-	(property_list [house_ProjectKB_Class10060])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 140))
-
-([house_ProjectKB_Class10060] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class10061]
-		[house_ProjectKB_Class10062]))
-
-([house_ProjectKB_Class10061] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class10062] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
 ([house_ProjectKB_Class10063] of  Widget
 
 	(is_hidden FALSE)
@@ -275,33 +207,6 @@
 ([house_ProjectKB_Class10065] of  Property_List
 
 	(name "layout properties"))
-
-([house_ProjectKB_Class10066] of  Widget
-
-	(height 180)
-	(is_hidden FALSE)
-	(name "provinces")
-	(property_list [house_ProjectKB_Class10067])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
-	(width 200)
-	(x 200)
-	(y 0))
-
-([house_ProjectKB_Class10067] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class10068]
-		[house_ProjectKB_Class10069]))
-
-([house_ProjectKB_Class10068] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class10069] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
 
 ([house_ProjectKB_Class10070] of  Widget
 
@@ -424,33 +329,6 @@
 
 ([house_ProjectKB_Class10089] of  Property_List
 )
-
-([house_ProjectKB_Class10090] of  Widget
-
-	(height 240)
-	(is_hidden FALSE)
-	(name "cities")
-	(property_list [house_ProjectKB_Class10091])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
-	(width 200)
-	(x 200)
-	(y 0))
-
-([house_ProjectKB_Class10091] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class10092]
-		[house_ProjectKB_Class10093]))
-
-([house_ProjectKB_Class10092] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class10093] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
 
 ([house_ProjectKB_Class10094] of  Widget
 
@@ -663,33 +541,6 @@
 	(boolean_value FALSE)
 	(name "ButtonDisplayed-Delete Instance"))
 
-([house_ProjectKB_Class20043] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "address")
-	(property_list [house_ProjectKB_Class20044])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 120))
-
-([house_ProjectKB_Class20044] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class20045]
-		[house_ProjectKB_Class20046]))
-
-([house_ProjectKB_Class20045] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class20046] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
 ([house_ProjectKB_Class20047] of  Widget
 
 	(height 60)
@@ -782,47 +633,6 @@
 ([house_ProjectKB_Class30] of  Property_List
 )
 
-([house_ProjectKB_Class30031] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "rent")
-	(property_list [house_ProjectKB_Class30032])
-	(widget_class_name "edu.stanford.smi.protege.widget.FloatFieldWidget")
-	(width 100)
-	(x 100)
-	(y 60))
-
-([house_ProjectKB_Class30032] of  Property_List
-)
-
-([house_ProjectKB_Class30035] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "address")
-	(property_list [house_ProjectKB_Class30036])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 120))
-
-([house_ProjectKB_Class30036] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class30037]
-		[house_ProjectKB_Class30038]))
-
-([house_ProjectKB_Class30037] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class30038] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
 ([house_ProjectKB_Class30041] of  Widget
 
 	(is_hidden FALSE)
@@ -844,20 +654,6 @@
 ([house_ProjectKB_Class30043] of  Property_List
 
 	(name "layout properties"))
-
-([house_ProjectKB_Class30044] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "rent")
-	(property_list [house_ProjectKB_Class30045])
-	(widget_class_name "edu.stanford.smi.protege.widget.FloatFieldWidget")
-	(width 100)
-	(x 100)
-	(y 120))
-
-([house_ProjectKB_Class30045] of  Property_List
-)
 
 ([house_ProjectKB_Class30046] of  Widget
 
@@ -928,33 +724,6 @@
 ([house_ProjectKB_Class30055] of  Property_List
 )
 
-([house_ProjectKB_Class30056] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "address")
-	(property_list [house_ProjectKB_Class30057])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 200)
-	(y 0))
-
-([house_ProjectKB_Class30057] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class30058]
-		[house_ProjectKB_Class30059]))
-
-([house_ProjectKB_Class30058] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class30059] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
 ([house_ProjectKB_Class30060] of  Widget
 
 	(height 60)
@@ -967,20 +736,6 @@
 	(y 0))
 
 ([house_ProjectKB_Class30061] of  Property_List
-)
-
-([house_ProjectKB_Class30062] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "rent")
-	(property_list [house_ProjectKB_Class30063])
-	(widget_class_name "edu.stanford.smi.protege.widget.FloatFieldWidget")
-	(width 100)
-	(x 100)
-	(y 180))
-
-([house_ProjectKB_Class30063] of  Property_List
 )
 
 ([house_ProjectKB_Class30064] of  Widget
@@ -996,37 +751,6 @@
 
 ([house_ProjectKB_Class30065] of  Property_List
 )
-
-([house_ProjectKB_Class30069] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "rent")
-	(property_list [house_ProjectKB_Class30070])
-	(widget_class_name "edu.stanford.smi.protege.widget.FloatFieldWidget")
-	(width 100)
-	(x 200)
-	(y 0))
-
-([house_ProjectKB_Class30070] of  Property_List
-)
-
-([house_ProjectKB_Class30077] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "address")
-	(property_list [house_ProjectKB_Class30078])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 200)
-	(y 60))
-
-([house_ProjectKB_Class30078] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class40079]
-		[house_ProjectKB_Class40080]))
 
 ([house_ProjectKB_Class30079] of  Widget
 
@@ -1159,16 +883,6 @@
 ([house_ProjectKB_Class40] of  Property_List
 )
 
-([house_ProjectKB_Class40079] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class40080] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
 ([house_ProjectKB_Class40125] of  Widget
 
 	(height 60)
@@ -1192,170 +906,6 @@
 	(name "ButtonDisplayed-View References to Value"))
 
 ([house_ProjectKB_Class40128] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([house_ProjectKB_Class40188] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "house_Class30092")
-	(property_list [house_ProjectKB_Class40189])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 0)
-	(y 120))
-
-([house_ProjectKB_Class40189] of  Property_List
-)
-
-([house_ProjectKB_Class40190] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "house_Class30092")
-	(property_list [house_ProjectKB_Class40191])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 0)
-	(y 240))
-
-([house_ProjectKB_Class40191] of  Property_List
-)
-
-([house_ProjectKB_Class40192] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "house_Class30092")
-	(property_list [house_ProjectKB_Class40193])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 0)
-	(y 240))
-
-([house_ProjectKB_Class40193] of  Property_List
-)
-
-([house_ProjectKB_Class40194] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "house_Class30092")
-	(property_list [house_ProjectKB_Class40195])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 0)
-	(y 120))
-
-([house_ProjectKB_Class40195] of  Property_List
-)
-
-([house_ProjectKB_Class40196] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "house_Class30092")
-	(property_list [house_ProjectKB_Class40197])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 120))
-
-([house_ProjectKB_Class40197] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class40198]
-		[house_ProjectKB_Class40199]))
-
-([house_ProjectKB_Class40198] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class40199] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([house_ProjectKB_Class40200] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "house_Class30092")
-	(property_list [house_ProjectKB_Class40201])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 240))
-
-([house_ProjectKB_Class40201] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class40202]
-		[house_ProjectKB_Class40203]))
-
-([house_ProjectKB_Class40202] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class40203] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([house_ProjectKB_Class40204] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "house_Class30092")
-	(property_list [house_ProjectKB_Class40205])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 240))
-
-([house_ProjectKB_Class40205] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class40206]
-		[house_ProjectKB_Class40207]))
-
-([house_ProjectKB_Class40206] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class40207] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([house_ProjectKB_Class40208] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "house_Class30092")
-	(property_list [house_ProjectKB_Class40209])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceFieldWidget")
-	(width 200)
-	(x 0)
-	(y 120))
-
-([house_ProjectKB_Class40209] of  Property_List
-
-	(properties
-		[house_ProjectKB_Class40210]
-		[house_ProjectKB_Class40211]))
-
-([house_ProjectKB_Class40210] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([house_ProjectKB_Class40211] of  Boolean
 
 	(boolean_value FALSE)
 	(name "ButtonDisplayed-Delete Instance"))
@@ -1414,139 +964,6 @@
 	(boolean_value FALSE)
 	(name "ButtonDisplayed-Delete Instance"))
 
-([house_ProjectKB_Class40231] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "Description")
-	(property_list [house_ProjectKB_Class40232])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 0)
-	(y 0))
-
-([house_ProjectKB_Class40232] of  Property_List
-)
-
-([house_ProjectKB_Class40235] of  String
-
-	(name "Date")
-	(string_value "day{.}month{.}year"))
-
-([house_ProjectKB_Class40236] of  String
-
-	(name "PlaceToLive")
-	(string_value "description"))
-
-([house_ProjectKB_Class40237] of  String
-
-	(name "District")
-	(string_value "title"))
-
-([house_ProjectKB_Class40238] of  String
-
-	(name "Province")
-	(string_value "title"))
-
-([house_ProjectKB_Class40239] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
-([house_ProjectKB_Class40240] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([house_ProjectKB_Class40241] of  String
-
-	(name "Coordinates")
-	(string_value "latitude{%3B}longitude"))
-
-([house_ProjectKB_Class40242] of  String
-
-	(name "Services")
-	(string_value "title"))
-
-([house_ProjectKB_Class40243] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([house_ProjectKB_Class40244] of  String
-
-	(name "Offer")
-	(string_value "title"))
-
-([house_ProjectKB_Class40245] of  String
-
-	(name "City")
-	(string_value "title"))
-
-([house_ProjectKB_Class40246] of  String
-
-	(name "Country")
-	(string_value "title"))
-
-([house_ProjectKB_Class40247] of  String
-
-	(name "GeographicalPart")
-	(string_value "title"))
-
-([house_ProjectKB_Class40248] of  String
-
-	(name "Equipment")
-	(string_value "title"))
-
-([house_ProjectKB_Class40249] of  String
-
-	(name "Person")
-	(string_value "firstname{}surname"))
-
-([house_ProjectKB_Class40250] of  String
-
-	(name "Address")
-	(string_value "street"))
-
-([house_ProjectKB_Class40251] of  Map_Entry
-
-	(key "add_name_on_instance_form")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([house_ProjectKB_Class40252] of  Map_Entry
-
-	(key "change_tracking_active")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
-([house_ProjectKB_Class40253] of  Map
-
-	(entries [house_ProjectKB_Class40254]))
-
-([house_ProjectKB_Class40254] of  Map_Entry
-
-	(key "house_Class10001")
-	(key_class "edu.stanford.smi.protege.model.Frame")
-	(value "30 36 202 123")
-	(value_class "java.awt.Rectangle"))
-
-([house_ProjectKB_Class40255] of  Map_Entry
-
-	(key "InstanceDisplay.yellow_stickies")
-	(key_class "java.lang.String")
-	(value "house_ProjectKB_Class40253")
-	(value_class "java.util.Map"))
-
-([house_ProjectKB_Class40256] of  Map_Entry
-
-	(key "suppress_instance_counting")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
-
 ([house_ProjectKB_Class41] of  Widget
 
 	(is_hidden TRUE)
@@ -1597,6 +1014,125 @@
 
 ([house_ProjectKB_Class50] of  Property_List
 )
+
+([house_ProjectKB_Class50164] of  String
+
+	(name "Date")
+	(string_value "day{.}month{.}year"))
+
+([house_ProjectKB_Class50165] of  String
+
+	(name "PlaceToLive")
+	(string_value "description"))
+
+([house_ProjectKB_Class50166] of  String
+
+	(name "District")
+	(string_value "title"))
+
+([house_ProjectKB_Class50167] of  String
+
+	(name "Province")
+	(string_value "title"))
+
+([house_ProjectKB_Class50168] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([house_ProjectKB_Class50169] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([house_ProjectKB_Class50170] of  String
+
+	(name "Coordinates")
+	(string_value "latitude{%3B}longitude"))
+
+([house_ProjectKB_Class50171] of  String
+
+	(name "Services")
+	(string_value "title"))
+
+([house_ProjectKB_Class50172] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([house_ProjectKB_Class50173] of  String
+
+	(name "Offer")
+	(string_value "title"))
+
+([house_ProjectKB_Class50174] of  String
+
+	(name "City")
+	(string_value "title"))
+
+([house_ProjectKB_Class50175] of  String
+
+	(name "Country")
+	(string_value "title"))
+
+([house_ProjectKB_Class50176] of  String
+
+	(name "GeographicalPart")
+	(string_value "title"))
+
+([house_ProjectKB_Class50177] of  String
+
+	(name "Person")
+	(string_value "firstname{}surname"))
+
+([house_ProjectKB_Class50178] of  String
+
+	(name "Equipment")
+	(string_value "title"))
+
+([house_ProjectKB_Class50179] of  String
+
+	(name "Address")
+	(string_value "street"))
+
+([house_ProjectKB_Class50180] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([house_ProjectKB_Class50181] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([house_ProjectKB_Class50182] of  Map
+
+	(entries [house_ProjectKB_Class50183]))
+
+([house_ProjectKB_Class50183] of  Map_Entry
+
+	(key "house_Class10001")
+	(key_class "edu.stanford.smi.protege.model.Frame")
+	(value "30 36 202 123")
+	(value_class "java.awt.Rectangle"))
+
+([house_ProjectKB_Class50184] of  Map_Entry
+
+	(key "InstanceDisplay.yellow_stickies")
+	(key_class "java.lang.String")
+	(value "house_ProjectKB_Class50182")
+	(value_class "java.util.Map"))
+
+([house_ProjectKB_Class50185] of  Map_Entry
+
+	(key "suppress_instance_counting")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
 ([house_ProjectKB_Class51] of  Widget
 
@@ -1911,11 +1447,11 @@
 ([KB_045904_Class1] of  Map
 
 	(entries
-		[house_ProjectKB_Class40251]
-		[house_ProjectKB_Class40252]
-		[house_ProjectKB_Class40255]
-		[house_ProjectKB_Class40256])
-	(referenced_maps [house_ProjectKB_Class40253]))
+		[house_ProjectKB_Class50180]
+		[house_ProjectKB_Class50181]
+		[house_ProjectKB_Class50184]
+		[house_ProjectKB_Class50185])
+	(referenced_maps [house_ProjectKB_Class50182]))
 
 ([KB_045904_Class96] of  Property_List
 
@@ -1931,7 +1467,7 @@
 	(name "instances_file_name")
 	(string_value "house.pins"))
 
-([KB_392248_Class6] of  Map
+([KB_255078_Class6] of  Map
 )
 
 ([KB_420655_Instance_0] of  Property_List
@@ -2342,19 +1878,19 @@
 	(customized_instance_widgets
 		[house_ProjectKB_Class10074]
 		[house_ProjectKB_Class10081]
-		[STANDARD_FACET_FORM_WIDGET]
-		[house_ProjectKB_Class30041]
 		[PAL_FORM_WIDGET]
-		[STANDARD_CLASS_FORM_WIDGET]
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
-		[house_ProjectKB_Class20032]
 		[house_ProjectKB_Instance_67]
 		[house_ProjectKB_Class10046]
-		[house_ProjectKB_Class10063]
 		[STANDARD_SLOT_FORM_WIDGET]
-		[house_ProjectKB_Class10041]
 		[house_ProjectKB_Class10094]
-		[house_ProjectKB_Class10010])
+		[house_ProjectKB_Class10010]
+		[STANDARD_FACET_FORM_WIDGET]
+		[house_ProjectKB_Class30041]
+		[STANDARD_CLASS_FORM_WIDGET]
+		[house_ProjectKB_Class20032]
+		[house_ProjectKB_Class10063]
+		[house_ProjectKB_Class10041])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")

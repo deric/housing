@@ -1,4 +1,4 @@
-; Sat Dec 26 19:45:04 CET 2009
+; Sat Dec 26 20:43:23 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -33,6 +33,12 @@
 
 	(inhabitants 50000000)
 	(title "Spain"))
+
+([house_Class10000] of  Restaurant
+
+	(address [house_Class20001])
+	(noisy 2)
+	(title "Resto Raval"))
 
 ([house_Class10001] of  %3AINSTANCE-ANNOTATION
 
@@ -74,6 +80,18 @@
 	(coordinates [house_Class30053])
 	(street "Carrer Congos 4"))
 
+([house_Class20001] of  Address
+
+	(city [house_Class30021])
+	(coordinates [house_Class30069])
+	(street "Rambla De La Catalunya 150"))
+
+([house_Class20002] of  Cinema
+
+	(address [house_Class30003])
+	(noisy 2)
+	(title "Cinema Barrio Gotic"))
+
 ([house_Class20003] of  Date
 
 	(day 12)
@@ -88,7 +106,28 @@
 	(windows_num 3))
 
 ([house_Class3] of  Pub
-)
+
+	(address [house_Class30123])
+	(noisy 3)
+	(title "Pub Rambla"))
+
+([house_Class30003] of  Address
+
+	(city [house_Class30022])
+	(coordinates [house_Class30070])
+	(street "Carrer Cinema"))
+
+([house_Class30004] of  University
+
+	(address [house_Class30005])
+	(noisy 3)
+	(title "UPC Gotic"))
+
+([house_Class30005] of  Address
+
+	(city [house_Class30022])
+	(coordinates [house_Class40009])
+	(street "Carrer de la Mar"))
 
 ([house_Class30006] of  Offer
 
@@ -441,7 +480,7 @@
 
 	(address [house_Class30072])
 	(noisy 0)
-	(title "Library 1"))
+	(title "Library Catalunya"))
 
 ([house_Class30072] of  Address
 
@@ -451,49 +490,32 @@
 
 ([house_Class30073] of  Coordinates
 
-	(latitude 0.0))
+	(latitude 0.0)
+	(longitude 0.0))
 
 ([house_Class30074] of  Library
 
 	(address [house_Class30075])
 	(noisy 0)
-	(title "Library 2"))
+	(title "Library Fraternitat"))
 
 ([house_Class30075] of  Address
 
 	(city [house_Class14])
-	(coordinates [house_Class30060])
+	(coordinates [house_Class40028])
 	(street "La Fraternitat de Barcelona"))
 
 ([house_Class30076] of  School
 
 	(address [house_Class30077])
-	(noisy 5)
-	(title "School 1"))
+	(noisy 4)
+	(title "School Santa Pere"))
 
 ([house_Class30077] of  Address
 
 	(city [house_Class30022])
-	(coordinates [house_Class30046])
+	(coordinates [house_Class30065])
 	(street "Carrer de Sante Pere Mitja 10"))
-
-([house_Class30078] of  School
-
-	(address [house_Class30077])
-	(noisy 5)
-	(title "School 2"))
-
-([house_Class30079] of  School
-
-	(address [house_Class30077])
-	(noisy 5)
-	(title "School 3"))
-
-([house_Class30080] of  School
-
-	(address [house_Class30077])
-	(noisy 5)
-	(title "School 4"))
 
 ([house_Class30096] of  Equipment
 
@@ -589,10 +611,322 @@
 	(coordinates [house_Class30039])
 	(street "Carrer Paris"))
 
+([house_Class30110] of  Public+Transport
+
+	(coordinates [house_Class30111])
+	(noisy 2)
+	(title "Metrostop Hospital")
+	(Transport+Type Metro))
+
+([house_Class30111] of  Coordinates
+
+	(latitude -4.0)
+	(longitude 4.0))
+
+([house_Class30112] of  Hospital
+
+	(address [house_Class30113])
+	(noisy 3)
+	(title "Hospital"))
+
+([house_Class30113] of  Address
+
+	(city [house_Class30019])
+	(coordinates [house_Class30111])
+	(street "Carrer D'hospital"))
+
+([house_Class30114] of  Market
+
+	(address [house_Class30115])
+	(noisy 2)
+	(title "Mercado De Rambla"))
+
+([house_Class30115] of  Address
+
+	(city [house_Class30031])
+	(coordinates [house_Class30060])
+	(street "Carrer de Rambla"))
+
+([house_Class30116] of  University
+
+	(address [house_Class30117])
+	(noisy 3)
+	(title "UB"))
+
+([house_Class30117] of  Address
+
+	(city [house_Class30027])
+	(coordinates [house_Class30059])
+	(street "Placa Universitat"))
+
+([house_Class30118] of  Public+Transport
+
+	(coordinates [house_Class30073])
+	(noisy 2)
+	(title "Train Catalunya")
+	(Transport+Type Train-Station))
+
+([house_Class30119] of  Shop
+
+	(address [house_Class30072])
+	(noisy 1)
+	(shop_type Grocery)
+	(title "Center Shop"))
+
+([house_Class30120] of  Bar
+
+	(address [house_Class30072])
+	(noisy 3)
+	(title "Center Bar"))
+
+([house_Class30121] of  Theatre
+
+	(address [house_Class30072])
+	(noisy 1)
+	(title "Centric Theatre"))
+
+([house_Class30122] of  Public+Transport
+
+	(coordinates [house_Class30073])
+	(noisy 2)
+	(title "Metrostop Centre")
+	(Transport+Type Metro))
+
+([house_Class30123] of  Address
+
+	(city [house_Class15])
+	(coordinates [house_Class30058])
+	(street "Rambla De La Catalunya"))
+
+([house_Class30124] of  Restarurant
+)
+
+([house_Class30125] of  Restarurant
+)
+
+([house_Class30126] of  Restarurant
+)
+
+([house_Class30127] of  Restarurant
+)
+
 ([house_Class4] of  Coordinates
 
 	(latitude 1.0)
 	(longitude 0.0))
+
+([house_Class40006] of  Green+Area
+
+	(address [house_Class40007])
+	(noisy 0)
+	(title "Parc El Mar"))
+
+([house_Class40007] of  Address
+
+	(city [house_Class14])
+	(coordinates [house_Class40008])
+	(street "Carrer Parc Mar"))
+
+([house_Class40008] of  Coordinates
+
+	(latitude -4.0)
+	(longitude -4.0))
+
+([house_Class40009] of  Coordinates
+
+	(latitude -4.0)
+	(longitude -3.0))
+
+([house_Class40010] of  Shop
+
+	(address [house_Class40011])
+	(noisy 1)
+	(shop_type Grocery)
+	(title "Shop Ferran"))
+
+([house_Class40011] of  Address
+
+	(city [house_Class30029])
+	(coordinates [house_Class30020])
+	(street "Carrer Ghent 20"))
+
+([house_Class40012] of  Shop
+
+	(address [house_Class40013])
+	(noisy 1)
+	(shop_type Grocery)
+	(title "Shop Paki"))
+
+([house_Class40013] of  Address
+
+	(city [house_Class30029])
+	(coordinates [house_Class30041])
+	(street "Carrer De la Ribera"))
+
+([house_Class40014] of  Shop
+
+	(address [house_Class40015])
+	(noisy 1)
+	(shop_type Grocery)
+	(title "Shop Nick"))
+
+([house_Class40015] of  Address
+
+	(city [house_Class30033])
+	(coordinates [house_Class30048])
+	(street "Carrer Nick"))
+
+([house_Class40016] of  School
+
+	(address [house_Class40017])
+	(noisy 2)
+	(title "Primary School Gracia"))
+
+([house_Class40017] of  Address
+
+	(city [house_Class30031])
+	(coordinates [house_Class30047])
+	(street "Carrer Fontana"))
+
+([house_Class40018] of  Bar
+
+	(address [house_Class40019])
+	(noisy 3)
+	(title "Bar Gracia"))
+
+([house_Class40019] of  Address
+
+	(city [house_Class30033])
+	(coordinates [house_Class7])
+	(street "Carrer Guell"))
+
+([house_Class40020] of  Club
+
+	(address [house_Class40021])
+	(noisy 5)
+	(title "Club Gracia"))
+
+([house_Class40021] of  Address
+
+	(city [house_Class30033])
+	(coordinates [house_Class10007])
+	(street "Carrer De Clubia"))
+
+([house_Class40022] of  Club
+
+	(address [house_Class40023])
+	(noisy 5)
+	(title "Club Catalunya"))
+
+([house_Class40023] of  Address
+
+	(city [house_Class30034])
+	(coordinates [house_Class30038])
+	(street "Carrer De Traveserra"))
+
+([house_Class40024] of  School
+
+	(address [house_Class40025])
+	(noisy 2)
+	(title "Secondary School Gracia"))
+
+([house_Class40025] of  Address
+
+	(city [house_Class30033])
+	(coordinates [house_Class30053])
+	(street "Carrer Escuela"))
+
+([house_Class40026] of  Market
+
+	(address [house_Class40027])
+	(noisy 2)
+	(title "Mercado De Gracia"))
+
+([house_Class40027] of  Address
+
+	(city [house_Class30031])
+	(coordinates [house_Class30057])
+	(street "Traveserra de gracia"))
+
+([house_Class40028] of  Coordinates
+
+	(latitude 2.0)
+	(longitude -1.0))
+
+([house_Class40029] of  Cinema
+
+	(address [house_Class40030])
+	(noisy 2)
+	(title "Cinema Sant Pere"))
+
+([house_Class40030] of  Address
+
+	(city [house_Class30035])
+	(coordinates [house_Class40031])
+	(street "Carrer De Indiana"))
+
+([house_Class40031] of  Coordinates
+
+	(latitude 1.0)
+	(longitude -1.0))
+
+([house_Class40032] of  Library
+
+	(address [house_Class40033])
+	(noisy 0)
+	(title "Library Montjuic"))
+
+([house_Class40033] of  Address
+
+	(city [house_Class30028])
+	(coordinates [house_Class30042])
+	(street "Carrer Montjuic"))
+
+([house_Class40034] of  Club
+
+	(address [house_Class40035])
+	(noisy 5)
+	(title "Club Santiago"))
+
+([house_Class40035] of  Address
+
+	(city [house_Class30035])
+	(coordinates [house_Class40036])
+	(street "Carrer Santiago"))
+
+([house_Class40036] of  Coordinates
+
+	(latitude 2.0)
+	(longitude -2.0))
+
+([house_Class40037] of  Restaurant
+
+	(address [house_Class40038])
+	(noisy 2)
+	(title "Resto Diagonal"))
+
+([house_Class40038] of  Address
+
+	(city [house_Class30033])
+	(coordinates [house_Class40039])
+	(street "Diagonal"))
+
+([house_Class40039] of  Coordinates
+
+	(latitude 3.0)
+	(longitude -2.0))
+
+([house_Class40040] of  Public+Transport
+
+	(coordinates [house_Class40041])
+	(noisy 2)
+	(title "Metrostop Mar")
+	(Transport+Type Metro))
+
+([house_Class40041] of  Coordinates
+
+	(latitude 4.0)
+	(longitude -4.0))
 
 ([house_Class6] of  Date
 
