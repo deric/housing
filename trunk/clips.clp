@@ -335,7 +335,7 @@
 	(<= (send (send ?proposal get-offer) get-rent) (* (send ?user get-max_budget) 1.1 ))
         ;distributed action
 	(send ?proposal put-is_proposed TRUE)
-	;(send ?proposal put-score (+ 1 (send ?proposal get-score)))
+	(send ?proposal put-score (+ (send ?proposal get-score) 1))
       )
     else
       ; We have a strict price range
@@ -346,7 +346,7 @@
         (<= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
         ;do-for execution
 	(send ?proposal put-is_proposed TRUE)
-	;(send ?proposal put-score (+ 1 (send ?proposal get-score)))
+	(send ?proposal put-score (+ (send ?proposal get-score) 1))
       )
   )
   ; use the function print-proposals for printing our offers
