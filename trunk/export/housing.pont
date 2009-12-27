@@ -1,4 +1,4 @@
-; Mon Dec 14 02:55:19 CET 2009
+; Sun Dec 27 15:21:21 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -37,6 +37,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes City)
 		(create-accessor read-write))
+	(single-slot Transport+Type
+		(type SYMBOL)
+		(allowed-values Bus-Stop Train-Station Metro)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot floor
 		(type STRING)
 ;+		(cardinality 1 1)
@@ -51,9 +56,10 @@
 		(type INSTANCE)
 ;+		(allowed-classes District)
 		(create-accessor read-write))
-	(multislot shop_type
+	(single-slot shop_type
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot flat_type
 		(type SYMBOL)
@@ -101,6 +107,10 @@
 		(type STRING)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(multislot equipment
+		(type INSTANCE)
+;+		(allowed-classes Equipment)
+		(create-accessor read-write))
 	(single-slot postal_code
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -110,6 +120,10 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot surname
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot Description
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
@@ -127,13 +141,17 @@
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot house_Class30091
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(multislot rooms
 		(type INSTANCE)
 ;+		(allowed-classes Room)
 		(create-accessor read-write))
 	(single-slot room_type
 		(type SYMBOL)
-		(allowed-values single double kitchen)
+		(allowed-values single double kitchen bathroom)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot age
@@ -182,16 +200,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -200,10 +218,6 @@
 	(single-slot available_to
 		(type INSTANCE)
 ;+		(allowed-classes Date)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot score
-		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot title
@@ -219,6 +233,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Date)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
@@ -248,7 +267,11 @@
 
 (defclass Equipment
 	(is-a USER)
-	(role concrete))
+	(role concrete)
+	(single-slot title
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Coordinates "GPS coordinates of an object"
 	(is-a USER)
@@ -286,37 +309,36 @@
 (defclass PlaceToLive
 	(is-a USER)
 	(role abstract)
-	(single-slot description
-		(type STRING)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot address
-		(type INSTANCE)
-;+		(allowed-classes Address)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass House
-	(is-a PlaceToLive)
-	(role concrete)
-	(single-slot house_type
-		(type SYMBOL)
-		(allowed-values Terraced Semidetached BlockOfFlats)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
-		(create-accessor read-write)))
-
-(defclass Flat
-	(is-a PlaceToLive)
-	(role concrete)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot description
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot equipment
+		(type INSTANCE)
+;+		(allowed-classes Equipment)
+		(create-accessor read-write)))
+
+(defclass House
+	(is-a PlaceToLive)
+	(role concrete)
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
+		(create-accessor read-write))
+	(single-slot house_type
+		(type SYMBOL)
+		(allowed-values Terraced Semidetached BlockOfFlats)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Flat
+	(is-a PlaceToLive)
+	(role concrete)
 	(multislot rooms
 		(type INSTANCE)
 ;+		(allowed-classes Room)
@@ -334,23 +356,13 @@
 (defclass Room
 	(is-a PlaceToLive)
 	(role concrete)
-	(single-slot rent
-;+		(comment "in euros per month")
-		(type FLOAT)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot space
-;+		(comment "in square m  of house")
-		(type INTEGER)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot windows_num
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot room_type
 		(type SYMBOL)
-		(allowed-values single double kitchen)
+		(allowed-values single double kitchen bathroom)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -365,26 +377,20 @@
 ;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot coordinates
-;+		(comment "GPS coordinates for displaying on a map")
-		(type INSTANCE)
-;+		(allowed-classes Coordinates)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass FoodBeverage
 	(is-a Services)
-	(role concrete))
-
-(defclass Restarurant
-	(is-a FoodBeverage)
 	(role concrete)
 	(single-slot address
 		(type INSTANCE)
 ;+		(allowed-classes Address)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
+
+(defclass Restaurant
+	(is-a FoodBeverage)
+	(role concrete))
 
 (defclass Bar
 	(is-a FoodBeverage)
@@ -394,25 +400,35 @@
 	(is-a FoodBeverage)
 	(role concrete))
 
-(defclass Entertaitment
+(defclass Entertainment
 	(is-a Services)
-	(role concrete))
+	(role concrete)
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Cinema
-	(is-a Entertaitment)
+	(is-a Entertainment)
 	(role concrete))
 
 (defclass Theatre
-	(is-a Entertaitment)
+	(is-a Entertainment)
 	(role concrete))
 
 (defclass Club
-	(is-a Entertaitment)
+	(is-a Entertainment)
 	(role concrete))
 
 (defclass Education
 	(is-a Services)
-	(role concrete))
+	(role concrete)
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass School
 	(is-a Education)
@@ -428,26 +444,46 @@
 
 (defclass HealthCare
 	(is-a Services)
-	(role concrete))
+	(role concrete)
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Hospital
 	(is-a HealthCare)
 	(role concrete))
 
-(defclass Transport
-	(is-a Services)
+(defclass Green+Area
+	(is-a HealthCare)
 	(role concrete))
 
-(defclass Station "public transport stop"
+(defclass Transport
+	(is-a Services)
+	(role abstract)
+	(single-slot coordinates
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Coordinates)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
+
+(defclass Public+Transport "public transport stop"
 	(is-a Transport)
-	(role abstract))
+	(role concrete)
+	(single-slot Transport+Type
+		(type SYMBOL)
+		(allowed-values Bus-Stop Train-Station Metro)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass BusStop
-	(is-a Station)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass MetroStation
-	(is-a Station)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass TransferStation
@@ -455,23 +491,29 @@
 	(role concrete))
 
 (defclass TrainStation
-	(is-a Station)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass TramStop
-	(is-a Station)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass Shopping
 	(is-a Services)
-	(role concrete))
+	(role concrete)
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Shop
 	(is-a Shopping)
 	(role concrete)
-	(multislot shop_type
+	(single-slot shop_type
 		(type SYMBOL)
 		(allowed-values Grocery Drugstore)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Supermarket
@@ -538,3 +580,11 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
+
+(defclass %3AUNDEFINED
+	(is-a USER)
+	(role concrete))
+
+(defclass Restarurant
+	(is-a %3AUNDEFINED)
+	(role concrete))

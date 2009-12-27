@@ -48,13 +48,14 @@
   (format t "Offer: %s%n" ?self:title) 
 	(format t "Price: %f%n" ?self:rent)
   (printout t crlf)
-  (format t "Score: %f%n" ?self:score)
   (printout t crlf)
 )
  
 (defmessage-handler Proposal print()
   (printout t (send ?self:offer print)) 
   (format t "Is proposed: %s%n" ?self:is_proposed)
+  (format t "Score: %f%n" ?self:score)
+  (printout t crlf)
   (printout t crlf)
 )
  
@@ -387,7 +388,7 @@
 	    ((?proposal Proposal))
 	    (eq (send ?proposal get-is_proposed) TRUE)
 	    ;action
-	    (printout t (send (send ?proposal get-offer) print))
+	    (printout t (send ?proposal print))
 	)
 	(modify ?recommendation (is_final finished))
 	(pop-focus)
