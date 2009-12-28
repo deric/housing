@@ -243,7 +243,6 @@
 	?user <- (object (is-a Person))
 	=>
 	(bind ?type-of-house (question "What type of real estate are you looking for" office house flat))
-	;(send ?user put-max_budget ?max_budget)
 	(assert (Person type-of-house ?type-of-house))
 )
 
@@ -255,7 +254,6 @@
 	?user <- (object (is-a Person))
 	=>
 	(bind ?rooms (ask-number "How many rooms do you need" 0 20))
-	;(send ?user put-max_budget ?max_budget)
 	(assert (Person room-num ?rooms))
 	
 )
@@ -277,9 +275,7 @@
 		then
 		(if (yes-or-no "are you planning to have children soon")
 		then
-			(assert (Person room-num 3))
-		else
-			(assert (Person room-num 2))
+      (assert (Person children 1))
 		)
 		;;in any case we need a double room
 		(assert (Person room-type double))
@@ -288,7 +284,8 @@
 	(if (= (str-compare ?type-of-family "children") 0)
 		then
 		(bind ?children (ask-number "How many children are living with you" 0 20))
-		(assert (Person room-num (round (/ ?children 2))))
+    ;;;we add 2, 1 for the parents (see the double room type and 1 anyway for the child + the rounded amount of rooms needed extra
+		(assert (Person room-num (+ 2 (round (/ ?children 2)))))
 		(assert (Person house-shared FALSE))
 		(assert (Person children ?children))
 	)
@@ -309,18 +306,55 @@
 (defrule user-car-children
 	(Person has-car TRUE)
 	(not (Person type-of-house office))
-  (numberp Person children)
+  (Person children ?)
 	?user <- (object (is-a Person))
 	=>
 	(bind ?bringschildren (yes-or-no "Are you bringing the children to school by car?"))
   (if (eq ?bringschildren TRUE)
-       then (assert (Person need-public-transport FALSE))
-       else (assert (Person need-public-transport TRUE))
+       then (assert (Person public-transport FALSE))
+       else (assert (Person public-transport TRUE))
   )
 )
 
+;;; ASK FOR WHICH KIND OF ENVIRONMENT
+;;; ASSERT FACT IF A SERVICE SHOULD BE CLOSE OR FAR
+(defrule house-environment
+	(not (Person type-of-environment ?))
+	?user <- (object (is-a Person))
+	=>
+	(bind ?type-of-environment (question "what kind of environment do you want to live in?" quiet centric young residential outskirts))
+	(if (= (str-compare ?type-of-environment "quiet") 0)
+		then
+		(assert (Person max-noise 3))
+    (assert (Person bar FALSE))
+	)
+	(if (= (str-compare ?type-of-environment "centric") 0)
+		then
+    (assert (Person bar TRUE))
+    (assert (Person public-transport TRUE))
+    (assert (Person shops TRUE))
+	)
+	(if (= (str-compare ?type-of-environment "young") 0)
+		then
+		(assert (Person bar TRUE))
+    (assert (Person university TRUE))
+    (assert (Person library TRUE))
+	)
+  (if (= (str-compare ?type-of-environment "residential") 0)
+		then
+    (assert (Person max-noise 5))
+		(assert (Person shops TRUE))
+    (assert (Person restaurant TRUE))
+	)
+  (if (= (str-compare ?type-of-environment "outskirts") 0)
+		then
+    (assert (Person max-noise 1))
+		(assert (Person green-area TRUE))
+	)
+)
+
+
 ;;;set office centric location
-;;; get the number of rooms in case of office
 (defrule house-office-location
 	(numberp Person num-rooms)
 	(Person type-of-house office)
@@ -333,7 +367,7 @@
 )
 
 
-;;; Get our maximum budget - last in the row
+;;; Get our maximum budget - last in the row of questions
 (defrule house-max-budget
 	(not (Person budget ?))
 	?user <- (object (is-a Person))
