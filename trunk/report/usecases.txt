@@ -1,0 +1,33 @@
+Use cases which we will use to find the right house
+1) Young
+
+ - Student looking for a room close to public transport, clubs or school. centric location is better
+ - Noise does not matter
+ - Likes bars/pubs around
+ - Price 350 per month
+
+2) Residential
+ - Family with 2 kids looking for a apartment, prefers quiet neighboorhoud but not too far from the center 
+   but has a car
+ - Not too noisy (< 5)
+ - Likes cultural activities
+ - Price 1100 per month
+
+3) Quiet place for 2 older people
+ - Close to green and quiet area but close to public transport, no car
+ - Hospital/Market is prefered to be close
+ - Not too noisy (< 5)
+ - Price 900 per month
+
+4) Outskirts
+ - Family with a car and they want a house
+ - Close to green area and no noise around.
+ - Noise (< 1)
+ - price 1500 per month
+
+5) centric
+ - Family with 3 children and no car
+ - Prefers close to the center/public transport
+ - Likes cultural activities
+ - Price 1300 per month
+ - Noise does not matter
