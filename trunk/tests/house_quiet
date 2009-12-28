@@ -1,0 +1,13 @@
+(clear)
+(load "housing.clp")
+(reset)
+(run)
+Nick
+Veenhof
+flat
+partner
+n
+n
+quiet
+900
+y

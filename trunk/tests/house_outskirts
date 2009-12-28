@@ -1,0 +1,14 @@
+(clear)
+(load "housing.clp")
+(reset)
+(run)
+Nick
+Veenhof
+house
+children
+4
+y
+y
+outskirts
+1500
+n

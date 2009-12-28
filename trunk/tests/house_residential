@@ -1,0 +1,13 @@
+(clear)
+(load "housing.clp")
+(reset)
+(run)
+Nick
+Veenhof
+house
+children
+2
+y
+residential
+1100
+y
