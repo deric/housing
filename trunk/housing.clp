@@ -1,4 +1,4 @@
-;; Builded on  2009-11-27 16:30:52 
+;; Builded on  2009-11-28 17:44:7 
 
 ;############### ontology ##################
 ; Sun Dec 27 15:21:21 CET 2009
@@ -1827,6 +1827,31 @@
 	)
 )
 
+;;;DEFINE CAR OR NOT
+;;; get the fact if the user has a car or not
+(defrule user-car
+	(not (Person has-car ?))
+	?user <- (object (is-a Person))
+	=>
+	(bind ?hascar (yes-or-no "Do you have a car?"))
+	(assert (Person has-car ?hascar))
+)
+
+;;;BRINGING CHILDREN TO SCHOOL WITH CAR?
+;;; get the fact if the user has a car or not
+(defrule user-car-children
+	(Person has-car TRUE)
+	(not (Person type-of-house office))
+  (numberp Person children)
+	?user <- (object (is-a Person))
+	=>
+	(bind ?bringschildren (yes-or-no "Are you bringing the children to school by car?"))
+  (if (eq ?bringschildren TRUE)
+       then (assert (Person need-public-transport FALSE))
+       else (assert (Person need-public-transport TRUE))
+  )
+)
+
 ;;;set office centric location
 ;;; get the number of rooms in case of office
 (defrule house-office-location
@@ -1840,18 +1865,21 @@
 	)
 )
 
-;;; Get our maximum budget
+
+;;; Get our maximum budget - last in the row
 (defrule house-max-budget
 	(not (Person budget ?))
 	?user <- (object (is-a Person))
 	=>
-	(bind ?max_budget (ask-number "What is your maximum budget" 0 10000000))
+	(bind ?max_budget (ask-number "What is your maximum rental budget per month" 0 3000))
 	(send ?user put-max_budget ?max_budget)
-	(assert (Person budget ok))
+  (assert (Person facts ok))
 )
 
+;;;APPLY OUR FACTS AND FILTER THE RESULTS
+
 (defrule decision-budget
-	(Person budget ok)
+	(Person facts ok)
   (not (checklist budgetcheck ?))
 	?user <- (object (is-a Person))
   ?recommendation <- (recommendation (is_final ?))

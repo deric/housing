@@ -298,8 +298,6 @@
 ;;; get the fact if the user has a car or not
 (defrule user-car
 	(not (Person has-car ?))
-	(not (Person type-of-house office))
-  (not (Person room-num ?))
 	?user <- (object (is-a Person))
 	=>
 	(bind ?hascar (yes-or-no "Do you have a car?"))
@@ -311,48 +309,15 @@
 (defrule user-car-children
 	(Person has-car TRUE)
 	(not (Person type-of-house office))
-  (not (Person children ?))
+  (numberp Person children)
 	?user <- (object (is-a Person))
 	=>
-	(bind ?hascar (yes-or-no "Do you have a car?"))
-	(assert (Person has-car ?hascar))
+	(bind ?bringschildren (yes-or-no "Are you bringing the children to school by car?"))
+  (if (eq ?bringschildren TRUE)
+       then (assert (Person need-public-transport FALSE))
+       else (assert (Person need-public-transport TRUE))
+  )
 )
-
-
-;;; set the type of house
-;;; also define the number of people living there or children
-(defrule house-other-rooms
-	(not (Person room-num ?))
-	(not (Person type-of-house office))
-	?user <- (object (is-a Person))
-	=>
-
-	(bind ?type-of-family (question "U are looking for a place to live for?" alone partner children))
-	(if (= (str-compare ?type-of-family "alone") 0)
-		then
-		(assert (Person room-num 1))
-	)
-	(if (= (str-compare ?type-of-family "partner") 0)
-		then
-		(if (yes-or-no "are you planning to have children soon")
-		then
-			(assert (Person room-num 3))
-		else
-			(assert (Person room-num 2))
-		)
-		;;in any case we need a double room
-		(assert (Person room-type double))
-
-	)
-	(if (= (str-compare ?type-of-family "children") 0)
-		then
-		(bind ?children (ask-number "How many children are living with you" 0 20))
-		(assert (Person room-num (round (/ ?children 2))))
-		(assert (Person house-shared FALSE))
-		(assert (Person children ?children))
-	)
-)
-
 
 ;;;set office centric location
 ;;; get the number of rooms in case of office
@@ -367,20 +332,21 @@
 	)
 )
 
-;;; Get our maximum budget
+
+;;; Get our maximum budget - last in the row
 (defrule house-max-budget
 	(not (Person budget ?))
 	?user <- (object (is-a Person))
 	=>
 	(bind ?max_budget (ask-number "What is your maximum rental budget per month" 0 3000))
 	(send ?user put-max_budget ?max_budget)
-	(assert (Person budget ok))
+  (assert (Person facts ok))
 )
 
 ;;;APPLY OUR FACTS AND FILTER THE RESULTS
 
 (defrule decision-budget
-	(Person budget ok)
+	(Person facts ok)
   (not (checklist budgetcheck ?))
 	?user <- (object (is-a Person))
   ?recommendation <- (recommendation (is_final ?))
