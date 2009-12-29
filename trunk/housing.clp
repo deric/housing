@@ -1,7 +1,7 @@
-;; Builded on  2009-11-29 11:5:15 
+;; Builded on  2009-11-29 11:25:33 
 
 ;############### ontology ##################
-; Tue Dec 29 10:42:04 CET 2009
+; Tue Dec 29 11:22:54 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -40,13 +40,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes City)
 		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Transport+Type
 		(type SYMBOL)
 		(allowed-values Bus-Stop Train-Station Metro)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot floor
-		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot month
@@ -205,16 +205,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -332,14 +332,14 @@
 (defclass House
 	(is-a PlaceToLive)
 	(role concrete)
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
-		(create-accessor read-write))
 	(single-slot house_type
 		(type SYMBOL)
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
 		(create-accessor read-write)))
 
 (defclass Flat
@@ -374,7 +374,7 @@
 
 (defclass Services
 	(is-a USER)
-	(role abstract)
+	(role concrete)
 	(single-slot title
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -452,9 +452,9 @@
 
 (defclass Transport
 	(is-a Services)
-	(role abstract))
+	(role concrete))
 
-(defclass Public+Transport "public transport stop"
+(defclass PublicTransport "public transport stop"
 	(is-a Transport)
 	(role concrete)
 	(single-slot Transport+Type
@@ -464,11 +464,11 @@
 		(create-accessor read-write)))
 
 (defclass BusStop
-	(is-a Public+Transport)
+	(is-a PublicTransport)
 	(role concrete))
 
 (defclass MetroStation
-	(is-a Public+Transport)
+	(is-a PublicTransport)
 	(role concrete))
 
 (defclass TransferStation
@@ -476,11 +476,11 @@
 	(role concrete))
 
 (defclass TrainStation
-	(is-a Public+Transport)
+	(is-a PublicTransport)
 	(role concrete))
 
 (defclass TramStop
-	(is-a Public+Transport)
+	(is-a PublicTransport)
 	(role concrete))
 
 (defclass Shopping
@@ -600,7 +600,7 @@
 
 ;############### instances ##################
 (definstances inst 
-; Tue Dec 29 10:42:04 CET 2009
+; Tue Dec 29 11:22:54 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -1189,7 +1189,7 @@
 	(district [house_Class40003])
 	(street "Carrer Paris"))
 
-([house_Class30110] of  Public+Transport
+([house_Class30110] of  PublicTransport
 
 	(address [house_Class30113])
 	(noisy 2)
@@ -1237,7 +1237,7 @@
 	(district [house_Class30019])
 	(street "Placa Universitat"))
 
-([house_Class30118] of  Public+Transport
+([house_Class30118] of  PublicTransport
 
 	(address [house_Class30072])
 	(noisy 2)
@@ -1263,7 +1263,7 @@
 	(noisy 1)
 	(title "Centric Theatre"))
 
-([house_Class30122] of  Public+Transport
+([house_Class30122] of  PublicTransport
 
 	(address [house_Class30072])
 	(noisy 2)
@@ -1492,7 +1492,7 @@
 	(latitude 3.0)
 	(longitude -2.0))
 
-([house_Class40040] of  Public+Transport
+([house_Class40040] of  PublicTransport
 
 	(address [house_Class20000])
 	(noisy 2)
@@ -1916,31 +1916,32 @@
 (defrule calculate-noise
   (Person facts ok)
   ?proposal<-(object (is-a Proposal))
+  ?service<-(object (is-a Services))
 	=>
   ;distributed action
-  ;;;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
-  
-  ;(printout t (send (send ?proposal get-offer) get-title))
+  ;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
+  (printout t (send (send ?service get-address) get-coordinates) crlf)
+  (printout t (send (send ?proposal get-offer) get-address) crlf)
+  ;(printout t ?distance) crlf)
   
   ;;;(printout t (send ?service print))
-  (do-for-all-instances ((?service Services))
+  ;(do-for-all-instances ((?service Services))
      ;do-for condition
-     TRUE
+  ;   TRUE
      ;do-for execution
-     ;;;(bind ?distance (send (send ?service get-address) get-coordinates) (send (send (send ?proposal get-offer) get-address) get-coordinates))
-     (printout t (send ?service get-title))
-     (if (instancep (send (send ?service get-address) get-coordinates))
-     then
-     (printout t (send (send ?service get-address) get-coordinates))
-     (printout t (send (send ?proposal get-offer) get-title))
-     )
+;     (printout t (send ?service get-title))
+;     (if (instancep (send (send ?service get-address) get-coordinates))
+ ;    then
+ ;    (printout t (send (send ?service get-address) get-coordinates))
+ ;    (printout t (send (send ?proposal get-offer) get-title))
+ ;    )
      
-     (if (instancep (send (send ?proposal get-offer) get-address))
-     then
-     (printout t (send (send ?proposal get-offer) get-address))
-     )
+ ;    (if (instancep (send (send ?proposal get-offer) get-address))
+ ;    then
+ ;    (printout t (send (send ?proposal get-offer) get-address))
+ ;    )
      
-    )
+ ;   )
   
   
 )

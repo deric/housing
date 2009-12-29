@@ -1,4 +1,4 @@
-; Tue Dec 29 11:04:14 CET 2009
+; Tue Dec 29 11:22:54 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -37,13 +37,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes City)
 		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Transport+Type
 		(type SYMBOL)
 		(allowed-values Bus-Stop Train-Station Metro)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot floor
-		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot month
@@ -202,16 +202,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot realty
+;+		(comment "piece of immovable realty estate")
+		(type INSTANCE)
+;+		(allowed-classes PlaceToLive)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot city
 		(type INSTANCE)
 ;+		(allowed-classes City)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot realty
-;+		(comment "piece of immovable realty estate")
-		(type INSTANCE)
-;+		(allowed-classes PlaceToLive PlaceToWork)
-;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -244,7 +244,7 @@
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
-;+		(allowed-classes PlaceToLive PlaceToWork)
+;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -329,14 +329,14 @@
 (defclass House
 	(is-a PlaceToLive)
 	(role concrete)
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
-		(create-accessor read-write))
 	(single-slot house_type
 		(type SYMBOL)
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
 		(create-accessor read-write)))
 
 (defclass Flat
@@ -371,7 +371,7 @@
 
 (defclass Services
 	(is-a USER)
-	(role abstract)
+	(role concrete)
 	(single-slot title
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -449,9 +449,9 @@
 
 (defclass Transport
 	(is-a Services)
-	(role abstract))
+	(role concrete))
 
-(defclass Public+Transport "public transport stop"
+(defclass PublicTransport "public transport stop"
 	(is-a Transport)
 	(role concrete)
 	(single-slot Transport+Type
@@ -461,11 +461,11 @@
 		(create-accessor read-write)))
 
 (defclass BusStop
-	(is-a Public+Transport)
+	(is-a PublicTransport)
 	(role concrete))
 
 (defclass MetroStation
-	(is-a Public+Transport)
+	(is-a PublicTransport)
 	(role concrete))
 
 (defclass TransferStation
@@ -473,11 +473,11 @@
 	(role concrete))
 
 (defclass TrainStation
-	(is-a Public+Transport)
+	(is-a PublicTransport)
 	(role concrete))
 
 (defclass TramStop
-	(is-a Public+Transport)
+	(is-a PublicTransport)
 	(role concrete))
 
 (defclass Shopping
@@ -575,7 +575,7 @@
 
 (defclass PlaceToWork
 	(is-a USER)
-	(role abstract)
+	(role concrete)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)

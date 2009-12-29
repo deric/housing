@@ -1,4 +1,4 @@
-; Tue Dec 29 10:41:53 CET 2009
+; Tue Dec 29 11:22:56 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -587,7 +587,7 @@
 	(district [house_Class40003])
 	(street "Carrer Paris"))
 
-([house_Class30110] of  Public+Transport
+([house_Class30110] of  PublicTransport
 
 	(address [house_Class30113])
 	(noisy 2)
@@ -635,7 +635,7 @@
 	(district [house_Class30019])
 	(street "Placa Universitat"))
 
-([house_Class30118] of  Public+Transport
+([house_Class30118] of  PublicTransport
 
 	(address [house_Class30072])
 	(noisy 2)
@@ -661,7 +661,7 @@
 	(noisy 1)
 	(title "Centric Theatre"))
 
-([house_Class30122] of  Public+Transport
+([house_Class30122] of  PublicTransport
 
 	(address [house_Class30072])
 	(noisy 2)
@@ -890,7 +890,7 @@
 	(latitude 3.0)
 	(longitude -2.0))
 
-([house_Class40040] of  Public+Transport
+([house_Class40040] of  PublicTransport
 
 	(address [house_Class20000])
 	(noisy 2)

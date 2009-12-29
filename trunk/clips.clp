@@ -402,30 +402,9 @@
   ?service<-(object (is-a Services))
 	=>
   ;distributed action
-  ;;;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
-  
-  ;(printout t (send (send ?proposal get-offer) get-title))
-  
-  ;;;(printout t (send ?service print))
-  ;(do-for-all-instances ((?service Services))
-     ;do-for condition
-  ;   TRUE
-     ;do-for execution
-;     (printout t (send ?service get-title))
-;     (if (instancep (send (send ?service get-address) get-coordinates))
- ;    then
- ;    (printout t (send (send ?service get-address) get-coordinates))
- ;    (printout t (send (send ?proposal get-offer) get-title))
- ;    )
-     
- ;    (if (instancep (send (send ?proposal get-offer) get-address))
- ;    then
- ;    (printout t (send (send ?proposal get-offer) get-address))
- ;    )
-     
- ;   )
-  
-  
+  ;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
+  (printout t (send (send ?service get-address) get-coordinates) crlf)
+  (printout t (send (send ?proposal get-offer) get-address) crlf)
 )
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
