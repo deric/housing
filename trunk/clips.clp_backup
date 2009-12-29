@@ -399,31 +399,33 @@
 (defrule calculate-noise
   (Person facts ok)
   ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Services))
+  ;;;this should work normally, but no idea how you ask for a derived example
+  ;;;?service<-(object (is-a Services))
 	=>
   ;distributed action
   ;;;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
   
-  ;(printout t (send (send ?proposal get-offer) get-title))
+  (printout t (send (send ?proposal get-offer) get-title))
   
   ;;;(printout t (send ?service print))
-  ;(do-for-all-instances ((?service Services))
+  (do-for-all-instances ((?service Services))
      ;do-for condition
-  ;   TRUE
+     TRUE
      ;do-for execution
-;     (printout t (send ?service get-title))
-;     (if (instancep (send (send ?service get-address) get-coordinates))
- ;    then
- ;    (printout t (send (send ?service get-address) get-coordinates))
- ;    (printout t (send (send ?proposal get-offer) get-title))
- ;    )
+     ;;;(bind ?distance (send (send ?service get-address) get-coordinates) (send (send (send ?proposal get-offer) get-address) get-coordinates))
+     (printout t (send ?service get-title))
+     (if (instancep (send (send ?service get-address) get-coordinates))
+     then
+     (printout t (send (send ?service get-address) get-coordinates))
+     (printout t (send (send ?proposal get-offer) get-title))
+     )
      
- ;    (if (instancep (send (send ?proposal get-offer) get-address))
- ;    then
- ;    (printout t (send (send ?proposal get-offer) get-address))
- ;    )
+     (if (instancep (send (send ?proposal get-offer) get-address))
+     then
+     (printout t (send (send ?proposal get-offer) get-address))
+     )
      
- ;   )
+    )
   
   
 )
