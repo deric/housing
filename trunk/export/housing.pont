@@ -1,4 +1,4 @@
-; Sun Dec 27 15:21:21 CET 2009
+; Tue Dec 29 01:56:49 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -37,13 +37,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes City)
 		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Transport+Type
 		(type SYMBOL)
 		(allowed-values Bus-Stop Train-Station Metro)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot floor
-		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot month
@@ -200,16 +200,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -326,14 +326,14 @@
 (defclass House
 	(is-a PlaceToLive)
 	(role concrete)
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
-		(create-accessor read-write))
 	(single-slot house_type
 		(type SYMBOL)
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
 		(create-accessor read-write)))
 
 (defclass Flat
@@ -377,16 +377,16 @@
 ;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)))
-
-(defclass FoodBeverage
-	(is-a Services)
-	(role concrete)
+		(create-accessor read-write))
 	(single-slot address
 		(type INSTANCE)
 ;+		(allowed-classes Address)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
+
+(defclass FoodBeverage
+	(is-a Services)
+	(role concrete))
 
 (defclass Restaurant
 	(is-a FoodBeverage)
@@ -402,12 +402,7 @@
 
 (defclass Entertainment
 	(is-a Services)
-	(role concrete)
-	(single-slot address
-		(type INSTANCE)
-;+		(allowed-classes Address)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+	(role concrete))
 
 (defclass Cinema
 	(is-a Entertainment)
@@ -423,12 +418,7 @@
 
 (defclass Education
 	(is-a Services)
-	(role concrete)
-	(single-slot address
-		(type INSTANCE)
-;+		(allowed-classes Address)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+	(role concrete))
 
 (defclass School
 	(is-a Education)
@@ -444,12 +434,7 @@
 
 (defclass HealthCare
 	(is-a Services)
-	(role concrete)
-	(single-slot address
-		(type INSTANCE)
-;+		(allowed-classes Address)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+	(role concrete))
 
 (defclass Hospital
 	(is-a HealthCare)
@@ -461,13 +446,7 @@
 
 (defclass Transport
 	(is-a Services)
-	(role abstract)
-	(single-slot coordinates
-;+		(comment "GPS coordinates for displaying on a map")
-		(type INSTANCE)
-;+		(allowed-classes Coordinates)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+	(role abstract))
 
 (defclass Public+Transport "public transport stop"
 	(is-a Transport)
@@ -500,12 +479,7 @@
 
 (defclass Shopping
 	(is-a Services)
-	(role concrete)
-	(single-slot address
-		(type INSTANCE)
-;+		(allowed-classes Address)
-;+		(cardinality 1 1)
-		(create-accessor read-write)))
+	(role concrete))
 
 (defclass Shop
 	(is-a Shopping)

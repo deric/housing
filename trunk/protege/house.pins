@@ -1,4 +1,4 @@
-; Sat Dec 26 20:43:23 CET 2009
+; Tue Dec 29 01:56:41 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -79,6 +79,12 @@
 	(city [house_Class13])
 	(coordinates [house_Class30053])
 	(street "Carrer Congos 4"))
+
+([house_Class20000] of  Address
+
+	(city [house_Class14])
+	(coordinates [house_Class40041])
+	(street "MetroMar"))
 
 ([house_Class20001] of  Address
 
@@ -613,7 +619,7 @@
 
 ([house_Class30110] of  Public+Transport
 
-	(coordinates [house_Class30111])
+	(address [house_Class30113])
 	(noisy 2)
 	(title "Metrostop Hospital")
 	(Transport+Type Metro))
@@ -661,7 +667,7 @@
 
 ([house_Class30118] of  Public+Transport
 
-	(coordinates [house_Class30073])
+	(address [house_Class30072])
 	(noisy 2)
 	(title "Train Catalunya")
 	(Transport+Type Train-Station))
@@ -687,7 +693,7 @@
 
 ([house_Class30122] of  Public+Transport
 
-	(coordinates [house_Class30073])
+	(address [house_Class30072])
 	(noisy 2)
 	(title "Metrostop Centre")
 	(Transport+Type Metro))
@@ -918,7 +924,7 @@
 
 ([house_Class40040] of  Public+Transport
 
-	(coordinates [house_Class40041])
+	(address [house_Class20000])
 	(noisy 2)
 	(title "Metrostop Mar")
 	(Transport+Type Metro))

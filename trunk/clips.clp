@@ -50,6 +50,12 @@
   (printout t crlf)
   (printout t crlf)
 )
+(defmessage-handler Services print()
+  (printout t "----------------------------------" crlf)
+  (format t "Service: %s%n" ?self:title) 
+  (printout t crlf)
+  (printout t crlf)
+)
  
 (defmessage-handler Proposal print()
   (printout t (send ?self:offer print)) 
@@ -95,21 +101,6 @@
 	(bind ?question (read))
 	?question
 )
-
-; Function for printing final results
-;(deffunction print-proposals ($?proposals)
- ; multifieldp is to check if the field is a multifield
- ; (printout t (multifieldp $offers) crlf)
-;  (bind ?i 1)
-;	(while (<= ?i (length$ ?proposals))
-;	  do
-;	    (bind ?curr (nth$ ?i ?proposals)) ; get item from array
-;      ;(send [b] get-foo)
-;	    (printout t (send ?curr:offer print)) ; call message print on ?curr
-;	    (bind ?i (+ ?i 1)) ; i+=1
-;	)
-;)
-
 
 (deffunction ask-number (?question ?range-start ?range-end)
 	(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
@@ -373,58 +364,77 @@
 	?user <- (object (is-a Person))
 	=>
 	(bind ?max_budget (ask-number "What is your maximum rental budget per month" 0 3000))
-	(send ?user put-max_budget ?max_budget)
+  (if (yes-or-no "Are you willing to pay more for the house of your dreams?")
+    then
+      (send ?user put-max_budget (* ?max_budget 1.3))
+    else
+      (send ?user put-max_budget ?max_budget)
+  )
   (assert (Person facts ok))
 )
 
+
+
 ;;;APPLY OUR FACTS AND FILTER THE RESULTS
 
-(defrule decision-budget
-	(Person facts ok)
-  (not (checklist budgetcheck ?))
-	?user <- (object (is-a Person))
-  ?recommendation <- (recommendation (is_final ?))
+;;; Loop trough all the houses and uncheck those that don't fit the price limit
+(defrule exclude-houses
+  (Person facts ok)
+  ?proposal<-(object (is-a Proposal))
+  ?user <- (object (is-a Person))
 	=>
-  (if (yes-or-no "Are you willing to pay more for the house of your dreams?")
+  ;distributed action
+  (if (< (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
     then
-      ; We add 10% to the price range
-      ; HARD CONSTRAINT SO REMOVE FROM INSTANCES
-      ;add 1 points to soft constraints
-      (do-for-all-instances 
-	;instance template
-	((?proposal Proposal))
-	;instance-set query
-	(<= (send (send ?proposal get-offer) get-rent) (* (send ?user get-max_budget) 1.1 ))
-        ;distributed action
-	(send ?proposal put-is_proposed TRUE)
-	(send ?proposal put-score (+ (send ?proposal get-score) 1))
-      )
-    else
-      ; We have a strict price range
-      ; We add 2 points
-      (do-for-all-instances 
-	((?proposal Proposal))
-        ;do-for condition
-        (<= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
-        ;do-for execution
-	(send ?proposal put-is_proposed TRUE)
-	(send ?proposal put-score (+ (send ?proposal get-score) 1))
-      )
+    (send ?proposal put-is_proposed TRUE)
+    (send ?proposal put-score (+ (send ?proposal get-score) 1))
   )
-  ; use the function print-proposals for printing our offers
-	(assert (checklist budgetcheck ok))
 )
 
 
-;;; check if we passed all our subsets of questions
+;;; Loop trough all the houses and locations and give noisynesspoints
+;;; if a location is close add the whole noisynesspoints
+;;; if a location is medium add the half of the noise
+;;; if a location is far - dont do anything
+(defrule calculate-noise
+  (Person facts ok)
+  ?proposal<-(object (is-a Proposal))
+	=>
+  ;distributed action
+  ;;;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
+  
+  (printout t (send (send ?proposal get-offer) get-title))
+  
+  ;;;(printout t (send ?service print))
+  (do-for-all-instances ((?service Services))
+     ;do-for condition
+     TRUE
+     ;do-for execution
+     ;;;(bind ?distance (send (send ?service get-address) get-coordinates) (send (send (send ?proposal get-offer) get-address) get-coordinates))
+     (printout t (send ?service get-title))
+     (if (instancep (send (send ?service get-address) get-coordinates))
+     then
+     (printout t (send (send ?service get-address) get-coordinates))
+     (printout t (send (send ?proposal get-offer) get-title))
+     )
+     
+     (if (instancep (send (send ?proposal get-offer) get-address))
+     then
+     (printout t (send (send ?proposal get-offer) get-address))
+     )
+     
+    )
+  
+  
+)
 
+;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
 (defrule end-of-questions
-	?budget <- (checklist budgetcheck ok)
-  ;?test <- (checklist test ok)
+	(Person facts ok)
 	?recommendation <- (recommendation (is_final ?))
 	=>
   (printout t "end of questions" crlf crlf)
-	(retract ?budget)
+	;;;(retract ?budget)
   ;(retract ?test)
 	(modify ?recommendation (is_final ok))
   (pop-focus)

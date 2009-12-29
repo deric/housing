@@ -1,4 +1,4 @@
-; Sat Dec 26 20:43:23 CET 2009
+; Tue Dec 29 01:56:41 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,7 +6,6 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[house_ProjectKB_Class50164]
 		[house_ProjectKB_Class50165]
 		[house_ProjectKB_Class50166]
 		[house_ProjectKB_Class50167]
@@ -21,7 +20,8 @@
 		[house_ProjectKB_Class50176]
 		[house_ProjectKB_Class50177]
 		[house_ProjectKB_Class50178]
-		[house_ProjectKB_Class50179]))
+		[house_ProjectKB_Class50179]
+		[house_ProjectKB_Class50180]))
 
 ([CLSES_TAB] of  Widget
 
@@ -1015,119 +1015,119 @@
 ([house_ProjectKB_Class50] of  Property_List
 )
 
-([house_ProjectKB_Class50164] of  String
+([house_ProjectKB_Class50165] of  String
 
 	(name "Date")
 	(string_value "day{.}month{.}year"))
 
-([house_ProjectKB_Class50165] of  String
+([house_ProjectKB_Class50166] of  String
 
 	(name "PlaceToLive")
 	(string_value "description"))
 
-([house_ProjectKB_Class50166] of  String
+([house_ProjectKB_Class50167] of  String
 
 	(name "District")
 	(string_value "title"))
 
-([house_ProjectKB_Class50167] of  String
+([house_ProjectKB_Class50168] of  String
 
 	(name "Province")
 	(string_value "title"))
 
-([house_ProjectKB_Class50168] of  String
+([house_ProjectKB_Class50169] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([house_ProjectKB_Class50169] of  String
+([house_ProjectKB_Class50170] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([house_ProjectKB_Class50170] of  String
+([house_ProjectKB_Class50171] of  String
 
 	(name "Coordinates")
 	(string_value "latitude{%3B}longitude"))
 
-([house_ProjectKB_Class50171] of  String
+([house_ProjectKB_Class50172] of  String
 
 	(name "Services")
 	(string_value "title"))
 
-([house_ProjectKB_Class50172] of  String
+([house_ProjectKB_Class50173] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([house_ProjectKB_Class50173] of  String
+([house_ProjectKB_Class50174] of  String
 
 	(name "Offer")
 	(string_value "title"))
 
-([house_ProjectKB_Class50174] of  String
+([house_ProjectKB_Class50175] of  String
 
 	(name "City")
 	(string_value "title"))
 
-([house_ProjectKB_Class50175] of  String
+([house_ProjectKB_Class50176] of  String
 
 	(name "Country")
 	(string_value "title"))
 
-([house_ProjectKB_Class50176] of  String
+([house_ProjectKB_Class50177] of  String
 
 	(name "GeographicalPart")
 	(string_value "title"))
 
-([house_ProjectKB_Class50177] of  String
+([house_ProjectKB_Class50178] of  String
 
 	(name "Person")
 	(string_value "firstname{}surname"))
 
-([house_ProjectKB_Class50178] of  String
+([house_ProjectKB_Class50179] of  String
 
 	(name "Equipment")
 	(string_value "title"))
 
-([house_ProjectKB_Class50179] of  String
+([house_ProjectKB_Class50180] of  String
 
 	(name "Address")
 	(string_value "street"))
 
-([house_ProjectKB_Class50180] of  Map_Entry
+([house_ProjectKB_Class50181] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([house_ProjectKB_Class50181] of  Map_Entry
+([house_ProjectKB_Class50182] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([house_ProjectKB_Class50182] of  Map
+([house_ProjectKB_Class50183] of  Map
 
-	(entries [house_ProjectKB_Class50183]))
+	(entries [house_ProjectKB_Class50184]))
 
-([house_ProjectKB_Class50183] of  Map_Entry
+([house_ProjectKB_Class50184] of  Map_Entry
 
 	(key "house_Class10001")
 	(key_class "edu.stanford.smi.protege.model.Frame")
 	(value "30 36 202 123")
 	(value_class "java.awt.Rectangle"))
 
-([house_ProjectKB_Class50184] of  Map_Entry
+([house_ProjectKB_Class50185] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "house_ProjectKB_Class50182")
+	(value "house_ProjectKB_Class50183")
 	(value_class "java.util.Map"))
 
-([house_ProjectKB_Class50185] of  Map_Entry
+([house_ProjectKB_Class50186] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
@@ -1447,11 +1447,11 @@
 ([KB_045904_Class1] of  Map
 
 	(entries
-		[house_ProjectKB_Class50180]
 		[house_ProjectKB_Class50181]
-		[house_ProjectKB_Class50184]
-		[house_ProjectKB_Class50185])
-	(referenced_maps [house_ProjectKB_Class50182]))
+		[house_ProjectKB_Class50182]
+		[house_ProjectKB_Class50185]
+		[house_ProjectKB_Class50186])
+	(referenced_maps [house_ProjectKB_Class50183]))
 
 ([KB_045904_Class96] of  Property_List
 
@@ -1466,9 +1466,6 @@
 
 	(name "instances_file_name")
 	(string_value "house.pins"))
-
-([KB_255078_Class6] of  Map
-)
 
 ([KB_420655_Instance_0] of  Property_List
 
@@ -1850,6 +1847,9 @@
 	(x 0)
 	(y 120))
 
+([KB_473435_Class6] of  Map
+)
+
 ([option_instance] of  Options
 
 	(confirm_on_remove FALSE)
@@ -1876,8 +1876,8 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
-		[house_ProjectKB_Class10074]
 		[house_ProjectKB_Class10081]
+		[house_ProjectKB_Class10074]
 		[PAL_FORM_WIDGET]
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[house_ProjectKB_Instance_67]
