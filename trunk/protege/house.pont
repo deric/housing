@@ -1,4 +1,4 @@
-; Tue Dec 29 01:56:41 CET 2009
+; Tue Dec 29 10:41:53 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -37,13 +37,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes City)
 		(create-accessor read-write))
-	(single-slot floor
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Transport+Type
 		(type SYMBOL)
 		(allowed-values Bus-Stop Train-Station Metro)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot month
@@ -123,10 +123,6 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Description
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot windows_num
 		(type INTEGER)
 ;+		(cardinality 0 1)
@@ -164,9 +160,10 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot district
+;+		(comment "for our purposes district is required")
 		(type INSTANCE)
 ;+		(allowed-classes District)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
@@ -190,6 +187,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Flat)
 		(create-accessor read-write))
+	(single-slot province
+		(type INSTANCE)
+;+		(allowed-classes Province)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
@@ -200,16 +202,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -249,6 +251,12 @@
 (defclass Address
 	(is-a USER)
 	(role concrete)
+	(single-slot district
+;+		(comment "for our purposes district is required")
+		(type INSTANCE)
+;+		(allowed-classes District)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot coordinates
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
@@ -258,11 +266,6 @@
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Equipment
@@ -326,14 +329,14 @@
 (defclass House
 	(is-a PlaceToLive)
 	(role concrete)
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
+		(create-accessor read-write))
 	(single-slot house_type
 		(type SYMBOL)
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
 		(create-accessor read-write)))
 
 (defclass Flat
@@ -516,20 +519,35 @@
 		(create-accessor read-write)))
 
 (defclass Province
-	(is-a Country)
+	(is-a GeographicalPart)
 	(role concrete)
 	(single-slot postal_code
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot country
+		(type INSTANCE)
+;+		(allowed-classes Country)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass City
-	(is-a Province)
-	(role concrete))
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot province
+		(type INSTANCE)
+;+		(allowed-classes Province)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass District
-	(is-a City)
-	(role concrete))
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Person
 	(is-a USER)
@@ -555,10 +573,23 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass %3AUNDEFINED
+(defclass PlaceToWork
 	(is-a USER)
-	(role concrete))
+	(role concrete)
+	(single-slot space
+;+		(comment "in square m  of house")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot rooms
+		(type INSTANCE)
+;+		(allowed-classes Room)
+		(create-accessor read-write))
+	(single-slot description
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
 
-(defclass Restarurant
-	(is-a %3AUNDEFINED)
+(defclass Office
+	(is-a PlaceToWork)
 	(role concrete))

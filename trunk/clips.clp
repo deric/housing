@@ -403,7 +403,7 @@
   ;distributed action
   ;;;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
   
-  (printout t (send (send ?proposal get-offer) get-title))
+  ;(printout t (send (send ?proposal get-offer) get-title))
   
   ;;;(printout t (send ?service print))
   (do-for-all-instances ((?service Services))

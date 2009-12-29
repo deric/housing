@@ -1,7 +1,7 @@
-;; Builded on  2009-11-29 2:45:58 
+;; Builded on  2009-11-29 10:43:9 
 
 ;############### ontology ##################
-; Tue Dec 29 01:56:49 CET 2009
+; Tue Dec 29 10:42:04 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -40,13 +40,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes City)
 		(create-accessor read-write))
-	(single-slot floor
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Transport+Type
 		(type SYMBOL)
 		(allowed-values Bus-Stop Train-Station Metro)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot month
@@ -126,10 +126,6 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot Description
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot windows_num
 		(type INTEGER)
 ;+		(cardinality 0 1)
@@ -167,9 +163,10 @@
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot district
+;+		(comment "for our purposes district is required")
 		(type INSTANCE)
 ;+		(allowed-classes District)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot name_
 		(type STRING)
@@ -193,6 +190,11 @@
 		(type INSTANCE)
 ;+		(allowed-classes Flat)
 		(create-accessor read-write))
+	(single-slot province
+		(type INSTANCE)
+;+		(allowed-classes Province)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
@@ -203,16 +205,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -252,6 +254,12 @@
 (defclass Address
 	(is-a USER)
 	(role concrete)
+	(single-slot district
+;+		(comment "for our purposes district is required")
+		(type INSTANCE)
+;+		(allowed-classes District)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot coordinates
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
@@ -261,11 +269,6 @@
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Equipment
@@ -329,14 +332,14 @@
 (defclass House
 	(is-a PlaceToLive)
 	(role concrete)
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
+		(create-accessor read-write))
 	(single-slot house_type
 		(type SYMBOL)
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
 		(create-accessor read-write)))
 
 (defclass Flat
@@ -519,20 +522,35 @@
 		(create-accessor read-write)))
 
 (defclass Province
-	(is-a Country)
+	(is-a GeographicalPart)
 	(role concrete)
 	(single-slot postal_code
 		(type STRING)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot country
+		(type INSTANCE)
+;+		(allowed-classes Country)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass City
-	(is-a Province)
-	(role concrete))
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot province
+		(type INSTANCE)
+;+		(allowed-classes Province)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass District
-	(is-a City)
-	(role concrete))
+	(is-a GeographicalPart)
+	(role concrete)
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
 (defclass Person
 	(is-a USER)
@@ -558,59 +576,34 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass %3AUNDEFINED
+(defclass PlaceToWork
 	(is-a USER)
-	(role concrete))
+	(role concrete)
+	(single-slot space
+;+		(comment "in square m  of house")
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot rooms
+		(type INSTANCE)
+;+		(allowed-classes Room)
+		(create-accessor read-write))
+	(single-slot description
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
 
-(defclass Restarurant
-	(is-a %3AUNDEFINED)
+(defclass Office
+	(is-a PlaceToWork)
 	(role concrete))
 
 
 ;############### instances ##################
 (definstances inst 
-; Tue Dec 29 01:56:50 CET 2009
+; Tue Dec 29 10:42:04 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
-
-([house_Class0] of  Offer
-
-	(address [house_Class30109])
-	(available_from [house_Class6])
-	(realty [house_Class1])
-	(rent 1650.0)
-	(title "Offer Flat 1"))
-
-([house_Class1] of  Flat
-
-	(description "Flat 1")
-	(equipment
-		[house_Class30097]
-		[house_Class30098]
-		[house_Class30099]
-		[house_Class30096])
-	(flat_type normal)
-	(floor "4")
-	(rooms
-		[house_Class10003]
-		[house_Class10003]
-		[house_Class20004]
-		[house_Class30011]
-		[house_Class30012])
-	(space 130))
-
-([house_Class10] of  Country
-
-	(inhabitants 50000000)
-	(title "Spain"))
-
-([house_Class10000] of  Restaurant
-
-	(address [house_Class20001])
-	(noisy 2)
-	(title "Resto Raval"))
-
 
 ([house_Class10003] of  Room
 
@@ -626,37 +619,40 @@
 
 ([house_Class11] of  Province
 
+	(country [house_Class40004])
 	(title "Barcelona"))
 
 ([house_Class13] of  City
 
-	(postal_code "80000")
+	(province [house_Class11])
 	(title "Barcelona"))
 
 ([house_Class14] of  District
 
+	(city [house_Class13])
 	(title "Barceloneta"))
 
 ([house_Class15] of  District
 
+	(city [house_Class13])
 	(title "Ciutat Vella"))
 
 ([house_Class2] of  Address
 
-	(city [house_Class13])
 	(coordinates [house_Class30053])
+	(district [house_Class40003])
 	(street "Carrer Congos 4"))
 
 ([house_Class20000] of  Address
 
-	(city [house_Class14])
 	(coordinates [house_Class40041])
+	(district [house_Class30035])
 	(street "MetroMar"))
 
 ([house_Class20001] of  Address
 
-	(city [house_Class30021])
 	(coordinates [house_Class30069])
+	(district [house_Class30024])
 	(street "Rambla De La Catalunya 150"))
 
 ([house_Class20002] of  Cinema
@@ -686,8 +682,8 @@
 
 ([house_Class30003] of  Address
 
-	(city [house_Class30022])
 	(coordinates [house_Class30070])
+	(district [house_Class30027])
 	(street "Carrer Cinema"))
 
 ([house_Class30004] of  University
@@ -698,8 +694,8 @@
 
 ([house_Class30005] of  Address
 
-	(city [house_Class30022])
 	(coordinates [house_Class40009])
+	(district [house_Class30035])
 	(street "Carrer de la Mar"))
 
 ([house_Class30006] of  Offer
@@ -796,21 +792,15 @@
 	(space 15)
 	(windows_num 2))
 
-([house_Class30016] of  Room
-)
-
-([house_Class30017] of  Room
-)
-
 ([house_Class30018] of  Address
 
-	(city [house_Class30019])
 	(coordinates [house_Class30020])
+	(district [house_Class30032])
 	(street "Muntaner 102"))
 
 ([house_Class30019] of  District
 
-	(postal_code "08008")
+	(city [house_Class13])
 	(title "Eixample esquerra"))
 
 ([house_Class30020] of  Coordinates
@@ -820,68 +810,82 @@
 
 ([house_Class30021] of  District
 
+	(city [house_Class13])
 	(title "El Raval"))
 
 ([house_Class30022] of  District
 
+	(city [house_Class13])
 	(title "Barri Gotic"))
 
 ([house_Class30023] of  District
 
+	(city [house_Class13])
 	(title "Barri De La Ribera"))
 
 ([house_Class30024] of  District
 
+	(city [house_Class13])
 	(title "Eixample Dreta"))
 
 ([house_Class30025] of  District
 
+	(city [house_Class13])
 	(title "Barri de la sagrada familia"))
 
 ([house_Class30026] of  District
 
+	(city [house_Class13])
 	(title "Fort Pienc"))
 
 ([house_Class30027] of  District
 
+	(city [house_Class13])
 	(title "Sant Antoni"))
 
 ([house_Class30028] of  District
 
+	(city [house_Class13])
 	(title "Sants-Montjuic"))
 
 ([house_Class30029] of  District
 
+	(city [house_Class13])
 	(title "Les Corts"))
 
 ([house_Class30030] of  District
 
+	(city [house_Class13])
 	(title "Sarria-Sant Gervasi"))
 
 ([house_Class30031] of  District
 
+	(city [house_Class13])
 	(title "Gracia"))
 
 ([house_Class30032] of  District
 
+	(city [house_Class13])
 	(title "Horta-Guinardo"))
 
 ([house_Class30033] of  District
 
+	(city [house_Class13])
 	(title "Nou Barris"))
 
 ([house_Class30034] of  District
 
+	(city [house_Class13])
 	(title "Sant Andreu"))
 
 ([house_Class30035] of  District
 
+	(city [house_Class13])
 	(title "Sant Marti: Diagonal Mar"))
 
 ([house_Class30037] of  City
 
-	(inhabitants 150000)
-	(postal_code "08221")
+	(province [house_Class11])
 	(title "Terrassa"))
 
 ([house_Class30038] of  Coordinates
@@ -1057,8 +1061,8 @@
 
 ([house_Class30072] of  Address
 
-	(city [house_Class30022])
 	(coordinates [house_Class30073])
+	(district [house_Class30024])
 	(street "Placa Catalunya"))
 
 ([house_Class30073] of  Coordinates
@@ -1074,8 +1078,8 @@
 
 ([house_Class30075] of  Address
 
-	(city [house_Class14])
 	(coordinates [house_Class40028])
+	(district [house_Class30025])
 	(street "La Fraternitat de Barcelona"))
 
 ([house_Class30076] of  School
@@ -1086,8 +1090,8 @@
 
 ([house_Class30077] of  Address
 
-	(city [house_Class30022])
 	(coordinates [house_Class30065])
+	(district [house_Class30022])
 	(street "Carrer de Sante Pere Mitja 10"))
 
 ([house_Class30096] of  Equipment
@@ -1149,8 +1153,8 @@
 
 ([house_Class30103] of  Address
 
-	(city [house_Class30024])
 	(coordinates [house_Class30062])
+	(district [house_Class30027])
 	(street "Rambla De Catalunya"))
 
 ([house_Class30104] of  Equipment
@@ -1158,7 +1162,8 @@
 	(title "Cable TV"))
 
 ([house_Class30105] of  Equipment
-)
+
+	(title "Elevator"))
 
 ([house_Class30106] of  Date
 
@@ -1174,14 +1179,14 @@
 
 ([house_Class30108] of  Address
 
-	(city [house_Class30022])
 	(coordinates [house_Class30069])
+	(district [house_Class30019])
 	(street "Carrer Llastics"))
 
 ([house_Class30109] of  Address
 
-	(city [house_Class30024])
 	(coordinates [house_Class30039])
+	(district [house_Class40003])
 	(street "Carrer Paris"))
 
 ([house_Class30110] of  Public+Transport
@@ -1204,8 +1209,8 @@
 
 ([house_Class30113] of  Address
 
-	(city [house_Class30019])
 	(coordinates [house_Class30111])
+	(district [house_Class40003])
 	(street "Carrer D'hospital"))
 
 ([house_Class30114] of  Market
@@ -1216,8 +1221,8 @@
 
 ([house_Class30115] of  Address
 
-	(city [house_Class30031])
 	(coordinates [house_Class30060])
+	(district [house_Class15])
 	(street "Carrer de Rambla"))
 
 ([house_Class30116] of  University
@@ -1228,8 +1233,8 @@
 
 ([house_Class30117] of  Address
 
-	(city [house_Class30027])
 	(coordinates [house_Class30059])
+	(district [house_Class30019])
 	(street "Placa Universitat"))
 
 ([house_Class30118] of  Public+Transport
@@ -1267,26 +1272,24 @@
 
 ([house_Class30123] of  Address
 
-	(city [house_Class15])
 	(coordinates [house_Class30058])
+	(district [house_Class30034])
 	(street "Rambla De La Catalunya"))
-
-([house_Class30124] of  Restarurant
-)
-
-([house_Class30125] of  Restarurant
-)
-
-([house_Class30126] of  Restarurant
-)
-
-([house_Class30127] of  Restarurant
-)
 
 ([house_Class4] of  Coordinates
 
 	(latitude 1.0)
 	(longitude 0.0))
+
+([house_Class40003] of  District
+
+	(city [house_Class13])
+	(title "Hospital Clinic"))
+
+([house_Class40004] of  Country
+
+	(inhabitants 50000000)
+	(title "Spain"))
 
 ([house_Class40006] of  Green+Area
 
@@ -1296,8 +1299,8 @@
 
 ([house_Class40007] of  Address
 
-	(city [house_Class14])
 	(coordinates [house_Class40008])
+	(district [house_Class30035])
 	(street "Carrer Parc Mar"))
 
 ([house_Class40008] of  Coordinates
@@ -1319,8 +1322,8 @@
 
 ([house_Class40011] of  Address
 
-	(city [house_Class30029])
 	(coordinates [house_Class30020])
+	(district [house_Class30026])
 	(street "Carrer Ghent 20"))
 
 ([house_Class40012] of  Shop
@@ -1332,8 +1335,8 @@
 
 ([house_Class40013] of  Address
 
-	(city [house_Class30029])
 	(coordinates [house_Class30041])
+	(district [house_Class30030])
 	(street "Carrer De la Ribera"))
 
 ([house_Class40014] of  Shop
@@ -1345,8 +1348,8 @@
 
 ([house_Class40015] of  Address
 
-	(city [house_Class30033])
 	(coordinates [house_Class30048])
+	(district [house_Class30022])
 	(street "Carrer Nick"))
 
 ([house_Class40016] of  School
@@ -1357,8 +1360,8 @@
 
 ([house_Class40017] of  Address
 
-	(city [house_Class30031])
 	(coordinates [house_Class30047])
+	(district [house_Class30031])
 	(street "Carrer Fontana"))
 
 ([house_Class40018] of  Bar
@@ -1369,8 +1372,8 @@
 
 ([house_Class40019] of  Address
 
-	(city [house_Class30033])
 	(coordinates [house_Class7])
+	(district [house_Class30034])
 	(street "Carrer Guell"))
 
 ([house_Class40020] of  Club
@@ -1381,8 +1384,8 @@
 
 ([house_Class40021] of  Address
 
-	(city [house_Class30033])
 	(coordinates [house_Class10007])
+	(district [house_Class15])
 	(street "Carrer De Clubia"))
 
 ([house_Class40022] of  Club
@@ -1393,8 +1396,8 @@
 
 ([house_Class40023] of  Address
 
-	(city [house_Class30034])
 	(coordinates [house_Class30038])
+	(district [house_Class30032])
 	(street "Carrer De Traveserra"))
 
 ([house_Class40024] of  School
@@ -1405,8 +1408,8 @@
 
 ([house_Class40025] of  Address
 
-	(city [house_Class30033])
 	(coordinates [house_Class30053])
+	(district [house_Class30033])
 	(street "Carrer Escuela"))
 
 ([house_Class40026] of  Market
@@ -1417,8 +1420,8 @@
 
 ([house_Class40027] of  Address
 
-	(city [house_Class30031])
 	(coordinates [house_Class30057])
+	(district [house_Class30031])
 	(street "Traveserra de gracia"))
 
 ([house_Class40028] of  Coordinates
@@ -1434,8 +1437,8 @@
 
 ([house_Class40030] of  Address
 
-	(city [house_Class30035])
 	(coordinates [house_Class40031])
+	(district [house_Class30034])
 	(street "Carrer De Indiana"))
 
 ([house_Class40031] of  Coordinates
@@ -1451,8 +1454,8 @@
 
 ([house_Class40033] of  Address
 
-	(city [house_Class30028])
 	(coordinates [house_Class30042])
+	(district [house_Class30028])
 	(street "Carrer Montjuic"))
 
 ([house_Class40034] of  Club
@@ -1463,8 +1466,8 @@
 
 ([house_Class40035] of  Address
 
-	(city [house_Class30035])
 	(coordinates [house_Class40036])
+	(district [house_Class30033])
 	(street "Carrer Santiago"))
 
 ([house_Class40036] of  Coordinates
@@ -1480,8 +1483,8 @@
 
 ([house_Class40038] of  Address
 
-	(city [house_Class30033])
 	(coordinates [house_Class40039])
+	(district [house_Class30024])
 	(street "Diagonal"))
 
 ([house_Class40039] of  Coordinates
@@ -1917,7 +1920,7 @@
   ;distributed action
   ;;;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
   
-  (printout t (send (send ?proposal get-offer) get-title))
+  ;(printout t (send (send ?proposal get-offer) get-title))
   
   ;;;(printout t (send ?service print))
   (do-for-all-instances ((?service Services))
