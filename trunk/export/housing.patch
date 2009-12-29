@@ -1,0 +1,47 @@
+(defclass Service
+	(is-a USER)
+	(role concrete)
+	(single-slot title
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)
+		(propagation inherit)
+		)
+	(single-slot noisy
+;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write)
+		(propagation inherit)
+		)
+	(single-slot address
+		(type INSTANCE)
+;+		(allowed-classes Address)
+;+		(cardinality 1 1)
+		(create-accessor read-write)
+		(propagation inherit)
+		)
+)
+
+
+(defclass Address
+	(is-a USER)
+	(role concrete)
+	(single-slot district
+;+		(comment "for our purposes district is required")
+		(type INSTANCE)
+;+		(allowed-classes District)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot coordinates
+;+		(comment "GPS coordinates for displaying on a map")
+		(type INSTANCE)
+;+		(allowed-classes Coordinates)
+;+		(cardinality 1 1)
+		(create-accessor read-write)
+		(propagation inherit)
+		)
+	(single-slot street
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))

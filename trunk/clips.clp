@@ -154,11 +154,19 @@
 	?result
 )
 
+;Counts distance between two Addresses and return
+; 1 == close
+; 2 == medium
+; 3 == far
 (deffunction count-distance (?adr1 ?adr2)
-  ;(printout t (send ?adr1  print) crlf)
-  ;(printout t (send ?adr2 get-coordinates) crlf)
   (bind ?result (distance (send ?adr1 get-coordinates) (send ?adr2 get-coordinates)))
-  ?result
+  (if (<= ?result 1.5)
+    then 1
+    else 
+    (if (<= ?result 3.0)
+      then 2
+      else 3)
+   )
 )
 
 
@@ -427,24 +435,14 @@
   ?proposal<-(object (is-a Proposal))
   ?service<-(object (is-a Service))
 	=>
-
-  ;distributed action
-  ;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
-  ; (bind ?adr (send ?service get-address))
-  ;(bind ?c (send ?service get-coordinates))
-  ;(send ?c print)
-  ;  (printout t (send ?service print))
-  ;(printout t (send ?service coor))
+  (bind ?noise-weight 2) ;;TODO put it as a global variable
   (bind ?adr1 (send ?service get-address))
-  ;(send ?service print)
-  ;(send  (send ?service get-address) print)
-  ;(printout t (send (send ?service get-address) print) crlf)
-  ;(printout t (send ?adr get-coordinates) crlf)
-  ; (bind ?adr2 (active-initialize-instance  ?adr))
-  ;(printout t (send (instance-address (send ?service get-address))) crlf)
-  ;(printout t (send (send ?proposal get-offer) get-address) crlf)
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (printout t (count-distance ?adr1 ?adr2) crlf)
+  ;(printout t (count-distance ?adr1 ?adr2) crlf)
+  ;(printout t (/ ?noise-weight (count-distance ?adr1 ?adr2)) (send ?service get-title) crlf)
+  (send ?proposal put-score (+ (send ?proposal get-score) 
+			      (/ ?noise-weight (count-distance ?adr1 ?adr2))
+			      ))
 )
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
