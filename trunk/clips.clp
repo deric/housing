@@ -50,13 +50,31 @@
   (printout t crlf)
   (printout t crlf)
 )
-(defmessage-handler Services print()
-  (printout t "----------------------------------" crlf)
-  (format t "Service: %s%n" ?self:title) 
-  (printout t crlf)
+ 
+
+(defmessage-handler Coordinates print primary()
+  (format t "%f;%f" ?self:latitude ?self:longitude)
   (printout t crlf)
 )
  
+(defmessage-handler Address print()
+  (format t "Address: %s %n" ?self:street)
+  (printout t (send ?self:coordinates print) crlf)
+)
+ 
+ 
+(defmessage-handler MAIN::Service print()
+  (printout t "++++++++++++++++++++++++++++++++++" crlf)
+  (format t "Service: %s%n" ?self:title)
+  (printout t)
+  (printout t (send ?self:address print))
+)
+ 
+(defmessage-handler Service coor()
+  (bind ?c (send ?self:address get-coordinates))
+  ?c
+)
+  
 (defmessage-handler Proposal print()
   (printout t (send ?self:offer print)) 
   (format t "Is proposed: %s%n" ?self:is_proposed)
@@ -64,6 +82,7 @@
   (printout t crlf)
   (printout t crlf)
 )
+
  
  ;(defmessage-handler Proposal get-offer()
  ; ?self:offer
@@ -133,6 +152,13 @@
 	(bind ?y (- (send ?c1 get-latitude) (send ?c2 get-latitude)))
 	(bind ?result (sqrt (+ (** ?x 2) (** ?y 2))))
 	?result
+)
+
+(deffunction count-distance (?adr1 ?adr2)
+  ;(printout t (send ?adr1  print) crlf)
+  ;(printout t (send ?adr2 get-coordinates) crlf)
+  (bind ?result (distance (send ?adr1 get-coordinates) (send ?adr2 get-coordinates)))
+  ?result
 )
 
 
@@ -399,12 +425,26 @@
 (defrule calculate-noise
   (Person facts ok)
   ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Services))
+  ?service<-(object (is-a Service))
 	=>
+
   ;distributed action
   ;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
-  (printout t (send (send ?service get-address) get-coordinates) crlf)
-  (printout t (send (send ?proposal get-offer) get-address) crlf)
+  ; (bind ?adr (send ?service get-address))
+  ;(bind ?c (send ?service get-coordinates))
+  ;(send ?c print)
+  ;  (printout t (send ?service print))
+  ;(printout t (send ?service coor))
+  (bind ?adr1 (send ?service get-address))
+  ;(send ?service print)
+  ;(send  (send ?service get-address) print)
+  ;(printout t (send (send ?service get-address) print) crlf)
+  ;(printout t (send ?adr get-coordinates) crlf)
+  ; (bind ?adr2 (active-initialize-instance  ?adr))
+  ;(printout t (send (instance-address (send ?service get-address))) crlf)
+  ;(printout t (send (send ?proposal get-offer) get-address) crlf)
+  (bind ?adr2 (send (send ?proposal get-offer) get-address))
+  (printout t (count-distance ?adr1 ?adr2) crlf)
 )
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE

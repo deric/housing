@@ -1,4 +1,4 @@
-; Tue Dec 29 11:22:54 CET 2009
+; Tue Dec 29 15:54:32 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -205,7 +205,7 @@
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
-;+		(allowed-classes PlaceToLive)
+;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot city
@@ -244,7 +244,7 @@
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
-;+		(allowed-classes PlaceToLive)
+;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -262,7 +262,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes Coordinates)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -369,26 +371,33 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Services
+(defclass Service
 	(is-a USER)
 	(role concrete)
 	(single-slot title
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot noisy
 ;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot address
 		(type INSTANCE)
 ;+		(allowed-classes Address)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
+)
 
 (defclass FoodBeverage
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass Restaurant
@@ -404,7 +413,7 @@
 	(role concrete))
 
 (defclass Entertainment
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass Cinema
@@ -420,7 +429,7 @@
 	(role concrete))
 
 (defclass Education
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass School
@@ -436,7 +445,7 @@
 	(role concrete))
 
 (defclass HealthCare
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass Hospital
@@ -448,10 +457,10 @@
 	(role concrete))
 
 (defclass Transport
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
-(defclass PublicTransport "public transport stop"
+(defclass Public+Transport "public transport stop"
 	(is-a Transport)
 	(role concrete)
 	(single-slot Transport+Type
@@ -461,11 +470,11 @@
 		(create-accessor read-write)))
 
 (defclass BusStop
-	(is-a PublicTransport)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass MetroStation
-	(is-a PublicTransport)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass TransferStation
@@ -473,15 +482,15 @@
 	(role concrete))
 
 (defclass TrainStation
-	(is-a PublicTransport)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass TramStop
-	(is-a PublicTransport)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass Shopping
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass Shop
@@ -575,7 +584,7 @@
 
 (defclass PlaceToWork
 	(is-a USER)
-	(role concrete)
+	(role abstract)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)

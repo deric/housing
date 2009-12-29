@@ -1,7 +1,7 @@
-;; Builded on  2009-11-29 11:25:33 
+;; Builded on  2009-11-29 17:5:21 
 
 ;############### ontology ##################
-; Tue Dec 29 11:22:54 CET 2009
+; Tue Dec 29 15:54:32 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -208,7 +208,7 @@
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
-;+		(allowed-classes PlaceToLive)
+;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot city
@@ -247,7 +247,7 @@
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
-;+		(allowed-classes PlaceToLive)
+;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -265,7 +265,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes Coordinates)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -372,26 +374,33 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Services
+(defclass Service
 	(is-a USER)
 	(role concrete)
 	(single-slot title
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot noisy
 ;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot address
 		(type INSTANCE)
 ;+		(allowed-classes Address)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
+)
 
 (defclass FoodBeverage
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass Restaurant
@@ -407,7 +416,7 @@
 	(role concrete))
 
 (defclass Entertainment
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass Cinema
@@ -423,7 +432,7 @@
 	(role concrete))
 
 (defclass Education
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass School
@@ -439,7 +448,7 @@
 	(role concrete))
 
 (defclass HealthCare
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass Hospital
@@ -451,10 +460,10 @@
 	(role concrete))
 
 (defclass Transport
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
-(defclass PublicTransport "public transport stop"
+(defclass Public+Transport "public transport stop"
 	(is-a Transport)
 	(role concrete)
 	(single-slot Transport+Type
@@ -464,11 +473,11 @@
 		(create-accessor read-write)))
 
 (defclass BusStop
-	(is-a PublicTransport)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass MetroStation
-	(is-a PublicTransport)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass TransferStation
@@ -476,15 +485,15 @@
 	(role concrete))
 
 (defclass TrainStation
-	(is-a PublicTransport)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass TramStop
-	(is-a PublicTransport)
+	(is-a Public+Transport)
 	(role concrete))
 
 (defclass Shopping
-	(is-a Services)
+	(is-a Service)
 	(role concrete))
 
 (defclass Shop
@@ -578,7 +587,7 @@
 
 (defclass PlaceToWork
 	(is-a USER)
-	(role concrete)
+	(role abstract)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
@@ -600,7 +609,7 @@
 
 ;############### instances ##################
 (definstances inst 
-; Tue Dec 29 11:22:54 CET 2009
+; Tue Dec 29 15:54:32 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -1189,7 +1198,7 @@
 	(district [house_Class40003])
 	(street "Carrer Paris"))
 
-([house_Class30110] of  PublicTransport
+([house_Class30110] of  Public+Transport
 
 	(address [house_Class30113])
 	(noisy 2)
@@ -1237,7 +1246,7 @@
 	(district [house_Class30019])
 	(street "Placa Universitat"))
 
-([house_Class30118] of  PublicTransport
+([house_Class30118] of  Public+Transport
 
 	(address [house_Class30072])
 	(noisy 2)
@@ -1263,7 +1272,7 @@
 	(noisy 1)
 	(title "Centric Theatre"))
 
-([house_Class30122] of  PublicTransport
+([house_Class30122] of  Public+Transport
 
 	(address [house_Class30072])
 	(noisy 2)
@@ -1492,7 +1501,7 @@
 	(latitude 3.0)
 	(longitude -2.0))
 
-([house_Class40040] of  PublicTransport
+([house_Class40040] of  Public+Transport
 
 	(address [house_Class20000])
 	(noisy 2)
@@ -1567,13 +1576,31 @@
   (printout t crlf)
   (printout t crlf)
 )
-(defmessage-handler Services print()
-  (printout t "----------------------------------" crlf)
-  (format t "Service: %s%n" ?self:title) 
-  (printout t crlf)
+ 
+
+(defmessage-handler Coordinates print primary()
+  (format t "%f;%f" ?self:latitude ?self:longitude)
   (printout t crlf)
 )
  
+(defmessage-handler Address print()
+  (format t "Address: %s %n" ?self:street)
+  (printout t (send ?self:coordinates print) crlf)
+)
+ 
+ 
+(defmessage-handler MAIN::Service print()
+  (printout t "++++++++++++++++++++++++++++++++++" crlf)
+  (format t "Service: %s%n" ?self:title)
+  (printout t)
+  (printout t (send ?self:address print))
+)
+ 
+(defmessage-handler Service coor()
+  (bind ?c (send ?self:address get-coordinates))
+  ?c
+)
+  
 (defmessage-handler Proposal print()
   (printout t (send ?self:offer print)) 
   (format t "Is proposed: %s%n" ?self:is_proposed)
@@ -1581,6 +1608,7 @@
   (printout t crlf)
   (printout t crlf)
 )
+
  
  ;(defmessage-handler Proposal get-offer()
  ; ?self:offer
@@ -1650,6 +1678,13 @@
 	(bind ?y (- (send ?c1 get-latitude) (send ?c2 get-latitude)))
 	(bind ?result (sqrt (+ (** ?x 2) (** ?y 2))))
 	?result
+)
+
+(deffunction count-distance (?adr1 ?adr2)
+  ;(printout t (send ?adr1  print) crlf)
+  ;(printout t (send ?adr2 get-coordinates) crlf)
+  (bind ?result (distance (send ?adr1 get-coordinates) (send ?adr2 get-coordinates)))
+  ?result
 )
 
 
@@ -1916,34 +1951,26 @@
 (defrule calculate-noise
   (Person facts ok)
   ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Services))
+  ?service<-(object (is-a Service))
 	=>
+
   ;distributed action
   ;(bind ?distance (distance (send (send (send ?proposal get-offer) get-address) get-coordinates) (send (send ?service get-address) get-coordinates)))
-  (printout t (send (send ?service get-address) get-coordinates) crlf)
-  (printout t (send (send ?proposal get-offer) get-address) crlf)
-  ;(printout t ?distance) crlf)
-  
-  ;;;(printout t (send ?service print))
-  ;(do-for-all-instances ((?service Services))
-     ;do-for condition
-  ;   TRUE
-     ;do-for execution
-;     (printout t (send ?service get-title))
-;     (if (instancep (send (send ?service get-address) get-coordinates))
- ;    then
- ;    (printout t (send (send ?service get-address) get-coordinates))
- ;    (printout t (send (send ?proposal get-offer) get-title))
- ;    )
-     
- ;    (if (instancep (send (send ?proposal get-offer) get-address))
- ;    then
- ;    (printout t (send (send ?proposal get-offer) get-address))
- ;    )
-     
- ;   )
-  
-  
+  ; (bind ?adr (send ?service get-address))
+  ;(bind ?c (send ?service get-coordinates))
+  ;(send ?c print)
+  ;  (printout t (send ?service print))
+  ;(printout t (send ?service coor))
+  (bind ?adr1 (send ?service get-address))
+  ;(send ?service print)
+  ;(send  (send ?service get-address) print)
+  ;(printout t (send (send ?service get-address) print) crlf)
+  ;(printout t (send ?adr get-coordinates) crlf)
+  ; (bind ?adr2 (active-initialize-instance  ?adr))
+  ;(printout t (send (instance-address (send ?service get-address))) crlf)
+  ;(printout t (send (send ?proposal get-offer) get-address) crlf)
+  (bind ?adr2 (send (send ?proposal get-offer) get-address))
+  (printout t (count-distance ?adr1 ?adr2) crlf)
 )
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
