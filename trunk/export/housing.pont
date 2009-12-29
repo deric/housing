@@ -1,4 +1,4 @@
-; Tue Dec 29 10:42:04 CET 2009
+; Tue Dec 29 11:04:14 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -210,7 +210,7 @@
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
-;+		(allowed-classes PlaceToLive)
+;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -244,7 +244,7 @@
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
-;+		(allowed-classes PlaceToLive)
+;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -575,7 +575,7 @@
 
 (defclass PlaceToWork
 	(is-a USER)
-	(role concrete)
+	(role abstract)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
