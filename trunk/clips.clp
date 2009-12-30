@@ -193,7 +193,7 @@
 	(printout t "------------------------------------------" crlf)
 	(printout t crlf)
 	;;;go to module personal-questions
-	(focus personal-questions house-queries EOP)
+	(focus personal-questions house-queries)
 )
 
 ;;;-------------------------------------------------------------------------
@@ -208,7 +208,7 @@
   (printout t "modify the recommendations" crlf crlf)
 	(modify ?recommendation (is_final print))
   ;;;go to module output
-	(focus output)
+  (focus output EOP)
 )
 
 ;;;------------------------------------------
@@ -426,6 +426,26 @@
     (assert (Person facts ok))
 )
  
+ 
+ ;;; Loop trough all the houses and locations and give noisynesspoints
+;;; if a location is close add the whole noisynesspoints
+;;; if a location is medium add the half of the noise
+;;; if a location is far - dont do anything
+(defrule calculate-noise ""
+  (declare (salience 20))
+  (Person facts ok)
+  ?proposal<-(object (is-a Proposal))
+  ?service<-(object (is-a Service))
+	=>
+  (bind ?noise-weight 0.5) ;;TODO put it as a global variable
+  (bind ?adr1 (send ?service get-address))
+  (bind ?adr2 (send (send ?proposal get-offer) get-address))
+  ;(printout t (count-distance ?adr1 ?adr2) crlf)
+  ;(printout t (* ?noise-weight (noise-impact ?adr1 ?adr2)) (send ?service get-title) crlf)
+   (send ?proposal put-noise (+ (send ?proposal get-noise) 
+  			      (* ?noise-weight (noise-impact ?adr1 ?adr2))
+  	))
+)
 
 
 ;;;APPLY OUR FACTS AND FILTER THE RESULTS
@@ -447,37 +467,33 @@
     then
     (send ?proposal put-is_proposed FALSE)
   )
+  (assert (Proposal noisiness ok))
 )
 
 
-;;; Loop trough all the houses and locations and give noisynesspoints
-;;; if a location is close add the whole noisynesspoints
-;;; if a location is medium add the half of the noise
-;;; if a location is far - dont do anything
-(defrule calculate-noise
+(defrule filter-noisy "lower score of proposal with noisy environment if user does mind"
   (Person facts ok)
+  (Proposal noisiness ok) ; must be executed after noise is calculated
+  (Person max-noise ?) ; noise is set up
   ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Service))
-	=>
-  (bind ?noise-weight 0.5) ;;TODO put it as a global variable
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  ;(printout t (count-distance ?adr1 ?adr2) crlf)
-  ;(printout t (* ?noise-weight (noise-impact ?adr1 ?adr2)) (send ?service get-title) crlf)
-   (send ?proposal put-noise (+ (send ?proposal get-noise) 
-  			      (* ?noise-weight (noise-impact ?adr1 ?adr2))
-  	))
+  ?fact <- (Person max-noise ?noise)
+  =>  
+   (if (> (send ?proposal get-noise) ?noise)
+    then
+    (send ?proposal put-score (- (send ?proposal get-score) 5))
+  )
 )
+ 
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
 (defrule end-of-questions
 	(Person facts ok)
-	?recommendation <- (recommendation (is_final ?))
+  	?recommendation <- (recommendation (is_final ?))
 	=>
   (printout t "end of questions" crlf crlf)
 	;;;(retract ?budget)
   ;(retract ?test)
-	(modify ?recommendation (is_final ok))
+  	(modify ?recommendation (is_final ok))
   (pop-focus)
 )
 
@@ -490,6 +506,7 @@
 
 
 (defrule print
+	(declare (salience 10))
 	?recommendation <- (recommendation (person ?person) (is_final print))
 	=>
 	(printout t "---------------------------------------------------------------------" crlf)
@@ -507,15 +524,16 @@
 	(pop-focus)
 )
  
+
  
  
 (defmodule EOP "end of program"
   (import MAIN ?ALL)
 )
-
-(defrule endprogram "final rule"
-  (declare (salience 100))
-  ?recommendation <- (recommendation (person ?person) (is_final finished))
+ 
+ (defrule endprogram "final rule"
+   (declare (salience 10))
+   ?recommendation <- (recommendation (person ?person) (is_final finished))
 	=>
   (printout t "---------------------------------------------------------------------" crlf)
   (printout t "Thank you for using our housing service" crlf)
@@ -523,6 +541,8 @@
   (printout t crlf)  
   (pop-focus)
 )
+
+
  
 ;;;****************************
 ;;;* STARTUP AND REPAIR RULES *
