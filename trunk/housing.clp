@@ -1,4 +1,4 @@
-;; Builded on  2009-11-30 10:54:26 
+;; Builded on  2009-11-30 15:48:52 
 
 ;############### ontology ##################
 ; Tue Dec 29 15:54:32 CET 2009
@@ -611,10 +611,27 @@
 
 ;############### instances ##################
 (definstances inst 
-; Tue Dec 29 15:54:32 CET 2009
+; Wed Dec 30 15:27:29 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
+
+([house_Class0] of  District
+
+	(city [house_Class30037])
+	(title "Middle Of Nowhere"))
+
+([house_Class1] of  University
+
+	(address [house_Class10002])
+	(noisy 2)
+	(title "UAB"))
+
+([house_Class10002] of  Address
+
+	(coordinates [house_Class50003])
+	(district [house_Class0])
+	(street "Carrer de Educacion"))
 
 ([house_Class10003] of  Room
 
@@ -1515,6 +1532,65 @@
 	(latitude 4.0)
 	(longitude -4.0))
 
+([house_Class50003] of  Coordinates
+
+	(latitude -10.0)
+	(longitude 10.0))
+
+([house_Class50004] of  Offer
+
+	(address [house_Class50007])
+	(available_from [house_Class30106])
+	(realty [house_Class50005])
+	(rent 310.0)
+	(title "Lousy flat in center"))
+
+([house_Class50005] of  Flat
+
+	(description "flat in center")
+	(flat_type normal)
+	(floor "2")
+	(rooms [house_Class50006])
+	(space 100))
+
+([house_Class50006] of  Room
+
+	(description "Bedroom")
+	(room_type single)
+	(space 10)
+	(windows_num 0))
+
+([house_Class50007] of  Address
+
+	(coordinates [house_Class30059])
+	(district [house_Class15])
+	(street "Ronda de la Universitat"))
+
+([house_Class50008] of  House
+
+	(description "house at Torrasa")
+	(house_type Terraced)
+	(space 150))
+
+([house_Class50009] of  Offer
+
+	(address [house_Class50010])
+	(available_from [house_Class6])
+	(realty [house_Class50008])
+	(rent 1350.0)
+	(title "house at Torrasa"))
+
+([house_Class50010] of  Address
+
+	(coordinates [house_Class50011])
+	(district [house_Class0])
+	(street "nowhere"))
+
+([house_Class50011] of  Coordinates
+
+	(latitude -12.0)
+	(longitude 10.0))
+
 ([house_Class6] of  Date
 
 	(day 12)
@@ -1582,7 +1658,7 @@
 
  
 (defmessage-handler District print primary()
-  (format t "%s" (send ?self get-title))
+  (format t "%s" (send ?self get-title)) ; inherited property, we have to access it through getter
   (printout t)
 ) 
 
@@ -1828,7 +1904,7 @@
 	?user <- (object (is-a Person))
 	=>
 
-	(bind ?type-of-family (question "U are looking for a place to live for?" alone partner children))
+	(bind ?type-of-family (question "You are looking for a place to live for?" alone partner children))
 	(if (= (str-compare ?type-of-family "alone") 0)
 		then
 		(assert (Person room-num 1))
@@ -1931,7 +2007,7 @@
 
 ;;; Get our maximum budget - last in the row of questions
 (defrule house-max-budget
-	(not (Person budget ?))
+	(not (Person max_budget ?))
 	?user <- (object (is-a Person))
 	=>
 	(bind ?max_budget (ask-number "What is your maximum rental budget per month" 0 3000))
@@ -1941,9 +2017,19 @@
     else
       (send ?user put-max_budget ?max_budget)
   )
-  (assert (Person facts ok))
+  
 )
 
+ ;;; Get our minimum price
+(defrule house-min-budget
+	(not (Person min_budget ?))
+	?user <- (object (is-a Person))
+	=>
+	(bind ?min_price (ask-number "What is the cheapest price you would pay" 0 3000))
+	(send ?user put-min_budget ?min_price)
+    (assert (Person facts ok))
+)
+ 
 
 
 ;;;APPLY OUR FACTS AND FILTER THE RESULTS
@@ -1955,10 +2041,14 @@
   ?user <- (object (is-a Person))
 	=>
   ;distributed action
-  (if (< (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
+  (if (<= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
     then
     (send ?proposal put-is_proposed TRUE)
     (send ?proposal put-score (+ (send ?proposal get-score) 1))
+  )
+  (if (< (send (send ?proposal get-offer) get-rent) (send ?user get-min_budget))
+    then
+    (send ?proposal put-is_proposed FALSE)
   )
 )
 
@@ -1977,9 +2067,9 @@
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   ;(printout t (count-distance ?adr1 ?adr2) crlf)
   ;(printout t (* ?noise-weight (noise-impact ?adr1 ?adr2)) (send ?service get-title) crlf)
-  (send ?proposal put-noise (+ (send ?proposal get-noise) 
+   (send ?proposal put-noise (+ (send ?proposal get-noise) 
   			      (* ?noise-weight (noise-impact ?adr1 ?adr2))
-  			      ))
+  	))
 )
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
@@ -2027,7 +2117,7 @@
 )
 
 (defrule endprogram "final rule"
-  (declare (salience -100))
+  (declare (salience 100))
   ?recommendation <- (recommendation (person ?person) (is_final finished))
 	=>
   (printout t "---------------------------------------------------------------------" crlf)

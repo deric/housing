@@ -300,7 +300,7 @@
 	?user <- (object (is-a Person))
 	=>
 
-	(bind ?type-of-family (question "U are looking for a place to live for?" alone partner children))
+	(bind ?type-of-family (question "You are looking for a place to live for?" alone partner children))
 	(if (= (str-compare ?type-of-family "alone") 0)
 		then
 		(assert (Person room-num 1))
@@ -403,7 +403,7 @@
 
 ;;; Get our maximum budget - last in the row of questions
 (defrule house-max-budget
-	(not (Person budget ?))
+	(not (Person max_budget ?))
 	?user <- (object (is-a Person))
 	=>
 	(bind ?max_budget (ask-number "What is your maximum rental budget per month" 0 3000))
@@ -413,9 +413,19 @@
     else
       (send ?user put-max_budget ?max_budget)
   )
-  (assert (Person facts ok))
+  
 )
 
+ ;;; Get our minimum price
+(defrule house-min-budget
+	(not (Person min_budget ?))
+	?user <- (object (is-a Person))
+	=>
+	(bind ?min_price (ask-number "What is the cheapest price you would pay" 0 3000))
+	(send ?user put-min_budget ?min_price)
+    (assert (Person facts ok))
+)
+ 
 
 
 ;;;APPLY OUR FACTS AND FILTER THE RESULTS
@@ -427,10 +437,15 @@
   ?user <- (object (is-a Person))
 	=>
   ;distributed action
-  (if (< (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
+  (if (<= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
     then
     (send ?proposal put-is_proposed TRUE)
     (send ?proposal put-score (+ (send ?proposal get-score) 1))
+  )
+  ;minimum price is a hard constraint
+  (if (< (send (send ?proposal get-offer) get-rent) (send ?user get-min_budget))
+    then
+    (send ?proposal put-is_proposed FALSE)
   )
 )
 
@@ -449,9 +464,9 @@
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   ;(printout t (count-distance ?adr1 ?adr2) crlf)
   ;(printout t (* ?noise-weight (noise-impact ?adr1 ?adr2)) (send ?service get-title) crlf)
-  (send ?proposal put-noise (+ (send ?proposal get-noise) 
+   (send ?proposal put-noise (+ (send ?proposal get-noise) 
   			      (* ?noise-weight (noise-impact ?adr1 ?adr2))
-  			      ))
+  	))
 )
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
@@ -499,7 +514,7 @@
 )
 
 (defrule endprogram "final rule"
-  (declare (salience -100))
+  (declare (salience 100))
   ?recommendation <- (recommendation (person ?person) (is_final finished))
 	=>
   (printout t "---------------------------------------------------------------------" crlf)
