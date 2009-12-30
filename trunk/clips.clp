@@ -36,6 +36,7 @@
 	(role concrete)
 	(slot score)
 	(slot offer)
+	(slot noise)
 	(slot is_proposed)
 )
 
@@ -46,20 +47,26 @@
 (defmessage-handler Offer print()
   (printout t "----------------------------------" crlf)
   (format t "Offer: %s%n" ?self:title) 
-	(format t "Price: %f%n" ?self:rent)
-  (printout t crlf)
+  (format t "Price: %f%n" ?self:rent)
+  (printout t (send ?self:address print))
   (printout t crlf)
 )
+
  
+(defmessage-handler District print primary()
+  (format t "%s" (send ?self get-title)) ; inherited property, we have to access it through getter
+  (printout t)
+) 
 
 (defmessage-handler Coordinates print primary()
   (format t "%f;%f" ?self:latitude ?self:longitude)
-  (printout t crlf)
+  (printout t)
 )
- 
-(defmessage-handler Address print()
-  (format t "Address: %s %n" ?self:street)
-  (printout t (send ?self:coordinates print) crlf)
+
+(defmessage-handler Address print primary()
+  (format t "Address: %s, " ?self:street)
+  (printout t (send ?self:district print))
+  (printout t  "  [" (send ?self:coordinates print) "]")
 )
  
  
@@ -79,7 +86,7 @@
   (printout t (send ?self:offer print)) 
   (format t "Is proposed: %s%n" ?self:is_proposed)
   (format t "Score: %f%n" ?self:score)
-  (printout t crlf)
+  (format t "Noise: %f%n" ?self:noise)
   (printout t crlf)
 )
 
@@ -154,18 +161,18 @@
 	?result
 )
 
-;Counts distance between two Addresses and return
-; 1 == close
-; 2 == medium
-; 3 == far
-(deffunction count-distance (?adr1 ?adr2)
+;Counts impact of noise between two Addresses and return
+; 2 == close
+; 1 == medium
+; 0 == far
+(deffunction noise-impact (?adr1 ?adr2)
   (bind ?result (distance (send ?adr1 get-coordinates) (send ?adr2 get-coordinates)))
   (if (<= ?result 1.5)
-    then 1
+    then 2
     else 
     (if (<= ?result 3.0)
-      then 2
-      else 3)
+      then 1
+      else 0)
    )
 )
 
@@ -244,7 +251,9 @@
      ;do-for condition
      TRUE
      ;do-for execution
-     (make-instance of Proposal (score 0) (offer ?offer) (is_proposed FALSE))
+     (make-instance of Proposal (score 0) (offer ?offer) (is_proposed FALSE)
+	(noise 0.0)
+       )
     )
   ;(focus house-queries)
 )
@@ -435,14 +444,14 @@
   ?proposal<-(object (is-a Proposal))
   ?service<-(object (is-a Service))
 	=>
-  (bind ?noise-weight 2) ;;TODO put it as a global variable
+  (bind ?noise-weight 0.5) ;;TODO put it as a global variable
   (bind ?adr1 (send ?service get-address))
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   ;(printout t (count-distance ?adr1 ?adr2) crlf)
-  ;(printout t (/ ?noise-weight (count-distance ?adr1 ?adr2)) (send ?service get-title) crlf)
-  (send ?proposal put-score (+ (send ?proposal get-score) 
-			      (/ ?noise-weight (count-distance ?adr1 ?adr2))
-			      ))
+  ;(printout t (* ?noise-weight (noise-impact ?adr1 ?adr2)) (send ?service get-title) crlf)
+  (send ?proposal put-noise (+ (send ?proposal get-noise) 
+  			      (* ?noise-weight (noise-impact ?adr1 ?adr2))
+  			      ))
 )
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE

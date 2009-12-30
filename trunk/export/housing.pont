@@ -256,7 +256,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes District)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot coordinates
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
