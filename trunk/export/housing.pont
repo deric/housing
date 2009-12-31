@@ -246,7 +246,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
-		(create-accessor read-write)))
+		(create-accessor read-write)
+		(propagation inherit)
+		))
 
 (defclass Address
 	(is-a USER)

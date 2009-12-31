@@ -1,4 +1,4 @@
-;; Builded on  2009-11-30 17:2:42 
+;; Builded on  2009-11-31 1:20:18 
 
 ;############### ontology ##################
 ; Tue Dec 29 15:54:32 CET 2009
@@ -249,7 +249,9 @@
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
-		(create-accessor read-write)))
+		(create-accessor read-write)
+		(propagation inherit)
+		))
 
 (defclass Address
 	(is-a USER)
@@ -611,7 +613,7 @@
 
 ;############### instances ##################
 (definstances inst 
-; Wed Dec 30 15:27:29 CET 2009
+; Wed Dec 30 19:54:15 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -626,6 +628,21 @@
 	(address [house_Class10002])
 	(noisy 2)
 	(title "UAB"))
+
+([house_Class10000] of  Offer
+
+	(address [house_Class30002])
+	(available_from [house_Class30106])
+	(realty [house_Class10001])
+	(rent 560.0)
+	(title "flat with double room"))
+
+([house_Class10001] of  Room
+
+	(description "double room")
+	(room_type double)
+	(space 15)
+	(windows_num 1))
 
 ([house_Class10002] of  Address
 
@@ -708,6 +725,12 @@
 	(noisy 3)
 	(title "Pub Rambla"))
 
+([house_Class30002] of  Address
+
+	(coordinates [house_Class60003])
+	(district [house_Class30021])
+	(street "pl. del Pedro"))
+
 ([house_Class30003] of  Address
 
 	(coordinates [house_Class30070])
@@ -732,7 +755,7 @@
 	(available_from [house_Class6])
 	(realty [house_Class30010])
 	(rent 800.0)
-	(title "Offer Flat 2"))
+	(title "Muntaner"))
 
 ([house_Class30007] of  Offer
 
@@ -740,7 +763,7 @@
 	(available_from [house_Class6])
 	(realty [house_Class30013])
 	(rent 2500.0)
-	(title "Offer Flat 3"))
+	(title "Rambla de la C."))
 
 ([house_Class30008] of  Offer
 
@@ -823,7 +846,7 @@
 ([house_Class30018] of  Address
 
 	(coordinates [house_Class30020])
-	(district [house_Class30032])
+	(district [house_Class15])
 	(street "Muntaner 102"))
 
 ([house_Class30019] of  District
@@ -1182,7 +1205,7 @@
 ([house_Class30103] of  Address
 
 	(coordinates [house_Class30062])
-	(district [house_Class30027])
+	(district [house_Class30024])
 	(street "Rambla De Catalunya"))
 
 ([house_Class30104] of  Equipment
@@ -1596,6 +1619,11 @@
 	(day 12)
 	(month 12)
 	(year 2009))
+
+([house_Class60003] of  Coordinates
+
+	(latitude -2.0)
+	(longitude -6.0))
 
 ([house_Class7] of  Coordinates
 
@@ -2075,9 +2103,9 @@
 )
 
 
-(defrule filter-noisy ""
+(defrule filter-noisy "lower score of proposal with noisy environment if user does mind"
   (Person facts ok)
-  (Proposal noisiness ok)
+  (Proposal noisiness ok) ; must be executed after noise is calculated
   (Person max-noise ?) ; noise is set up
   ?proposal<-(object (is-a Proposal))
   ?fact <- (Person max-noise ?noise)
@@ -2088,8 +2116,20 @@
   )
 )
  
- 
+(defrule exclude-not-double-rooms "filter offers without double room"
+   (Person facts ok)
+   (Person room-type double)
+   ?proposal<-(object (is-a Proposal) (offer ?offer))
+  ?room <-(object (is-a Room) (realy ?realty))
+  ; (room_type is double)
+  ; ?proposal <- (Proposal offer ?offer)
+  ; (test (object (is-a Room (send (send ?proposal get-offer) get-realty))))
+  ;?room<-((is-a Flat) (send ?proposal get-offer))
+  =>
+  (bind ?pl2live (send ?offer get-realty))
+  (printout t "filtering double rooms" ?pl2live crlf)   
 
+)
  
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE

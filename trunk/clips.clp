@@ -484,6 +484,20 @@
   )
 )
  
+(defrule exclude-not-double-rooms "filter offers without double room"
+   (Person facts ok)
+   (Person room-type double)
+   ?proposal<-(object (is-a Proposal) (offer ?offer))
+  ; (room_type is double)
+  ; ?proposal <- (Proposal offer ?offer)
+  ; (test (object (is-a Room (send (send ?proposal get-offer) get-realty))))
+  ;?room<-((is-a Flat) (send ?proposal get-offer))
+  =>
+  (bind ?pl2live (send ?offer get-realty))
+  (printout t "filtering double rooms" ?pl2live crlf)   
+
+)
+ 
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
 (defrule end-of-questions
