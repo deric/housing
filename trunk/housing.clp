@@ -1,4 +1,4 @@
-;; Builded on  2009-11-31 9:15:11 
+;; Builded on  2009-11-31 10:26:43 
 
 ;############### ontology ##################
 ; Tue Dec 29 15:54:32 CET 2009
@@ -1703,8 +1703,11 @@
 ;;* GLOBALS *
 ;;**************
 
-(defglobal ?*answer* = 0)
+;(defglobal ?*answer* = 0)
 
+ 
+
+ 
 ;;****************
 ;;* DEFTEMPLATE *
 ;;****************
@@ -1796,7 +1799,17 @@
  )
  
   (defmessage-handler House has-double-room primary()
-     (return  FALSE)
+      (bind ?i 1)
+      (bind ?res FALSE)
+	(while (<= ?i (length$ ?self:flats))
+		do
+		    (bind ?res (send (nth$ ?i ?self:flats) has-double-room))
+		    (if (eq ?res TRUE)
+			then return TRUE
+		      )
+		    (bind ?i (+ ?i 1))
+	)
+      (return ?res)
  )
  
  
@@ -1885,6 +1898,15 @@
       else return 0)
    )
 )
+ 
+ 
+   
+ (deffacts distance
+   (far 6)
+   (middle 4)
+   (close 2)
+ )
+
 
 
 ;;;*********
@@ -1961,7 +1983,7 @@
      ;do-for condition
      TRUE
      ;do-for execution
-     (make-instance of Proposal (score 0) (offer ?offer) (is_proposed FALSE)
+     (make-instance of Proposal (score 0) (offer ?offer) (is_proposed TRUE)
 	(noise 0.0)
        )
     )
@@ -2074,9 +2096,10 @@
 	)
 	(if (= (str-compare ?type-of-environment "centric") 0)
 		then
-    (assert (Person bar TRUE))
-    (assert (Person public-transport TRUE))
-    (assert (Person shops TRUE))
+		    (assert (Person bar TRUE))
+		    (assert (Person public-transport TRUE))
+		    (assert (Person shops TRUE))
+		    (assert (Person location centric))
 	)
 	(if (= (str-compare ?type-of-environment "young") 0)
 		then
@@ -2194,6 +2217,13 @@
   )
 )
  
+(defrule exclude-not-centric 
+    (Person location centric)
+    ?proposal<-(object (is-a Proposal) (offer ?offer))
+  =>
+  (printout t "want to be in center")
+)
+ 
 
 ; if someone need a double room is a hard constraint
 (defrule exclude-not-double-rooms "filter offers without double room"
@@ -2201,7 +2231,7 @@
    (Person room-type double)
    ?proposal<-(object (is-a Proposal) (offer ?offer))
   =>   
-  (printout t (send ?offer get-title) " " (send ?offer has-double-room) crlf)
+  ;(printout t (send ?offer get-title) " " (send ?offer has-double-room) crlf)
   (if (eq (send ?offer has-double-room) FALSE)
     then 
       (send ?proposal put-is_proposed FALSE)
