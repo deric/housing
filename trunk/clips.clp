@@ -134,6 +134,7 @@
    (return  (send ?self:realty has-double-room))
  )
 
+
  
 
 ;;****************
@@ -269,21 +270,24 @@
 	(export ?ALL)
 )
 
-(defrule your-name "Find out our name"
+(defrule your-name "Find out our personal characteristics"
 	(not (object (is-a Person)))
 	=>
 	(bind ?firstname (ask-open-question "What is your firstname"))
   (bind ?surname (ask-open-question "What is your surname"))
+  (bind ?age (ask-number "What is your age" 18 100))
   ;;;create an instance of Person
 	(bind ?user (make-instance user of Person))
   ;;;add this to our instance of Person
 	(send ?user put-firstname ?firstname)
   (send ?user put-surname ?surname)
+  (send ?user put-age ?age)
   ;;;insert this Person into recommendation
 	(assert (recommendation (person ?user)))
   ;;;add facts that our first and surname are ok
 	(assert (Person firstname ok))
   (assert (Person surname ok))
+  (assert (Person age ok))
   (assert (Person complete ok))
 )
 
@@ -349,10 +353,14 @@
 	?user <- (object (is-a Person))
 	=>
 
-	(bind ?type-of-family (question "You are looking for a place to live for?" alone partner children))
+	(bind ?type-of-family (question "You are looking for a place to live for?" alone partner children friends))
 	(if (= (str-compare ?type-of-family "alone") 0)
 		then
 		(assert (Person room-num 1))
+	)
+  (if (= (str-compare ?type-of-family "friends") 0)
+		then
+		(assert (Person room-num 2))
 	)
 	(if (= (str-compare ?type-of-family "partner") 0)
 		then
@@ -362,6 +370,7 @@
 		)
 		;;in any case we need a double room
 		(assert (Person room-type double))
+    (assert (Person room-num 2))
 
 	)
 	(if (= (str-compare ?type-of-family "children") 0)
@@ -371,7 +380,29 @@
 		(assert (Person room-num (+ 2 (round (/ ?children 2)))))
 		(assert (Person house-shared FALSE))
 		(assert (Person children ?children))
+    (assert (Person school TRUE))
 	)
+)
+
+;;; ask if the number of rooms is sufficient
+(defrule house-extra-rooms
+	(Person room-num ?num)
+  (not (Person rooms-checked ?))
+	(not (Person type-of-house office))
+	?user <- (object (is-a Person))
+	=>
+  ;;;Ask if we need more rooms for elderly people or special needs
+  (printout t "Currently we estimated you " ?num " rooms ")
+  (bind ?additional (yes-or-no "is this enough?"))
+  (if (eq ?additional FALSE)
+    then
+      (bind ?rooms (ask-number "How many extra rooms do you need" 0 20))
+      (assert (Person room-num (+ ?rooms ?num)))
+      (printout t "We estimated you " (+ ?num ?rooms) " rooms" crlf)
+    else
+      (assert (Person rooms-checked TRUE))
+  )
+  
 )
 
 ;;;DEFINE CAR OR NOT
