@@ -1,4 +1,4 @@
-;; Builded on  2009-11-31 1:20:18 
+;; Builded on  2009-11-31 9:15:11 
 
 ;############### ontology ##################
 ; Tue Dec 29 15:54:32 CET 2009
@@ -150,8 +150,8 @@
 		(create-accessor read-write))
 	(single-slot room_type
 		(type SYMBOL)
-		(allowed-values single double kitchen bathroom)
-;+		(cardinality 0 1)
+		(allowed-values single double kitchen bathroom living_room)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot age
 		(type INTEGER)
@@ -251,6 +251,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)
 		(propagation inherit)
+		(pattern-match reactive)
 		))
 
 (defclass Address
@@ -320,7 +321,7 @@
 
 (defclass PlaceToLive
 	(is-a USER)
-	(role abstract)
+	(role concrete)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
@@ -346,7 +347,9 @@
 	(multislot flats
 		(type INSTANCE)
 ;+		(allowed-classes Flat)
-		(create-accessor read-write)))
+		(create-accessor read-write)
+		(propagation inherit)
+		))
 
 (defclass Flat
 	(is-a PlaceToLive)
@@ -354,7 +357,9 @@
 	(multislot rooms
 		(type INSTANCE)
 ;+		(allowed-classes Room)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot floor
 		(type STRING)
 ;+		(cardinality 1 1)
@@ -374,8 +379,8 @@
 		(create-accessor read-write))
 	(single-slot room_type
 		(type SYMBOL)
-		(allowed-values single double kitchen bathroom)
-;+		(cardinality 0 1)
+		(allowed-values single double kitchen bathroom living_room)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Service
@@ -613,7 +618,7 @@
 
 ;############### instances ##################
 (definstances inst 
-; Wed Dec 30 19:54:15 CET 2009
+; Thu Dec 31 09:10:16 CET 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -724,6 +729,21 @@
 	(address [house_Class30123])
 	(noisy 3)
 	(title "Pub Rambla"))
+
+([house_Class30000] of  Room
+
+	(description "a double room")
+	(room_type double)
+	(space 15)
+	(windows_num 1))
+
+([house_Class30001] of  Offer
+
+	(address [house_Class40002])
+	(available_from [house_Class30107])
+	(realty [house_Class70003])
+	(rent 800.0)
+	(title "passaige de gracia"))
 
 ([house_Class30002] of  Address
 
@@ -1332,6 +1352,12 @@
 	(latitude 1.0)
 	(longitude 0.0))
 
+([house_Class40002] of  Address
+
+	(coordinates [house_Class30038])
+	(district [house_Class30031])
+	(street "passaige de gracia"))
+
 ([house_Class40003] of  District
 
 	(city [house_Class13])
@@ -1573,7 +1599,9 @@
 	(description "flat in center")
 	(flat_type normal)
 	(floor "2")
-	(rooms [house_Class50006])
+	(rooms
+		[house_Class50006]
+		[house_Class30000])
 	(space 100))
 
 ([house_Class50006] of  Room
@@ -1629,6 +1657,29 @@
 
 	(latitude 2.0)
 	(longitude 1.0))
+
+([house_Class70003] of  Flat
+
+	(description "double and single room")
+	(floor "3")
+	(rooms
+		[house_Class70004]
+		[house_Class70005])
+	(space 80))
+
+([house_Class70004] of  Room
+
+	(description "double room")
+	(room_type double)
+	(space 12)
+	(windows_num 0))
+
+([house_Class70005] of  Room
+
+	(description "single")
+	(room_type single)
+	(space 8)
+	(windows_num 0))
 );;############### program ##################
 ;;; ---------------------------------------------------------------------------------------------------------------------
 ;;; ---------------------------------------------- ENGINE ---------------------------------------------------------------
@@ -1721,11 +1772,38 @@
   (format t "Noise: %f%n" ?self:noise)
   (printout t crlf)
 )
-
  
- ;(defmessage-handler Proposal get-offer()
- ; ?self:offer
- ;) 
+ (defmessage-handler Room has-double-room primary()
+   (if (eq ?self:room_type double)
+      then return TRUE
+      else return  FALSE
+     )
+ )
+ 
+ (defmessage-handler Flat has-double-room primary()
+      (bind ?i 1)
+      (bind ?res FALSE)
+	(while (<= ?i (length$ ?self:rooms))
+		do
+		    (bind ?res (send (nth$ ?i ?self:rooms) has-double-room))
+	  ;	    (printout t (send (nth$ ?i ?self:rooms) get-description) " " (send (nth$ ?i ?self:rooms) has-double-room) crlf)
+		    (if (eq ?res TRUE)
+			then return TRUE
+		      )
+		    (bind ?i (+ ?i 1))
+	)
+   (return ?res)
+ )
+ 
+  (defmessage-handler House has-double-room primary()
+     (return  FALSE)
+ )
+ 
+ 
+ (defmessage-handler Offer has-double-room primary()
+   (return  (send ?self:realty has-double-room))
+ )
+
  
 
 ;;****************
@@ -1800,11 +1878,11 @@
 (deffunction noise-impact (?adr1 ?adr2)
   (bind ?result (distance (send ?adr1 get-coordinates) (send ?adr2 get-coordinates)))
   (if (<= ?result 1.5)
-    then 2
+    then return 2
     else 
     (if (<= ?result 3.0)
-      then 1
-      else 0)
+      then return 1
+      else return 0)
    )
 )
 
@@ -2116,19 +2194,18 @@
   )
 )
  
+
+; if someone need a double room is a hard constraint
 (defrule exclude-not-double-rooms "filter offers without double room"
    (Person facts ok)
    (Person room-type double)
    ?proposal<-(object (is-a Proposal) (offer ?offer))
-  ?room <-(object (is-a Room) (realy ?realty))
-  ; (room_type is double)
-  ; ?proposal <- (Proposal offer ?offer)
-  ; (test (object (is-a Room (send (send ?proposal get-offer) get-realty))))
-  ;?room<-((is-a Flat) (send ?proposal get-offer))
-  =>
-  (bind ?pl2live (send ?offer get-realty))
-  (printout t "filtering double rooms" ?pl2live crlf)   
-
+  =>   
+  (printout t (send ?offer get-title) " " (send ?offer has-double-room) crlf)
+  (if (eq (send ?offer has-double-room) FALSE)
+    then 
+      (send ?proposal put-is_proposed FALSE)
+    )
 )
  
 

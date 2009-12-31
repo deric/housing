@@ -147,8 +147,8 @@
 		(create-accessor read-write))
 	(single-slot room_type
 		(type SYMBOL)
-		(allowed-values single double kitchen bathroom)
-;+		(cardinality 0 1)
+		(allowed-values single double kitchen bathroom living_room)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot age
 		(type INTEGER)
@@ -248,6 +248,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)
 		(propagation inherit)
+		(pattern-match reactive)
 		))
 
 (defclass Address
@@ -317,7 +318,7 @@
 
 (defclass PlaceToLive
 	(is-a USER)
-	(role abstract)
+	(role concrete)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
@@ -343,7 +344,9 @@
 	(multislot flats
 		(type INSTANCE)
 ;+		(allowed-classes Flat)
-		(create-accessor read-write)))
+		(create-accessor read-write)
+		(propagation inherit)
+		))
 
 (defclass Flat
 	(is-a PlaceToLive)
@@ -351,7 +354,9 @@
 	(multislot rooms
 		(type INSTANCE)
 ;+		(allowed-classes Room)
-		(create-accessor read-write))
+		(create-accessor read-write)
+		(propagation inherit)
+		)
 	(single-slot floor
 		(type STRING)
 ;+		(cardinality 1 1)
@@ -371,8 +376,8 @@
 		(create-accessor read-write))
 	(single-slot room_type
 		(type SYMBOL)
-		(allowed-values single double kitchen bathroom)
-;+		(cardinality 0 1)
+		(allowed-values single double kitchen bathroom living_room)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Service

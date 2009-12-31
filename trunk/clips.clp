@@ -89,11 +89,38 @@
   (format t "Noise: %f%n" ?self:noise)
   (printout t crlf)
 )
-
  
- ;(defmessage-handler Proposal get-offer()
- ; ?self:offer
- ;) 
+ (defmessage-handler Room has-double-room primary()
+   (if (eq ?self:room_type double)
+      then return TRUE
+      else return  FALSE
+     )
+ )
+ 
+ (defmessage-handler Flat has-double-room primary()
+      (bind ?i 1)
+      (bind ?res FALSE)
+	(while (<= ?i (length$ ?self:rooms))
+		do
+		    (bind ?res (send (nth$ ?i ?self:rooms) has-double-room))
+	  ;	    (printout t (send (nth$ ?i ?self:rooms) get-description) " " (send (nth$ ?i ?self:rooms) has-double-room) crlf)
+		    (if (eq ?res TRUE)
+			then return TRUE
+		      )
+		    (bind ?i (+ ?i 1))
+	)
+   (return ?res)
+ )
+ 
+  (defmessage-handler House has-double-room primary()
+     (return  FALSE)
+ )
+ 
+ 
+ (defmessage-handler Offer has-double-room primary()
+   (return  (send ?self:realty has-double-room))
+ )
+
  
 
 ;;****************
@@ -168,11 +195,11 @@
 (deffunction noise-impact (?adr1 ?adr2)
   (bind ?result (distance (send ?adr1 get-coordinates) (send ?adr2 get-coordinates)))
   (if (<= ?result 1.5)
-    then 2
+    then return 2
     else 
     (if (<= ?result 3.0)
-      then 1
-      else 0)
+      then return 1
+      else return 0)
    )
 )
 
@@ -484,18 +511,18 @@
   )
 )
  
+
+; if someone need a double room is a hard constraint
 (defrule exclude-not-double-rooms "filter offers without double room"
    (Person facts ok)
    (Person room-type double)
    ?proposal<-(object (is-a Proposal) (offer ?offer))
-  ; (room_type is double)
-  ; ?proposal <- (Proposal offer ?offer)
-  ; (test (object (is-a Room (send (send ?proposal get-offer) get-realty))))
-  ;?room<-((is-a Flat) (send ?proposal get-offer))
-  =>
-  (bind ?pl2live (send ?offer get-realty))
-  (printout t "filtering double rooms" ?pl2live crlf)   
-
+  =>   
+  ;(printout t (send ?offer get-title) " " (send ?offer has-double-room) crlf)
+  (if (eq (send ?offer has-double-room) FALSE)
+    then 
+      (send ?proposal put-is_proposed FALSE)
+    )
 )
  
 
