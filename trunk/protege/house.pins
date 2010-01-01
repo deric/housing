@@ -1,4 +1,4 @@
-; Fri Jan 01 22:59:19 CET 2010
+; Fri Jan 01 23:19:44 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -1033,8 +1033,12 @@
 ([house_Class50008] of  House
 
 	(description "house at Torrasa")
+	(flats
+		[house_Class30010]
+		[house_Class30010]
+		[house_Class30013])
 	(house_type Terraced)
-	(space 150))
+	(space 400))
 
 ([house_Class50009] of  Offer
 
@@ -1052,8 +1056,8 @@
 
 ([house_Class50011] of  Coordinates
 
-	(latitude -12.0)
-	(longitude 10.0))
+	(latitude -15.0)
+	(longitude 15.0))
 
 ([house_Class6] of  Date
 

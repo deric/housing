@@ -293,7 +293,7 @@
   (bind ?result (distance (send ?adr get-coordinates) (send ?adr2 get-coordinates)))
   (if (<= ?result 2.0)
     then return close
-    else (if (<= ?result 7.0)
+    else (if (<= ?result 6.0)
 	then return mid
 	else return far 
       )
@@ -305,9 +305,6 @@
   (< (send ?prop1 get-score) (send ?prop2 get-score))
 )
 
-(deffunction get-max-points (?proposals)
-  
-)
 ;;;*********
 ;;;* RULES *
 ;;;*********
@@ -645,7 +642,7 @@
   =>  
    (if (> (send ?proposal get-noise) ?noise)
     then
-    (send ?proposal put-score (- (send ?proposal get-score) 5))
+    (send ?proposal put-is_proposed FALSE)
   )
 )
 
@@ -723,29 +720,31 @@
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
 
   ;;;Define our pointsdevision
-  (if (eq ?education TRUE)
-   then
     (bind ?closepoints 2)
     (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
+    (bind ?farpoints -2)
   
 (switch ?distance
      (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        ;(if (eq ?education FALSE) then (send ?proposal put-is_proposed FALSE))
+        (if (eq ?education TRUE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        ) 
+        
+        ;;;if our service is close then enable the proposal again
+        
      )
      (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
      ;location is too far away
      (case far then
-        ;;;if our fact should be close, then remove the offer if it is far
-        ;(if (eq ?education TRUE) then (send ?proposal put-is_proposed FALSE))
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        (if (eq ?education FALSE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+        ) 
      )
   )
 )
@@ -765,30 +764,32 @@
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
   
-  ;;;Define our pointsdevision
-  (if (eq ?school TRUE)
-   then
+ ;;;Define our pointsdevision
     (bind ?closepoints 2)
     (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
+    (bind ?farpoints -2)
   
-  (switch ?distance
+    (switch ?distance
      (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?school FALSE) then (send ?proposal put-is_proposed FALSE))
+        (if (eq ?school TRUE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        ) 
+        
+        ;;;if our service is close then enable the proposal again
+        
      )
      (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
      ;location is too far away
      (case far then
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?school TRUE) then (send ?proposal put-is_proposed FALSE))
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        (if (eq ?school FALSE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+        ) 
      )
   )
 )
@@ -808,31 +809,32 @@
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
   
-  ;;;Define our pointsdevision
-  (if (eq ?bar TRUE)
-   then
+ ;;;Define our pointsdevision
     (bind ?closepoints 2)
     (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
+    (bind ?farpoints -2)
   
-(switch ?distance
+    (switch ?distance
      (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?bar FALSE) then (send ?proposal put-is_proposed FALSE))
+        (if (eq ?bar TRUE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        ) 
+        
+        ;;;if our service is close then enable the proposal again
+        
      )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
+     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
+     ;location is too far away
      (case far then
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?bar TRUE) then (send ?proposal put-is_proposed FALSE))
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        (if (eq ?bar FALSE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+        ) 
      )
   )
 )
@@ -853,31 +855,31 @@
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
   
   ;;;Define our pointsdevision
-  (if (eq ?shopping TRUE)
-   then
     (bind ?closepoints 2)
     (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
+    (bind ?farpoints -2)
   
-(switch ?distance
+    (switch ?distance
      (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?shopping FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?shopping TRUE) then (send ?proposal put-is_proposed FALSE))
+        (if (eq ?shopping TRUE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        ) 
         
+        ;;;if our service is close then enable the proposal again
+        
+     )
+     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
+     ;location is too far away
+     (case far then
+        (if (eq ?shopping FALSE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+        ) 
      )
   )
 )
@@ -897,32 +899,32 @@
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
   
-  ;;;Define our pointsdevision
-  (if (eq ?transport TRUE)
-   then
+ ;;;Define our pointsdevision
     (bind ?closepoints 2)
     (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
+    (bind ?farpoints -2)
   
-(switch ?distance
+    (switch ?distance
      (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?transport FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?transport TRUE) then (send ?proposal put-is_proposed FALSE))
+        (if (eq ?transport TRUE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        ) 
         
+        ;;;if our service is close then enable the proposal again
+        
+     )
+     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
+     ;location is too far away
+     (case far then
+        (if (eq ?transport FALSE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+        ) 
      )
   )
 )
@@ -943,32 +945,32 @@
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
   
-  ;;;Define our pointsdevision
-  (if (eq ?foodbeverage TRUE)
-   then
+ ;;;Define our pointsdevision
     (bind ?closepoints 2)
     (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
+    (bind ?farpoints -2)
   
-(switch ?distance
+    (switch ?distance
      (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?foodbeverage FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?foodbeverage TRUE) then (send ?proposal put-is_proposed FALSE))
+        (if (eq ?foodbeverage TRUE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        ) 
         
+        ;;;if our service is close then enable the proposal again
+        
+     )
+     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
+     ;location is too far away
+     (case far then
+        (if (eq ?foodbeverage FALSE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+        ) 
      )
   )
 )
@@ -988,32 +990,32 @@
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
   
-  ;;;Define our pointsdevision
-  (if (eq ?healthcare TRUE)
-   then
+ ;;;Define our pointsdevision
     (bind ?closepoints 2)
     (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
+    (bind ?farpoints -2)
   
-(switch ?distance
+    (switch ?distance
      (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?healthcare FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?healthcare TRUE) then (send ?proposal put-is_proposed FALSE))
+        (if (eq ?healthcare TRUE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        ) 
         
+        ;;;if our service is close then enable the proposal again
+        
+     )
+     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
+     ;location is too far away
+     (case far then
+        (if (eq ?healthcare FALSE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+        ) 
      )
   )
 )
@@ -1034,31 +1036,31 @@
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
   
   ;;;Define our pointsdevision
-  (if (eq ?greenarea TRUE)
-   then
     (bind ?closepoints 2)
     (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
+    (bind ?farpoints -2)
   
-  (switch ?distance
+    (switch ?distance
      (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?greenarea FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?greenarea TRUE) then (send ?proposal put-is_proposed FALSE))
+        (if (eq ?greenarea TRUE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+        ) 
         
+        ;;;if our service is close then enable the proposal again
+        
+     )
+     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
+     ;location is too far away
+     (case far then
+        (if (eq ?greenarea FALSE)
+          then
+          (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
+          else
+          (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
+        ) 
      )
   )
 )
