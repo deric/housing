@@ -228,15 +228,19 @@
    )
 )
  
+
+;counts distance from some point
+(deffunction measure-distance (?adr ?coor)
+  (bind ?result (distance (send ?adr get-coordinates) ?coor))
+  (if (<= ?result 2.0)
+    then return close
+    else (if (<= ?result 6.0)
+	then return mid
+	else return far 
+      )
+  )
+)
  
-   
- (deffacts distance
-   (far 6)
-   (middle 4)
-   (close 2)
- )
-
-
 
 ;;;*********
 ;;;* RULES *
@@ -580,8 +584,14 @@
     (Person location centric)
     ?proposal<-(object (is-a Proposal) (offer ?offer))
   =>
-  ;(printout t "want to be in center" crlf)
-  ;TODO implement filtering
+   (make-instance center of Coordinates (latitude 0.0) (longitude 0.0))
+   (bind ?distance (measure-distance (send ?offer get-address) [center]))
+   (switch ?distance
+     (case close then  (send ?proposal put-score (+ (send ?proposal get-score) 2)) )
+     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) 1)))
+     ;location is too far away
+     (case far then (send ?proposal put-is_proposed FALSE) )
+     )
 )
  
 
