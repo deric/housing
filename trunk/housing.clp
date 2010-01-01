@@ -1,4 +1,4 @@
-;; Builded on  2009-11-31 13:53:49 
+;; Builded on  2010-0-1 12:39:19 
 
 ;############### ontology ##################
 ; Tue Dec 29 15:54:32 CET 2009
@@ -1699,13 +1699,6 @@
 
 (defmodule MAIN (export ?ALL))
 
-;;**************
-;;* GLOBALS *
-;;**************
-
-;(defglobal ?*answer* = 0)
-
- 
 
  
 ;;****************
@@ -1763,10 +1756,6 @@
   (printout t (send ?self:address print))
 )
  
-(defmessage-handler Service coor()
-  (bind ?c (send ?self:address get-coordinates))
-  ?c
-)
   
 (defmessage-handler Proposal print()
   (printout t (send ?self:offer print)) 
@@ -1855,7 +1844,10 @@
 (deffunction ask-number (?question ?range-start ?range-end)
 	(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
 	(bind ?response (read))
-	(while (not(and(> ?response ?range-start)(< ?response ?range-end))) do
+  ;	(while (not(and(> ?response ?range-start)(< ?response ?range-end))) do
+	(while (and (not(integerp ?response)) 
+		   TRUE
+		 ) do
 		(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
 		(bind ?response (read))
 	)
@@ -2063,6 +2055,7 @@
 		(assert (Person room-num (+ 2 (round (/ ?children 2)))))
 		(assert (Person house-shared FALSE))
 		(assert (Person children ?children))
+    (assert (Person school TRUE))
 	)
 )
 
@@ -2080,9 +2073,9 @@
     then
       (bind ?rooms (ask-number "How many extra rooms do you need" 0 20))
       (assert (Person room-num (+ ?rooms ?num)))
-      (printout t "We estimated you " (+ ?num ?rooms) "rooms" crlf)
+      (printout t "We estimated you " (+ ?num ?rooms) " rooms" crlf)
     else
-    (assert (Person rooms-checked TRUE))
+      (assert (Person rooms-checked TRUE))
   )
   
 )

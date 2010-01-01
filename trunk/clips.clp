@@ -16,13 +16,6 @@
 
 (defmodule MAIN (export ?ALL))
 
-;;**************
-;;* GLOBALS *
-;;**************
-
-;(defglobal ?*answer* = 0)
-
- 
 
  
 ;;****************
@@ -80,10 +73,6 @@
   (printout t (send ?self:address print))
 )
  
-(defmessage-handler Service coor()
-  (bind ?c (send ?self:address get-coordinates))
-  ?c
-)
   
 (defmessage-handler Proposal print()
   (printout t (send ?self:offer print)) 
@@ -172,7 +161,9 @@
 (deffunction ask-number (?question ?range-start ?range-end)
 	(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
 	(bind ?response (read))
-	(while (not(and(> ?response ?range-start)(< ?response ?range-end))) do
+	(while (and (not(integerp ?response)) 
+		   (not(and(> ?response ?range-start)(< ?response ?range-end)))
+		 ) do
 		(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
 		(bind ?response (read))
 	)
