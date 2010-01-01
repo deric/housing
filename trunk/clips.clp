@@ -158,14 +158,25 @@
 	?question
 )
 
+ ; checks if response is a number
 (deffunction ask-number (?question ?range-start ?range-end)
 	(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
 	(bind ?response (read))
-	(while (and (not(integerp ?response)) 
-		   (not(and(> ?response ?range-start)(< ?response ?range-end)))
-		 ) do
+	(bind ?repeat 
+	  (if (numberp ?response)
+			  then (and(> ?response ?range-start)(< ?response ?range-end))
+			  else TRUE
+			)
+	  )
+	(while ?repeat do
 		(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
 		(bind ?response (read))
+		(bind ?repeat 
+		(if (numberp ?response)
+				then (and(> ?response ?range-start)(< ?response ?range-end))
+				else TRUE
+			      )
+		)
 	)
 	?response
 )
