@@ -303,7 +303,7 @@
 
 ;;;counts distance between 2 addresses
 (deffunction proposal-sort (?prop1 ?prop2)
-  (> (send ?prop1 get-score) (send ?prop2 get-score))
+  (< (send ?prop1 get-score) (send ?prop2 get-score))
 )
 
 ;;;*********
@@ -1042,7 +1042,7 @@
     (bind ?farpoints 2)
   )
   
-(switch ?distance
+  (switch ?distance
      (case close then
         (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
         ;;;if our fact should be far, then remove the offer if it is close
@@ -1060,18 +1060,28 @@
   )
 )
 
- 
- 
- 
+
+;Bubble sort!!
+;(defrule bubble
+;    ?recommendation <- (recommendation (is_final ?))
+;    ?proposal1<-(object (is-a Proposal) (score ?score1))
+;    ?proposal2<-(object (is-a Proposal) (score ?score2))
+;    (test (> ?score1 ?score2))
+;=>
+;    (printout t "sorting")
+;    (bind ?offer1 (send ?proposal1 get-offer))
+;    (bind ?offer2 (send ?proposal2 get-offer))
+;    (send ?proposal1 put-offer ?offer2)
+;    (send ?proposal2 put-offer ?offer1)
+;)
+
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
 (defrule end-of-questions
 	(Person facts ok)
   	?recommendation <- (recommendation (is_final ?))
 	=>
   (printout t "end of questions" crlf crlf)
-	;;;(retract ?budget)
-  ;(retract ?test)
-  	(modify ?recommendation (is_final ok))
+  (modify ?recommendation (is_final ok))
   (pop-focus)
 )
 
@@ -1082,7 +1092,6 @@
 	(import MAIN ?ALL)
 )
 
-
 (defrule print
 	(declare (salience 10))
 	?recommendation <- (recommendation (person ?person) (is_final print))
@@ -1092,17 +1101,28 @@
   ;;;%n stands for newline
 	(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
 	(printout t "This is the list of proposals" crlf crlf)
-  
+
+  ;;;create our multifield to sort it later
+  (bind ?multifield (create$))
 	(do-for-all-instances 
 	    ((?proposal Proposal))
-      
 	    (eq (send ?proposal get-is_proposed) TRUE)
 	    ;action
-	    (printout t (send ?proposal print))
-      (printout t ?proposal crlf)
-      ;(proposal-sort ?proposal)
-      
+      (bind ?multifield (insert$ ?multifield 1 ?proposal))
 	)
+  
+  ;;;add to the slot
+  (bind ?concatenatedstring (str-cat "(sort proposal-sort " (implode$ ?multifield) ")"))
+  (bind ?proposals (eval ?concatenatedstring))
+  
+  (bind ?i 1)
+	(while (<= ?i (length$ ?proposals))
+		do
+			(bind ?proposal (nth$ ?i ?proposals))
+      (printout t (send ?proposal print))
+			(bind ?i (+ ?i 1))
+	)
+  
 	(modify ?recommendation (is_final finished))
 	(pop-focus)
 )
