@@ -293,7 +293,7 @@
   (bind ?result (distance (send ?adr get-coordinates) (send ?adr2 get-coordinates)))
   (if (<= ?result 2.0)
     then return close
-    else (if (<= ?result 6.0)
+    else (if (<= ?result 7.0)
 	then return mid
 	else return far 
       )
@@ -534,8 +534,7 @@
 	(if (= (str-compare ?type-of-environment "young") 0)
 		then
 		(assert (Person bar TRUE))
-    (assert (Person university TRUE))
-    (assert (Person library TRUE))
+    (assert (Person education TRUE))
 	)
   (if (= (str-compare ?type-of-environment "residential") 0)
 		then
@@ -622,9 +621,11 @@
   ?user <- (object (is-a Person))
 	=>
   ;distributed action
-  (if (<= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
+  ;maximum price is a hard constraint
+  (if (>= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
     then
-    (send ?proposal put-score (+ (send ?proposal get-score) 1))
+    (send ?proposal put-is_proposed FALSE)
+    ;(send ?proposal put-score (+ (send ?proposal get-score) 1))
   )
   ;minimum price is a hard constraint
   (if (< (send (send ?proposal get-offer) get-rent) (send ?user get-min_budget))
@@ -710,19 +711,19 @@
 ;;; if a location is close add 2 points
 ;;; if a location is medium add 1 points
 ;;; if a location is far - dont do anything
-(defrule calculate-university ""
+(defrule calculate-education ""
   (declare (salience 20))
   (Person facts ok)
-  (Person university ?university)
+  (Person education ?education)
   ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a University))  
+  ?service<-(object (is-a Education))  
 	=>
   (bind ?adr1 (send ?service get-address))
   (bind ?adr2 (send (send ?proposal get-offer) get-address))
   (bind ?distance (measure-distance-adr ?adr1 ?adr2))
 
   ;;;Define our pointsdevision
-  (if (eq ?university TRUE)
+  (if (eq ?education TRUE)
    then
     (bind ?closepoints 2)
     (bind ?midpoints 1)
@@ -737,13 +738,13 @@
      (case close then
         (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
         ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?university FALSE) then (send ?proposal put-is_proposed FALSE))
+        ;(if (eq ?education FALSE) then (send ?proposal put-is_proposed FALSE))
      )
      (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
      ;location is too far away
      (case far then
         ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?university TRUE) then (send ?proposal put-is_proposed FALSE))
+        ;(if (eq ?education TRUE) then (send ?proposal put-is_proposed FALSE))
         (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
      )
   )
@@ -758,7 +759,7 @@
   (Person facts ok)
   (Person school ?school)
   ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Bar))  
+  ?service<-(object (is-a School))  
 	=>
   (bind ?adr1 (send ?service get-address))
   (bind ?adr2 (send (send ?proposal get-offer) get-address))

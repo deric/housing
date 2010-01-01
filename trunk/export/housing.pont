@@ -1,4 +1,4 @@
-; Tue Dec 29 15:54:32 CET 2009
+; Fri Jan 01 22:45:00 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -37,13 +37,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes City)
 		(create-accessor read-write))
-	(single-slot floor
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot Transport+Type
 		(type SYMBOL)
 		(allowed-values Bus-Stop Train-Station Metro)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot month
@@ -202,16 +202,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -246,10 +246,7 @@
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
-		(create-accessor read-write)
-		(propagation inherit)
-		(pattern-match reactive)
-		))
+		(create-accessor read-write)))
 
 (defclass Address
 	(is-a USER)
@@ -259,17 +256,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes District)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)
-		(propagation inherit)
-		)
+		(create-accessor read-write))
 	(single-slot coordinates
 ;+		(comment "GPS coordinates for displaying on a map")
 		(type INSTANCE)
 ;+		(allowed-classes Coordinates)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)
-		(propagation inherit)
-		)
+		(create-accessor read-write))
 	(single-slot street
 		(type STRING)
 ;+		(cardinality 0 1)
@@ -318,7 +311,7 @@
 
 (defclass PlaceToLive
 	(is-a USER)
-	(role concrete)
+	(role abstract)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
@@ -336,17 +329,15 @@
 (defclass House
 	(is-a PlaceToLive)
 	(role concrete)
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
+		(create-accessor read-write))
 	(single-slot house_type
 		(type SYMBOL)
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
-		(create-accessor read-write)
-		(propagation inherit)
-		))
+		(create-accessor read-write)))
 
 (defclass Flat
 	(is-a PlaceToLive)
@@ -354,9 +345,7 @@
 	(multislot rooms
 		(type INSTANCE)
 ;+		(allowed-classes Room)
-		(create-accessor read-write)
-		(propagation inherit)
-		)
+		(create-accessor read-write))
 	(single-slot floor
 		(type STRING)
 ;+		(cardinality 1 1)
@@ -386,24 +375,17 @@
 	(single-slot title
 		(type STRING)
 ;+		(cardinality 0 1)
-		(create-accessor read-write)
-		(propagation inherit)
-		)
+		(create-accessor read-write))
 	(single-slot noisy
 ;+		(comment "percentage of noise: 0 -quite\n100 - noisy (landing planes)")
 		(type INTEGER)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)
-		(propagation inherit)
-		)
+		(create-accessor read-write))
 	(single-slot address
 		(type INSTANCE)
 ;+		(allowed-classes Address)
 ;+		(cardinality 1 1)
-		(create-accessor read-write)
-		(propagation inherit)
-		)
-)
+		(create-accessor read-write)))
 
 (defclass FoodBeverage
 	(is-a Service)

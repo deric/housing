@@ -1,4 +1,4 @@
-; Thu Dec 31 09:10:16 CET 2009
+; Fri Jan 01 22:45:00 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -110,20 +110,32 @@
 	(noisy 3)
 	(title "Pub Rambla"))
 
-([house_Class30000] of  Room
+([house_Class30000] of  Offer
 
-	(description "a double room")
-	(room_type double)
-	(space 15)
-	(windows_num 1))
-
-([house_Class30001] of  Offer
-
-	(address [house_Class40002])
+	(address [house_Class30072])
 	(available_from [house_Class30107])
-	(realty [house_Class70003])
-	(rent 800.0)
-	(title "passaige de gracia"))
+	(realty [house_Class30001])
+	(rent 1200.0)
+	(title "Fancy Centric Flat"))
+
+([house_Class30001] of  Flat
+
+	(description "Fancy Flat")
+	(equipment
+		[house_Class30099]
+		[house_Class30104]
+		[house_Class30097]
+		[house_Class30096]
+		[house_Class40002])
+	(flat_type normal)
+	(floor "3")
+	(rooms
+		[house_Class20004]
+		[house_Class10001]
+		[house_Class20004]
+		[house_Class30015]
+		[house_Class10003])
+	(space 110))
 
 ([house_Class30002] of  Address
 
@@ -732,11 +744,9 @@
 	(latitude 1.0)
 	(longitude 0.0))
 
-([house_Class40002] of  Address
+([house_Class40002] of  Equipment
 
-	(coordinates [house_Class30038])
-	(district [house_Class30031])
-	(street "passaige de gracia"))
+	(title "SunnyPlace"))
 
 ([house_Class40003] of  District
 
@@ -979,9 +989,7 @@
 	(description "flat in center")
 	(flat_type normal)
 	(floor "2")
-	(rooms
-		[house_Class50006]
-		[house_Class30000])
+	(rooms [house_Class50006])
 	(space 100))
 
 ([house_Class50006] of  Room
@@ -1037,26 +1045,3 @@
 
 	(latitude 2.0)
 	(longitude 1.0))
-
-([house_Class70003] of  Flat
-
-	(description "double and single room")
-	(floor "3")
-	(rooms
-		[house_Class70004]
-		[house_Class70005])
-	(space 80))
-
-([house_Class70004] of  Room
-
-	(description "double room")
-	(room_type double)
-	(space 12)
-	(windows_num 0))
-
-([house_Class70005] of  Room
-
-	(description "single")
-	(room_type single)
-	(space 8)
-	(windows_num 0))
