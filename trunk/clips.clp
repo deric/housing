@@ -43,6 +43,7 @@
 ;;************
 
 (defmessage-handler Offer print()
+  (format t "Type: %s%n" (class ?self:realty))
   (format t "Offer: %s%n" ?self:title) 
   (format t "Price: %f%n" ?self:rent)
   (printout t (send ?self:address print)) ;print the address
@@ -305,6 +306,9 @@
   (< (send ?prop1 get-score) (send ?prop2 get-score))
 )
 
+(deffunction get-class (?object)
+  return (class ?object)
+)
 ;;;*********
 ;;;* RULES *
 ;;;*********
@@ -658,8 +662,37 @@
       (send ?proposal put-is_proposed FALSE)
     )
 )
+
+(defrule exclude-other-type-of-houses "filter offers that are not appliant with the chosen type of house"
+   (Person facts ok)
+   (Person type-of-house ?type)
+   ?proposal<-(object (is-a Proposal) (offer ?offer))
+  =>
+  (bind ?type-of-offer (get-class (send ?offer get-realty)))
+  (if (eq ?type office)
+    then
+      (if (not (= (str-compare ?type-of-offer "Office") 0)) then
+        (send ?proposal put-is_proposed FALSE)
+      )
+  )
+  (if (eq ?type house)
+    then
+      (if (not (= (str-compare ?type-of-offer "House") 0)) then
+        (send ?proposal put-is_proposed FALSE)
+      )
+  )
+  (if (eq ?type flat)
+    then
+    (printout t "we want a flat "?type-of-offer crlf)
+    (if (and (not  (= (str-compare ?type-of-offer "Flat") 0)) (not (= (str-compare ?type-of-offer "Room") 0))) then
+        (printout t "this is not a flat" ?type-of-offer " " ?type crlf)
+        (send ?proposal put-is_proposed FALSE)
+      )
+  )
+    
+)
  
-(defrule exclude-not-centric 
+(defrule exclude-not-centric
     (Person location centric)
     ?proposal<-(object (is-a Proposal) (offer ?offer))
   =>
