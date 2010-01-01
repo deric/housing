@@ -288,7 +288,8 @@
       )
   )
 )
-;counts distance from some point
+
+;;;counts distance between 2 addresses
 (deffunction measure-distance-adr (?adr ?adr2)
   (bind ?result (distance (send ?adr get-coordinates) (send ?adr2 get-coordinates)))
   (if (<= ?result 2.0)
@@ -299,7 +300,11 @@
       )
   )
 )
- 
+
+;;;counts distance between 2 addresses
+(deffunction proposal-sort (?prop1 ?prop2)
+  (> (send ?prop1 get-score) (send ?prop2 get-score))
+)
 
 ;;;*********
 ;;;* RULES *
@@ -641,19 +646,19 @@
   )
 )
 
-;;; if someone need a double room is a hard constraint
+; if someone need a double room is a hard constraint
 (defrule exclude-not-double-rooms "filter offers without double room"
    (Person facts ok)
    (Person room-type double)
    ?proposal<-(object (is-a Proposal) (offer ?offer))
   =>   
-  ;(printout t (send ?offer get-title) " " (send ?offer has-double-room) crlf)
+  ;  (printout t (send ?offer get-title) " " (send ?offer has-double-room) crlf)
   (if (eq (send ?offer has-double-room) FALSE)
     then 
       (send ?proposal put-is_proposed FALSE)
     )
 )
-
+ 
 (defrule exclude-not-centric 
     (Person location centric)
     ?proposal<-(object (is-a Proposal) (offer ?offer))
@@ -669,19 +674,6 @@
 )
  
 
-; if someone need a double room is a hard constraint
-(defrule exclude-not-double-rooms "filter offers without double room"
-   (Person facts ok)
-   (Person room-type double)
-   ?proposal<-(object (is-a Proposal) (offer ?offer))
-  =>   
-  ;  (printout t (send ?offer get-title) " " (send ?offer has-double-room) crlf)
-  (if (eq (send ?offer has-double-room) FALSE)
-    then 
-      (send ?proposal put-is_proposed FALSE)
-    )
-)
- 
 (defrule count-num-of-habitable-rooms
   (Person room-num ?rooms)
   ?proposal<-(object (is-a Proposal) (offer ?offer))
@@ -842,50 +834,6 @@
   )
 )
 
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-shops ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person shopping ?shopping)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Shopping))  ;use the superclass to get all the shops
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?shopping TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?shopping FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?shopping TRUE) then (send ?proposal put-is_proposed FALSE))
-        
-     )
-  )
-)
 ;;; Loop trough all the houses and locations and give points accordingly
 ;;; if a location is close add 2 points
 ;;; if a location is medium add 1 points
@@ -1144,11 +1092,16 @@
   ;;;%n stands for newline
 	(format t "Sr/a. %s,%s%n" (send ?person get-firstname) (send ?person get-surname))
 	(printout t "This is the list of proposals" crlf crlf)
+  
 	(do-for-all-instances 
 	    ((?proposal Proposal))
+      
 	    (eq (send ?proposal get-is_proposed) TRUE)
 	    ;action
 	    (printout t (send ?proposal print))
+      (printout t ?proposal crlf)
+      ;(proposal-sort ?proposal)
+      
 	)
 	(modify ?recommendation (is_final finished))
 	(pop-focus)
