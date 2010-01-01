@@ -158,13 +158,13 @@
 	?question
 )
 
- ; checks if response is a number
+ ; checks if response is a number (float or integer)
 (deffunction ask-number (?question ?range-start ?range-end)
 	(format t "%s? [%d, %d] " ?question ?range-start ?range-end)
 	(bind ?response (read))
 	(bind ?repeat 
 	  (if (numberp ?response)
-			  then (and(> ?response ?range-start)(< ?response ?range-end))
+			  then (not(and(> ?response ?range-start)(< ?response ?range-end)))
 			  else TRUE
 			)
 	  )
@@ -173,7 +173,7 @@
 		(bind ?response (read))
 		(bind ?repeat 
 		(if (numberp ?response)
-				then (and(> ?response ?range-start)(< ?response ?range-end))
+				then (not(and(> ?response ?range-start)(< ?response ?range-end)))
 				else TRUE
 			      )
 		)
@@ -183,9 +183,18 @@
 
 (deffunction yes-or-no (?question)
    (bind ?response (ask-question ?question yes no y n))
+   (while (not (or 
+		  (eq ?response yes) 
+		  (eq ?response y)
+		  (eq ?response no)
+		  (eq ?response n)
+		 ))
+	(bind ?response (ask-question ?question yes no y n))
+   )
    (if (or (eq ?response yes) (eq ?response y))
        then TRUE 
-       else FALSE))
+       else FALSE)
+  )
 
 (deffunction tree-state (?question)
    (bind ?response (ask-question ?question yes no dontcare y n x))
@@ -394,13 +403,13 @@
 	?user <- (object (is-a Person))
 	=>
   ;;;Ask if we need more rooms for elderly people or special needs
-  (printout t "Currently we estimated you " ?num " rooms ")
+  (printout t "Currently we estimated for you " ?num " rooms ")
   (bind ?additional (yes-or-no "is this enough?"))
   (if (eq ?additional FALSE)
     then
       (bind ?rooms (ask-number "How many extra rooms do you need" 0 20))
       (assert (Person room-num (+ ?rooms ?num)))
-      (printout t "We estimated you " (+ ?num ?rooms) " rooms" crlf)
+      (printout t "We estimated that you need " (+ ?num ?rooms) " rooms" crlf)
     else
       (assert (Person rooms-checked TRUE))
   )
