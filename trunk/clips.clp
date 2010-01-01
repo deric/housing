@@ -43,10 +43,9 @@
 ;;************
 
 (defmessage-handler Offer print()
-  (printout t "----------------------------------" crlf)
   (format t "Offer: %s%n" ?self:title) 
   (format t "Price: %f%n" ?self:rent)
-  (printout t (send ?self:address print))
+  (printout t (send ?self:address print)) ;print the address
   (printout t crlf)
 )
 
@@ -306,6 +305,9 @@
   (< (send ?prop1 get-score) (send ?prop2 get-score))
 )
 
+(deffunction get-max-points (?proposals)
+  
+)
 ;;;*********
 ;;;* RULES *
 ;;;*********
@@ -1114,11 +1116,37 @@
   ;;;add to the slot
   (bind ?concatenatedstring (str-cat "(sort proposal-sort " (implode$ ?multifield) ")"))
   (bind ?proposals (eval ?concatenatedstring))
-  
   (bind ?i 1)
+  (bind ?printedverygood FALSE)
+  (bind ?printedadequate FALSE)
+  (bind ?printedpartiallyadequate FALSE)
+  (bind ?maxpoints 0)
 	(while (<= ?i (length$ ?proposals))
 		do
-			(bind ?proposal (nth$ ?i ?proposals))
+      (bind ?proposal (nth$ ?i ?proposals))
+      (if (eq ?printedverygood FALSE)
+        then
+        (printout t "---------------------------------------------------------------------" crlf)
+        (printout t "Very recommendable offers" crlf)
+        (printout t "---------------------------------------------------------------------" crlf)
+        (bind ?printedverygood TRUE)
+        (bind ?maxpoints (send ?proposal get-score))
+      )
+      
+      (if (and (eq ?printedadequate FALSE) (<= (send ?proposal get-score) (* ?maxpoints 0.66)))
+        then
+        (printout t "---------------------------------------------------------------------" crlf)
+        (printout t "Adequate offers" crlf)
+        (printout t "---------------------------------------------------------------------" crlf)
+        (bind ?printedadequate TRUE)
+      )
+      (if (and (eq ?printedadequate FALSE) (<= (send ?proposal get-score) (* ?maxpoints 0.33)))
+        then
+        (printout t "---------------------------------------------------------------------" crlf)
+        (printout t "Partially adequate offers" crlf)
+        (printout t "---------------------------------------------------------------------" crlf)
+        (bind ?printedpartiallyadequate TRUE)
+      )
       (printout t (send ?proposal print))
 			(bind ?i (+ ?i 1))
 	)
