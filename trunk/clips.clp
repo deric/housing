@@ -212,7 +212,7 @@
 	(bind ?response (read))
 	(bind ?repeat 
 	  (if (numberp ?response)
-			  then (not(and(> ?response ?range-start)(< ?response ?range-end)))
+			  then (not(and(>= ?response ?range-start)(<= ?response ?range-end)))
 			  else TRUE
 			)
 	  )
@@ -221,7 +221,7 @@
 		(bind ?response (read))
 		(bind ?repeat 
 		(if (numberp ?response)
-				then (not(and(> ?response ?range-start)(< ?response ?range-end)))
+				then (not(and(>= ?response ?range-start)(<= ?response ?range-end)))
 				else TRUE
 			      )
 		)
@@ -280,17 +280,6 @@
 ;counts distance from some point
 (deffunction measure-distance (?adr ?coor)
   (bind ?result (distance (send ?adr get-coordinates) ?coor))
-  (if (<= ?result 2.0)
-    then return close
-    else (if (<= ?result 6.0)
-	then return mid
-	else return far 
-      )
-  )
-)
-;counts distance from some point
-(deffunction measure-distance-adr (?adr ?adr2)
-  (bind ?result (distance (send ?adr get-coordinates) (send ?adr2 get-coordinates)))
   (if (<= ?result 2.0)
     then return close
     else (if (<= ?result 6.0)
@@ -380,6 +369,7 @@
      ;do-for execution
      (make-instance of Proposal (score 0) (offer ?offer) (is_proposed TRUE)
 	(noise 0.0)
+	(room_diff 0)
        )
     )
   ;(focus house-queries)
@@ -520,7 +510,7 @@
 		then
 		    (assert (Person bar TRUE))
 		    (assert (Person public-transport TRUE))
-		    (assert (Person shopping TRUE))
+		    (assert (Person shops TRUE))
 		    (assert (Person location centric))
 	)
 	(if (= (str-compare ?type-of-environment "young") 0)
@@ -532,10 +522,8 @@
   (if (= (str-compare ?type-of-environment "residential") 0)
 		then
     (assert (Person max-noise 5))
-		(assert (Person shopping TRUE))
-    (assert (Person foodbeverage TRUE))
-    (assert (Person healthcare TRUE))
-    
+		(assert (Person shops TRUE))
+    (assert (Person restaurant TRUE))
 	)
   (if (= (str-compare ?type-of-environment "outskirts") 0)
 		then
@@ -616,7 +604,6 @@
   ;distributed action
   (if (<= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
     then
-    (send ?proposal put-is_proposed TRUE)
     (send ?proposal put-score (+ (send ?proposal get-score) 1))
   )
   ;minimum price is a hard constraint
@@ -640,20 +627,7 @@
     (send ?proposal put-score (- (send ?proposal get-score) 5))
   )
 )
-
-;;; if someone need a double room is a hard constraint
-(defrule exclude-not-double-rooms "filter offers without double room"
-   (Person facts ok)
-   (Person room-type double)
-   ?proposal<-(object (is-a Proposal) (offer ?offer))
-  =>   
-  ;(printout t (send ?offer get-title) " " (send ?offer has-double-room) crlf)
-  (if (eq (send ?offer has-double-room) FALSE)
-    then 
-      (send ?proposal put-is_proposed FALSE)
-    )
-)
-
+ 
 (defrule exclude-not-centric 
     (Person location centric)
     ?proposal<-(object (is-a Proposal) (offer ?offer))
@@ -668,48 +642,6 @@
      )
 )
  
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-university ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person university ?university)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a University))  
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-
-  ;;;Define our pointsdevision
-  (if (eq ?university TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?university FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
-     ;location is too far away
-     (case far then
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?university TRUE) then (send ?proposal put-is_proposed FALSE))
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-     )
-  )
-)
 
 ; if someone need a double room is a hard constraint
 (defrule exclude-not-double-rooms "filter offers without double room"
@@ -734,372 +666,23 @@
   ;(printout t (send ?offer get-title) " "  (send ?offer count-habitable-rooms) " req:" ?rooms crlf)
   (bind ?diff (- ?num ?rooms)) ;difference
   (switch ?diff
-    (case -2 then (send ?proposal put-score (- (send ?proposal get-score) 2)) )
     (case -1 then (send ?proposal put-score (- (send ?proposal get-score) 1)))
     (case 0 then (send ?proposal put-score (+ (send ?proposal get-score) 1)) )
     (case 1 then (send ?proposal put-score (+ (send ?proposal get-score) 2)) )
     (default then (send ?proposal put-room_diff ?diff)) 
    )
+  (assert (Proposal counted_rooms ok))
   
 )
  
-=======
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-school ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person school ?school)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Bar))  
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?school TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-  (switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?school FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints)))
-     ;location is too far away
-     (case far then
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?school TRUE) then (send ?proposal put-is_proposed FALSE))
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-     )
-  )
+ ;offers with lack of more than 1 rooms will be rejected 
+(defrule filer-offers-with-not-sufficient-rooms
+  (Proposal counted_rooms ok)
+  ?proposal<-(object (is-a Proposal) (offer ?offer) (room_diff ?diff&:(<= ?diff -2)))
+  =>  
+  ;(printout t (send ?offer get-title) " "  (send ?proposal get-room_diff) crlf)
+  (send ?proposal put-is_proposed FALSE)
 )
-
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-bar ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person bar ?bar)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Bar))  
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?bar TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?bar FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?bar TRUE) then (send ?proposal put-is_proposed FALSE))
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-     )
-  )
-)
-
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-shops ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person shopping ?shopping)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Shopping))  ;use the superclass to get all the shops
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?shopping TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?shopping FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?shopping TRUE) then (send ?proposal put-is_proposed FALSE))
-        
-     )
-  )
-)
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-shops ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person shopping ?shopping)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Shopping))  ;use the superclass to get all the shops
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?shopping TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?shopping FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?shopping TRUE) then (send ?proposal put-is_proposed FALSE))
-        
-     )
-  )
-)
-
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-public-transport ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person public-transport ?transport)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a Transport))  ;use the superclass to get all the transports
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?transport TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?transport FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?transport TRUE) then (send ?proposal put-is_proposed FALSE))
-        
-     )
-  )
-)
-
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-FoodBeverage ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person foodbeverage ?foodbeverage)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a FoodBeverage))  ;use the superclass to get all the transports
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?foodbeverage TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?foodbeverage FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?foodbeverage TRUE) then (send ?proposal put-is_proposed FALSE))
-        
-     )
-  )
-)
-
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-HealthCare ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person healthcare ?healthcare)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a FoodBeverage))  ;use the superclass to get all the transports
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?healthcare TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?healthcare FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?healthcare TRUE) then (send ?proposal put-is_proposed FALSE))
-        
-     )
-  )
-)
-
-;;; Loop trough all the houses and locations and give points accordingly
-;;; if a location is close add 2 points
-;;; if a location is medium add 1 points
-;;; if a location is far - dont do anything
-(defrule calculate-green-area ""
-  (declare (salience 20))
-  (Person facts ok)
-  (Person green-area ?greenarea)
-  ?proposal<-(object (is-a Proposal))
-  ?service<-(object (is-a FoodBeverage))  ;use the superclass to get all the transports
-	=>
-  (bind ?adr1 (send ?service get-address))
-  (bind ?adr2 (send (send ?proposal get-offer) get-address))
-  (bind ?distance (measure-distance-adr ?adr1 ?adr2))
-  
-  ;;;Define our pointsdevision
-  (if (eq ?greenarea TRUE)
-   then
-    (bind ?closepoints 2)
-    (bind ?midpoints 1)
-    (bind ?farpoints 0)
-   else
-    (bind ?closepoints 0)
-    (bind ?midpoints 1)
-    (bind ?farpoints 2)
-  )
-  
-(switch ?distance
-     (case close then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?closepoints))
-        ;;;if our fact should be far, then remove the offer if it is close
-        (if (eq ?greenarea FALSE) then (send ?proposal put-is_proposed FALSE))
-     )
-     (case mid then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?midpoints))
-     )
-     (case far then
-        (send ?proposal put-score (+ (send ?proposal get-score) ?farpoints))
-        ;;;if our fact should be close, then remove the offer if it is far
-        (if (eq ?greenarea TRUE) then (send ?proposal put-is_proposed FALSE))
-        
-     )
-  )
-)
->>>>>>> 46c44f0f066d345efd91962fab0ef2d6d4e84bb1:trunk/clips.clp
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
 (defrule end-of-questions
