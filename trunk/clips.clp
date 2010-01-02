@@ -647,7 +647,6 @@
     else
       (send ?user put-max_budget ?max_budget)
   )
-  
 )
 
  ;;; Get our minimum price
@@ -743,6 +742,25 @@
   )
   (assert (Proposal noisiness ok))
 )
+ 
+(defrule lower-score-for-cheaper-offers
+  (Person facts ok)
+  ?proposal<-(object (is-a Proposal) (offer ?offer))
+  ?user <- (object (is-a Person) (max_budget ?budget) )
+  =>
+  (bind ?lim (* ?budget 0.66)) ; two third of budget
+  (bind ?diff (- ?lim (send ?offer get-rent)))
+  (if (> ?diff 0)
+	then (if (<= ?diff 200)
+	       then (send ?proposal put-score (- (send ?proposal get-score) 1)) ;too hight diff in comp. to budget, probably a bit lousy
+	       else (if (<= ?diff 500)
+			then (send ?proposal put-score (- (send ?proposal get-score) 2))
+		        else (send ?proposal put-score (- (send ?proposal get-score) 4))
+		      )
+	     )
+    )
+)
+ 
 
 
 (defrule filter-noisy "lower score of proposal with noisy environment if user does mind"
