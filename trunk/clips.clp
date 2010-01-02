@@ -78,7 +78,6 @@
   
 (defmessage-handler Proposal print()
   (printout t (send ?self:offer print)) 
-  (format t "Is proposed: %s%n" ?self:is_proposed)
   (format t "Score: %f%n" ?self:score)
   (format t "Noise: %f%n" ?self:noise)
   (format t "Rooms: %f%n" ?self:rooms)
@@ -621,7 +620,7 @@
 	(not (Person max_budget ?))
 	?user <- (object (is-a Person))
 	=>
-	(bind ?max_budget (ask-number "What is your maximum rental budget per month" 0 3000))
+	(bind ?max_budget (ask-number "What is your maximum rental budget per month" 0 90000))
   (if (yes-or-no "Are you willing to pay more for the house of your dreams?")
     then
       (send ?user put-max_budget (* ?max_budget 1.3))
@@ -668,18 +667,18 @@
 ;;; Loop trough all the houses and uncheck those that don't fit the price limit
 (defrule exclude-houses
   (Person facts ok)
-  ?proposal<-(object (is-a Proposal))
+  ?proposal<-(object (is-a Proposal) (offer ?offer))
   ?user <- (object (is-a Person))
 	=>
   ;distributed action
   ;maximum price is a hard constraint
-  (if (>= (send (send ?proposal get-offer) get-rent) (send ?user get-max_budget))
+  (if (>= (send ?offer get-rent) (send ?user get-max_budget))
     then
     (send ?proposal put-is_proposed FALSE)
     ;(send ?proposal put-score (+ (send ?proposal get-score) 1))
   )
   ;minimum price is a hard constraint
-  (if (< (send (send ?proposal get-offer) get-rent) (send ?user get-min_budget))
+  (if (< (send ?offer get-rent) (send ?user get-min_budget))
     then
     (send ?proposal put-is_proposed FALSE)
   )
@@ -691,13 +690,28 @@
   (Person facts ok)
   (Proposal noisiness ok) ; must be executed after noise is calculated
   (Person max-noise ?) ; noise is set up
-  ?proposal<-(object (is-a Proposal))
+  ?proposal<-(object (is-a Proposal) (offer ?offer))
   ?fact <- (Person max-noise ?noise)
-  =>  
-   (if (> (send ?proposal get-noise) ?noise)
-    then
-    (send ?proposal put-is_proposed FALSE)
-  )
+  =>
+    (bind ?diff (- ?noise (send ?proposal get-noise)))
+    (if (>= ?diff 0)
+      then (if (>= ?diff 1) ;less noisy than is requested
+		then  (send ?proposal put-score (+ (send ?proposal get-score) 2))
+	        else  (send ?proposal put-score (+ (send ?proposal get-score) 1))
+	       )
+	 else (if (>= ?diff -1)
+		then  (send ?proposal put-score (- (send ?proposal get-score) 1))
+	      )
+	      (if (>= ?diff -2)
+		then (send ?proposal put-score (- (send ?proposal get-score) 2))   
+		else (send ?proposal put-score (- (send ?proposal get-score) 3)) 
+	      )
+      ;reject very noisy offers 
+	      (if (< ?diff -5)
+		then (send ?proposal put-is_proposed FALSE)
+	      )
+      )
+  ; (printout t "rejecting " (send ?offer get-title) " p " ?diff " - " (send ?proposal get-score) " noise " (send ?proposal get-noise) " max noise " ?noise " " (send ?proposal get-is_proposed) crlf)
 )
 
 ; if someone need a double room is a hard constraint
@@ -793,7 +807,6 @@
   (Proposal counted_rooms ok)
   ?proposal<-(object (is-a Proposal) (offer ?offer) (room_diff ?diff&:(<= ?diff -2)))
   =>  
-  ;(printout t (send ?offer get-title) " "  (send ?proposal get-room_diff) crlf)
   (send ?proposal put-is_proposed FALSE)
 )
 

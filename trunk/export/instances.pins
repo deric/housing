@@ -1,4 +1,4 @@
-; Sat Jan 02 02:00:12 CET 2010
+; Sat Jan 02 15:01:35 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -21,6 +21,24 @@
 	(realty [house_Class10001])
 	(rent 560.0)
 	(title "flat with double room"))
+
+([house_Class100003] of  Offer
+
+	(address [house_Class100004])
+	(realty [house_Class60000])
+	(rent 6000.0)
+	(title "house in Sarria"))
+
+([house_Class100004] of  Address
+
+	(coordinates [house_Class100005])
+	(district [house_Class30030])
+	(street "Passaige de Marcela Rubia"))
+
+([house_Class100005] of  Coordinates
+
+	(latitude -4.0)
+	(longitude 4.0))
 
 ([house_Class10001] of  Room
 
@@ -171,7 +189,7 @@
 	(available_from [house_Class30106])
 	(realty [house_Class30100])
 	(rent 750.0)
-	(title "Offer Flat 4"))
+	(title "flat with 3 single rooms"))
 
 ([house_Class30009] of  Offer
 
@@ -179,11 +197,11 @@
 	(available_from [house_Class30107])
 	(realty [house_Class30102])
 	(rent 7000.0)
-	(title "Offer Flat 5"))
+	(title "expensive flat with climatization"))
 
 ([house_Class30010] of  Flat
 
-	(description "Flat 2")
+	(description "flat with heating")
 	(equipment [house_Class30099])
 	(flat_type ground)
 	(floor "1")
@@ -210,7 +228,7 @@
 
 ([house_Class30013] of  Flat
 
-	(description "Flat 3")
+	(description "flat in attic")
 	(equipment
 		[house_Class30097]
 		[house_Class30098]
@@ -563,7 +581,7 @@
 
 ([house_Class30100] of  Flat
 
-	(description "Flat 4")
+	(description "3 single rooms")
 	(flat_type normal)
 	(floor "3")
 	(rooms
@@ -583,7 +601,7 @@
 
 ([house_Class30102] of  Flat
 
-	(description "Flat 5")
+	(description "nice flat with climatization")
 	(equipment
 		[house_Class30097]
 		[house_Class30098]
@@ -1083,9 +1101,35 @@
 	(month 12)
 	(year 2009))
 
+([house_Class60000] of  House
+
+	(description "expensive house in Sarria")
+	(equipment
+		[house_Class80003]
+		[house_Class30098])
+	(flats [house_Class60001])
+	(house_type Terraced)
+	(space 300))
+
+([house_Class60001] of  Flat
+
+	(description "really expensive flat")
+	(equipment
+		[house_Class30104]
+		[house_Class30098])
+	(flat_type normal)
+	(floor "1")
+	(rooms
+		[house_Class70002]
+		[house_Class10001]
+		[house_Class50001]
+		[house_Class30014]
+		[house_Class20004])
+	(space 300))
+
 ([house_Class60002] of  Room
 
-	(description "full equiped double room")
+	(description "fully equiped double room")
 	(equipment
 		[house_Class30096]
 		[house_Class30104])
@@ -1102,6 +1146,16 @@
 
 	(latitude 2.0)
 	(longitude 1.0))
+
+([house_Class70002] of  Room
+
+	(description "HUDGE room")
+	(equipment
+		[house_Class30096]
+		[house_Class30099])
+	(room_type single)
+	(space 35)
+	(windows_num 6))
 
 ([house_Class70003] of  Flat
 
@@ -1161,7 +1215,7 @@
 	(available_from [house_Class90007])
 	(realty [house_Class50000])
 	(rent 950.0)
-	(title "flat near parc"))
+	(title "flat near park"))
 
 ([house_Class90007] of  Date
 

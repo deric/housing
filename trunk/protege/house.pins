@@ -1,4 +1,4 @@
-; Sat Jan 02 02:24:34 CET 2010
+; Sat Jan 02 14:32:12 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -183,7 +183,7 @@
 
 ([house_Class30010] of  Flat
 
-	(description "Flat 2")
+	(description "flat with heating")
 	(equipment [house_Class30099])
 	(flat_type ground)
 	(floor "1")
@@ -210,7 +210,7 @@
 
 ([house_Class30013] of  Flat
 
-	(description "Flat 3")
+	(description "flat in attic")
 	(equipment
 		[house_Class30097]
 		[house_Class30098]
@@ -563,7 +563,7 @@
 
 ([house_Class30100] of  Flat
 
-	(description "Flat 4")
+	(description "3 single rooms")
 	(flat_type normal)
 	(floor "3")
 	(rooms
@@ -583,7 +583,7 @@
 
 ([house_Class30102] of  Flat
 
-	(description "Flat 5")
+	(description "nice flat with climatization")
 	(equipment
 		[house_Class30097]
 		[house_Class30098]
@@ -1085,7 +1085,7 @@
 
 ([house_Class60002] of  Room
 
-	(description "full equiped double room")
+	(description "fully equiped double room")
 	(equipment
 		[house_Class30096]
 		[house_Class30104])

@@ -1,4 +1,4 @@
-; Sat Jan 02 02:24:34 CET 2010
+; Sat Jan 02 14:32:12 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -37,13 +37,13 @@
 		(type INSTANCE)
 ;+		(allowed-classes City)
 		(create-accessor read-write))
+	(single-slot floor
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot Transport+Type
 		(type SYMBOL)
 		(allowed-values Bus-Stop Train-Station Metro)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot floor
-		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot month
@@ -202,16 +202,16 @@
 ;+		(allowed-classes Country)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot city
-		(type INSTANCE)
-;+		(allowed-classes City)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot realty
 ;+		(comment "piece of immovable realty estate")
 		(type INSTANCE)
 ;+		(allowed-classes PlaceToLive PlaceToWork)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot city
+		(type INSTANCE)
+;+		(allowed-classes City)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Offer
@@ -329,14 +329,14 @@
 (defclass House
 	(is-a PlaceToLive)
 	(role concrete)
-	(multislot flats
-		(type INSTANCE)
-;+		(allowed-classes Flat)
-		(create-accessor read-write))
 	(single-slot house_type
 		(type SYMBOL)
 		(allowed-values Terraced Semidetached BlockOfFlats)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot flats
+		(type INSTANCE)
+;+		(allowed-classes Flat)
 		(create-accessor read-write)))
 
 (defclass Flat
