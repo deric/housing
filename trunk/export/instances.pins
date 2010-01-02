@@ -1,4 +1,4 @@
-; Sat Jan 02 15:01:35 CET 2010
+; Sat Jan 02 16:23:43 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -20,7 +20,7 @@
 	(available_from [house_Class30106])
 	(realty [house_Class10001])
 	(rent 560.0)
-	(title "flat with double room"))
+	(title "a double room in Raval"))
 
 ([house_Class100003] of  Offer
 
@@ -39,6 +39,22 @@
 
 	(latitude -4.0)
 	(longitude 4.0))
+
+([house_Class100006] of  Offer
+
+	(address [house_Class30108])
+	(available_from [house_Class30106])
+	(realty [house_Class10003])
+	(rent 450.0)
+	(title "luxury room with nice view"))
+
+([house_Class100007] of  Offer
+
+	(address [house_Class30072])
+	(available_from [house_Class30106])
+	(realty [house_Class70005])
+	(rent 250.0)
+	(title "room with no equipment at all"))
 
 ([house_Class10001] of  Room
 
@@ -756,7 +772,7 @@
 	(available_from [house_Class6])
 	(realty [house_Class40001])
 	(rent 1200.0)
-	(title "Fancy flat in center"))
+	(title "Fancy flat at Catalunya"))
 
 ([house_Class40001] of  Flat
 
@@ -1039,18 +1055,16 @@
 
 	(address [house_Class50007])
 	(available_from [house_Class30106])
-	(realty [house_Class50005])
+	(realty [house_Class50006])
 	(rent 310.0)
-	(title "Lousy flat in center"))
+	(title "Lousy room in center"))
 
 ([house_Class50005] of  Flat
 
 	(description "flat in center")
 	(flat_type normal)
 	(floor "2")
-	(rooms
-		[house_Class50006]
-		[house_Class30000])
+	(rooms [house_Class50006])
 	(space 100))
 
 ([house_Class50006] of  Room
@@ -1190,7 +1204,7 @@
 	(available_from [house_Class30106])
 	(realty [house_Class40001])
 	(rent 1300.0)
-	(title "Fancy flat in center2"))
+	(title "Fancy flat at Universitat"))
 
 ([house_Class90003] of  Green+Area
 

@@ -1,4 +1,4 @@
-; Sat Jan 02 14:32:12 CET 2010
+; Sat Jan 02 16:23:36 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -20,7 +20,41 @@
 	(available_from [house_Class30106])
 	(realty [house_Class10001])
 	(rent 560.0)
-	(title "flat with double room"))
+	(title "a double room in Raval"))
+
+([house_Class100003] of  Offer
+
+	(address [house_Class100004])
+	(realty [house_Class60000])
+	(rent 6000.0)
+	(title "house in Sarria"))
+
+([house_Class100004] of  Address
+
+	(coordinates [house_Class100005])
+	(district [house_Class30030])
+	(street "Passaige de Marcela Rubia"))
+
+([house_Class100005] of  Coordinates
+
+	(latitude -4.0)
+	(longitude 4.0))
+
+([house_Class100006] of  Offer
+
+	(address [house_Class30108])
+	(available_from [house_Class30106])
+	(realty [house_Class10003])
+	(rent 450.0)
+	(title "luxury room with nice view"))
+
+([house_Class100007] of  Offer
+
+	(address [house_Class30072])
+	(available_from [house_Class30106])
+	(realty [house_Class70005])
+	(rent 250.0)
+	(title "room with no equipment at all"))
 
 ([house_Class10001] of  Room
 
@@ -171,7 +205,7 @@
 	(available_from [house_Class30106])
 	(realty [house_Class30100])
 	(rent 750.0)
-	(title "Offer Flat 4"))
+	(title "flat with 3 single rooms"))
 
 ([house_Class30009] of  Offer
 
@@ -179,7 +213,7 @@
 	(available_from [house_Class30107])
 	(realty [house_Class30102])
 	(rent 7000.0)
-	(title "Offer Flat 5"))
+	(title "expensive flat with climatization"))
 
 ([house_Class30010] of  Flat
 
@@ -738,7 +772,7 @@
 	(available_from [house_Class6])
 	(realty [house_Class40001])
 	(rent 1200.0)
-	(title "Fancy flat in center"))
+	(title "Fancy flat at Catalunya"))
 
 ([house_Class40001] of  Flat
 
@@ -1021,18 +1055,16 @@
 
 	(address [house_Class50007])
 	(available_from [house_Class30106])
-	(realty [house_Class50005])
+	(realty [house_Class50006])
 	(rent 310.0)
-	(title "Lousy flat in center"))
+	(title "Lousy room in center"))
 
 ([house_Class50005] of  Flat
 
 	(description "flat in center")
 	(flat_type normal)
 	(floor "2")
-	(rooms
-		[house_Class50006]
-		[house_Class30000])
+	(rooms [house_Class50006])
 	(space 100))
 
 ([house_Class50006] of  Room
@@ -1083,6 +1115,32 @@
 	(month 12)
 	(year 2009))
 
+([house_Class60000] of  House
+
+	(description "expensive house in Sarria")
+	(equipment
+		[house_Class80003]
+		[house_Class30098])
+	(flats [house_Class60001])
+	(house_type Terraced)
+	(space 300))
+
+([house_Class60001] of  Flat
+
+	(description "really expensive flat")
+	(equipment
+		[house_Class30104]
+		[house_Class30098])
+	(flat_type normal)
+	(floor "1")
+	(rooms
+		[house_Class70002]
+		[house_Class10001]
+		[house_Class50001]
+		[house_Class30014]
+		[house_Class20004])
+	(space 300))
+
 ([house_Class60002] of  Room
 
 	(description "fully equiped double room")
@@ -1102,6 +1160,16 @@
 
 	(latitude 2.0)
 	(longitude 1.0))
+
+([house_Class70002] of  Room
+
+	(description "HUDGE room")
+	(equipment
+		[house_Class30096]
+		[house_Class30099])
+	(room_type single)
+	(space 35)
+	(windows_num 6))
 
 ([house_Class70003] of  Flat
 
@@ -1136,7 +1204,7 @@
 	(available_from [house_Class30106])
 	(realty [house_Class40001])
 	(rent 1300.0)
-	(title "Fancy flat in center2"))
+	(title "Fancy flat at Universitat"))
 
 ([house_Class90003] of  Green+Area
 
@@ -1161,7 +1229,7 @@
 	(available_from [house_Class90007])
 	(realty [house_Class50000])
 	(rent 950.0)
-	(title "flat near parc"))
+	(title "flat near park"))
 
 ([house_Class90007] of  Date
 
