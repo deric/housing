@@ -1,4 +1,4 @@
-; Fri Jan 01 22:45:00 CET 2010
+; Sat Jan 02 01:15:22 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -110,32 +110,20 @@
 	(noisy 3)
 	(title "Pub Rambla"))
 
-([house_Class30000] of  Offer
+([house_Class30000] of  Room
 
-	(address [house_Class30072])
+	(description "a double room")
+	(room_type double)
+	(space 15)
+	(windows_num 1))
+
+([house_Class30001] of  Offer
+
+	(address [house_Class40002])
 	(available_from [house_Class30107])
-	(realty [house_Class30001])
-	(rent 1200.0)
-	(title "Fancy Centric Flat"))
-
-([house_Class30001] of  Flat
-
-	(description "Fancy Flat")
-	(equipment
-		[house_Class30099]
-		[house_Class30104]
-		[house_Class30097]
-		[house_Class30096]
-		[house_Class40002])
-	(flat_type normal)
-	(floor "3")
-	(rooms
-		[house_Class20004]
-		[house_Class10001]
-		[house_Class20004]
-		[house_Class30015]
-		[house_Class10003])
-	(space 110))
+	(realty [house_Class70003])
+	(rent 800.0)
+	(title "passaige de gracia"))
 
 ([house_Class30002] of  Address
 
@@ -458,7 +446,7 @@
 
 ([house_Class30059] of  Coordinates
 
-	(latitude -1.0)
+	(latitude 1.0)
 	(longitude 1.0))
 
 ([house_Class30060] of  Coordinates
@@ -744,9 +732,41 @@
 	(latitude 1.0)
 	(longitude 0.0))
 
-([house_Class40002] of  Equipment
+([house_Class40000] of  Offer
 
-	(title "SunnyPlace"))
+	(address [house_Class30072])
+	(available_from [house_Class6])
+	(realty [house_Class40001])
+	(rent 1200.0)
+	(title "Fancy flat in center"))
+
+([house_Class40001] of  Flat
+
+	(description "Fancy flat")
+	(equipment
+		[house_Class30104]
+		[house_Class30097]
+		[house_Class30098]
+		[house_Class30105]
+		[house_Class30099]
+		[house_Class30096]
+		[house_Class80003])
+	(flat_type normal)
+	(floor "2")
+	(rooms
+		[house_Class10001]
+		[house_Class70004]
+		[house_Class30011]
+		[house_Class30012]
+		[house_Class10003]
+		[house_Class10003])
+	(space 110))
+
+([house_Class40002] of  Address
+
+	(coordinates [house_Class30038])
+	(district [house_Class30031])
+	(street "passaige de gracia"))
 
 ([house_Class40003] of  District
 
@@ -971,6 +991,9 @@
 	(latitude 4.0)
 	(longitude -4.0))
 
+([house_Class50002] of  Equipment
+)
+
 ([house_Class50003] of  Coordinates
 
 	(latitude -10.0)
@@ -989,7 +1012,9 @@
 	(description "flat in center")
 	(flat_type normal)
 	(floor "2")
-	(rooms [house_Class50006])
+	(rooms
+		[house_Class50006]
+		[house_Class30000])
 	(space 100))
 
 ([house_Class50006] of  Room
@@ -1008,8 +1033,12 @@
 ([house_Class50008] of  House
 
 	(description "house at Torrasa")
+	(flats
+		[house_Class30010]
+		[house_Class30010]
+		[house_Class30013])
 	(house_type Terraced)
-	(space 150))
+	(space 400))
 
 ([house_Class50009] of  Offer
 
@@ -1027,8 +1056,8 @@
 
 ([house_Class50011] of  Coordinates
 
-	(latitude -12.0)
-	(longitude 10.0))
+	(latitude -15.0)
+	(longitude 15.0))
 
 ([house_Class6] of  Date
 
@@ -1045,3 +1074,38 @@
 
 	(latitude 2.0)
 	(longitude 1.0))
+
+([house_Class70003] of  Flat
+
+	(description "double and single room")
+	(floor "3")
+	(rooms
+		[house_Class70004]
+		[house_Class70005])
+	(space 80))
+
+([house_Class70004] of  Room
+
+	(description "double room")
+	(room_type double)
+	(space 12)
+	(windows_num 0))
+
+([house_Class70005] of  Room
+
+	(description "single")
+	(room_type single)
+	(space 8)
+	(windows_num 0))
+
+([house_Class80003] of  Equipment
+
+	(title "SunnyPlace"))
+
+([house_Class80004] of  Offer
+
+	(address [house_Class30117])
+	(available_from [house_Class30106])
+	(realty [house_Class40001])
+	(rent 1300.0)
+	(title "Fancy flat in center2"))

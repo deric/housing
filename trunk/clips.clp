@@ -114,7 +114,7 @@
 		do
 	  ; (bind ?res (send (nth$ ?i ?self:rooms) has-double-room))
 		   (bind ?type (send (nth$ ?i ?self:rooms) get-room_type))
-	  ; (printout t (send (nth$ ?i ?self:rooms) get-room_type)  crlf)
+	  ;  (printout t (send (nth$ ?i ?self:rooms) get-room_type)  crlf)
 		    (if (or (eq ?type single) (eq ?type double))
 			then (bind ?res (+ ?res 1))
 		      )
@@ -683,9 +683,9 @@
   )
   (if (eq ?type flat)
     then
-    (printout t "we want a flat "?type-of-offer crlf)
+    ; (printout t "we want a flat "?type-of-offer crlf)
     (if (and (not  (= (str-compare ?type-of-offer "Flat") 0)) (not (= (str-compare ?type-of-offer "Room") 0))) then
-        (printout t "this is not a flat" ?type-of-offer " " ?type crlf)
+      ;   (printout t "this is not a flat" ?type-of-offer " " ?type crlf)
         (send ?proposal put-is_proposed FALSE)
       )
   )

@@ -1,4 +1,4 @@
-; Fri Jan 01 22:45:00 CET 2010
+; Sat Jan 02 01:19:03 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -311,7 +311,7 @@
 
 (defclass PlaceToLive
 	(is-a USER)
-	(role abstract)
+	(role concrete)
 	(single-slot space
 ;+		(comment "in square m  of house")
 		(type INTEGER)
