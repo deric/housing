@@ -1286,6 +1286,7 @@
   (bind ?concatenatedstring (str-cat "(sort proposal-sort " (implode$ ?multifield) ")"))
   (bind ?proposals (eval ?concatenatedstring))
   (bind ?i 1)
+  
   (bind ?printedverygood FALSE)
   (bind ?printedadequate FALSE)
   (bind ?printedpartiallyadequate FALSE)
@@ -1302,14 +1303,14 @@
         (bind ?maxpoints (send ?proposal get-score))
       )
       
-      (if (and (eq ?printedadequate FALSE) (<= (send ?proposal get-score) (* ?maxpoints 0.66)))
+      (if (and (eq ?printedadequate FALSE) (<= (send ?proposal get-score) (* ?maxpoints 0.90)))
         then
         (printout t "---------------------------------------------------------------------" crlf)
         (printout t "Adequate offers" crlf)
         (printout t "---------------------------------------------------------------------" crlf)
         (bind ?printedadequate TRUE)
       )
-      (if (and (eq ?printedadequate FALSE) (<= (send ?proposal get-score) (* ?maxpoints 0.33)))
+      (if (and (eq ?printedadequate FALSE) (<= (send ?proposal get-score) (* ?maxpoints 0.70)))
         then
         (printout t "---------------------------------------------------------------------" crlf)
         (printout t "Partially adequate offers" crlf)
