@@ -2,12 +2,11 @@
 (load "housing.clp")
 (reset)
 (run)
-Nick
-Veenhof
+Arthur
+Mcqueen
 retired
 flat
 partner
-n
 yes
 no
 quiet

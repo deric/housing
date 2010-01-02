@@ -357,10 +357,9 @@
   (declare (salience 10))
   ?recommendation <- (recommendation (is_final ok))
   =>
-  (printout t "modify the recommendations" crlf crlf)
 	(modify ?recommendation (is_final print))
-  ;;;go to module output
-  (focus output EOP)
+	;;;go to module output
+	(focus output EOP)
 )
 
 ;;;------------------------------------------
@@ -457,37 +456,66 @@
 	?user <- (object (is-a Person))
 	=>
 
-	(bind ?type-of-family (question "You are looking for a place to live for?" alone partner children friends))
-	(if (= (str-compare ?type-of-family "alone") 0)
-		then
-		(assert (Person room-num 1))
-	)
-  (if (= (str-compare ?type-of-family "friends") 0)
-		then
-		(assert (Person room-num 2))
-	)
-	(if (= (str-compare ?type-of-family "partner") 0)
-		then
-		(if (yes-or-no "are you planning to have children soon")
-		then
-      (assert (Person children 1))
-		)
-		;;in any case we need a double room
-		(assert (Person room-type double))
+	(bind ?type-of-family (question "You are looking for a place to live for" alone partner children friends))
+	(assert (Person type-of-family ?type-of-family))
+)
+ 
+(defrule person-living-alone
+    (Person type-of-family ?type-of-family&alone)
+    ?user <- (object (is-a Person))
+  =>
+    (assert (Person room-num 1))
+    (assert (Person rooms-checked TRUE))
+)
+ 
+(defrule person-living-with-friends
+    (Person type-of-family ?type-of-family&friends)
+    ?user <- (object (is-a Person))
+  =>
     (assert (Person room-num 2))
-
-	)
-	(if (= (str-compare ?type-of-family "children") 0)
-		then
-		(bind ?children (ask-number "How many children are living with you" 0 20))
-    ;;;we add 2, 1 for the parents (see the double room type and 1 anyway for the child + the rounded amount of rooms needed extra
-		(assert (Person room-num (+ 2 (round (/ ?children 2)))))
-		(assert (Person house-shared FALSE))
-		(assert (Person children ?children))
-    (assert (Person school TRUE))
-	)
 )
 
+ 
+ ;retired person is not going to have children soon
+(defrule person-living-with-partner
+    (Person type-of-family ?type-of-family&partner)
+    (Person occupation ?occ&~retired)
+    ?user <- (object (is-a Person))
+  =>
+	(if (yes-or-no "are you planning to have children soon")
+	then
+	    (assert (Person children 1))
+	)
+	;;in any case we need a double room
+	(assert (Person room-type double))
+	(assert (Person room-num 2))
+)
+ 
+
+(defrule retired-person-living-with-partner
+    (Person type-of-family ?type-of-family&partner)
+    (Person occupation ?occ&retired)
+    ?user <- (object (is-a Person))
+  =>
+	(assert (Person room-type double))
+	(assert (Person room-num 2))
+) 
+ 
+ 
+ 
+(defrule person-living-with-children
+    (Person type-of-family ?type-of-family&children)
+    ?user <- (object (is-a Person))
+  =>
+	  (bind ?children (ask-number "How many children are living with you" 0 20))
+;;;we add 2, 1 for the parents (see the double room type and 1 anyway for the child + the rounded amount of rooms needed extra
+	  (assert (Person room-num (+ 2 (round (/ ?children 2)))))
+	  (assert (Person house-shared FALSE))
+	  (assert (Person children ?children))
+	  (assert (Person school TRUE))
+) 
+
+ 
 ;;; ask if the number of rooms is sufficient
 (defrule house-extra-rooms
 	(Person room-num ?num)
@@ -497,7 +525,7 @@
 	=>
   ;;;Ask if we need more rooms for elderly people or special needs
   (printout t "Currently we estimated for you " ?num " rooms ")
-  (bind ?additional (yes-or-no "is this enough?"))
+  (bind ?additional (yes-or-no "is this enough"))
   (if (eq ?additional FALSE)
     then
       (bind ?rooms (ask-number "How many extra rooms do you need" 0 20))
@@ -510,7 +538,7 @@
  
 (defrule count-num-of-habitable-rooms
   (Person room-num ?rooms)
-  (Person rooms-checked TRUE)
+  ;  (Person rooms-checked TRUE)
   ?proposal<-(object (is-a Proposal) (offer ?offer))
   =>  
   ; (printout t (send ?offer get-title) " "  (send ?offer count-habitable-rooms) crlf)
@@ -519,15 +547,15 @@
   ;(printout t (send ?offer get-title) " "  (send ?offer count-habitable-rooms) " req:" ?rooms crlf)
   (bind ?diff (- ?num ?rooms)) ;difference
   (switch ?diff
-    (case -1 then (send ?proposal put-score (- (send ?proposal get-score) 1)))
+    (case -1 then (send ?proposal put-score (- (send ?proposal get-score) 3)))
     (case 0 then (send ?proposal put-score (+ (send ?proposal get-score) 1)) )
     (case 1 then (send ?proposal put-score (+ (send ?proposal get-score) 2)) )
     (default then (send ?proposal put-room_diff ?diff)) 
    )
   (assert (Proposal counted_rooms ok))
-  
-)
+) 
  
+
 
 ;;;DEFINE CAR OR NOT
 ;;; get the fact if the user has a car or not
@@ -633,6 +661,8 @@
 )
  
  
+ 
+ 
 ;;;-----------------------------------------------------------------------
 ;;;- run our queries on the gathered information and the available houses-
 ;;;-----------------------------------------------------------------------
@@ -687,6 +717,8 @@
   			      (* ?noise-weight (noise-impact ?adr1 ?adr2))
   	))
 )
+ 
+ 
 
 
 ;;;APPLY OUR FACTS AND FILTER THE RESULTS
@@ -1202,9 +1234,8 @@
 	(Person facts ok)
   	?recommendation <- (recommendation (is_final ?))
 	=>
-  (printout t "end of questions" crlf crlf)
-  (modify ?recommendation (is_final ok))
-  (pop-focus)
+	(modify ?recommendation (is_final ok))
+	(pop-focus)
 )
 
 ;;;----------------------------------------------- -

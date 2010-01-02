@@ -1,4 +1,4 @@
-; Sat Jan 02 16:23:43 CET 2010
+; Sat Jan 02 20:28:31 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -56,12 +56,59 @@
 	(rent 250.0)
 	(title "room with no equipment at all"))
 
+([house_Class100009] of  Offer
+
+	(address [house_Class100010])
+	(available_from [house_Class6])
+	(realty [house_Class100011])
+	(rent 800.0)
+	(title "house for demolition"))
+
 ([house_Class10001] of  Room
 
 	(description "double room")
 	(room_type double)
 	(space 15)
 	(windows_num 1))
+
+([house_Class100010] of  Address
+
+	(coordinates [house_Class30070])
+	(district [house_Class30021])
+	(street "Carrer de Sant Rafael 12"))
+
+([house_Class100011] of  House
+
+	(description "need reconstruction")
+	(flats
+		[house_Class100012]
+		[house_Class100014])
+	(house_type Terraced)
+	(space 800))
+
+([house_Class100012] of  Flat
+
+	(description "quite bad flat")
+	(floor "1")
+	(rooms [house_Class100013])
+	(space 30))
+
+([house_Class100013] of  Room
+
+	(description "dirty room")
+	(room_type single)
+	(space 10)
+	(windows_num 1))
+
+([house_Class100014] of  Flat
+
+	(description "flat with cockroach")
+	(flat_type normal)
+	(floor "1")
+	(rooms
+		[house_Class70005]
+		[house_Class50006])
+	(space 60))
 
 ([house_Class10002] of  Address
 

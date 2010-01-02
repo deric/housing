@@ -2,14 +2,14 @@
 (load "housing.clp")
 (reset)
 (run)
-Tom
-Barton
+Jack
+Daniels
 student
 flat
-alone
+friends
 yes
 n
 young
-350
+650
 n
 200

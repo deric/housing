@@ -2,9 +2,9 @@
 (load "housing.clp")
 (reset)
 (run)
-Nick
-Veenhof
-student
+Will
+Smith
+working
 flat
 children
 1
@@ -15,3 +15,4 @@ centric
 1300
 n
 300
+35
