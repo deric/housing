@@ -1310,7 +1310,7 @@
         (printout t "---------------------------------------------------------------------" crlf)
         (bind ?printedadequate TRUE)
       )
-      (if (and (eq ?printedadequate FALSE) (<= (send ?proposal get-score) (* ?maxpoints 0.70)))
+      (if (and (eq ?printedpartiallyadequate FALSE) (<= (send ?proposal get-score) (* ?maxpoints 0.70)))
         then
         (printout t "---------------------------------------------------------------------" crlf)
         (printout t "Partially adequate offers" crlf)
