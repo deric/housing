@@ -2,8 +2,8 @@
 (load "housing.clp")
 (reset)
 (run)
-Nick
-Veenhof
+George
+Dalton
 other
 house
 children

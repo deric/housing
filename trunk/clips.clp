@@ -550,11 +550,30 @@
     (case -1 then (send ?proposal put-score (- (send ?proposal get-score) 3)))
     (case 0 then (send ?proposal put-score (+ (send ?proposal get-score) 1)) )
     (case 1 then (send ?proposal put-score (+ (send ?proposal get-score) 2)) )
-    (default then (send ?proposal put-room_diff ?diff)) 
    )
+  (send ?proposal put-room_diff ?diff)
   (assert (Proposal counted_rooms ok))
 ) 
+
  
+(defrule filer-offers-with-small-number-of-rooms-and-diff
+  (Proposal counted_rooms ok)
+  (Person facts ok)
+  ?proposal<-(object (is-a Proposal) (offer ?offer) (room_diff ?diff&:(= ?diff -1))   (rooms ?rooms&:(<= ?rooms 2)) )
+  =>  
+  ; (printout t (send ?offer get-title) " " ?diff crlf)
+  (send ?proposal put-is_proposed FALSE)
+) 
+ 
+ 
+ ;offers with lack of more than 1 rooms will be rejected 
+(defrule filer-offers-with-not-sufficient-rooms
+  (Proposal counted_rooms ok)
+  ?proposal<-(object (is-a Proposal) (offer ?offer) (room_diff ?diff&:(<= ?diff -2)) (rooms ?rooms&:(> ?rooms 2)))
+  =>  
+  ;(printout t (send ?proposal get-title) crlf)
+  (send ?proposal put-is_proposed FALSE)
+) 
 
 
 ;;;DEFINE CAR OR NOT
@@ -743,6 +762,8 @@
   (assert (Proposal noisiness ok))
 )
  
+ 
+ ;&:(= ?diff -1)
 (defrule lower-score-for-cheaper-offers
   (Person facts ok)
   ?proposal<-(object (is-a Proposal) (offer ?offer))
@@ -761,6 +782,7 @@
     )
 )
  
+
 
 
 (defrule filter-noisy "lower score of proposal with noisy environment if user does mind"
@@ -845,6 +867,9 @@
 )
  
  
+
+
+ 
 (defrule exclude-not-centric
     (Person location centric)
     ?proposal<-(object (is-a Proposal) (offer ?offer))
@@ -859,16 +884,6 @@
      )
 )
  
-
- ;offers with lack of more than 1 rooms will be rejected 
-(defrule filer-offers-with-not-sufficient-rooms
-  (Proposal counted_rooms ok)
-  ?proposal<-(object (is-a Proposal) (offer ?offer) (room_diff ?diff&:(<= ?diff -2)))
-  =>  
-  (send ?proposal put-is_proposed FALSE)
-)
-
-
 ;;; Loop trough all the houses and locations and give points accordingly
 ;;; if a location is close add 2 points
 ;;; if a location is medium add 1 points
