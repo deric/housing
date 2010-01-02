@@ -426,40 +426,7 @@
    (bind ?age (ask-number "What is your age" 18 100)) 
    (send ?person put-age ?age)
    (assert (Person age ok))
-) 
- 
-;;;-----------------------------------------------------------------------
-;;;- run our queries on the gathered information and the available houses-
-;;;-----------------------------------------------------------------------
-
-(defrule start-house-queries
-	(Person complete ok)
-	?offer <- (object (is-a Offer))
-	=>
-    ;;;initialize our system and so get all instances of offer and copy them into
-    ;;;a new instance proposal
-     (make-instance of Proposal 
-	(score 0) 
-	(offer ?offer) 
-	(is_proposed TRUE)
-	(noise 0.0)
-	(rooms 0.0)
-	(room_diff 0)
-       )
 )
-
-;;;-------------------------------------------------------------
-;;;- define a new module that imports our data that we gathered-
-;;;-------------------------------------------------------------
-
-
-
-(defmodule house-queries "Module that gathers information about the searched house"
-	(import MAIN ?ALL)
-	(import personal-questions ?ALL)
-	(export ?ALL)
-)
-
 
 ;;; Get our maximum budget
 (defrule house-type
@@ -480,6 +447,7 @@
 	(bind ?rooms (ask-number "How many rooms do you need" 0 20))
 	(assert (Person room-num ?rooms))
 )
+
 ;; 
 ;;; set the number of rooms if it is not office
 ;;;also define the number of people living there or children
@@ -644,6 +612,41 @@
     (assert (Person facts ok))
 )
  
+ 
+;;;-----------------------------------------------------------------------
+;;;- run our queries on the gathered information and the available houses-
+;;;-----------------------------------------------------------------------
+
+(defrule start-house-queries
+	(Person complete ok)
+	?offer <- (object (is-a Offer))
+	=>
+    ;;;initialize our system and so get all instances of offer and copy them into
+    ;;;a new instance proposal
+     (make-instance of Proposal 
+	(score 0) 
+	(offer ?offer) 
+	(is_proposed TRUE)
+	(noise 0.0)
+	(rooms 0.0)
+	(room_diff 0)
+       )
+)
+
+;;;-------------------------------------------------------------
+;;;- define a new module that imports our data that we gathered-
+;;;-------------------------------------------------------------
+
+
+
+(defmodule house-queries "Module that gathers information about the searched house"
+	(import MAIN ?ALL)
+	(import personal-questions ?ALL)
+	(export ?ALL)
+)
+
+
+
  
  ;;; Loop trough all the houses and locations and give noisynesspoints
 ;;; if a location is close add the whole noisynesspoints
