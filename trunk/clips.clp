@@ -666,7 +666,7 @@
 ;;;- run our queries on the gathered information and the available houses-
 ;;;-----------------------------------------------------------------------
 
-(defrule start-house-queries
+(defrule create-proposals
 	(Person complete ok)
 	?offer <- (object (is-a Offer))
 	=>
