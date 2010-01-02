@@ -491,7 +491,7 @@
 ;;; ask if the number of rooms is sufficient
 (defrule house-extra-rooms
 	(Person room-num ?num)
-  (not (Person rooms-checked ?))
+	(not (Person rooms-checked ?))
 	(not (Person type-of-house office))
 	?user <- (object (is-a Person))
 	=>
@@ -505,9 +505,29 @@
       (printout t "We estimated that you need " (+ ?num ?rooms) " rooms" crlf)
     else
       (assert (Person rooms-checked TRUE))
-  )
+  ) 
+)
+ 
+(defrule count-num-of-habitable-rooms
+  (Person room-num ?rooms)
+  (Person rooms-checked TRUE)
+  ?proposal<-(object (is-a Proposal) (offer ?offer))
+  =>  
+  ; (printout t (send ?offer get-title) " "  (send ?offer count-habitable-rooms) crlf)
+  (bind ?num (send ?offer count-habitable-rooms))
+  (send ?proposal put-rooms ?num)
+  ;(printout t (send ?offer get-title) " "  (send ?offer count-habitable-rooms) " req:" ?rooms crlf)
+  (bind ?diff (- ?num ?rooms)) ;difference
+  (switch ?diff
+    (case -1 then (send ?proposal put-score (- (send ?proposal get-score) 1)))
+    (case 0 then (send ?proposal put-score (+ (send ?proposal get-score) 1)) )
+    (case 1 then (send ?proposal put-score (+ (send ?proposal get-score) 2)) )
+    (default then (send ?proposal put-room_diff ?diff)) 
+   )
+  (assert (Proposal counted_rooms ok))
   
 )
+ 
 
 ;;;DEFINE CAR OR NOT
 ;;; get the fact if the user has a car or not
@@ -790,25 +810,6 @@
 )
  
 
-(defrule count-num-of-habitable-rooms
-  (Person room-num ?rooms)
-  ?proposal<-(object (is-a Proposal) (offer ?offer))
-  =>  
-  ; (printout t (send ?offer get-title) " "  (send ?offer count-habitable-rooms) crlf)
-  (bind ?num (send ?offer count-habitable-rooms))
-  (send ?proposal put-rooms ?num)
-  ;(printout t (send ?offer get-title) " "  (send ?offer count-habitable-rooms) " req:" ?rooms crlf)
-  (bind ?diff (- ?num ?rooms)) ;difference
-  (switch ?diff
-    (case -1 then (send ?proposal put-score (- (send ?proposal get-score) 1)))
-    (case 0 then (send ?proposal put-score (+ (send ?proposal get-score) 1)) )
-    (case 1 then (send ?proposal put-score (+ (send ?proposal get-score) 2)) )
-    (default then (send ?proposal put-room_diff ?diff)) 
-   )
-  (assert (Proposal counted_rooms ok))
-  
-)
- 
  ;offers with lack of more than 1 rooms will be rejected 
 (defrule filer-offers-with-not-sufficient-rooms
   (Proposal counted_rooms ok)
