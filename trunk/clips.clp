@@ -279,7 +279,7 @@
 	(bind ?x (- (send ?c1 get-longitude) (send ?c2 get-longitude)))
 	(bind ?y (- (send ?c1 get-latitude) (send ?c2 get-latitude)))
 	(bind ?result (sqrt (+ (** ?x 2) (** ?y 2))))
-	?result
+	return ?result
 )
 
 ;Counts impact of noise between two Addresses and return
@@ -749,7 +749,7 @@
     (bind ?elev (send ?offer has-equipment Elevator))
     (if ?elev
       then (send ?proposal put-score (+ (send ?proposal get-score) 1))
-      else (send ?proposal put-score (- (send ?proposal get-score) 1))
+      else (send ?proposal put-score (- (send ?proposal get-score) 5))
     )
 )
  
