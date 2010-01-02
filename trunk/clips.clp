@@ -122,11 +122,7 @@
 	)
    (return ?res)
  )
- 
- (defmessage-handler House count-habitable-rooms primary()
-   (return 0)
- )
- 
+  
  (defmessage-handler Room count-habitable-rooms primary()
     (if (or (eq ?self:room_type single) (eq ?self:room_type double))
 	then (return 1)
@@ -170,6 +166,31 @@
 (defmessage-handler Offer count-habitable-rooms primary()
    (return  (send ?self:realty count-habitable-rooms))
 )
+ 
+(defmessage-handler Offer realty-type primary()
+   (return  (class ?self:realty))
+)
+ 
+(defmessage-handler Offer has-equipment primary(?service)
+   (return  (send ?self:realty has-equipment ?service))
+)
+ 
+(defmessage-handler PlaceToLive has-equipment primary(?service)
+      (bind ?i 1)
+      (bind ?res FALSE)
+        (while (<= ?i (length$ ?self:equipment))
+		do
+		    (bind ?srv (send (nth$ ?i ?self:equipment) get-title))
+		    (if (= (str-compare ?srv ?service) 0)
+	  		then (bind ?res TRUE)
+	  	      )
+		    (bind ?i (+ ?i 1))
+	)
+      (return ?res)
+)
+ 
+ 
+
 
 
  
@@ -394,7 +415,7 @@
   =>
     (send ?person put-age 70) 
     (assert (Person age ok))
-    (assert (Proposal elevator))
+    (assert (Proposal elevator TRUE))
     (assert (Proposal supermarket close))
 )
 
@@ -720,6 +741,18 @@
   )
     
 )
+ 
+(defrule filer-houses-without-elevator "for retired people"
+  (Proposal elevator TRUE)
+  ?proposal<-(object (is-a Proposal) (offer ?offer))
+  =>   
+    (bind ?elev (send ?offer has-equipment Elevator))
+    (if ?elev
+      then (send ?proposal put-score (+ (send ?proposal get-score) 1))
+      else (send ?proposal put-score (- (send ?proposal get-score) 1))
+    )
+)
+ 
  
 (defrule exclude-not-centric
     (Person location centric)
@@ -1125,6 +1158,8 @@
      )
   )
 )
+ 
+ 
 
 
 ;Bubble sort!!
