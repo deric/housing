@@ -662,9 +662,9 @@
  
  
  
-;;;-----------------------------------------------------------------------
-;;;- run our queries on the gathered information and the available houses-
-;;;-----------------------------------------------------------------------
+;;;----------------------------------------------
+;;;- create a proposal instance for every offer -
+;;;----------------------------------------------
 
 (defrule create-proposals
 	(Person complete ok)
@@ -1248,7 +1248,7 @@
 ;)
 
 ;;; END OF OUR FILTERING METHODS. ADD ALL FUNCTIONS ABOVE THIS LINE
-(defrule end-of-questions
+(defrule end-of-filtering
 	(Person facts ok)
   	?recommendation <- (recommendation (is_final ?))
 	=>
