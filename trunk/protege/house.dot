@@ -1,0 +1,25 @@
+digraph house {
+	node [label="\N"];
+	graph [bb="0,0,320,486"];
+	Offer [label=Offer, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="46,468", width="0.75", height="0.5"];
+	Address [label=Address, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="82,378", width="0.83333", height="0.5"];
+	City [label=City, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="197,198", width="0.75", height="0.5"];
+	GeographicalPart [label=GeographicalPart, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="237,378", width="1.5278", height="0.5"];
+	Province [label=Province, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="245,108", width="0.88889", height="0.5"];
+	District [label=District, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="152,288", width="0.77778", height="0.5"];
+	Country [label=Country, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="276,18", width="0.83333", height="0.5"];
+	Service [label=Service, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="119,468", width="0.77778", height="0.5"];
+	Coordinates [label=Coordinates, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="40,288", width="1.1111", height="0.5"];
+	Offer -> Address [style=filled, label=address, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,66.553,396.1 47.339,449.91 48.622,439.14 51.124,425.4 56,414 57.376,410.78 59.081,407.58 60.955,404.48", lp="76.5,423"];
+	GeographicalPart -> City [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,232.94,359.75 230.67,349.51 222.35,312.06 207.97,247.36 201.01,216.03", lp="227.5,288"];
+	City -> Province [style=filled, label=province, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,213.19,126.02 193.52,179.79 192.33,168.85 192.46,154.96 198,144 200.04,139.97 202.76,136.26 205.87,132.88", lp="221.5,153"];
+	GeographicalPart -> District [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,208.01,359.9 199.79,353.63 195.26,349.98 190.87,346.07 187,342 176.83,331.32 167.84,317.3 161.52,306.22", lp="194.5,333"];
+	District -> City [style=filled, label=city, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,187.91,216.19 161.11,269.79 167.51,256.98 176.19,239.62 183.41,225.18", lp="188,243"];
+	GeographicalPart -> Province [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,239.35,359.71 240.4,349.49 240.63,346.96 240.84,344.44 241,342 246.31,262.16 244.11,242.01 245,162 245.13,150 245.13,136.5 245.1\
+,126", lp="251.5,243"];
+	Province -> Country [style=filled, label=country, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,259.91,36.329 244.32,89.961 244.48,79.206 245.7,65.46 250,54 251.16,50.896 252.67,47.819 254.37,44.848", lp="270.5,63"];
+	GeographicalPart -> Country [label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", dir=back, pos="s,261.93,359.92 269.83,352.91 287.21,336.6 305,313.64 305,288 305,288 305,288 305,108 305,82.063 293.95,53.859 285.5,36.066", lp="312.5,198"];
+	Service -> Address [style=filled, label=address, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,89.659,396.3 111.7,449.99 107.44,439.48 101.94,425.98 97,414 95.888,411.3 94.724,408.49 93.559,405.68", lp="125.5,423"];
+	Address -> District [style=filled, label=district, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,137.86,306.19 96.166,359.79 106.32,346.73 120.15,328.95 131.5,314.35", lp="143,333"];
+	Address -> Coordinates [style=filled, label=coordinates, color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", pos="e,36.76,306.33 54.609,359.71 49.13,354.66 44.109,348.7 41,342 37.353,334.14 36.209,324.92 36.236,316.34", lp="72,333"];
+}

@@ -1,0 +1,23 @@
+digraph "house" {
+
+"Offer" [shape=box, label="Offer", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Offer"->"Address" [style=filled, label="address", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"]
+"City" [shape=box, label="City", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"GeographicalPart"->"City" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"City"->"Province" [style=filled, label="province", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"]
+"District" [shape=box, label="District", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"GeographicalPart"->"District" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"District"->"City" [style=filled, label="city", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"]
+"Province" [shape=box, label="Province", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"GeographicalPart"->"Province" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Province"->"Country" [style=filled, label="country", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"]
+"Country" [shape=box, label="Country", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"GeographicalPart"->"Country" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"GeographicalPart" [shape=box, label="GeographicalPart", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Service" [shape=box, label="Service", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Service"->"Address" [style=filled, label="address", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"]
+"Coordinates" [shape=box, label="Coordinates", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Address" [shape=box, label="Address", color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0"]
+"Address"->"District" [style=filled, label="district", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"]
+"Address"->"Coordinates" [style=filled, label="coordinates", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0"]
+}

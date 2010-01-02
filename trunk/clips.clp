@@ -301,7 +301,7 @@
   )
 )
 
-;;;counts distance between 2 addresses
+;;;sorting
 (deffunction proposal-sort (?prop1 ?prop2)
   (< (send ?prop1 get-score) (send ?prop2 get-score))
 )
@@ -356,23 +356,58 @@
 	(not (object (is-a Person)))
 	=>
 	(bind ?firstname (ask-open-question "What is your firstname"))
-  (bind ?surname (ask-open-question "What is your surname"))
-  (bind ?age (ask-number "What is your age" 18 100))
+	(bind ?surname (ask-open-question "What is your surname"))
+  
   ;;;create an instance of Person
 	(bind ?user (make-instance user of Person))
   ;;;add this to our instance of Person
 	(send ?user put-firstname ?firstname)
-  (send ?user put-surname ?surname)
-  (send ?user put-age ?age)
+	(send ?user put-surname ?surname)
+ 
   ;;;insert this Person into recommendation
 	(assert (recommendation (person ?user)))
   ;;;add facts that our first and surname are ok
 	(assert (Person firstname ok))
-  (assert (Person surname ok))
-  (assert (Person age ok))
-  (assert (Person complete ok))
+	(assert (Person surname ok))
+	(assert (Person complete ok))
+)
+ 
+(defrule current-occupation
+    (not (Person occupation ok))
+    ?person <- (object (is-a Person))
+  =>
+  (bind ?occupation (question "What is your current occupation" working student retired other))
+  (assert (Person occupation ?occupation))
+)
+ 
+(defrule person-is-a-student
+    (Person occupation ?occupation&student)
+    ?person <- (object (is-a Person))
+  =>
+    (send ?person put-age 20) 
+    (assert (Person age ok))
+  )
+
+(defrule person-is-retired
+    (Person occupation ?occupation&retired)
+    ?person <- (object (is-a Person))
+  =>
+    (send ?person put-age 70) 
+    (assert (Person age ok))
+    (assert (Proposal elevator))
+    (assert (Proposal supermarket close))
 )
 
+ ; executed when age is not set
+(defrule find-out-age
+  ?person <- (object (is-a Person) (age ?age&:(= ?age 0)))
+  (not (Person age ok))
+  =>
+   (bind ?age (ask-number "What is your age" 18 100)) 
+   (send ?person put-age ?age)
+   (assert (Person age ok))
+) 
+ 
 ;;;-----------------------------------------------------------------------
 ;;;- run our queries on the gathered information and the available houses-
 ;;;-----------------------------------------------------------------------
@@ -420,9 +455,8 @@
 	=>
 	(bind ?rooms (ask-number "How many rooms do you need" 0 20))
 	(assert (Person room-num ?rooms))
-	
 )
-
+;; 
 ;;; set the number of rooms if it is not office
 ;;;also define the number of people living there or children
 (defrule house-other-rooms
@@ -489,7 +523,7 @@
 	(not (Person has-car ?))
 	?user <- (object (is-a Person))
 	=>
-	(bind ?hascar (yes-or-no "Do you have a car?"))
+	(bind ?hascar (yes-or-no "Do you have a car"))
 	(assert (Person has-car ?hascar))
 )
 
@@ -501,7 +535,7 @@
   (Person children ?)
 	?user <- (object (is-a Person))
 	=>
-	(bind ?bringschildren (yes-or-no "Are you bringing the children to school by car?"))
+	(bind ?bringschildren (yes-or-no "Are you bringing the children to school by car"))
   (if (eq ?bringschildren TRUE)
        then (assert (Person public-transport FALSE))
        else (assert (Person public-transport TRUE))
@@ -731,7 +765,6 @@
 )
 
 
- 
 ;;; Loop trough all the houses and locations and give points accordingly
 ;;; if a location is close add 2 points
 ;;; if a location is medium add 1 points
