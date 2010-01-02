@@ -379,19 +379,14 @@
 
 (defrule start-house-queries
 	(Person complete ok)
+	?offer <- (object (is-a Offer))
 	=>
     ;;;initialize our system and so get all instances of offer and copy them into
     ;;;a new instance proposal
-    (do-for-all-instances ((?offer Offer))
-     ;do-for condition
-     TRUE
-     ;do-for execution
      (make-instance of Proposal (score 0) (offer ?offer) (is_proposed TRUE)
 	(noise 0.0)
 	(room_diff 0)
        )
-    )
-  ;(focus house-queries)
 )
 
 ;;;-------------------------------------------------------------

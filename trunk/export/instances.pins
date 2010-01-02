@@ -1,4 +1,4 @@
-; Sat Jan 02 01:15:22 CET 2010
+; Sat Jan 02 02:00:12 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -991,6 +991,24 @@
 	(latitude 4.0)
 	(longitude -4.0))
 
+([house_Class50000] of  Flat
+
+	(description "flat close to park")
+	(equipment [house_Class30105])
+	(flat_type normal)
+	(floor "1")
+	(rooms
+		[house_Class50001]
+		[house_Class60002])
+	(space 75))
+
+([house_Class50001] of  Room
+
+	(description "room with nice view")
+	(room_type single)
+	(space 12)
+	(windows_num 1))
+
 ([house_Class50002] of  Equipment
 )
 
@@ -1065,6 +1083,16 @@
 	(month 12)
 	(year 2009))
 
+([house_Class60002] of  Room
+
+	(description "full equiped double room")
+	(equipment
+		[house_Class30096]
+		[house_Class30104])
+	(room_type double)
+	(space 16)
+	(windows_num 1))
+
 ([house_Class60003] of  Coordinates
 
 	(latitude -2.0)
@@ -1109,3 +1137,34 @@
 	(realty [house_Class40001])
 	(rent 1300.0)
 	(title "Fancy flat in center2"))
+
+([house_Class90003] of  Green+Area
+
+	(address [house_Class90004])
+	(noisy 0)
+	(title "Parc Guell"))
+
+([house_Class90004] of  Address
+
+	(coordinates [house_Class90005])
+	(district [house_Class30032])
+	(street "Carrer d'Olot"))
+
+([house_Class90005] of  Coordinates
+
+	(latitude 5.0)
+	(longitude 4.0))
+
+([house_Class90006] of  Offer
+
+	(address [house_Class40007])
+	(available_from [house_Class90007])
+	(realty [house_Class50000])
+	(rent 950.0)
+	(title "flat near parc"))
+
+([house_Class90007] of  Date
+
+	(day 11)
+	(month 12)
+	(year 2009))
