@@ -423,7 +423,7 @@
 	(not (Person type-of-house ?))
 	?user <- (object (is-a Person))
 	=>
-	(bind ?type-of-house (question "What type of real estate are you looking for" office house flat))
+	(bind ?type-of-house (question "What type of real estate are you looking for" office house flat nevermind))
 	(assert (Person type-of-house ?type-of-house))
 )
 
@@ -560,9 +560,9 @@
  ;offers with lack of more than 1 rooms will be rejected 
 (defrule filer-offers-with-not-sufficient-rooms
   (Proposal counted_rooms ok)
-  ?proposal<-(object (is-a Proposal) (offer ?offer) (room_diff ?diff&:(<= ?diff -2)) (rooms ?rooms&:(> ?rooms 2)))
+  ?proposal<-(object (is-a Proposal) (offer ?offer) (room_diff ?diff&:(<= ?diff -2)) )
   =>  
-  ;(printout t (send ?proposal get-title) crlf)
+  ;(printout t (send ?offer get-title) crlf)
   (send ?proposal put-is_proposed FALSE)
 ) 
 
