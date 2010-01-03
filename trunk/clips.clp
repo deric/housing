@@ -2,30 +2,11 @@
 ;;; ---------------------------------------------- ENGINE ---------------------------------------------------------------
 ;;; ---------------------------------------------------------------------------------------------------------------------
 
+(defmodule MAIN (export ?ALL))
+
 ;;**************
 ;;* DEFCLASSES *
 ;;**************
-
-(defclass MAIN::Result
-	(is-a USER)
-	(single-slot value
-		(type INSTANCE))
-	(single-slot quantity
-		(type INTEGER))
-)
-
-(defmodule MAIN (export ?ALL))
-
-
- 
-;;****************
-;;* DEFTEMPLATE *
-;;****************
-
-(deftemplate recommendation
-  	(slot person)
-	(slot is_final)
-)
 
 (defclass Proposal
 	(is-a USER)
@@ -37,6 +18,16 @@
 	(slot room_diff)
 	(slot is_proposed)
 )
+
+;;****************
+;;* DEFTEMPLATE *
+;;****************
+
+(deftemplate recommendation
+  	(slot person)
+	(slot is_final)
+)
+
 
 ;;************
 ;;* MESSAGES *
