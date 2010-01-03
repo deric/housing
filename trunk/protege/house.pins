@@ -1,4 +1,4 @@
-; Sat Jan 02 16:23:36 CET 2010
+; Sun Jan 03 01:08:45 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -56,6 +56,14 @@
 	(rent 250.0)
 	(title "room with no equipment at all"))
 
+([house_Class100009] of  Offer
+
+	(address [house_Class100010])
+	(available_from [house_Class6])
+	(realty [house_Class100011])
+	(rent 800.0)
+	(title "house for demolition"))
+
 ([house_Class10001] of  Room
 
 	(description "double room")
@@ -63,11 +71,103 @@
 	(space 15)
 	(windows_num 1))
 
+([house_Class100010] of  Address
+
+	(coordinates [house_Class30070])
+	(district [house_Class30021])
+	(street "Carrer de Sant Rafael 12"))
+
+([house_Class100011] of  House
+
+	(description "need reconstruction")
+	(flats
+		[house_Class100012]
+		[house_Class100014])
+	(house_type Terraced)
+	(space 800))
+
+([house_Class100012] of  Flat
+
+	(description "quite bad flat")
+	(floor "1")
+	(rooms [house_Class100013])
+	(space 30))
+
+([house_Class100013] of  Room
+
+	(description "dirty room")
+	(room_type single)
+	(space 10)
+	(windows_num 1))
+
+([house_Class100014] of  Flat
+
+	(description "flat with cockroach")
+	(flat_type normal)
+	(floor "1")
+	(rooms
+		[house_Class70005]
+		[house_Class50006])
+	(space 60))
+
+([house_Class100015] of  Offer
+
+	(address [house_Class30077])
+	(available_from [house_Class90007])
+	(realty [house_Class100016])
+	(rent 600.0)
+	(title "flat without windows"))
+
+([house_Class100016] of  Flat
+
+	(description "flat in old town")
+	(equipment [house_Class30096])
+	(flat_type ground)
+	(floor "0")
+	(rooms
+		[house_Class70005]
+		[house_Class100017])
+	(space 50))
+
+([house_Class100017] of  Room
+
+	(description "single small room")
+	(room_type single)
+	(space 12)
+	(windows_num 0))
+
+([house_Class100018] of  Offer
+
+	(address [house_Class100019])
+	(available_from [house_Class30106])
+	(realty [house_Class100021])
+	(rent 360.0)
+	(title "room close to UPC"))
+
+([house_Class100019] of  Address
+
+	(coordinates [house_Class100020])
+	(district [house_Class30029])
+	(street "Maria Christina 456"))
+
 ([house_Class10002] of  Address
 
 	(coordinates [house_Class50003])
 	(district [house_Class0])
 	(street "Carrer de Educacion"))
+
+([house_Class100020] of  Coordinates
+
+	(latitude -6.0)
+	(longitude 4.0))
+
+([house_Class100021] of  Room
+
+	(description "room in renovated flat")
+	(equipment [house_Class30096])
+	(room_type single)
+	(space 15)
+	(windows_num 1))
 
 ([house_Class10003] of  Room
 

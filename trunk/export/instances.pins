@@ -1,4 +1,4 @@
-; Sat Jan 02 20:28:31 CET 2010
+; Sun Jan 03 01:08:54 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -110,11 +110,64 @@
 		[house_Class50006])
 	(space 60))
 
+([house_Class100015] of  Offer
+
+	(address [house_Class30077])
+	(available_from [house_Class90007])
+	(realty [house_Class100016])
+	(rent 600.0)
+	(title "flat without windows"))
+
+([house_Class100016] of  Flat
+
+	(description "flat in old town")
+	(equipment [house_Class30096])
+	(flat_type ground)
+	(floor "0")
+	(rooms
+		[house_Class70005]
+		[house_Class100017])
+	(space 50))
+
+([house_Class100017] of  Room
+
+	(description "single small room")
+	(room_type single)
+	(space 12)
+	(windows_num 0))
+
+([house_Class100018] of  Offer
+
+	(address [house_Class100019])
+	(available_from [house_Class30106])
+	(realty [house_Class100021])
+	(rent 360.0)
+	(title "room close to UPC"))
+
+([house_Class100019] of  Address
+
+	(coordinates [house_Class100020])
+	(district [house_Class30029])
+	(street "Maria Christina 456"))
+
 ([house_Class10002] of  Address
 
 	(coordinates [house_Class50003])
 	(district [house_Class0])
 	(street "Carrer de Educacion"))
+
+([house_Class100020] of  Coordinates
+
+	(latitude -6.0)
+	(longitude 4.0))
+
+([house_Class100021] of  Room
+
+	(description "room in renovated flat")
+	(equipment [house_Class30096])
+	(room_type single)
+	(space 15)
+	(windows_num 1))
 
 ([house_Class10003] of  Room
 

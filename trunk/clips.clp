@@ -598,7 +598,7 @@
 	(not (Person type-of-environment ?))
 	?user <- (object (is-a Person))
 	=>
-	(bind ?type-of-environment (question "what kind of environment do you want to live in?" quiet centric young residential outskirts))
+	(bind ?type-of-environment (question "what kind of environment do you want to live in" quiet centric young residential outskirts))
 	(if (= (str-compare ?type-of-environment "quiet") 0)
 		then
 		(assert (Person max-noise 3))
