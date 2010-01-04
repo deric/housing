@@ -1,4 +1,4 @@
-; Sun Jan 03 01:08:45 CET 2010
+; Sun Jan 03 23:48:47 CET 2010
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -45,7 +45,7 @@
 	(address [house_Class30108])
 	(available_from [house_Class30106])
 	(realty [house_Class10003])
-	(rent 450.0)
+	(rent 350.0)
 	(title "luxury room with nice view"))
 
 ([house_Class100007] of  Offer
@@ -1260,6 +1260,10 @@
 
 	(latitude 2.0)
 	(longitude 1.0))
+
+([house_Class70000] of  Offer
+
+	(title "flat close to parc Guell"))
 
 ([house_Class70002] of  Room
 
